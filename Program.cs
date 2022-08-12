@@ -1,27 +1,29 @@
 ﻿using System;
 using System.Collections.Generic;
+using System.Diagnostics;
 using System.IO;
 using System.Linq;
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
+using OpenTK.Windowing.GraphicsLibraryFramework;
 
 namespace Nebula;
 
 public class Nebula {
     public static void Main(string[] args) {
         var nativeWindowSettings = new NativeWindowSettings()
-            {
-                Size = new Vector2i(800, 600),
-                Title = "LearnOpenTK - Creating a Window",
-                Flags = ContextFlags.ForwardCompatible
-            };
+        {
+            Size = new Vector2i(800, 600),
+            Title = "LearnOpenTK - Creating a Window",
+            Flags = ContextFlags.ForwardCompatible
+        };
 
-            using (var window = new Window(GameWindowSettings.Default, nativeWindowSettings))
-            {
-                window.Run();
-            }
+        using (var window = new Window(GameWindowSettings.Default, nativeWindowSettings))
+        {
+            window.Run();
+        }
     }
 }
 
@@ -29,15 +31,25 @@ public class Window : GameWindow
 {
     private readonly float[] _vertices =
     {
-        -0.5f, -0.5f, 0.0f, // Bottom-left vertex
-            0.5f, -0.5f, 0.0f, // Bottom-right vertex
-            0.0f,  0.5f, 0.0f  // Top vertex
+            0.5f,  0.5f, 0.0f, // top right
+            0.5f, -0.5f, 0.0f, // bottom right
+        -0.5f, -0.5f, 0.0f, // bottom left
+        -0.5f,  0.5f, 0.0f, // top left
+    };
+
+    private readonly uint[] _indices =
+    {
+        // Note that indices start at 0!
+        0, 1, 3, // The first triangle will be the top-right half of the triangle
+        1, 2, 3  // Then the second will be the bottom-left half of the triangle
     };
 
     private int _vertexBufferObject;
     private int _vertexArrayObject;
 
     private Shader _shader;
+
+    private int _elementBufferObject;
 
     public Window(GameWindowSettings gameWindowSettings, NativeWindowSettings nativeWindowSettings) : base(gameWindowSettings, nativeWindowSettings)
     {
@@ -46,6 +58,73 @@ public class Window : GameWindow
     protected override void OnLoad()
     {
         base.OnLoad();
+
+        GL.ClearColor(.2f, .3f, .3f, 1);
+
+        _vertexBufferObject = GL.GenBuffer();
+        GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexBufferObject);
+        GL.BufferData(BufferTarget.ArrayBuffer, _vertices.Length * sizeof(float), _vertices, BufferUsageHint.StaticDraw);
+
+        _vertexArrayObject = GL.GenVertexArray();
+        GL.BindVertexArray(_vertexArrayObject);
+        GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), 0);
+        GL.EnableVertexAttribArray(0);
+
+        _elementBufferObject = GL.GenBuffer();
+        GL.BindBuffer(BufferTarget.ElementArrayBuffer, _elementBufferObject);
+        GL.BufferData(BufferTarget.ElementArrayBuffer, _indices.Length * sizeof(uint), _indices, BufferUsageHint.StaticDraw);
+
+        GL.GetInteger(GetPName.MaxVertexAttribs, out int maxAttributeCount);
+        Debug.WriteLine($"Maximum number of vertex attributes supported: {maxAttributeCount}");
+
+        _shader = new Shader("Shaders/shader.glsl");
+        _shader.Use();
+    }
+
+    protected override void OnUpdateFrame(FrameEventArgs args)
+    {
+        if (KeyboardState.IsKeyDown(Keys.Escape))
+        {
+            // If it is, close the window.
+            Close();
+        }
+        
+        base.OnUpdateFrame(args);
+    }
+
+    protected override void OnRenderFrame(FrameEventArgs args)
+    {
+        base.OnRenderFrame(args);
+
+        GL.Clear(ClearBufferMask.ColorBufferBit);
+
+        _shader.Use();
+        GL.BindVertexArray(_vertexArrayObject);
+
+        GL.DrawElements(PrimitiveType.Triangles, _indices.Length, DrawElementsType.UnsignedInt, 0);
+
+        SwapBuffers();
+    }
+
+    protected override void OnResize(ResizeEventArgs e)
+    {
+        base.OnResize(e);
+
+        GL.Viewport(0, 0, Size.X, Size.Y);
+    }
+
+    protected override void OnUnload()
+    {
+        GL.BindBuffer(BufferTarget.ArrayBuffer, 0);
+        GL.BindVertexArray(0);
+        GL.UseProgram(0);
+
+        GL.DeleteBuffer(_vertexBufferObject);
+        GL.DeleteVertexArray(_vertexArrayObject);
+
+        GL.DeleteProgram(_shader.handle);
+
+        base.OnUnload();
     }
 }
 
@@ -82,6 +161,7 @@ public class Shader {
         GL.DeleteShader(vertexShader);
         GL.DeleteShader(fragmentShader);
 
+        _uniformLocations = new Dictionary<string, int>();
         GL.GetProgram(handle, GetProgramParameterName.ActiveUniforms, out var uniformCount);
         for (int i = 0; i < uniformCount; i++)
         {
