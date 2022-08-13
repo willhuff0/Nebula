@@ -16,8 +16,9 @@ public class Nebula {
         var nativeWindowSettings = new NativeWindowSettings()
         {
             Size = new Vector2i(800, 600),
-            Title = "LearnOpenTK - Creating a Window",
-            Flags = ContextFlags.ForwardCompatible
+            Title = "Sofia",
+            Flags = ContextFlags.ForwardCompatible,
+            NumberOfSamples = 8
         };
 
         using (var window = new Window(GameWindowSettings.Default, nativeWindowSettings))
@@ -31,18 +32,20 @@ public class Window : GameWindow
 {
     private readonly float[] _vertices =
     {
-            0.5f,  0.5f, 0.0f, // top right
-            0.5f, -0.5f, 0.0f, // bottom right
-        -0.5f, -0.5f, 0.0f, // bottom left
-        -0.5f,  0.5f, 0.0f, // top left
+        // positions        // colors
+             0.5f, -0.5f, 0.0f,  1.0f, 0.0f, 0.0f,   // bottom right
+            -0.5f, -0.5f, 0.0f,  0.0f, 1.0f, 0.0f,   // bottom left
+             0.0f,  0.5f, 0.0f,  0.0f, 0.0f, 1.0f    // top 
     };
 
     private readonly uint[] _indices =
     {
         // Note that indices start at 0!
-        0, 1, 3, // The first triangle will be the top-right half of the triangle
-        1, 2, 3  // Then the second will be the bottom-left half of the triangle
+        0, 1, 2, // The first triangle will be the top-right half of the triangle
+        //1, 2, 3  // Then the second will be the bottom-left half of the triangle
     };
+
+    private Stopwatch _timer;
 
     private int _vertexBufferObject;
     private int _vertexArrayObject;
@@ -59,6 +62,13 @@ public class Window : GameWindow
     {
         base.OnLoad();
 
+        Debug.WriteLine(GL.GetString(StringName.Version));
+        Debug.WriteLine(GL.GetString(StringName.ShadingLanguageVersion));
+        Debug.WriteLine(GL.GetString(StringName.Renderer));
+        Debug.WriteLine(GL.GetString(StringName.Vendor));
+
+        GL.Viewport(0, 0, Size.X, Size.Y);
+        GL.Enable(EnableCap.Multisample);
         GL.ClearColor(.2f, .3f, .3f, 1);
 
         _vertexBufferObject = GL.GenBuffer();
@@ -67,8 +77,14 @@ public class Window : GameWindow
 
         _vertexArrayObject = GL.GenVertexArray();
         GL.BindVertexArray(_vertexArrayObject);
-        GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 3 * sizeof(float), 0);
+
+        // Positions
+        GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), 0);
         GL.EnableVertexAttribArray(0);
+
+        // Colors
+        GL.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, 6 * sizeof(float), 3 * sizeof(float));
+        GL.EnableVertexAttribArray(1);
 
         _elementBufferObject = GL.GenBuffer();
         GL.BindBuffer(BufferTarget.ElementArrayBuffer, _elementBufferObject);
@@ -79,13 +95,15 @@ public class Window : GameWindow
 
         _shader = new Shader("Shaders/shader.glsl");
         _shader.Use();
+
+        _timer = new Stopwatch();
+        _timer.Start();
     }
 
     protected override void OnUpdateFrame(FrameEventArgs args)
     {
         if (KeyboardState.IsKeyDown(Keys.Escape))
         {
-            // If it is, close the window.
             Close();
         }
         
@@ -99,8 +117,13 @@ public class Window : GameWindow
         GL.Clear(ClearBufferMask.ColorBufferBit);
 
         _shader.Use();
-        GL.BindVertexArray(_vertexArrayObject);
 
+        double timeValue = _timer.Elapsed.TotalSeconds;
+        float greenValue = (float)Math.Sin(timeValue) / 2.0f + 0.5f;
+
+        _shader.SetUVector3("globalColor", new Vector3(0.0f, greenValue, 0.0f));
+
+        GL.BindVertexArray(_vertexArrayObject);
         GL.DrawElements(PrimitiveType.Triangles, _indices.Length, DrawElementsType.UnsignedInt, 0);
 
         SwapBuffers();
@@ -176,5 +199,6 @@ public class Shader {
     public void Use() => GL.UseProgram(handle);
     public void SetUFloat(String name, float value) => GL.ProgramUniform1(handle, _uniformLocations[name], value);
     public void SetUVector3(String name, Vector3 value) => GL.ProgramUniform3(handle, _uniformLocations[name], value);
+    public void SetUVector4(String name, Vector4 value) => GL.ProgramUniform4(handle, _uniformLocations[name], value);
     public void SetUMatrix4(String name, Matrix4 value) => GL.ProgramUniformMatrix4(handle, _uniformLocations[name], true, ref value);
 }

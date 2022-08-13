@@ -1,24 +1,27 @@
 ##VERTEX
-#version 460 core
+#version 410 core
 
 layout(location = 0) in vec3 aPosition;
+layout(location = 1) in vec2 aTexCoord;
 
-out vec4 vertexColor;
+out vec2 texCoord;
 
 void main(void) {
-    gl_Position = vec4(aPosition, 1.0);
+    texCoord = aTexCoord;
 
-    vertexColor = vec4(0.5, 0.0, 0.0, 1.0);
+    gl_Position = vec4(aPosition, 1.0);
 }
 
 
 ##FRAGMENT
-#version 460 core
+#version 410 core
 
 out vec4 outputColor;
 
-in vec4 vertexColor;
+in vec texCoord;
+
+uniform sampler2D texture0;
 
 void main() {
-    outputColor = vertexColor;
+    outputColor = vec4(mix(vertexColor, globalColor, 0.5), 1.0);
 }
