@@ -58,3 +58,4 @@ C:/Users/wehuf/home/dev/CustomEngine/TK/Nebula/obj/Debug/net6.0/ref/Nebula.dll
 /Users/will/dev/projects/Nebula/obj/Debug/net6.0/Nebula.pdb
 /Users/will/dev/projects/Nebula/obj/Debug/net6.0/Nebula.genruntimeconfig.cache
 /Users/will/dev/projects/Nebula/obj/Debug/net6.0/ref/Nebula.dll
+/Users/will/dev/projects/Nebula/bin/Debug/net6.0/StbImageSharp.dll

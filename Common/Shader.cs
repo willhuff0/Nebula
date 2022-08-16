@@ -60,6 +60,7 @@ public class Shader {
 
     public void Bind() => GL.UseProgram(handle);
     public void SetUFloat(String name, float value) => GL.ProgramUniform1(handle, _uniformLocations[name], value);
+    public void SetUInt(String name, int value) => GL.ProgramUniform1(handle, _uniformLocations[name], value);
     public void SetUVector3(String name, Vector3 value) => GL.ProgramUniform3(handle, _uniformLocations[name], value);
     public void SetUVector4(String name, Vector4 value) => GL.ProgramUniform4(handle, _uniformLocations[name], value);
     public void SetUMatrix4(String name, Matrix4 value) => GL.ProgramUniformMatrix4(handle, _uniformLocations[name], true, ref value);

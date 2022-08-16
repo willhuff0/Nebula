@@ -8,7 +8,8 @@
     ".NETCoreApp,Version=v6.0": {
       "Nebula/1.0.0": {
         "dependencies": {
-          "OpenTK": "4.7.4"
+          "OpenTK": "4.7.4",
+          "StbImageSharp": "2.27.11"
         },
         "runtime": {
           "Nebula.dll": {}
@@ -153,6 +154,14 @@
           }
         }
       },
+      "StbImageSharp/2.27.11": {
+        "runtime": {
+          "lib/netstandard2.0/StbImageSharp.dll": {
+            "assemblyVersion": "2.27.11.0",
+            "fileVersion": "2.27.11.0"
+          }
+        }
+      },
       "System.Runtime.CompilerServices.Unsafe/5.0.0": {}
     }
   },
@@ -238,6 +247,13 @@
       "sha512": "sha512-Sy9+UI0IZeD7/g4G/ZN3rvQUMw2uWw7mKJsqZlXpzBXnlqKwW+epYuFmyZUfttDoxA1X0dn0IBrnErdjQO8ZYA==",
       "path": "opentk.windowing.graphicslibraryframework/4.7.4",
       "hashPath": "opentk.windowing.graphicslibraryframework.4.7.4.nupkg.sha512"
+    },
+    "StbImageSharp/2.27.11": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-KGXsx0IG2sNqjgu8w0w118bQmRx8avNxu8SbXKNW7izjrYTXrd5urAscez3qoIfaLeR4NdpxwHkkW/oInTp5Zg==",
+      "path": "stbimagesharp/2.27.11",
+      "hashPath": "stbimagesharp.2.27.11.nupkg.sha512"
     },
     "System.Runtime.CompilerServices.Unsafe/5.0.0": {
       "type": "package",
