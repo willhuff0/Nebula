@@ -16,7 +16,7 @@ public class Nebula {
             Title = "Nebula",
             APIVersion = new Version(4, 1),
             Flags = ContextFlags.ForwardCompatible,
-            //NumberOfSamples = 8
+            NumberOfSamples = 8
         };
 
         using (var window = new Window(GameWindowSettings.Default, nativeWindowSettings))
@@ -74,7 +74,15 @@ public class Window : GameWindow
             -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f
         };
 
-        private readonly Vector3 _lightPos = new Vector3(1.2f, 1.0f, 2.0f);
+    private Vector3[] lightPositions = new Vector3[] {
+        new Vector3(0.0f, 0.0f, 10.0f),
+    };
+    private Vector3[] lightColors = new Vector3[] {
+        new Vector3(150.0f, 150.0f, 150.0f),
+    };
+    private int nrRows = 7;
+    private int nrColumns = 7;
+    private float spacing = 2.5f;
 
     private int _vertexBufferObject;
 
@@ -84,14 +92,19 @@ public class Window : GameWindow
     private Shader _modelShader;
     private Shader _lampShader;
 
-    private Texture _diffuseMap;
-    private Texture _specularMap;
+    private Texture albedoMap;
+    private Texture normalMap;
+    private Texture metallicMap;
+    private Texture roughnessMap;
+    private Texture aoMap;
 
     private Camera _camera;
 
+    private Stopwatch _stopwatch;
+
     private bool _firstMove = true;
 
-        private Vector2 _lastPos;
+    private Vector2 _lastPos;
 
     //private int _elementBufferObject;
 
@@ -109,14 +122,14 @@ public class Window : GameWindow
         Debug.WriteLine(GL.GetString(StringName.Vendor));
 
         GL.ClearColor(.2f, .3f, .3f, 1);
-        //GL.Enable(EnableCap.Multisample);
+        GL.Enable(EnableCap.Multisample);
         GL.Enable(EnableCap.DepthTest);
 
         _vertexBufferObject = GL.GenBuffer();
         GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexBufferObject);
         GL.BufferData(BufferTarget.ArrayBuffer, _vertices.Length * sizeof(float), _vertices, BufferUsageHint.StaticDraw);
 
-        _modelShader = Shader.Load("Shaders/shader.glsl");
+        _modelShader = Shader.Load("Shaders/standard.glsl");
         _lampShader = Shader.Load("Shaders/light.glsl");
 
        {
@@ -147,12 +160,18 @@ public class Window : GameWindow
         // GL.BindBuffer(BufferTarget.ElementArrayBuffer, _elementBufferObject);
         // GL.BufferData(BufferTarget.ElementArrayBuffer, _indices.Length * sizeof(uint), _indices, BufferUsageHint.StaticDraw);
 
-        _diffuseMap = Texture.LoadFromFile("Resources/container2.png");
-        _specularMap = Texture.LoadFromFile("Resources/container2_specular.png");
+        albedoMap = Texture.LoadFromFile("Resources/rustediron2_basecolor.png");
+        normalMap = Texture.LoadFromFile("Resources/rustediron2_normal.png");
+        metallicMap = Texture.LoadFromFile("Resources/rustediron2_metallic.png");
+        roughnessMap = Texture.LoadFromFile("Resources/rustediron2_roughness.png");
+        aoMap = Texture.LoadFromFile("Resources/rustediron2_ao.png");
 
         _camera = new Camera(Vector3.UnitZ * 3, Size.X / (float)Size.Y);
 
         CursorState = CursorState.Grabbed;
+
+        _stopwatch = new Stopwatch();
+        _stopwatch.Start();
     }
 
     protected override void OnRenderFrame(FrameEventArgs args)
@@ -165,50 +184,53 @@ public class Window : GameWindow
         //GL.Enable(EnableCap.CullFace);
         //GL.CullFace(CullFaceMode.Back);
 
-        _diffuseMap.Bind(TextureUnit.Texture0);
-        _specularMap.Bind(TextureUnit.Texture1);
+        albedoMap.Bind(TextureUnit.Texture0);
+        normalMap.Bind(TextureUnit.Texture1);
+        metallicMap.Bind(TextureUnit.Texture2);
+        roughnessMap.Bind(TextureUnit.Texture3);
+        aoMap.Bind(TextureUnit.Texture4);
         _modelShader.Bind();
 
-        _modelShader.SetUMatrix4("model", Matrix4.Identity);
         _modelShader.SetUMatrix4("view", _camera.GetViewMatrix());
         _modelShader.SetUMatrix4("projection", _camera.GetProjectionMatrix());
 
-        _modelShader.SetUVector3("viewPos", _camera.Position);
+        _modelShader.SetUVector3("camPos", _camera.Position);
 
-        _modelShader.SetUInt("material.diffuse", 0);
-        _modelShader.SetUInt("material.specular", 1);
-        //_modelShader.SetUVector3("material.specular", new Vector3(0.5f, 0.5f, 0.5f));
-        _modelShader.SetUFloat("material.shininess", 32.0f);
-    
-        // Vector3 lightColor;
-        // float time = DateTime.Now.Second + DateTime.Now.Millisecond / 1000f;
-        // lightColor.X = (MathF.Sin(time * 2.0f) + 1) / 2f;
-        // lightColor.Y = (MathF.Sin(time * 0.7f) + 1) / 2f;
-        // lightColor.Z = (MathF.Sin(time * 1.3f) + 1) / 2f;
+        _modelShader.SetUInt("albedoMap", 0);
+        _modelShader.SetUInt("normalMap", 1);
+        _modelShader.SetUInt("metallicMap", 2);
+        _modelShader.SetUInt("roughnessMap", 3);
+        _modelShader.SetUInt("aoMap", 4);
 
-        // Vector3 ambientColor = lightColor * new Vector3(0.2f);
-        // Vector3 diffuseColor = lightColor * new Vector3(0.5f);
-
-        _modelShader.SetUVector3("light.position", _lightPos);
-        _modelShader.SetUVector3("light.ambient", new Vector3(0.2f));
-        _modelShader.SetUVector3("light.diffuse", new Vector3(0.5f));
-        _modelShader.SetUVector3("light.specular", new Vector3(1.0f));
-
-        //GL.DrawElements(PrimitiveType.Triangles, _indices.Length, DrawElementsType.UnsignedInt, 0);
-        GL.DrawArrays(PrimitiveType.Triangles, 0, 36);
-
-        GL.BindVertexArray(_vaoLamp);
+        for (int row = 0; row < nrRows; row++) {
+            for (int col = 0; col < nrColumns; col++) {
+                Matrix4 modelMatrix = Matrix4.Identity;
+                modelMatrix *= Matrix4.CreateTranslation((float)(col - (nrColumns / 2)) * spacing, (float)(row - (nrRows / 2)) * spacing, 0.0f);
+                _modelShader.SetUMatrix4("model", modelMatrix);
+                GL.DrawArrays(PrimitiveType.Triangles, 0, 36);
+            }
+        }
 
         _lampShader.Bind();
-        Matrix4 lightMatrix = Matrix4.Identity;
-        lightMatrix *= Matrix4.CreateScale(0.2f);
-        lightMatrix *= Matrix4.CreateTranslation(_lightPos);
 
-        _lampShader.SetUMatrix4("model", lightMatrix);
-        _lampShader.SetUMatrix4("view", _camera.GetViewMatrix());
-        _lampShader.SetUMatrix4("projection", _camera.GetProjectionMatrix());
+        for(int i = 0; i < lightPositions.Length; ++i) {
+            Vector3 newPos = lightPositions[i] + new Vector3(MathF.Sin((float)_stopwatch.Elapsed.TotalSeconds * 5.0f) * 5.0f, 0.0f, 0.0f) * (float)args.Time;
+            lightPositions[i] = newPos;
+            _modelShader.SetUVector3($"lightPositions[{i}]", newPos);
+            _modelShader.SetUVector3($"lightColors[{i}]", lightColors[i]);
 
-        GL.DrawArrays(PrimitiveType.Triangles, 0, 36);
+            Matrix4 lightMatrix = Matrix4.Identity;
+            lightMatrix *= Matrix4.CreateTranslation(newPos);
+            lightMatrix *= Matrix4.CreateScale(0.2f);
+
+            _lampShader.SetUMatrix4("model", lightMatrix);
+            _lampShader.SetUMatrix4("view", _camera.GetViewMatrix());
+            _lampShader.SetUMatrix4("projection", _camera.GetProjectionMatrix());
+
+            GL.DrawArrays(PrimitiveType.Triangles, 0, 36);
+        }
+
+        //GL.DrawElements(PrimitiveType.Triangles, _indices.Length, DrawElementsType.UnsignedInt, 0);
 
         SwapBuffers();
     }
@@ -286,7 +308,7 @@ public class Window : GameWindow
     {
         base.OnResize(e);
 
-        GL.Viewport(0, 0, Size.X * 2, Size.Y * 2);
+        GL.Viewport(0, 0, Size.X, Size.Y);
         _camera.AspectRatio = Size.X / (float)Size.Y;
     }
 }
