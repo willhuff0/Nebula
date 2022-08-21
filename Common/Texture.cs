@@ -6,8 +6,9 @@ namespace Nebula;
 
 public class Texture {
     public readonly int handle;
+    public string type;
 
-    public static Texture LoadFromFile(string path) {
+    public static Texture LoadFromFile(string path, string type = "default") {
         int handle = GL.GenTexture();
 
         GL.ActiveTexture(TextureUnit.Texture0);
@@ -28,12 +29,13 @@ public class Texture {
 
         GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
 
-        return new Texture(handle);
+        return new Texture(handle, type);
     }
 
-    public Texture(int handle)
+    public Texture(int handle, string type)
     {
         this.handle = handle;
+        this.type = type;
     }
 
     public void Bind(TextureUnit unit)
