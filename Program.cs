@@ -132,59 +132,59 @@ public class Window : GameWindow
         Mesh[] meshes = new Mesh[gltf.Meshes.Length];
         Model[] models = new Model[gltf.Nodes.Length];
 
-        foreach(Scene scene in gltf.Scenes) {
-            foreach(int nodeIndex in scene.Nodes) {
+        // foreach(Scene scene in gltf.Scenes) {
+        //     foreach(int nodeIndex in scene.Nodes) {
 
-                Node node = gltf.Nodes[nodeIndex];
-                glTFLoader.Schema.Mesh gltfMesh = gltf.Meshes[(int)node.Mesh];
+        //         Node node = gltf.Nodes[nodeIndex];
+        //         glTFLoader.Schema.Mesh gltfMesh = gltf.Meshes[(int)node.Mesh];
                 
-                Dictionary<int, Vertex> vertices = new Dictionary<int, Vertex>();
+        //         Dictionary<int, Vertex> vertices = new Dictionary<int, Vertex>();
 
-                foreach(MeshPrimitive primitive in gltfMesh.Primitives) {
-                    foreach(KeyValuePair<string, int> accessorIndex in primitive.Attributes.ToArray()) {
-                        Accessor accessor = gltf.Accessors[accessorIndex.Value];
-                        switch(accessorIndex.Key) {
-                            case "POSITION": {
-                                BufferView view = gltf.BufferViews[(int)accessor.BufferView];
-                                dynamic[] buffer;
-                                if (!buffers.TryGetValue(view.Buffer, out buffer)) {
+        //         foreach(MeshPrimitive primitive in gltfMesh.Primitives) {
+        //             foreach(KeyValuePair<string, int> accessorIndex in primitive.Attributes.ToArray()) {
+        //                 Accessor accessor = gltf.Accessors[accessorIndex.Value];
+        //                 switch(accessorIndex.Key) {
+        //                     case "POSITION": {
+        //                         BufferView view = gltf.BufferViews[(int)accessor.BufferView];
+        //                         dynamic[] buffer;
+        //                         if (!buffers.TryGetValue(view.Buffer, out buffer)) {
                                 
-                                    Stream input;
-                                    if (PathValidator.IsValidPath(buffer.Uri)) { 
-                                        input = File.OpenRead(buffer.Uri);
-                                        input.Seek((long)view.ByteOffset, SeekOrigin.Begin);
-                                        input.SetLength((long)view.ByteLength);
-                                    }
-                                    else input = new MemoryStream(Convert.FromBase64String(buffer.Uri), view.ByteOffset, view.ByteLength);
+        //                             Stream input;
+        //                             if (PathValidator.IsValidPath(buffer.Uri)) { 
+        //                                 input = File.OpenRead(buffer.Uri);
+        //                                 input.Seek((long)view.ByteOffset, SeekOrigin.Begin);
+        //                                 input.SetLength((long)view.ByteLength);
+        //                             }
+        //                             else input = new MemoryStream(Convert.FromBase64String(buffer.Uri), view.ByteOffset, view.ByteLength);
 
-                                    dynamic[] values;
-                                    using(BinaryReader reader = new BinaryReader(input)) {
-                                        switch(accessor.ComponentType) {
-                                            case ComponentTypeEnum.FLOAT: {
-                                                int count = accessor.Count / 4;
-                                                values = new dynamic[count];
-                                                for (int i = 0; i < count; i++) values[i] = reader.ReadSingle();
-                                                break;
-                                            }
-                                            case ComponentTypeEnum.UNSIGNED_INT: {
-                                                int count = accessor.Count / 4;
-                                                values = new dynamic[count];
-                                                for (int i = 0; i < count; i++) values[i] = reader.ReadUInt32();
-                                                break;
-                                            }
-                                        }
-                                    }
+        //                             dynamic[] values;
+        //                             using(BinaryReader reader = new BinaryReader(input)) {
+        //                                 switch(accessor.ComponentType) {
+        //                                     case ComponentTypeEnum.FLOAT: {
+        //                                         int count = accessor.Count / 4;
+        //                                         values = new dynamic[count];
+        //                                         for (int i = 0; i < count; i++) values[i] = reader.ReadSingle();
+        //                                         break;
+        //                                     }
+        //                                     case ComponentTypeEnum.UNSIGNED_INT: {
+        //                                         int count = accessor.Count / 4;
+        //                                         values = new dynamic[count];
+        //                                         for (int i = 0; i < count; i++) values[i] = reader.ReadUInt32();
+        //                                         break;
+        //                                     }
+        //                                 }
+        //                             }
 
-                                    break;
-                                }
-                            }
-                        }
-                    }
-                }
+        //                             break;
+        //                         }
+        //                     }
+        //                 }
+        //             }
+        //         }
                 
-                mesh
-            }
-        }
+        //         mesh
+           // }
+        //}
 
         model = new Model(new Mesh(_vertices, Enumerable.Range(0, _vertices.Length / 8).Select((value) => (uint)value).ToArray()), material, new Transform());
 
