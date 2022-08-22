@@ -1,10 +1,19 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
+using System.IO;
+using System.Linq;
+using System.Runtime.Serialization.Formatters.Binary;
+using glTFLoader;
+using glTFLoader.Schema;
+using Nebual.Utils;
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Mathematics;
 using OpenTK.Windowing.Common;
 using OpenTK.Windowing.Desktop;
 using OpenTK.Windowing.GraphicsLibraryFramework;
+using static glTFLoader.Schema.Accessor;
+using static glTFLoader.Schema.MeshPrimitive;
 
 namespace Nebula;
 
@@ -74,29 +83,12 @@ public class Window : GameWindow
             -0.5f,  0.5f, -0.5f,  0.0f,  1.0f,  0.0f,  0.0f, 1.0f
         };
 
-    private Vector3[] lightPositions = new Vector3[] {
-        new Vector3(0.0f, 0.0f, 10.0f),
+    private Light[] lights = new Light[] {
+        new DirectionalLight(new Vector3(0.4f, -1.0f, 0.4f), new Vector3(1.0f, 0.96f, 0.9f), 1.0f),
+        new PointLight(new Vector3(5.0f, 2.0f, 3.0f), new Vector3(1.0f, 1.0f, 0.0f), 1.0f),
     };
-    private Vector3[] lightColors = new Vector3[] {
-        new Vector3(150.0f, 150.0f, 150.0f),
-    };
-    private int nrRows = 7;
-    private int nrColumns = 7;
-    private float spacing = 2.5f;
 
-    private int _vertexBufferObject;
-
-    private int _vaoModel;
-    private int _vaoLamp;
-
-    private Shader _modelShader;
-    private Shader _lampShader;
-
-    private Texture albedoMap;
-    private Texture normalMap;
-    private Texture metallicMap;
-    private Texture roughnessMap;
-    private Texture aoMap;
+    private Model model;
 
     private Camera _camera;
 
@@ -125,46 +117,76 @@ public class Window : GameWindow
         GL.Enable(EnableCap.Multisample);
         GL.Enable(EnableCap.DepthTest);
 
-        _vertexBufferObject = GL.GenBuffer();
-        GL.BindBuffer(BufferTarget.ArrayBuffer, _vertexBufferObject);
-        GL.BufferData(BufferTarget.ArrayBuffer, _vertices.Length * sizeof(float), _vertices, BufferUsageHint.StaticDraw);
+        Material material =new Material(Shader.Load("Shaders/standard.glsl"), new Texture[] {
+            Texture.LoadFromFile("Resources/rustediron2_basecolor.png", "albedo"),
+            Texture.LoadFromFile("Resources/rustediron2_normal.png", "normal"),
+            Texture.LoadFromFile("Resources/rustediron2_metallic.png", "metallic"),
+            Texture.LoadFromFile("Resources/rustediron2_roughness.png", "roughness"),
+            Texture.LoadFromFile("Resources/rustediron2_ao.png", "ao"),
+        });
 
-        _modelShader = Shader.Load("Shaders/standard.glsl");
-        _lampShader = Shader.Load("Shaders/light.glsl");
+        Gltf gltf = Interface.LoadModel("Resources/untitled.gltf");
 
-       {
-            _vaoModel = GL.GenVertexArray();
-            GL.BindVertexArray(_vaoModel);
+        // cache
+        Dictionary<int, dynamic[]> buffers = new Dictionary<int, dynamic[]>(gltf.Buffers.Length);
+        Mesh[] meshes = new Mesh[gltf.Meshes.Length];
+        Model[] models = new Model[gltf.Nodes.Length];
 
-            // Positions
-            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 8 * sizeof(float), 0);
-            GL.EnableVertexAttribArray(0);
+        foreach(Scene scene in gltf.Scenes) {
+            foreach(int nodeIndex in scene.Nodes) {
 
-            // Normals
-            GL.VertexAttribPointer(1, 3, VertexAttribPointerType.Float, false, 8 * sizeof(float), 3 * sizeof(float));
-            GL.EnableVertexAttribArray(1);
+                Node node = gltf.Nodes[nodeIndex];
+                glTFLoader.Schema.Mesh gltfMesh = gltf.Meshes[(int)node.Mesh];
+                
+                Dictionary<int, Vertex> vertices = new Dictionary<int, Vertex>();
 
-            // Texcoords
-            GL.VertexAttribPointer(2, 2, VertexAttribPointerType.Float, false, 8 * sizeof(float), 6 * sizeof(float));
-            GL.EnableVertexAttribArray(2);
+                foreach(MeshPrimitive primitive in gltfMesh.Primitives) {
+                    foreach(KeyValuePair<string, int> accessorIndex in primitive.Attributes.ToArray()) {
+                        Accessor accessor = gltf.Accessors[accessorIndex.Value];
+                        switch(accessorIndex.Key) {
+                            case "POSITION": {
+                                BufferView view = gltf.BufferViews[(int)accessor.BufferView];
+                                dynamic[] buffer;
+                                if (!buffers.TryGetValue(view.Buffer, out buffer)) {
+                                
+                                    Stream input;
+                                    if (PathValidator.IsValidPath(buffer.Uri)) { 
+                                        input = File.OpenRead(buffer.Uri);
+                                        input.Seek((long)view.ByteOffset, SeekOrigin.Begin);
+                                        input.SetLength((long)view.ByteLength);
+                                    }
+                                    else input = new MemoryStream(Convert.FromBase64String(buffer.Uri), view.ByteOffset, view.ByteLength);
+
+                                    dynamic[] values;
+                                    using(BinaryReader reader = new BinaryReader(input)) {
+                                        switch(accessor.ComponentType) {
+                                            case ComponentTypeEnum.FLOAT: {
+                                                int count = accessor.Count / 4;
+                                                values = new dynamic[count];
+                                                for (int i = 0; i < count; i++) values[i] = reader.ReadSingle();
+                                                break;
+                                            }
+                                            case ComponentTypeEnum.UNSIGNED_INT: {
+                                                int count = accessor.Count / 4;
+                                                values = new dynamic[count];
+                                                for (int i = 0; i < count; i++) values[i] = reader.ReadUInt32();
+                                                break;
+                                            }
+                                        }
+                                    }
+
+                                    break;
+                                }
+                            }
+                        }
+                    }
+                }
+                
+                mesh
+            }
         }
-        {
-            _vaoLamp = GL.GenVertexArray();
-            GL.BindVertexArray(_vaoLamp);
 
-            GL.EnableVertexAttribArray(0);
-            GL.VertexAttribPointer(0, 3, VertexAttribPointerType.Float, false, 8 * sizeof(float), 0);
-        }
-
-        // _elementBufferObject = GL.GenBuffer();
-        // GL.BindBuffer(BufferTarget.ElementArrayBuffer, _elementBufferObject);
-        // GL.BufferData(BufferTarget.ElementArrayBuffer, _indices.Length * sizeof(uint), _indices, BufferUsageHint.StaticDraw);
-
-        albedoMap = Texture.LoadFromFile("Resources/rustediron2_basecolor.png");
-        normalMap = Texture.LoadFromFile("Resources/rustediron2_normal.png");
-        metallicMap = Texture.LoadFromFile("Resources/rustediron2_metallic.png");
-        roughnessMap = Texture.LoadFromFile("Resources/rustediron2_roughness.png");
-        aoMap = Texture.LoadFromFile("Resources/rustediron2_ao.png");
+        model = new Model(new Mesh(_vertices, Enumerable.Range(0, _vertices.Length / 8).Select((value) => (uint)value).ToArray()), material, new Transform());
 
         _camera = new Camera(Vector3.UnitZ * 3, Size.X / (float)Size.Y);
 
@@ -180,57 +202,13 @@ public class Window : GameWindow
 
         GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
-        GL.BindVertexArray (_vaoModel);
         //GL.Enable(EnableCap.CullFace);
         //GL.CullFace(CullFaceMode.Back);
 
-        albedoMap.Bind(TextureUnit.Texture0);
-        normalMap.Bind(TextureUnit.Texture1);
-        metallicMap.Bind(TextureUnit.Texture2);
-        roughnessMap.Bind(TextureUnit.Texture3);
-        aoMap.Bind(TextureUnit.Texture4);
-        _modelShader.Bind();
+        Matrix4 VPM = _camera.GetViewProjectionMatrix();
+        Vector3 viewPos = _camera.Position;
 
-        _modelShader.SetUMatrix4("view", _camera.GetViewMatrix());
-        _modelShader.SetUMatrix4("projection", _camera.GetProjectionMatrix());
-
-        _modelShader.SetUVector3("camPos", _camera.Position);
-
-        _modelShader.SetUInt("albedoMap", 0);
-        _modelShader.SetUInt("normalMap", 1);
-        _modelShader.SetUInt("metallicMap", 2);
-        _modelShader.SetUInt("roughnessMap", 3);
-        _modelShader.SetUInt("aoMap", 4);
-
-        for (int row = 0; row < nrRows; row++) {
-            for (int col = 0; col < nrColumns; col++) {
-                Matrix4 modelMatrix = Matrix4.Identity;
-                modelMatrix *= Matrix4.CreateTranslation((float)(col - (nrColumns / 2)) * spacing, (float)(row - (nrRows / 2)) * spacing, 0.0f);
-                _modelShader.SetUMatrix4("model", modelMatrix);
-                GL.DrawArrays(PrimitiveType.Triangles, 0, 36);
-            }
-        }
-
-        _lampShader.Bind();
-
-        for(int i = 0; i < lightPositions.Length; ++i) {
-            Vector3 newPos = lightPositions[i] + new Vector3(MathF.Sin((float)_stopwatch.Elapsed.TotalSeconds * 5.0f) * 5.0f, 0.0f, 0.0f) * (float)args.Time;
-            lightPositions[i] = newPos;
-            _modelShader.SetUVector3($"lightPositions[{i}]", newPos);
-            _modelShader.SetUVector3($"lightColors[{i}]", lightColors[i]);
-
-            Matrix4 lightMatrix = Matrix4.Identity;
-            lightMatrix *= Matrix4.CreateTranslation(newPos);
-            lightMatrix *= Matrix4.CreateScale(0.2f);
-
-            _lampShader.SetUMatrix4("model", lightMatrix);
-            _lampShader.SetUMatrix4("view", _camera.GetViewMatrix());
-            _lampShader.SetUMatrix4("projection", _camera.GetProjectionMatrix());
-
-            GL.DrawArrays(PrimitiveType.Triangles, 0, 36);
-        }
-
-        //GL.DrawElements(PrimitiveType.Triangles, _indices.Length, DrawElementsType.UnsignedInt, 0);
+        model.Draw(VPM, viewPos, lights);
 
         SwapBuffers();
     }

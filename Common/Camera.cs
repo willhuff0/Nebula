@@ -56,6 +56,7 @@ public class Camera {
 
     public Matrix4 GetViewMatrix() => Matrix4.LookAt(Position, Position + _forward, _up);
     public Matrix4 GetProjectionMatrix() => Matrix4.CreatePerspectiveFieldOfView(_fov, AspectRatio, NEAR_CLIP, FAR_CLIP);
+    public Matrix4 GetViewProjectionMatrix() => GetViewMatrix() * GetProjectionMatrix();
 
     private void UpdateVectors() {
         _forward.X = MathF.Cos(_pitch) * MathF.Cos(_yaw);
