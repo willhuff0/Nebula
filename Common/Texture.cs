@@ -1,3 +1,4 @@
+using System.Collections.Generic;
 using System.IO;
 using OpenTK.Graphics.OpenGL4;
 using StbImageSharp;
@@ -8,7 +9,11 @@ public class Texture {
     public readonly int handle;
     public string type;
 
+    public static Dictionary<string, Texture> textureCache = new Dictionary<string, Texture>();
+
     public static Texture LoadFromFile(string path, string type = "default") {
+        if (textureCache.ContainsKey(path)) return textureCache[path];
+
         int handle = GL.GenTexture();
 
         GL.ActiveTexture(TextureUnit.Texture0);
@@ -29,7 +34,9 @@ public class Texture {
 
         GL.GenerateMipmap(GenerateMipmapTarget.Texture2D);
 
-        return new Texture(handle, type);
+        Texture texture = new Texture(handle, type);
+        textureCache.Add(path, texture);
+        return texture;
     }
 
     public Texture(int handle, string type)
