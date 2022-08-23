@@ -1,24 +1,27 @@
+using System;
 using System.Collections.Generic;
 using System.Diagnostics;
 using System.IO;
+using System.Linq;
+using Assimp;
 using OpenTK.Mathematics;
 
 namespace Nebula;
 
 public class Model {
-    public Mesh[] meshes;
+    public Material[] materials;
     public Shader shader;
     public Transform transform;
 
-    public Model(Mesh[] meshes, Shader shader)
+    public Model(Material[] materials, Shader shader)
     {
-        this.meshes = meshes;
+        this.materials = materials;
         this.shader = shader;
         this.transform = new Transform();
     }
-    public Model(Mesh[] meshes, Shader shader, Transform transform)
+    public Model(Material[] materials, Shader shader, Transform transform)
     {
-        this.meshes = meshes;
+        this.materials = materials;
         this.shader = shader;
         this.transform = transform;
     }
@@ -44,67 +47,49 @@ public class Model {
         }
         shader.MaterialSetUniforms(viewPos, directionalLightCount, pointLightCount);
 
-        foreach(Mesh mesh in meshes) mesh.BindTexturesAndDraw(shader);
+        foreach(Material material in materials) material.BindTexturesAndDraw(shader);
     }
 
     public static Model Load (string path, Shader shader, float scale = 1.0f) {
         Assimp.AssimpContext importer = new Assimp.AssimpContext();
-        Assimp.Scene scene = importer.ImportFile(path, Assimp.PostProcessSteps.Triangulate);
+        Assimp.Scene scene = importer.ImportFile(path, Assimp.PostProcessSteps.Triangulate | Assimp.PostProcessSteps.GenerateNormals | Assimp.PostProcessSteps.GenerateUVCoords | Assimp.PostProcessSteps.TransformUVCoords | Assimp.PostProcessSteps.PreTransformVertices);
+        if (scene == null) return null;
 
-        List<Mesh> meshes = new List<Mesh>();
+        Mesh[] meshes = new Mesh[scene.MeshCount];
+        for (int i = 0; i < scene.MeshCount; i++) {
+            Assimp.Mesh assimpMesh = scene.Meshes[i];
+            Vector3[] positions = assimpMesh.Vertices.Select((e) => new Vector3(e.X, e.Y, e.Z)).ToArray();
+            Vector3[] normals = assimpMesh.Normals.Select((e) => new Vector3(e.X, e.Y, e.Z)).ToArray();
+            Vector2[] uvs = assimpMesh.TextureCoordinateChannels[0].Select((e) => new Vector2(e.X, e.Y)).ToArray();
+            uint[] indicies = assimpMesh.GetUnsignedIndices();
 
-        if (scene == null || scene.RootNode == null) return null;
-        _Load_ProcessNode(scene.RootNode, scene, Path.GetDirectoryName(path), ref meshes);
-
-        return new Model(meshes.ToArray(), shader, new Transform(Vector3.Zero, new Vector3(scale)));
-    }
-
-    private static void _Load_ProcessNode(Assimp.Node node, Assimp.Scene scene, string workingDirectory, ref List<Mesh> meshes) {
-        for (int i = 0; i < node.MeshCount; i++) meshes.Add(_Load_ProcessMesh(scene.Meshes[node.MeshIndices[i]], scene, workingDirectory));
-        for (int i = 0; i < node.ChildCount; i++) _Load_ProcessNode(node.Children[i], scene, workingDirectory, ref meshes);
-    }
-
-    private static Mesh _Load_ProcessMesh(Assimp.Mesh mesh, Assimp.Scene scene, string workingDirectory) {
-        Vertex[] vertices = new Vertex[mesh.VertexCount];
-        List<uint> indices = new List<uint>();
-
-        for(int i = 0; i < mesh.VertexCount; i++) {
-            Assimp.Vector3D position = mesh.Vertices[i];
-            Assimp.Vector3D normal = mesh.Normals[i];
-            Assimp.Vector3D texCoords;
-
-            if (mesh.HasTextureCoords(0)) texCoords = mesh.TextureCoordinateChannels[0][i];
-            else texCoords = new Assimp.Vector3D(0.0f, 0.0f, 0.0f);
-
-            vertices[i] = new Vertex(new Vector3(position.X, position.Y, position.Z), new Vector3(normal.X, normal.Y, normal.Z), new Vector2(texCoords.X, texCoords.Y));
+            Debug.WriteLine(positions.Length);
+            Debug.WriteLine(normals.Length);
+            Debug.WriteLine(uvs.Length);
+            
+            meshes[i] = new Mesh(Vertex.CreateVertexArrayFromComponents(positions.Length, positions, normals, uvs), indicies, assimpMesh.MaterialIndex);
         }
 
-        for(int i = 0; i< mesh.FaceCount; i++) {
-            Assimp.Face face = mesh.Faces[i];
-            for(int j = 0; j < face.IndexCount; j++) indices.Add((uint)face.Indices[j]);
+        string directory = Path.GetDirectoryName(path);
+        Material[] materials = new Material[scene.MaterialCount];
+        for (int i = 0; i < scene.MaterialCount; i++) {
+            Assimp.Material assimpMaterial = scene.Materials[i];
+            bool hasAlbedo = assimpMaterial.GetMaterialTexture(Assimp.TextureType.Diffuse, 0, out TextureSlot albedo);
+            bool hasNormal = assimpMaterial.GetMaterialTexture(Assimp.TextureType.Normals, 0, out TextureSlot normal);
+            bool hasMetallic = assimpMaterial.GetMaterialTexture(Assimp.TextureType.Metalness, 0, out TextureSlot metallic);
+            bool hasRoughness = assimpMaterial.GetMaterialTexture(Assimp.TextureType.Roughness, 0, out TextureSlot roughness);
+            bool hasAO = assimpMaterial.GetMaterialTexture(Assimp.TextureType.AmbientOcclusion, 0, out TextureSlot ao);
+            Texture[] textures = new Texture[] { 
+                hasAlbedo ? Texture.LoadFromFile(Path.Combine(directory, albedo.FilePath), "albedo") : Texture.GetDefaultAlbedo(),
+                hasNormal ? Texture.LoadFromFile(Path.Combine(directory, normal.FilePath), "normal") : Texture.GetDefaultNormal(), 
+                hasMetallic ? Texture.LoadFromFile(Path.Combine(directory, metallic.FilePath), "metallic") : Texture.GetDefaultMetallic(), 
+                hasRoughness ? Texture.LoadFromFile(Path.Combine(directory, roughness.FilePath), "roughness") : Texture.GetDefaultRoughness(), 
+                hasAO ? Texture.LoadFromFile(Path.Combine(directory, ao.FilePath), "ao") : Texture.GetDefaultAO(), 
+            };
+            Mesh[] materialMeshes = Array.FindAll(meshes, (e) => e.materialIndex == i);
+            materials[i] = new Material(materialMeshes, textures);
         }
 
-        List<Texture> _textures = new List<Texture>();
-        if (mesh.MaterialIndex >= 0) {
-            Assimp.Material material = scene.Materials[mesh.MaterialIndex];
-            Assimp.TextureSlot[] assimpTextures = material.GetAllMaterialTextures();
-            for(int i = 0; i < assimpTextures.Length; i++) {
-                Assimp.TextureSlot assimpTexture = assimpTextures[i];
-                string type;
-                if (!assimpTextureTypeLookup.TryGetValue(assimpTexture.TextureType, out type)) continue;
-                _textures.Add(Texture.LoadFromFile(Path.Join(workingDirectory, assimpTexture.FilePath), type));
-            }
-        }
-
-        Debug.WriteLine($"Mesh {mesh.Name} loaded {_textures.Count} textures");
-        return new Mesh(vertices, indices.ToArray(), _textures.ToArray());
+        return new Model(materials, shader, new Transform(Vector3.Zero, new Vector3(scale)));
     }
-
-    private static readonly Dictionary<Assimp.TextureType, string> assimpTextureTypeLookup = new Dictionary<Assimp.TextureType, string>() {
-        { Assimp.TextureType.Diffuse, "albedo" },
-        { Assimp.TextureType.Normals, "normal" },
-        { Assimp.TextureType.Metalness, "metallic" },
-        { Assimp.TextureType.Roughness, "roughness" },
-        { Assimp.TextureType.AmbientOcclusion, "ao" },
-    };
 }

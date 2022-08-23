@@ -45,6 +45,12 @@ public class Texture {
         this.type = type;
     }
 
+    public static Texture GetDefaultAlbedo() => Texture.LoadFromFile("Resources/default/default_albedo.png");
+    public static Texture GetDefaultNormal() => Texture.LoadFromFile("Resources/default/default_normal.png");
+    public static Texture GetDefaultMetallic() => Texture.LoadFromFile("Resources/default/default_metallic.png");
+    public static Texture GetDefaultRoughness() => Texture.LoadFromFile("Resources/default/default_roughness.png");
+    public static Texture GetDefaultAO() => Texture.LoadFromFile("Resources/default/default_ao.png");
+
     public void Bind(TextureUnit unit)
     {
         GL.ActiveTexture(unit);

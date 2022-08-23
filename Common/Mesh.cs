@@ -1,4 +1,4 @@
-using System.Collections.Generic;
+using System.Linq;
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Mathematics;
 
@@ -8,23 +8,23 @@ public class Mesh {
     public float[] vertices;
     public uint[] indices;
     private int stride;
-    public Texture[] textures;
+    public int materialIndex;
 
     public PrimitiveType primitiveType;
 
     private int VAO, VBO, EBO;
 
-    public Mesh(float[] vertices, uint[] indices, Texture[] textures, int stride = 8, PrimitiveType primitiveType = PrimitiveType.Triangles) {
+    public Mesh(float[] vertices = null, uint[] indices = null, int materialIndex = -1, int stride = 8, PrimitiveType primitiveType = PrimitiveType.Triangles) {
         this.vertices = vertices;
         this.indices = indices;
-        this.textures = textures;
+        this.materialIndex = materialIndex;
         this.stride = stride;
         this.primitiveType = primitiveType;
 
         if (vertices != null) initialize();
     }
 
-    public Mesh(Vertex[] vertices, uint[] indices, Texture[] textures, int stride = 8, PrimitiveType primitiveType = PrimitiveType.Triangles) {
+    public Mesh(Vertex[] vertices = null, uint[] indices = null, int materialIndex = -1, int stride = 8, PrimitiveType primitiveType = PrimitiveType.Triangles) {
         this.vertices = new float[vertices.Length * stride];
         for(int i = 0; i < vertices.Length; i++) {
             Vertex vertex = vertices[i];
@@ -45,7 +45,7 @@ public class Mesh {
         }
 
         this.indices = indices;
-        this.textures = textures;
+        this.materialIndex = materialIndex;
         this.stride = stride;
         this.primitiveType = primitiveType;
 
@@ -79,30 +79,12 @@ public class Mesh {
         GL.BindVertexArray(0);
     }
 
-    public void BindTexturesAndDraw(Shader shader) {
-        for (int i = 0; i < textures.Length; i++) {
-            textures[i].Bind(textureUnitLookup[i]);
-            shader.SetUInt($"material.texture_{textures[i].type}", i);
-        }
-
+    public void Draw() {
         GL.BindVertexArray(VAO);
         if (indices == null) GL.DrawArrays(primitiveType, 0, vertices.Length);
         else GL.DrawElements(primitiveType, indices.Length, DrawElementsType.UnsignedInt, 0);
         GL.BindVertexArray(0);
     }
-
-    private readonly Dictionary<int, TextureUnit> textureUnitLookup = new Dictionary<int, TextureUnit>() {
-        { 0, TextureUnit.Texture0 },
-        { 1, TextureUnit.Texture1 },
-        { 2, TextureUnit.Texture2 },
-        { 3, TextureUnit.Texture3 },
-        { 4, TextureUnit.Texture4 },
-        { 5, TextureUnit.Texture5 },
-        { 6, TextureUnit.Texture6 },
-        { 7, TextureUnit.Texture7 },
-        { 8, TextureUnit.Texture8 },
-        { 9, TextureUnit.Texture9 }
-    };
 }
 
 public struct Vertex {
@@ -115,5 +97,11 @@ public struct Vertex {
         Position = position;
         Normal = normal;
         TexCoord = texCoord;
+    }
+
+    public static Vertex[] CreateVertexArrayFromComponents(int count, Vector3[] positions, Vector3[] normals, Vector2[] texCoords) {
+        Vertex[] vertices = new Vertex[count];
+        for (int i = 0; i < count; i++) vertices[i] = new Vertex(positions[i], normals[i], texCoords.ElementAtOrDefault(i));
+        return vertices;
     }
 }
