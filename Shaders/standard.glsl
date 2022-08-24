@@ -9,6 +9,10 @@ out vec2 v_texCoord;
 out vec3 v_worldPos;
 out vec3 v_normal;
 
+uniform int shadowCasterCount;
+out vec4 v_shadowCasterVecs[10];
+uniform mat4 shadowMatrices[10];
+
 uniform mat4 matrix_transform;
 uniform mat4 matrix_viewProjection;
 
@@ -16,6 +20,10 @@ void main() {
     v_texCoord = a_texCoord;
     v_worldPos = vec3(matrix_transform * vec4(a_pos, 1.0));
     v_normal = mat3(matrix_transform) * a_normal;
+    
+    for(int i = 0; i < shadowCasterCount; ++i) {
+        v_shadowCasterVecs[i] = shadowMatrices[i] * vec4(v_worldPos, 1.0);
+    }
 
     gl_Position = vec4(a_pos, 1.0) * matrix_transform * matrix_viewProjection;
 }
@@ -48,6 +56,10 @@ out vec4 FragColor;
 in vec2 v_texCoord;
 in vec3 v_worldPos;
 in vec3 v_normal;
+
+uniform int shadowCasterCount;
+uniform sampler2D shadowMaps[10];
+in vec4 v_shadowCasterVecs[10];
 
 uniform Material material;
 
@@ -168,8 +180,22 @@ void main() {
         Lo += processLight(albedo, metallic, roughness, F0, _L, attenuation, V, N, light.color, light.intensity);
     }
 
+    float shadow = 0.0;
+
+    // Shadow Casters
+    for (int i = 0; i < shadowCasterCount; ++i) {
+        vec4 shadowVec = v_shadowCasterVecs[i];
+        vec3 projCoords = shadowVec.xyz / shadowVec.w;
+        projCoords = projCoords * 0.5 + 0.5;
+
+        float closestDepth = texture(shadowMaps[i], projCoords.xy).r;
+        float currentDepth = projCoords.z;
+
+        shadow += currentDepth > closestDepth ? 0.4 : 0.0;
+    }
+
     vec3 ambient = vec3(0); //vec3(0.03) * albedo;
-    vec3 color = (ambient + Lo) * ao;
+    vec3 color = (ambient + Lo - shadow) * ao;
 
     color = color / (color + vec3(1.0));
     color = pow(color, vec3(1.0/2.2));

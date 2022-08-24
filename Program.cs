@@ -1,4 +1,5 @@
 ﻿using System;
+using System.Collections.Generic;
 using System.Diagnostics;
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Mathematics;
@@ -60,22 +61,24 @@ public class Window : GameWindow
         Debug.WriteLine(GL.GetString(StringName.Vendor));
 
         lights = new Light[] {
-            new DirectionalLight(new Vector3(0.4f, -1.0f, 0.4f), new Vector3(1.0f, 0.96f, 0.9f), 0.0f),
+            new DirectionalLight(new Vector3(0.4f, -1.0f, 0.4f), new Vector3(1.0f, 0.96f, 0.9f), 1.0f),
             new PointLight(new Vector3(5.0f, 2.0f, 3.0f), new Vector3(1.0f, 1.0f, 1.0f), 4.0f),
         };
 
         GL.ClearColor(.2f, .3f, .3f, 1);
         GL.Enable(EnableCap.Multisample);
         GL.Enable(EnableCap.DepthTest);
+        GL.Enable(EnableCap.CullFace);
+        GL.CullFace(CullFaceMode.Back);
 
         lightModel = new Model(new Material[] { new Material(new Mesh[] { new Mesh(Primitives.Cube) }, new Texture[] {}) }, Shader.Load("Shaders/light.glsl"));
 
         model = Model.Load("Resources/Survival_BackPack_2/Survival_BackPack_2.fbx", Shader.Load("Shaders/standard.glsl"), 0.01f, new DefaultTextures(
-            albedo: Texture.LoadFromFile(@"Resources\Survival_BackPack_2\1001_albedo.jpg", "albedo"),
-            normal: Texture.LoadFromFile(@"Resources\Survival_BackPack_2\1001_normal.png", "normal"),
-            metallic: Texture.LoadFromFile(@"Resources\Survival_BackPack_2\1001_metallic.jpg", "metallic"),
-            roughness: Texture.LoadFromFile(@"Resources\Survival_BackPack_2\1001_roughness.jpg", "roughness"),
-            ao: Texture.LoadFromFile(@"Resources\Survival_BackPack_2\1001_AO.jpg", "ao")
+            albedo: Texture.LoadFromFile(@"Resources/Survival_BackPack_2/1001_albedo.jpg", "albedo"),
+            normal: Texture.LoadFromFile(@"Resources/Survival_BackPack_2/1001_normal.png", "normal"),
+            metallic: Texture.LoadFromFile(@"Resources/Survival_BackPack_2/1001_metallic.jpg", "metallic"),
+            roughness: Texture.LoadFromFile(@"Resources/Survival_BackPack_2/1001_roughness.jpg", "roughness"),
+            ao: Texture.LoadFromFile(@"Resources/Survival_BackPack_2/1001_AO.jpg", "ao")
         ));
 
         model2 = Model.Load("Resources/untitled.gltf", Shader.Load("Shaders/standard.glsl"));
@@ -100,22 +103,23 @@ public class Window : GameWindow
     {
         base.OnRenderFrame(args);
 
-        GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
-
-        GL.Enable(EnableCap.CullFace);
-        GL.CullFace(CullFaceMode.Back);
-
         Matrix4 VPM = _camera.GetViewProjectionMatrix();
         Vector3 viewPos = _camera.Position;
 
+        List<int> shadowMaps = new List<int>();
         foreach(Light light in lights) {
-            light.DrawShadowMap(currentSize.X, currentSize.Y, this);
+            int map = light.DrawShadowMap(this);
+            if (map != -1) shadowMaps.Add(map);
 
             if (light is not PointLight) continue;
             PointLight pointLight = (PointLight)light;
             lightModel.transform.Position = pointLight.position;
             lightModel.Draw(VPM);
         }
+        
+
+        GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
+        GL.Viewport(0, 0, currentSize.X, currentSize.Y);
 
         model.Draw(VPM, viewPos, lights);
         model2.Draw(VPM, viewPos, lights);
@@ -197,8 +201,8 @@ public class Window : GameWindow
     {
         base.OnResize(e);
 
-        currentSize = Size;
-        GL.Viewport(0, 0, Size.X, Size.Y);
-        _camera.AspectRatio = Size.X / (float)Size.Y;
+        currentSize = Size * 2;
+        GL.Viewport(0, 0, currentSize.X, currentSize.Y);
+        _camera.AspectRatio = currentSize.X / (float)currentSize.Y;
     }
 }
