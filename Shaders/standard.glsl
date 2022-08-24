@@ -162,14 +162,14 @@ void main() {
 
         vec3 _L = light.position - v_worldPos;
 
-        float distance = length(_L);
+        float distance = length(_L) / 4;
         float attenuation = 1.0 / (distance * distance);
 
         Lo += processLight(albedo, metallic, roughness, F0, _L, attenuation, V, N, light.color, light.intensity);
     }
 
-    vec3 ambient = vec3(0.03) * albedo * ao;
-    vec3 color = ambient + Lo;
+    vec3 ambient = vec3(0); //vec3(0.03) * albedo;
+    vec3 color = (ambient + Lo) * ao;
 
     color = color / (color + vec3(1.0));
     color = pow(color, vec3(1.0/2.2));

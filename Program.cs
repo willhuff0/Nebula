@@ -28,12 +28,13 @@ public class Nebula {
 
 public class Window : GameWindow
 {
-    private Light[] lights = new Light[] {
-        new DirectionalLight(new Vector3(0.4f, -1.0f, 0.4f), new Vector3(1.0f, 0.96f, 0.9f), 1.0f),
-        new PointLight(new Vector3(5.0f, 2.0f, 3.0f), new Vector3(1.0f, 1.0f, 0.0f), 1.0f),
-    };
+    private Light[] lights;
 
+    private int depthMapFBO;
+
+    private Model lightModel;
     private Model model;
+    private Model model2;
 
     private Camera _camera;
 
@@ -58,14 +59,29 @@ public class Window : GameWindow
         Debug.WriteLine(GL.GetString(StringName.Renderer));
         Debug.WriteLine(GL.GetString(StringName.Vendor));
 
+        lights = new Light[] {
+            new DirectionalLight(new Vector3(0.4f, -1.0f, 0.4f), new Vector3(1.0f, 0.96f, 0.9f), 0.0f),
+            new PointLight(new Vector3(5.0f, 2.0f, 3.0f), new Vector3(1.0f, 1.0f, 1.0f), 4.0f),
+        };
+
         GL.ClearColor(.2f, .3f, .3f, 1);
         GL.Enable(EnableCap.Multisample);
         GL.Enable(EnableCap.DepthTest);
 
-        model = Model.Load("Resources/adamHead/adamHead.gltf", Shader.Load("Shaders/standard.glsl"), 100.0f);
-        //model.transform.Position = new Vector3(0, -20, 0);
+        lightModel = new Model(new Material[] { new Material(new Mesh[] { new Mesh(Primitives.Cube) }, new Texture[] {}) }, Shader.Load("Shaders/light.glsl"));
 
-        Debug.WriteLine($"{Texture.textureCache.Count} were cached");
+        model = Model.Load("Resources/Survival_BackPack_2/Survival_BackPack_2.fbx", Shader.Load("Shaders/standard.glsl"), 0.01f, new DefaultTextures(
+            albedo: Texture.LoadFromFile(@"Resources\Survival_BackPack_2\1001_albedo.jpg", "albedo"),
+            normal: Texture.LoadFromFile(@"Resources\Survival_BackPack_2\1001_normal.png", "normal"),
+            metallic: Texture.LoadFromFile(@"Resources\Survival_BackPack_2\1001_metallic.jpg", "metallic"),
+            roughness: Texture.LoadFromFile(@"Resources\Survival_BackPack_2\1001_roughness.jpg", "roughness"),
+            ao: Texture.LoadFromFile(@"Resources\Survival_BackPack_2\1001_AO.jpg", "ao")
+        ));
+
+        model2 = Model.Load("Resources/untitled.gltf", Shader.Load("Shaders/standard.glsl"));
+        model2.transform.Position = new Vector3(4, -4, 0);
+
+        Debug.WriteLine($"{Texture.textureCache.Count} textures were cached");
 
         _camera = new Camera(Vector3.UnitZ * 3, Size.X / (float)Size.Y);
 
@@ -75,19 +91,34 @@ public class Window : GameWindow
         _stopwatch.Start();
     }
 
+    public void Rend() {
+        model.DrawForShadowMaps();
+        model2.DrawForShadowMaps();
+    }
+
     protected override void OnRenderFrame(FrameEventArgs args)
     {
         base.OnRenderFrame(args);
 
         GL.Clear(ClearBufferMask.ColorBufferBit | ClearBufferMask.DepthBufferBit);
 
-        //GL.Enable(EnableCap.CullFace);
-        //GL.CullFace(CullFaceMode.Back);
+        GL.Enable(EnableCap.CullFace);
+        GL.CullFace(CullFaceMode.Back);
 
         Matrix4 VPM = _camera.GetViewProjectionMatrix();
         Vector3 viewPos = _camera.Position;
 
+        foreach(Light light in lights) {
+            light.DrawShadowMap(currentSize.X, currentSize.Y, this);
+
+            if (light is not PointLight) continue;
+            PointLight pointLight = (PointLight)light;
+            lightModel.transform.Position = pointLight.position;
+            lightModel.Draw(VPM);
+        }
+
         model.Draw(VPM, viewPos, lights);
+        model2.Draw(VPM, viewPos, lights);
 
         SwapBuffers();
     }
@@ -161,10 +192,12 @@ public class Window : GameWindow
             _camera.Fov -= e.OffsetY;
         }
 
+    Vector2i currentSize;
     protected override void OnResize(ResizeEventArgs e)
     {
         base.OnResize(e);
 
+        currentSize = Size;
         GL.Viewport(0, 0, Size.X, Size.Y);
         _camera.AspectRatio = Size.X / (float)Size.Y;
     }

@@ -11,7 +11,7 @@ public class Texture {
 
     public static Dictionary<string, Texture> textureCache = new Dictionary<string, Texture>();
 
-    public static Texture LoadFromFile(string path, string type = "default") {
+    public static Texture LoadFromFile(string path, string type) { // = "default") {
         if (textureCache.ContainsKey(path)) return textureCache[path];
 
         int handle = GL.GenTexture();
@@ -45,15 +45,38 @@ public class Texture {
         this.type = type;
     }
 
-    public static Texture GetDefaultAlbedo() => Texture.LoadFromFile("Resources/default/default_albedo.png");
-    public static Texture GetDefaultNormal() => Texture.LoadFromFile("Resources/default/default_normal.png");
-    public static Texture GetDefaultMetallic() => Texture.LoadFromFile("Resources/default/default_metallic.png");
-    public static Texture GetDefaultRoughness() => Texture.LoadFromFile("Resources/default/default_roughness.png");
-    public static Texture GetDefaultAO() => Texture.LoadFromFile("Resources/default/default_ao.png");
+    public static Texture GetDefaultAlbedo() => Texture.LoadFromFile("Resources/default/default_albedo_ao.png", "albedo");
+    public static Texture GetDefaultNormal() => Texture.LoadFromFile("Resources/default/default_normal.png", "normal");
+    public static Texture GetDefaultMetallic() => Texture.LoadFromFile("Resources/default/default_metallic_roughness.png", "metallic");
+    public static Texture GetDefaultRoughness() => Texture.LoadFromFile("Resources/default/default_metallic_roughness.png", "roughness");
+    public static Texture GetDefaultAO() => Texture.LoadFromFile("Resources/default/default_albedo_ao.png", "ao");
 
     public void Bind(TextureUnit unit)
     {
         GL.ActiveTexture(unit);
         GL.BindTexture(TextureTarget.Texture2D, handle);
     }
+}
+
+public class DefaultTextures {
+    public Texture albedo;
+    public Texture normal;
+    public Texture metallic;
+    public Texture roughness;
+    public Texture ao;
+
+    public DefaultTextures(Texture albedo = null, Texture normal = null, Texture metallic = null, Texture roughness = null, Texture ao = null)
+    {
+        this.albedo = albedo;
+        this.normal = normal;
+        this.metallic = metallic;
+        this.roughness = roughness;
+        this.ao = ao;
+    }
+
+    public Texture GetAlbedoOrDefault() => albedo != null ? albedo : Texture.GetDefaultAlbedo();
+    public Texture GetNormalOrDefault() => normal != null ? normal : Texture.GetDefaultNormal();
+    public Texture GetMetallicOrDefault() => metallic != null ? metallic : Texture.GetDefaultMetallic();
+    public Texture GetRoughnessOrDefault() => roughness != null ? roughness : Texture.GetDefaultRoughness();
+    public Texture GetAOOrDefault() => ao != null ? ao : Texture.GetDefaultAO();
 }

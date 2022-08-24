@@ -18,6 +18,10 @@ public class Material {
             shader.SetUInt($"material.texture_{textures[i].type}", i);
         }
 
+        Draw();
+    }
+
+    public void Draw() {
         foreach(Mesh mesh in meshes) mesh.Draw();
     }
 

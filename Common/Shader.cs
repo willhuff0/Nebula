@@ -65,14 +65,14 @@ public class Shader {
     public void SetUVector4(String name, Vector4 value) => GL.ProgramUniform4(handle, _uniformLocations[name], value);
     public void SetUMatrix4(String name, Matrix4 value) => GL.ProgramUniformMatrix4(handle, _uniformLocations[name], true, ref value);
 
-    public void MaterialSetMatrices(Matrix4 transform, Matrix4 VPM) {
+    public void SetUsualMatrices(Matrix4 transform, Matrix4? VPM) {
         SetUMatrix4("matrix_transform", transform);
-        SetUMatrix4("matrix_viewProjection", VPM);
+        if (VPM != null) SetUMatrix4("matrix_viewProjection", (Matrix4)VPM);
     }
 
-    public void MaterialSetUniforms(Vector3 viewPos, int directionalLightCount, int pointLightCount) {
-        SetUVector3("viewPos", viewPos);
-        SetUInt("directionalLightCount", directionalLightCount);
-        SetUInt("pointLightCount", pointLightCount);
+    public void StandardMaterialSetUniforms(Vector3? viewPos, int directionalLightCount, int pointLightCount) {
+        if (viewPos != null) SetUVector3("viewPos", (Vector3)viewPos);
+        if (directionalLightCount != -1) SetUInt("directionalLightCount", directionalLightCount);
+        if (pointLightCount != -1) SetUInt("pointLightCount", pointLightCount);
     }
 }
