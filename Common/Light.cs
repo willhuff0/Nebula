@@ -5,6 +5,9 @@ using OpenTK.Mathematics;
 namespace Nebula;
 
 public abstract class Light {
+    public const int DEFAULT_SHADOWMAP_WIDTH = 2048;
+    public const int DEFAULT_SHADOWMAP_HEIGHT = 2048;
+
     public static Shader ShadowMapShader;
 
     public abstract void AddToShader(Shader shader, int index);
@@ -47,7 +50,7 @@ public class DirectionalLight : Light {
     private int depthMapFBO;
     private int depthMap;
 
-    public DirectionalLight(Vector3 direction, Vector3 color, float intensity, int shadowMapWidth = 1024, int shadowMapHeight = 1024)
+    public DirectionalLight(Vector3 direction, Vector3 color, float intensity, int shadowMapWidth = DEFAULT_SHADOWMAP_WIDTH, int shadowMapHeight = DEFAULT_SHADOWMAP_HEIGHT)
     {
         this.direction = direction;
         this.color = color;
