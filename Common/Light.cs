@@ -5,7 +5,7 @@ using OpenTK.Mathematics;
 namespace Nebula;
 
 public abstract class Light {
-    public static readonly Shader ShadowMapShader = Shader.Load("Shaders/shadowmap.glsl");
+    public static Shader ShadowMapShader;
 
     public abstract void AddToShader(Shader shader, int index);
     public abstract int DrawShadowMap(Window window);
@@ -43,9 +43,11 @@ public class DirectionalLight : Light {
 
     public int shadowMapWidth;
     public int shadowMapHeight;
-    private int depthMapFBO;
 
-    public DirectionalLight(Vector3 direction, Vector3 color, float intensity, int shadowMapWidth = 2048, int shadowMapHeight = 2048)
+    private int depthMapFBO;
+    private int depthMap;
+
+    public DirectionalLight(Vector3 direction, Vector3 color, float intensity, int shadowMapWidth = 1024, int shadowMapHeight = 1024)
     {
         this.direction = direction;
         this.color = color;
@@ -57,18 +59,19 @@ public class DirectionalLight : Light {
     }
 
     private void initialize() {
-        GL.GenFramebuffer();
+        depthMapFBO = GL.GenFramebuffer();
 
-        depthMapFBO = GL.GenTexture();
-        GL.BindTexture(TextureTarget.Texture2D, depthMapFBO);
-        GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.DepthComponent, shadowMapWidth, shadowMapHeight, 0, PixelFormat.DepthComponent, PixelType.Float, IntPtr.Zero);
-        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (int)All.Nearest);
-        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (int)All.Nearest);
-        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (int)All.Repeat);
-        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (int)All.Repeat);
+        depthMap = GL.GenTexture();
+        GL.BindTexture(TextureTarget.Texture2D, depthMap);
+        GL.TexImage2D(TextureTarget.Texture2D, 0, PixelInternalFormat.DepthComponent16, shadowMapWidth, shadowMapHeight, 0, PixelFormat.DepthComponent, PixelType.Float, IntPtr.Zero);
+        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMinFilter, (float)TextureMagFilter.Linear);
+        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureMagFilter, (float)TextureMagFilter.Linear);
+        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapS, (float)TextureWrapMode.ClampToBorder);
+        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureWrapT, (float)TextureWrapMode.ClampToBorder);
+        GL.TexParameter(TextureTarget.Texture2D, TextureParameterName.TextureBorderColor, new float[] { 1.0f, 1.0f, 1.0f, 1.0f });
 
         GL.BindFramebuffer(FramebufferTarget.Framebuffer, depthMapFBO);
-        GL.FramebufferTexture2D(FramebufferTarget.Framebuffer, FramebufferAttachment.DepthAttachment, TextureTarget.Texture2D, depthMapFBO, 0);
+        GL.FramebufferTexture2D(FramebufferTarget.Framebuffer, FramebufferAttachment.DepthAttachment, TextureTarget.Texture2D, depthMap, 0);
         GL.DrawBuffer(DrawBufferMode.None);
         GL.ReadBuffer(ReadBufferMode.None);
         GL.BindFramebuffer(FramebufferTarget.Framebuffer, 0);
@@ -79,26 +82,28 @@ public class DirectionalLight : Light {
         shader.SetUVector3($"directionalLights[{index}].color", color);
         shader.SetUFloat($"directionalLights[{index}].intensity", intensity);
 
-        shader.SetUInt("shadowCasterCount", 2);
-        shader.SetUFloat($"shadowMaps[{index}]", depthMapFBO);
+        shader.SetUInt("shadowCasterCount", 1);
+        GL.ActiveTexture(TextureUnit.Texture19);
+        GL.BindTexture(TextureTarget.Texture2D, depthMap);
+        shader.SetUInt($"shadowMaps[{index}]", 19);
         shader.SetUMatrix4($"shadowMatrices[{index}]", shadowMatrix);
     }
 
     public override int DrawShadowMap(Window window) {
+        Matrix4 projection = Matrix4.CreateOrthographic(30.0f, 30.0f, 0.2f, 30.0f);
+        Matrix4 view = Matrix4.LookAt(-direction * 15, Vector3.Zero, new Vector3(0, 1, 0));
+        shadowMatrix = view * projection;
+        Light.ShadowMapShader.Bind();
+        Light.ShadowMapShader.SetUMatrix4("matrix_viewProjection", shadowMatrix);
+
         GL.Viewport(0, 0, shadowMapWidth, shadowMapHeight);
         GL.BindFramebuffer(FramebufferTarget.Framebuffer, depthMapFBO);
         GL.Clear(ClearBufferMask.DepthBufferBit);
-
-        float nearPlane = 1.0f, farPlane = 7.5f;
-        Matrix4 projection = Matrix4.CreateOrthographicOffCenter(-10.0f, 10.0f, -10.0f, 10.0f, nearPlane, farPlane);
-        Matrix4 view = Matrix4.LookAt(-direction * 10, Vector3.Zero, Vector3.UnitY);
-        shadowMatrix = view * projection;
-        Light.ShadowMapShader.SetUMatrix4("matrix_viewProjection", shadowMatrix);
 
         window.Rend();
         //Scene.Active.RenderForShadowMap()
         
         GL.BindFramebuffer(FramebufferTarget.Framebuffer, 0);
-        return depthMapFBO;
+        return depthMap;
     }
 }

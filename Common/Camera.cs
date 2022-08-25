@@ -4,7 +4,7 @@ using OpenTK.Mathematics;
 namespace Nebula;
 
 public class Camera {
-    public const float NEAR_CLIP = 0.01f;
+    public const float NEAR_CLIP = 0.1f;
     public const float FAR_CLIP = 100.0f;
 
     private Vector3 _forward = -Vector3.UnitZ;
@@ -56,7 +56,7 @@ public class Camera {
 
     public Matrix4 GetViewMatrix() => Matrix4.LookAt(Position, Position + _forward, _up);
     public Matrix4 GetProjectionMatrix() => Matrix4.CreatePerspectiveFieldOfView(_fov, AspectRatio, NEAR_CLIP, FAR_CLIP);
-    public Matrix4 GetViewProjectionMatrix() => GetViewMatrix() * GetProjectionMatrix();
+    public Matrix4 GetViewProjectionMatrix() => GetProjectionMatrix() * GetViewMatrix();
 
     private void UpdateVectors() {
         _forward.X = MathF.Cos(_pitch) * MathF.Cos(_yaw);

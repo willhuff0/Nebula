@@ -10,7 +10,7 @@ out vec3 v_worldPos;
 out vec3 v_normal;
 
 uniform int shadowCasterCount;
-out vec4 v_shadowCasterVecs[10];
+out vec4 v_shadowCasterCoords[10];
 uniform mat4 shadowMatrices[10];
 
 uniform mat4 matrix_transform;
@@ -22,9 +22,10 @@ void main() {
     v_normal = mat3(matrix_transform) * a_normal;
     
     for(int i = 0; i < shadowCasterCount; ++i) {
-        v_shadowCasterVecs[i] = shadowMatrices[i] * vec4(v_worldPos, 1.0);
+        v_shadowCasterCoords[i] = vec4(a_pos, 1.0) * matrix_transform * shadowMatrices[i];
     }
 
+    //gl_Position = vec4(v_worldPos, 1.0) * matrix_view * matrix_projection;
     gl_Position = vec4(a_pos, 1.0) * matrix_transform * matrix_viewProjection;
 }
 
@@ -59,7 +60,7 @@ in vec3 v_normal;
 
 uniform int shadowCasterCount;
 uniform sampler2D shadowMaps[10];
-in vec4 v_shadowCasterVecs[10];
+in vec4 v_shadowCasterCoords[10];
 
 uniform Material material;
 
@@ -75,14 +76,14 @@ const float PI = 3.14159265359;
 vec3 getNormalFromMap() {
     vec3 tangentNormal = texture(material.texture_normal, v_texCoord).xyz * 2.0 - 1.0;
 
-    vec3 Q1  = dFdx(v_worldPos);
-    vec3 Q2  = dFdy(v_worldPos);
+    vec3 Q1 = dFdx(v_worldPos);
+    vec3 Q2 = dFdy(v_worldPos);
     vec2 st1 = dFdx(v_texCoord);
     vec2 st2 = dFdy(v_texCoord);
 
-    vec3 N   = normalize(v_normal);
-    vec3 T  = normalize(Q1*st2.t - Q2*st1.t);
-    vec3 B  = -normalize(cross(N, T));
+    vec3 N = normalize(v_normal);
+    vec3 T = normalize(Q1*st2.t - Q2*st1.t);
+    vec3 B = -normalize(cross(N, T));
     mat3 TBN = mat3(T, B, N);
 
     return normalize(TBN * tangentNormal);
@@ -180,22 +181,36 @@ void main() {
         Lo += processLight(albedo, metallic, roughness, F0, _L, attenuation, V, N, light.color, light.intensity);
     }
 
-    float shadow = 0.0;
+    float totalShadow = 0.0;
 
     // Shadow Casters
     for (int i = 0; i < shadowCasterCount; ++i) {
-        vec4 shadowVec = v_shadowCasterVecs[i];
-        vec3 projCoords = shadowVec.xyz / shadowVec.w;
+        vec4 shadowCoord = v_shadowCasterCoords[i];
+        vec3 projCoords = shadowCoord.xyz / shadowCoord.w;
         projCoords = projCoords * 0.5 + 0.5;
+
+        if (projCoords.z > 1.0) continue;
 
         float closestDepth = texture(shadowMaps[i], projCoords.xy).r;
         float currentDepth = projCoords.z;
 
-        shadow += currentDepth > closestDepth ? 0.4 : 0.0;
+        float shadow = 0.0;
+        vec2 texelSize = 1.0 / textureSize(shadowMaps[i], 0);
+        for(int x = -1; x <= 1; ++x)
+        {
+            for(int y = -1; y <= 1; ++y)
+            {
+                float pcfDepth = texture(shadowMaps[i], projCoords.xy + vec2(x, y) * texelSize).r; 
+                shadow += currentDepth > pcfDepth ? 0.4 : 0.0;
+            }    
+        }
+        shadow /= 9.0;
+
+        totalShadow += shadow;
     }
 
     vec3 ambient = vec3(0); //vec3(0.03) * albedo;
-    vec3 color = (ambient + Lo - shadow) * ao;
+    vec3 color = (ambient + Lo * (1 - totalShadow)) * ao;
 
     color = color / (color + vec3(1.0));
     color = pow(color, vec3(1.0/2.2));

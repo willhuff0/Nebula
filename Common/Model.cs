@@ -55,8 +55,7 @@ public class Model {
     }
 
     public void DrawForShadowMaps() {
-        Light.ShadowMapShader.Bind();
-        shader.SetUMatrix4("matrix_transform", transform.GetMatrix());
+        Light.ShadowMapShader.SetUMatrix4("matrix_transform", transform.GetMatrix());
         foreach(Material material in materials) material.Draw();
     }
 
