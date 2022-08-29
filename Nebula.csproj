@@ -7,9 +7,10 @@
 
   <ItemGroup>
     <PackageReference Include="AssimpNet" Version="5.0.0-beta1" />
-    <PackageReference Include="Microsoft.DotNet.ILCompiler" Version="7.0.0-preview.7.22375.6" />
+    <PackageReference Include="Newtonsoft.Json" Version="13.0.1" />
     <PackageReference Include="OpenTK" Version="4.7.4" />
     <PackageReference Include="StbImageSharp" Version="2.27.11" />
+    <PackageReference Include="StreamJsonRpc" Version="2.12.27" />
   </ItemGroup>
 
 </Project>

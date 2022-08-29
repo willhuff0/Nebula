@@ -11,6 +11,8 @@ using OpenTK.Windowing.GraphicsLibraryFramework;
 namespace Nebula;
 
 public class Nebula {
+    public static Window activeWindow;
+
     public static void Main(string[] args) {
         var nativeWindowSettings = new NativeWindowSettings()
         {
@@ -21,9 +23,9 @@ public class Nebula {
             //NumberOfSamples = 8
         };
 
-        using (var window = new Window(GameWindowSettings.Default, nativeWindowSettings))
+        using (activeWindow = new Window(GameWindowSettings.Default, nativeWindowSettings))
         {
-            window.Run();
+            activeWindow.Run();
         }
     }
 }
@@ -46,7 +48,7 @@ public class Window : GameWindow
     private Shader depthMapShader;
 
     private Model lightModel;
-    private Model model;
+    public Model model;
     private Model model2;
 
     private int depthDisplayVAO;
