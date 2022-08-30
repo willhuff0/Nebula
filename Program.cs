@@ -1,6 +1,7 @@
 ﻿using System;
 using System.Collections.Generic;
 using System.Diagnostics;
+using System.Linq;
 using System.Runtime.InteropServices;
 using OpenTK.Graphics.OpenGL4;
 using OpenTK.Mathematics;
@@ -11,9 +12,13 @@ using OpenTK.Windowing.GraphicsLibraryFramework;
 namespace Nebula;
 
 public class Nebula {
+    private const bool FORCE_INTEROP = true;
+
     public static Window activeWindow;
 
     public static void Main(string[] args) {
+        if (FORCE_INTEROP || args.Contains("-enable-rpc")) Interop.Interop.StartInterop();
+
         var nativeWindowSettings = new NativeWindowSettings()
         {
             Size = new Vector2i(1280, 720),
@@ -23,9 +28,9 @@ public class Nebula {
             //NumberOfSamples = 8
         };
 
-        using (activeWindow = new Window(GameWindowSettings.Default, nativeWindowSettings))
+        using (var window = new Window(GameWindowSettings.Default, nativeWindowSettings))
         {
-            activeWindow.Run();
+            window.Run();
         }
     }
 }
@@ -49,7 +54,7 @@ public class Window : GameWindow
 
     private Model lightModel;
     public Model model;
-    private Model model2;
+    public Model model2;
 
     private int depthDisplayVAO;
 
@@ -70,6 +75,8 @@ public class Window : GameWindow
     protected override void OnLoad()
     {
         base.OnLoad();
+
+        Nebula.activeWindow = this;
 
         Debug.WriteLine(GL.GetString(StringName.Version));
         Debug.WriteLine(GL.GetString(StringName.ShadingLanguageVersion));
