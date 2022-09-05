@@ -1,10 +1,7 @@
-import 'dart:ffi';
-import 'package:ffi/ffi.dart';
-
-import 'package:nebula/bindings/angle/angle.dart';
+import 'package:dart_sdl/dart_sdl.dart';
+import 'package:dart_sdl/src/sdl_bindings.dart';
 
 void main() {
-  final angle = Angle(DynamicLibrary.open('dll/angle/libGLESv2.dll'));
-  print(angle.glGetString(GL_VENDOR));
-  print(angle.glGetString(GL_VERSION);
+  final sdl = Sdl(libName: 'dll/sdl/osx-arm/libSDL2.dylib')..init();
+  final window = sdl.createWindow('Example Window');
 }
