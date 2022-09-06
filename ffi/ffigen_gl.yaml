@@ -1,0 +1,5 @@
+output: 'lib/bindings/angle/gl.dart'
+name: 'AngleGLES3'
+headers:
+  entry-points:
+    - 'ffi/angle/include/GLES3/gl32.h'

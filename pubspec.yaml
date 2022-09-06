@@ -16,7 +16,6 @@ dev_dependencies:
 dependencies:
   dart_sdl: ^0.10.1
   ffi: ^2.0.1
-  opengl_es_bindings: ^1.0.0-pre.1
   win32: ^3.0.0
 
 dependency_overrides:

@@ -1,5 +1,0 @@
-output: 'lib/bindings/angle/angle.dart'
-name: 'Angle'
-headers:
-  entry-points:
-    - 'dll/angle/include/angle_gl.h'
