@@ -4,6 +4,7 @@ import 'package:ffi/ffi.dart';
 import 'package:nebula/bindings/angle/egl.dart';
 import 'package:nebula/bindings/angle/gl.dart';
 import 'package:nebula/bindings/glfw/glfw.dart';
+import 'package:vector_math/vector_math.dart';
 
 void main() async {
   glfw.glfwInitHint(EGL_ANGLE_platform_angle, EGL_ANGLE_platform_angle_vulkan);

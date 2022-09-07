@@ -1,6 +1,0 @@
-output: 'lib/bindings/angle/egl.dart'
-name: 'AngleEGL'
-headers:
-  entry-points:
-    - 'ffi/angle/include/EGL/egl.h'
-    - 'ffi/angle/include/EGL/eglext.h'

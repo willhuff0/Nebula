@@ -1,5 +1,0 @@
-output: 'lib/bindings/glfw/glfw.dart'
-name: 'GLFW'
-headers:
-  entry-points:
-    - 'ffi/glfw/include/glfw3.h'
