@@ -12,7 +12,7 @@ public class Texture {
     public static Dictionary<string, Texture> textureCache = new Dictionary<string, Texture>();
 
     public static Texture LoadFromFile(string path, string type) { // = "default") {
-        if (textureCache.ContainsKey(path)) return textureCache[path];
+        if (textureCache.ContainsKey(path)) return new Texture(textureCache[path].handle, type);
 
         int handle = GL.GenTexture();
 

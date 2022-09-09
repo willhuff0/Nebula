@@ -75,7 +75,7 @@ public class Mesh {
 
         GL.EnableVertexAttribArray(2);
         GL.VertexAttribPointer(2, 3, VertexAttribPointerType.Float, false, stride * sizeof(float), 6 * sizeof(float));
-    
+        
         GL.BindVertexArray(0);
     }
 

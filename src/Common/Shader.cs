@@ -38,8 +38,7 @@ public class Shader {
 
         _uniformLocations = new Dictionary<string, int>();
         GL.GetProgram(handle, GetProgramParameterName.ActiveUniforms, out var uniformCount);
-        for (int i = 0; i < uniformCount; i++)
-        {
+        for (int i = 0; i < uniformCount; i++) {
             var name = GL.GetActiveUniform(handle, i, out _, out _);
             var location = GL.GetUniformLocation(handle, name);
             _uniformLocations.Add(name, location);
@@ -52,9 +51,7 @@ public class Shader {
         string fragmentSource = string.Join('\n', sourceLines.SkipWhile((e) => !e.StartsWith("##FRAGMENT")).Skip(1));
         return new Shader(vertexSource, fragmentSource);
     }
-    public static Shader Load(string vertexPath, string fragmentPath) {
-        return new Shader(File.ReadAllText(vertexPath), File.ReadAllText(fragmentPath));
-    }
+    public static Shader Load(string vertexPath, string fragmentPath) => new Shader(File.ReadAllText(vertexPath), File.ReadAllText(fragmentPath));
 
     public int GetAttribLocation(string name) => GL.GetAttribLocation(handle, name);
 
