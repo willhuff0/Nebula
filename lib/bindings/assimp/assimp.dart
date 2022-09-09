@@ -17,209 +17,15 @@ class Assimp {
           lookup)
       : _lookup = lookup;
 
-  void __va_start(
-    ffi.Pointer<va_list> arg0,
-  ) {
-    return ___va_start(
-      arg0,
-    );
-  }
-
-  late final ___va_startPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<va_list>)>>(
-          '__va_start');
-  late final ___va_start =
-      ___va_startPtr.asFunction<void Function(ffi.Pointer<va_list>)>();
-
-  void __security_init_cookie() {
-    return ___security_init_cookie();
-  }
-
-  late final ___security_init_cookiePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function()>>(
-          '__security_init_cookie');
-  late final ___security_init_cookie =
-      ___security_init_cookiePtr.asFunction<void Function()>();
-
-  void __security_check_cookie(
-    int _StackCookie,
-  ) {
-    return ___security_check_cookie(
-      _StackCookie,
-    );
-  }
-
-  late final ___security_check_cookiePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(uintptr_t)>>(
-          '__security_check_cookie');
-  late final ___security_check_cookie =
-      ___security_check_cookiePtr.asFunction<void Function(int)>();
-
-  void __report_gsfailure(
-    int _StackCookie,
-  ) {
-    return ___report_gsfailure(
-      _StackCookie,
-    );
-  }
-
-  late final ___report_gsfailurePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(uintptr_t)>>(
-          '__report_gsfailure');
-  late final ___report_gsfailure =
-      ___report_gsfailurePtr.asFunction<void Function(int)>();
-
-  late final ffi.Pointer<uintptr_t> ___security_cookie =
-      _lookup<uintptr_t>('__security_cookie');
-
-  int get __security_cookie => ___security_cookie.value;
-
-  set __security_cookie(int value) => ___security_cookie.value = value;
-
-  void _invalid_parameter_noinfo() {
-    return __invalid_parameter_noinfo();
-  }
-
-  late final __invalid_parameter_noinfoPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function()>>(
-          '_invalid_parameter_noinfo');
-  late final __invalid_parameter_noinfo =
-      __invalid_parameter_noinfoPtr.asFunction<void Function()>();
-
-  void _invalid_parameter_noinfo_noreturn() {
-    return __invalid_parameter_noinfo_noreturn();
-  }
-
-  late final __invalid_parameter_noinfo_noreturnPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function()>>(
-          '_invalid_parameter_noinfo_noreturn');
-  late final __invalid_parameter_noinfo_noreturn =
-      __invalid_parameter_noinfo_noreturnPtr.asFunction<void Function()>();
-
-  void _invoke_watson(
-    ffi.Pointer<ffi.WChar> _Expression,
-    ffi.Pointer<ffi.WChar> _FunctionName,
-    ffi.Pointer<ffi.WChar> _FileName,
-    int _LineNo,
-    int _Reserved,
-  ) {
-    return __invoke_watson(
-      _Expression,
-      _FunctionName,
-      _FileName,
-      _LineNo,
-      _Reserved,
-    );
-  }
-
-  late final __invoke_watsonPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Pointer<ffi.WChar>,
-              ffi.Pointer<ffi.WChar>,
-              ffi.Pointer<ffi.WChar>,
-              ffi.UnsignedInt,
-              uintptr_t)>>('_invoke_watson');
-  late final __invoke_watson = __invoke_watsonPtr.asFunction<
-      void Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>,
-          ffi.Pointer<ffi.WChar>, int, int)>();
-
-  ffi.Pointer<ffi.Int> _errno() {
-    return __errno();
-  }
-
-  late final __errnoPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int> Function()>>('_errno');
-  late final __errno = __errnoPtr.asFunction<ffi.Pointer<ffi.Int> Function()>();
-
-  int _set_errno(
-    int _Value,
-  ) {
-    return __set_errno(
-      _Value,
-    );
-  }
-
-  late final __set_errnoPtr =
-      _lookup<ffi.NativeFunction<errno_t Function(ffi.Int)>>('_set_errno');
-  late final __set_errno = __set_errnoPtr.asFunction<int Function(int)>();
-
-  int _get_errno(
-    ffi.Pointer<ffi.Int> _Value,
-  ) {
-    return __get_errno(
-      _Value,
-    );
-  }
-
-  late final __get_errnoPtr =
-      _lookup<ffi.NativeFunction<errno_t Function(ffi.Pointer<ffi.Int>)>>(
-          '_get_errno');
-  late final __get_errno =
-      __get_errnoPtr.asFunction<int Function(ffi.Pointer<ffi.Int>)>();
-
-  int __threadid() {
-    return ___threadid();
-  }
-
-  late final ___threadidPtr =
-      _lookup<ffi.NativeFunction<ffi.UnsignedLong Function()>>('__threadid');
-  late final ___threadid = ___threadidPtr.asFunction<int Function()>();
-
-  int __threadhandle() {
-    return ___threadhandle();
-  }
-
-  late final ___threadhandlePtr =
-      _lookup<ffi.NativeFunction<uintptr_t Function()>>('__threadhandle');
-  late final ___threadhandle = ___threadhandlePtr.asFunction<int Function()>();
-
-  ffi.Pointer<ffi.UnsignedLong> __doserrno() {
-    return ___doserrno();
-  }
-
-  late final ___doserrnoPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.UnsignedLong> Function()>>(
-          '__doserrno');
-  late final ___doserrno =
-      ___doserrnoPtr.asFunction<ffi.Pointer<ffi.UnsignedLong> Function()>();
-
-  int _set_doserrno(
-    int _Value,
-  ) {
-    return __set_doserrno(
-      _Value,
-    );
-  }
-
-  late final __set_doserrnoPtr =
-      _lookup<ffi.NativeFunction<errno_t Function(ffi.UnsignedLong)>>(
-          '_set_doserrno');
-  late final __set_doserrno = __set_doserrnoPtr.asFunction<int Function(int)>();
-
-  int _get_doserrno(
-    ffi.Pointer<ffi.UnsignedLong> _Value,
-  ) {
-    return __get_doserrno(
-      _Value,
-    );
-  }
-
-  late final __get_doserrnoPtr = _lookup<
-          ffi.NativeFunction<errno_t Function(ffi.Pointer<ffi.UnsignedLong>)>>(
-      '_get_doserrno');
-  late final __get_doserrno = __get_doserrnoPtr
-      .asFunction<int Function(ffi.Pointer<ffi.UnsignedLong>)>();
-
   ffi.Pointer<ffi.Void> memchr(
-    ffi.Pointer<ffi.Void> _Buf,
-    int _Val,
-    int _MaxCount,
+    ffi.Pointer<ffi.Void> __s,
+    int __c,
+    int __n,
   ) {
     return _memchr(
-      _Buf,
-      _Val,
-      _MaxCount,
+      __s,
+      __c,
+      __n,
     );
   }
 
@@ -231,14 +37,14 @@ class Assimp {
       ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>, int, int)>();
 
   int memcmp(
-    ffi.Pointer<ffi.Void> _Buf1,
-    ffi.Pointer<ffi.Void> _Buf2,
-    int _Size,
+    ffi.Pointer<ffi.Void> __s1,
+    ffi.Pointer<ffi.Void> __s2,
+    int __n,
   ) {
     return _memcmp(
-      _Buf1,
-      _Buf2,
-      _Size,
+      __s1,
+      __s2,
+      __n,
     );
   }
 
@@ -250,14 +56,14 @@ class Assimp {
       int Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
 
   ffi.Pointer<ffi.Void> memcpy(
-    ffi.Pointer<ffi.Void> _Dst,
-    ffi.Pointer<ffi.Void> _Src,
-    int _Size,
+    ffi.Pointer<ffi.Void> __dst,
+    ffi.Pointer<ffi.Void> __src,
+    int __n,
   ) {
     return _memcpy(
-      _Dst,
-      _Src,
-      _Size,
+      __dst,
+      __src,
+      __n,
     );
   }
 
@@ -270,14 +76,14 @@ class Assimp {
           ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
 
   ffi.Pointer<ffi.Void> memmove(
-    ffi.Pointer<ffi.Void> _Dst,
-    ffi.Pointer<ffi.Void> _Src,
-    int _Size,
+    ffi.Pointer<ffi.Void> __dst,
+    ffi.Pointer<ffi.Void> __src,
+    int __len,
   ) {
     return _memmove(
-      _Dst,
-      _Src,
-      _Size,
+      __dst,
+      __src,
+      __len,
     );
   }
 
@@ -290,14 +96,14 @@ class Assimp {
           ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
 
   ffi.Pointer<ffi.Void> memset(
-    ffi.Pointer<ffi.Void> _Dst,
-    int _Val,
-    int _Size,
+    ffi.Pointer<ffi.Void> __b,
+    int __c,
+    int __len,
   ) {
     return _memset(
-      _Dst,
-      _Val,
-      _Size,
+      __b,
+      __c,
+      __len,
     );
   }
 
@@ -308,1383 +114,13 @@ class Assimp {
   late final _memset = _memsetPtr.asFunction<
       ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>, int, int)>();
 
-  ffi.Pointer<ffi.Char> strchr(
-    ffi.Pointer<ffi.Char> _Str,
-    int _Val,
-  ) {
-    return _strchr(
-      _Str,
-      _Val,
-    );
-  }
-
-  late final _strchrPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Char> Function(
-              ffi.Pointer<ffi.Char>, ffi.Int)>>('strchr');
-  late final _strchr = _strchrPtr
-      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>, int)>();
-
-  ffi.Pointer<ffi.Char> strrchr(
-    ffi.Pointer<ffi.Char> _Str,
-    int _Ch,
-  ) {
-    return _strrchr(
-      _Str,
-      _Ch,
-    );
-  }
-
-  late final _strrchrPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Char> Function(
-              ffi.Pointer<ffi.Char>, ffi.Int)>>('strrchr');
-  late final _strrchr = _strrchrPtr
-      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>, int)>();
-
-  ffi.Pointer<ffi.Char> strstr(
-    ffi.Pointer<ffi.Char> _Str,
-    ffi.Pointer<ffi.Char> _SubStr,
-  ) {
-    return _strstr(
-      _Str,
-      _SubStr,
-    );
-  }
-
-  late final _strstrPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Char> Function(
-              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('strstr');
-  late final _strstr = _strstrPtr.asFunction<
-      ffi.Pointer<ffi.Char> Function(
-          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
-
-  ffi.Pointer<ffi.UnsignedShort> wcschr(
-    ffi.Pointer<ffi.WChar> _Str,
-    int _Ch,
-  ) {
-    return _wcschr(
-      _Str,
-      _Ch,
-    );
-  }
-
-  late final _wcschrPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.UnsignedShort> Function(
-              ffi.Pointer<ffi.WChar>, ffi.WChar)>>('wcschr');
-  late final _wcschr = _wcschrPtr.asFunction<
-      ffi.Pointer<ffi.UnsignedShort> Function(ffi.Pointer<ffi.WChar>, int)>();
-
-  ffi.Pointer<ffi.WChar> wcsrchr(
-    ffi.Pointer<ffi.WChar> _Str,
-    int _Ch,
-  ) {
-    return _wcsrchr(
-      _Str,
-      _Ch,
-    );
-  }
-
-  late final _wcsrchrPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.WChar> Function(
-              ffi.Pointer<ffi.WChar>, ffi.WChar)>>('wcsrchr');
-  late final _wcsrchr = _wcsrchrPtr.asFunction<
-      ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>, int)>();
-
-  ffi.Pointer<ffi.WChar> wcsstr(
-    ffi.Pointer<ffi.WChar> _Str,
-    ffi.Pointer<ffi.WChar> _SubStr,
-  ) {
-    return _wcsstr(
-      _Str,
-      _SubStr,
-    );
-  }
-
-  late final _wcsstrPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.WChar> Function(
-              ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>)>>('wcsstr');
-  late final _wcsstr = _wcsstrPtr.asFunction<
-      ffi.Pointer<ffi.WChar> Function(
-          ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>)>();
-
-  int _memicmp(
-    ffi.Pointer<ffi.Void> _Buf1,
-    ffi.Pointer<ffi.Void> _Buf2,
-    int _Size,
-  ) {
-    return __memicmp(
-      _Buf1,
-      _Buf2,
-      _Size,
-    );
-  }
-
-  late final __memicmpPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>,
-              ffi.Size)>>('_memicmp');
-  late final __memicmp = __memicmpPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
-
-  int _memicmp_l(
-    ffi.Pointer<ffi.Void> _Buf1,
-    ffi.Pointer<ffi.Void> _Buf2,
-    int _Size,
-    _locale_t _Locale,
-  ) {
-    return __memicmp_l(
-      _Buf1,
-      _Buf2,
-      _Size,
-      _Locale,
-    );
-  }
-
-  late final __memicmp_lPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>,
-              ffi.Size, _locale_t)>>('_memicmp_l');
-  late final __memicmp_l = __memicmp_lPtr.asFunction<
-      int Function(
-          ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int, _locale_t)>();
-
-  ffi.Pointer<ffi.Void> memccpy(
-    ffi.Pointer<ffi.Void> _Dst,
-    ffi.Pointer<ffi.Void> _Src,
-    int _Val,
-    int _Size,
-  ) {
-    return _memccpy1(
-      _Dst,
-      _Src,
-      _Val,
-      _Size,
-    );
-  }
-
-  late final _memccpyPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>, ffi.Int, ffi.Size)>>('memccpy');
-  late final _memccpy1 = _memccpyPtr.asFunction<
-      ffi.Pointer<ffi.Void> Function(
-          ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int, int)>();
-
-  int memicmp(
-    ffi.Pointer<ffi.Void> _Buf1,
-    ffi.Pointer<ffi.Void> _Buf2,
-    int _Size,
-  ) {
-    return _memicmp1(
-      _Buf1,
-      _Buf2,
-      _Size,
-    );
-  }
-
-  late final _memicmpPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>,
-              ffi.Size)>>('memicmp');
-  late final _memicmp1 = _memicmpPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
-
-  int wcscat_s(
-    ffi.Pointer<ffi.WChar> _Destination,
-    int _SizeInWords,
-    ffi.Pointer<ffi.WChar> _Source,
-  ) {
-    return _wcscat_s(
-      _Destination,
-      _SizeInWords,
-      _Source,
-    );
-  }
-
-  late final _wcscat_sPtr = _lookup<
-      ffi.NativeFunction<
-          errno_t Function(ffi.Pointer<ffi.WChar>, rsize_t,
-              ffi.Pointer<ffi.WChar>)>>('wcscat_s');
-  late final _wcscat_s = _wcscat_sPtr.asFunction<
-      int Function(ffi.Pointer<ffi.WChar>, int, ffi.Pointer<ffi.WChar>)>();
-
-  int wcscpy_s(
-    ffi.Pointer<ffi.WChar> _Destination,
-    int _SizeInWords,
-    ffi.Pointer<ffi.WChar> _Source,
-  ) {
-    return _wcscpy_s(
-      _Destination,
-      _SizeInWords,
-      _Source,
-    );
-  }
-
-  late final _wcscpy_sPtr = _lookup<
-      ffi.NativeFunction<
-          errno_t Function(ffi.Pointer<ffi.WChar>, rsize_t,
-              ffi.Pointer<ffi.WChar>)>>('wcscpy_s');
-  late final _wcscpy_s = _wcscpy_sPtr.asFunction<
-      int Function(ffi.Pointer<ffi.WChar>, int, ffi.Pointer<ffi.WChar>)>();
-
-  int wcsncat_s(
-    ffi.Pointer<ffi.WChar> _Destination,
-    int _SizeInWords,
-    ffi.Pointer<ffi.WChar> _Source,
-    int _MaxCount,
-  ) {
-    return _wcsncat_s(
-      _Destination,
-      _SizeInWords,
-      _Source,
-      _MaxCount,
-    );
-  }
-
-  late final _wcsncat_sPtr = _lookup<
-      ffi.NativeFunction<
-          errno_t Function(ffi.Pointer<ffi.WChar>, rsize_t,
-              ffi.Pointer<ffi.WChar>, rsize_t)>>('wcsncat_s');
-  late final _wcsncat_s = _wcsncat_sPtr.asFunction<
-      int Function(ffi.Pointer<ffi.WChar>, int, ffi.Pointer<ffi.WChar>, int)>();
-
-  int wcsncpy_s(
-    ffi.Pointer<ffi.WChar> _Destination,
-    int _SizeInWords,
-    ffi.Pointer<ffi.WChar> _Source,
-    int _MaxCount,
-  ) {
-    return _wcsncpy_s(
-      _Destination,
-      _SizeInWords,
-      _Source,
-      _MaxCount,
-    );
-  }
-
-  late final _wcsncpy_sPtr = _lookup<
-      ffi.NativeFunction<
-          errno_t Function(ffi.Pointer<ffi.WChar>, rsize_t,
-              ffi.Pointer<ffi.WChar>, rsize_t)>>('wcsncpy_s');
-  late final _wcsncpy_s = _wcsncpy_sPtr.asFunction<
-      int Function(ffi.Pointer<ffi.WChar>, int, ffi.Pointer<ffi.WChar>, int)>();
-
-  ffi.Pointer<ffi.WChar> wcstok_s(
-    ffi.Pointer<ffi.WChar> _String,
-    ffi.Pointer<ffi.WChar> _Delimiter,
-    ffi.Pointer<ffi.Pointer<ffi.WChar>> _Context,
-  ) {
-    return _wcstok_s(
-      _String,
-      _Delimiter,
-      _Context,
-    );
-  }
-
-  late final _wcstok_sPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.WChar> Function(
-              ffi.Pointer<ffi.WChar>,
-              ffi.Pointer<ffi.WChar>,
-              ffi.Pointer<ffi.Pointer<ffi.WChar>>)>>('wcstok_s');
-  late final _wcstok_s = _wcstok_sPtr.asFunction<
-      ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>,
-          ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.Pointer<ffi.WChar>>)>();
-
-  ffi.Pointer<ffi.WChar> _wcsdup(
-    ffi.Pointer<ffi.WChar> _String,
-  ) {
-    return __wcsdup(
-      _String,
-    );
-  }
-
-  late final __wcsdupPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>)>>('_wcsdup');
-  late final __wcsdup = __wcsdupPtr
-      .asFunction<ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>)>();
-
-  ffi.Pointer<ffi.WChar> wcscat(
-    ffi.Pointer<ffi.WChar> _Destination,
-    ffi.Pointer<ffi.WChar> _Source,
-  ) {
-    return _wcscat(
-      _Destination,
-      _Source,
-    );
-  }
-
-  late final _wcscatPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.WChar> Function(
-              ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>)>>('wcscat');
-  late final _wcscat = _wcscatPtr.asFunction<
-      ffi.Pointer<ffi.WChar> Function(
-          ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>)>();
-
-  int wcscmp(
-    ffi.Pointer<ffi.WChar> _String1,
-    ffi.Pointer<ffi.WChar> _String2,
-  ) {
-    return _wcscmp(
-      _String1,
-      _String2,
-    );
-  }
-
-  late final _wcscmpPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>)>>('wcscmp');
-  late final _wcscmp = _wcscmpPtr.asFunction<
-      int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>)>();
-
-  ffi.Pointer<ffi.WChar> wcscpy(
-    ffi.Pointer<ffi.WChar> _Destination,
-    ffi.Pointer<ffi.WChar> _Source,
-  ) {
-    return _wcscpy(
-      _Destination,
-      _Source,
-    );
-  }
-
-  late final _wcscpyPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.WChar> Function(
-              ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>)>>('wcscpy');
-  late final _wcscpy = _wcscpyPtr.asFunction<
-      ffi.Pointer<ffi.WChar> Function(
-          ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>)>();
-
-  int wcscspn(
-    ffi.Pointer<ffi.WChar> _String,
-    ffi.Pointer<ffi.WChar> _Control,
-  ) {
-    return _wcscspn(
-      _String,
-      _Control,
-    );
-  }
-
-  late final _wcscspnPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Size Function(
-              ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>)>>('wcscspn');
-  late final _wcscspn = _wcscspnPtr.asFunction<
-      int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>)>();
-
-  int wcslen(
-    ffi.Pointer<ffi.WChar> _String,
-  ) {
-    return _wcslen(
-      _String,
-    );
-  }
-
-  late final _wcslenPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.UnsignedLongLong Function(ffi.Pointer<ffi.WChar>)>>('wcslen');
-  late final _wcslen =
-      _wcslenPtr.asFunction<int Function(ffi.Pointer<ffi.WChar>)>();
-
-  int wcsnlen(
-    ffi.Pointer<ffi.WChar> _Source,
-    int _MaxCount,
-  ) {
-    return _wcsnlen(
-      _Source,
-      _MaxCount,
-    );
-  }
-
-  late final _wcsnlenPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Size Function(ffi.Pointer<ffi.WChar>, ffi.Size)>>('wcsnlen');
-  late final _wcsnlen =
-      _wcsnlenPtr.asFunction<int Function(ffi.Pointer<ffi.WChar>, int)>();
-
-  ffi.Pointer<ffi.WChar> wcsncat(
-    ffi.Pointer<ffi.WChar> _Destination,
-    ffi.Pointer<ffi.WChar> _Source,
-    int _Count,
-  ) {
-    return _wcsncat(
-      _Destination,
-      _Source,
-      _Count,
-    );
-  }
-
-  late final _wcsncatPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>,
-              ffi.Pointer<ffi.WChar>, ffi.Size)>>('wcsncat');
-  late final _wcsncat = _wcsncatPtr.asFunction<
-      ffi.Pointer<ffi.WChar> Function(
-          ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>, int)>();
-
-  int wcsncmp(
-    ffi.Pointer<ffi.WChar> _String1,
-    ffi.Pointer<ffi.WChar> _String2,
-    int _MaxCount,
-  ) {
-    return _wcsncmp(
-      _String1,
-      _String2,
-      _MaxCount,
-    );
-  }
-
-  late final _wcsncmpPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>,
-              ffi.Size)>>('wcsncmp');
-  late final _wcsncmp = _wcsncmpPtr.asFunction<
-      int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>, int)>();
-
-  ffi.Pointer<ffi.WChar> wcsncpy(
-    ffi.Pointer<ffi.WChar> _Destination,
-    ffi.Pointer<ffi.WChar> _Source,
-    int _Count,
-  ) {
-    return _wcsncpy(
-      _Destination,
-      _Source,
-      _Count,
-    );
-  }
-
-  late final _wcsncpyPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>,
-              ffi.Pointer<ffi.WChar>, ffi.Size)>>('wcsncpy');
-  late final _wcsncpy = _wcsncpyPtr.asFunction<
-      ffi.Pointer<ffi.WChar> Function(
-          ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>, int)>();
-
-  ffi.Pointer<ffi.WChar> wcspbrk(
-    ffi.Pointer<ffi.WChar> _String,
-    ffi.Pointer<ffi.WChar> _Control,
-  ) {
-    return _wcspbrk(
-      _String,
-      _Control,
-    );
-  }
-
-  late final _wcspbrkPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.WChar> Function(
-              ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>)>>('wcspbrk');
-  late final _wcspbrk = _wcspbrkPtr.asFunction<
-      ffi.Pointer<ffi.WChar> Function(
-          ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>)>();
-
-  int wcsspn(
-    ffi.Pointer<ffi.WChar> _String,
-    ffi.Pointer<ffi.WChar> _Control,
-  ) {
-    return _wcsspn(
-      _String,
-      _Control,
-    );
-  }
-
-  late final _wcsspnPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Size Function(
-              ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>)>>('wcsspn');
-  late final _wcsspn = _wcsspnPtr.asFunction<
-      int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>)>();
-
-  ffi.Pointer<ffi.WChar> wcstok(
-    ffi.Pointer<ffi.WChar> _String,
-    ffi.Pointer<ffi.WChar> _Delimiter,
-    ffi.Pointer<ffi.Pointer<ffi.WChar>> _Context,
-  ) {
-    return _wcstok(
-      _String,
-      _Delimiter,
-      _Context,
-    );
-  }
-
-  late final _wcstokPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.WChar> Function(
-              ffi.Pointer<ffi.WChar>,
-              ffi.Pointer<ffi.WChar>,
-              ffi.Pointer<ffi.Pointer<ffi.WChar>>)>>('wcstok');
-  late final _wcstok = _wcstokPtr.asFunction<
-      ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>,
-          ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.Pointer<ffi.WChar>>)>();
-
-  ffi.Pointer<ffi.WChar> _wcserror(
-    int _ErrorNumber,
-  ) {
-    return __wcserror1(
-      _ErrorNumber,
-    );
-  }
-
-  late final __wcserrorPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.WChar> Function(ffi.Int)>>(
-          '_wcserror');
-  late final __wcserror1 =
-      __wcserrorPtr.asFunction<ffi.Pointer<ffi.WChar> Function(int)>();
-
-  int _wcserror_s(
-    ffi.Pointer<ffi.WChar> _Buffer,
-    int _SizeInWords,
-    int _ErrorNumber,
-  ) {
-    return __wcserror_s1(
-      _Buffer,
-      _SizeInWords,
-      _ErrorNumber,
-    );
-  }
-
-  late final __wcserror_sPtr = _lookup<
-      ffi.NativeFunction<
-          errno_t Function(
-              ffi.Pointer<ffi.WChar>, ffi.Size, ffi.Int)>>('_wcserror_s');
-  late final __wcserror_s1 = __wcserror_sPtr
-      .asFunction<int Function(ffi.Pointer<ffi.WChar>, int, int)>();
-
-  ffi.Pointer<ffi.WChar> __wcserror(
-    ffi.Pointer<ffi.WChar> _String,
-  ) {
-    return ___wcserror(
-      _String,
-    );
-  }
-
-  late final ___wcserrorPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.WChar> Function(
-              ffi.Pointer<ffi.WChar>)>>('__wcserror');
-  late final ___wcserror = ___wcserrorPtr
-      .asFunction<ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>)>();
-
-  int __wcserror_s(
-    ffi.Pointer<ffi.WChar> _Buffer,
-    int _SizeInWords,
-    ffi.Pointer<ffi.WChar> _ErrorMessage,
-  ) {
-    return ___wcserror_s(
-      _Buffer,
-      _SizeInWords,
-      _ErrorMessage,
-    );
-  }
-
-  late final ___wcserror_sPtr = _lookup<
-      ffi.NativeFunction<
-          errno_t Function(ffi.Pointer<ffi.WChar>, ffi.Size,
-              ffi.Pointer<ffi.WChar>)>>('__wcserror_s');
-  late final ___wcserror_s = ___wcserror_sPtr.asFunction<
-      int Function(ffi.Pointer<ffi.WChar>, int, ffi.Pointer<ffi.WChar>)>();
-
-  int _wcsicmp(
-    ffi.Pointer<ffi.WChar> _String1,
-    ffi.Pointer<ffi.WChar> _String2,
-  ) {
-    return __wcsicmp(
-      _String1,
-      _String2,
-    );
-  }
-
-  late final __wcsicmpPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>)>>('_wcsicmp');
-  late final __wcsicmp = __wcsicmpPtr.asFunction<
-      int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>)>();
-
-  int _wcsicmp_l(
-    ffi.Pointer<ffi.WChar> _String1,
-    ffi.Pointer<ffi.WChar> _String2,
-    _locale_t _Locale,
-  ) {
-    return __wcsicmp_l(
-      _String1,
-      _String2,
-      _Locale,
-    );
-  }
-
-  late final __wcsicmp_lPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>,
-              _locale_t)>>('_wcsicmp_l');
-  late final __wcsicmp_l = __wcsicmp_lPtr.asFunction<
-      int Function(
-          ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>, _locale_t)>();
-
-  int _wcsnicmp(
-    ffi.Pointer<ffi.WChar> _String1,
-    ffi.Pointer<ffi.WChar> _String2,
-    int _MaxCount,
-  ) {
-    return __wcsnicmp(
-      _String1,
-      _String2,
-      _MaxCount,
-    );
-  }
-
-  late final __wcsnicmpPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>,
-              ffi.Size)>>('_wcsnicmp');
-  late final __wcsnicmp = __wcsnicmpPtr.asFunction<
-      int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>, int)>();
-
-  int _wcsnicmp_l(
-    ffi.Pointer<ffi.WChar> _String1,
-    ffi.Pointer<ffi.WChar> _String2,
-    int _MaxCount,
-    _locale_t _Locale,
-  ) {
-    return __wcsnicmp_l(
-      _String1,
-      _String2,
-      _MaxCount,
-      _Locale,
-    );
-  }
-
-  late final __wcsnicmp_lPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>,
-              ffi.Size, _locale_t)>>('_wcsnicmp_l');
-  late final __wcsnicmp_l = __wcsnicmp_lPtr.asFunction<
-      int Function(
-          ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>, int, _locale_t)>();
-
-  int _wcsnset_s(
-    ffi.Pointer<ffi.WChar> _Destination,
-    int _SizeInWords,
-    int _Value,
-    int _MaxCount,
-  ) {
-    return __wcsnset_s(
-      _Destination,
-      _SizeInWords,
-      _Value,
-      _MaxCount,
-    );
-  }
-
-  late final __wcsnset_sPtr = _lookup<
-      ffi.NativeFunction<
-          errno_t Function(ffi.Pointer<ffi.WChar>, ffi.Size, ffi.WChar,
-              ffi.Size)>>('_wcsnset_s');
-  late final __wcsnset_s = __wcsnset_sPtr
-      .asFunction<int Function(ffi.Pointer<ffi.WChar>, int, int, int)>();
-
-  ffi.Pointer<ffi.WChar> _wcsnset(
-    ffi.Pointer<ffi.WChar> _String,
-    int _Value,
-    int _MaxCount,
-  ) {
-    return __wcsnset(
-      _String,
-      _Value,
-      _MaxCount,
-    );
-  }
-
-  late final __wcsnsetPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.WChar> Function(
-              ffi.Pointer<ffi.WChar>, ffi.WChar, ffi.Size)>>('_wcsnset');
-  late final __wcsnset = __wcsnsetPtr.asFunction<
-      ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>, int, int)>();
-
-  ffi.Pointer<ffi.WChar> _wcsrev(
-    ffi.Pointer<ffi.WChar> _String,
-  ) {
-    return __wcsrev(
-      _String,
-    );
-  }
-
-  late final __wcsrevPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>)>>('_wcsrev');
-  late final __wcsrev = __wcsrevPtr
-      .asFunction<ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>)>();
-
-  int _wcsset_s(
-    ffi.Pointer<ffi.WChar> _Destination,
-    int _SizeInWords,
-    int _Value,
-  ) {
-    return __wcsset_s(
-      _Destination,
-      _SizeInWords,
-      _Value,
-    );
-  }
-
-  late final __wcsset_sPtr = _lookup<
-      ffi.NativeFunction<
-          errno_t Function(
-              ffi.Pointer<ffi.WChar>, ffi.Size, ffi.WChar)>>('_wcsset_s');
-  late final __wcsset_s = __wcsset_sPtr
-      .asFunction<int Function(ffi.Pointer<ffi.WChar>, int, int)>();
-
-  ffi.Pointer<ffi.WChar> _wcsset(
-    ffi.Pointer<ffi.WChar> _String,
-    int _Value,
-  ) {
-    return __wcsset(
-      _String,
-      _Value,
-    );
-  }
-
-  late final __wcssetPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.WChar> Function(
-              ffi.Pointer<ffi.WChar>, ffi.WChar)>>('_wcsset');
-  late final __wcsset = __wcssetPtr.asFunction<
-      ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>, int)>();
-
-  int _wcslwr_s(
-    ffi.Pointer<ffi.WChar> _String,
-    int _SizeInWords,
-  ) {
-    return __wcslwr_s(
-      _String,
-      _SizeInWords,
-    );
-  }
-
-  late final __wcslwr_sPtr = _lookup<
-      ffi.NativeFunction<
-          errno_t Function(ffi.Pointer<ffi.WChar>, ffi.Size)>>('_wcslwr_s');
-  late final __wcslwr_s =
-      __wcslwr_sPtr.asFunction<int Function(ffi.Pointer<ffi.WChar>, int)>();
-
-  ffi.Pointer<ffi.WChar> _wcslwr(
-    ffi.Pointer<ffi.WChar> _String,
-  ) {
-    return __wcslwr(
-      _String,
-    );
-  }
-
-  late final __wcslwrPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>)>>('_wcslwr');
-  late final __wcslwr = __wcslwrPtr
-      .asFunction<ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>)>();
-
-  int _wcslwr_s_l(
-    ffi.Pointer<ffi.WChar> _String,
-    int _SizeInWords,
-    _locale_t _Locale,
-  ) {
-    return __wcslwr_s_l(
-      _String,
-      _SizeInWords,
-      _Locale,
-    );
-  }
-
-  late final __wcslwr_s_lPtr = _lookup<
-      ffi.NativeFunction<
-          errno_t Function(
-              ffi.Pointer<ffi.WChar>, ffi.Size, _locale_t)>>('_wcslwr_s_l');
-  late final __wcslwr_s_l = __wcslwr_s_lPtr
-      .asFunction<int Function(ffi.Pointer<ffi.WChar>, int, _locale_t)>();
-
-  ffi.Pointer<ffi.WChar> _wcslwr_l(
-    ffi.Pointer<ffi.WChar> _String,
-    _locale_t _Locale,
-  ) {
-    return __wcslwr_l(
-      _String,
-      _Locale,
-    );
-  }
-
-  late final __wcslwr_lPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.WChar> Function(
-              ffi.Pointer<ffi.WChar>, _locale_t)>>('_wcslwr_l');
-  late final __wcslwr_l = __wcslwr_lPtr.asFunction<
-      ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>, _locale_t)>();
-
-  int _wcsupr_s(
-    ffi.Pointer<ffi.WChar> _String,
-    int _Size,
-  ) {
-    return __wcsupr_s(
-      _String,
-      _Size,
-    );
-  }
-
-  late final __wcsupr_sPtr = _lookup<
-      ffi.NativeFunction<
-          errno_t Function(ffi.Pointer<ffi.WChar>, ffi.Size)>>('_wcsupr_s');
-  late final __wcsupr_s =
-      __wcsupr_sPtr.asFunction<int Function(ffi.Pointer<ffi.WChar>, int)>();
-
-  ffi.Pointer<ffi.WChar> _wcsupr(
-    ffi.Pointer<ffi.WChar> _String,
-  ) {
-    return __wcsupr(
-      _String,
-    );
-  }
-
-  late final __wcsuprPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>)>>('_wcsupr');
-  late final __wcsupr = __wcsuprPtr
-      .asFunction<ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>)>();
-
-  int _wcsupr_s_l(
-    ffi.Pointer<ffi.WChar> _String,
-    int _Size,
-    _locale_t _Locale,
-  ) {
-    return __wcsupr_s_l(
-      _String,
-      _Size,
-      _Locale,
-    );
-  }
-
-  late final __wcsupr_s_lPtr = _lookup<
-      ffi.NativeFunction<
-          errno_t Function(
-              ffi.Pointer<ffi.WChar>, ffi.Size, _locale_t)>>('_wcsupr_s_l');
-  late final __wcsupr_s_l = __wcsupr_s_lPtr
-      .asFunction<int Function(ffi.Pointer<ffi.WChar>, int, _locale_t)>();
-
-  ffi.Pointer<ffi.WChar> _wcsupr_l(
-    ffi.Pointer<ffi.WChar> _String,
-    _locale_t _Locale,
-  ) {
-    return __wcsupr_l(
-      _String,
-      _Locale,
-    );
-  }
-
-  late final __wcsupr_lPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.WChar> Function(
-              ffi.Pointer<ffi.WChar>, _locale_t)>>('_wcsupr_l');
-  late final __wcsupr_l = __wcsupr_lPtr.asFunction<
-      ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>, _locale_t)>();
-
-  int wcsxfrm(
-    ffi.Pointer<ffi.WChar> _Destination,
-    ffi.Pointer<ffi.WChar> _Source,
-    int _MaxCount,
-  ) {
-    return _wcsxfrm(
-      _Destination,
-      _Source,
-      _MaxCount,
-    );
-  }
-
-  late final _wcsxfrmPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Size Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>,
-              ffi.Size)>>('wcsxfrm');
-  late final _wcsxfrm = _wcsxfrmPtr.asFunction<
-      int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>, int)>();
-
-  int _wcsxfrm_l(
-    ffi.Pointer<ffi.WChar> _Destination,
-    ffi.Pointer<ffi.WChar> _Source,
-    int _MaxCount,
-    _locale_t _Locale,
-  ) {
-    return __wcsxfrm_l(
-      _Destination,
-      _Source,
-      _MaxCount,
-      _Locale,
-    );
-  }
-
-  late final __wcsxfrm_lPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Size Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>,
-              ffi.Size, _locale_t)>>('_wcsxfrm_l');
-  late final __wcsxfrm_l = __wcsxfrm_lPtr.asFunction<
-      int Function(
-          ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>, int, _locale_t)>();
-
-  int wcscoll(
-    ffi.Pointer<ffi.WChar> _String1,
-    ffi.Pointer<ffi.WChar> _String2,
-  ) {
-    return _wcscoll(
-      _String1,
-      _String2,
-    );
-  }
-
-  late final _wcscollPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>)>>('wcscoll');
-  late final _wcscoll = _wcscollPtr.asFunction<
-      int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>)>();
-
-  int _wcscoll_l(
-    ffi.Pointer<ffi.WChar> _String1,
-    ffi.Pointer<ffi.WChar> _String2,
-    _locale_t _Locale,
-  ) {
-    return __wcscoll_l(
-      _String1,
-      _String2,
-      _Locale,
-    );
-  }
-
-  late final __wcscoll_lPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>,
-              _locale_t)>>('_wcscoll_l');
-  late final __wcscoll_l = __wcscoll_lPtr.asFunction<
-      int Function(
-          ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>, _locale_t)>();
-
-  int _wcsicoll(
-    ffi.Pointer<ffi.WChar> _String1,
-    ffi.Pointer<ffi.WChar> _String2,
-  ) {
-    return __wcsicoll(
-      _String1,
-      _String2,
-    );
-  }
-
-  late final __wcsicollPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>)>>('_wcsicoll');
-  late final __wcsicoll = __wcsicollPtr.asFunction<
-      int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>)>();
-
-  int _wcsicoll_l(
-    ffi.Pointer<ffi.WChar> _String1,
-    ffi.Pointer<ffi.WChar> _String2,
-    _locale_t _Locale,
-  ) {
-    return __wcsicoll_l(
-      _String1,
-      _String2,
-      _Locale,
-    );
-  }
-
-  late final __wcsicoll_lPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>,
-              _locale_t)>>('_wcsicoll_l');
-  late final __wcsicoll_l = __wcsicoll_lPtr.asFunction<
-      int Function(
-          ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>, _locale_t)>();
-
-  int _wcsncoll(
-    ffi.Pointer<ffi.WChar> _String1,
-    ffi.Pointer<ffi.WChar> _String2,
-    int _MaxCount,
-  ) {
-    return __wcsncoll(
-      _String1,
-      _String2,
-      _MaxCount,
-    );
-  }
-
-  late final __wcsncollPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>,
-              ffi.Size)>>('_wcsncoll');
-  late final __wcsncoll = __wcsncollPtr.asFunction<
-      int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>, int)>();
-
-  int _wcsncoll_l(
-    ffi.Pointer<ffi.WChar> _String1,
-    ffi.Pointer<ffi.WChar> _String2,
-    int _MaxCount,
-    _locale_t _Locale,
-  ) {
-    return __wcsncoll_l(
-      _String1,
-      _String2,
-      _MaxCount,
-      _Locale,
-    );
-  }
-
-  late final __wcsncoll_lPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>,
-              ffi.Size, _locale_t)>>('_wcsncoll_l');
-  late final __wcsncoll_l = __wcsncoll_lPtr.asFunction<
-      int Function(
-          ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>, int, _locale_t)>();
-
-  int _wcsnicoll(
-    ffi.Pointer<ffi.WChar> _String1,
-    ffi.Pointer<ffi.WChar> _String2,
-    int _MaxCount,
-  ) {
-    return __wcsnicoll(
-      _String1,
-      _String2,
-      _MaxCount,
-    );
-  }
-
-  late final __wcsnicollPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>,
-              ffi.Size)>>('_wcsnicoll');
-  late final __wcsnicoll = __wcsnicollPtr.asFunction<
-      int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>, int)>();
-
-  int _wcsnicoll_l(
-    ffi.Pointer<ffi.WChar> _String1,
-    ffi.Pointer<ffi.WChar> _String2,
-    int _MaxCount,
-    _locale_t _Locale,
-  ) {
-    return __wcsnicoll_l(
-      _String1,
-      _String2,
-      _MaxCount,
-      _Locale,
-    );
-  }
-
-  late final __wcsnicoll_lPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>,
-              ffi.Size, _locale_t)>>('_wcsnicoll_l');
-  late final __wcsnicoll_l = __wcsnicoll_lPtr.asFunction<
-      int Function(
-          ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>, int, _locale_t)>();
-
-  ffi.Pointer<ffi.WChar> wcsdup(
-    ffi.Pointer<ffi.WChar> _String,
-  ) {
-    return _wcsdup1(
-      _String,
-    );
-  }
-
-  late final _wcsdupPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>)>>('wcsdup');
-  late final _wcsdup1 = _wcsdupPtr
-      .asFunction<ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>)>();
-
-  int wcsicmp(
-    ffi.Pointer<ffi.WChar> _String1,
-    ffi.Pointer<ffi.WChar> _String2,
-  ) {
-    return _wcsicmp1(
-      _String1,
-      _String2,
-    );
-  }
-
-  late final _wcsicmpPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>)>>('wcsicmp');
-  late final _wcsicmp1 = _wcsicmpPtr.asFunction<
-      int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>)>();
-
-  int wcsnicmp(
-    ffi.Pointer<ffi.WChar> _String1,
-    ffi.Pointer<ffi.WChar> _String2,
-    int _MaxCount,
-  ) {
-    return _wcsnicmp1(
-      _String1,
-      _String2,
-      _MaxCount,
-    );
-  }
-
-  late final _wcsnicmpPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>,
-              ffi.Size)>>('wcsnicmp');
-  late final _wcsnicmp1 = _wcsnicmpPtr.asFunction<
-      int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>, int)>();
-
-  ffi.Pointer<ffi.WChar> wcsnset(
-    ffi.Pointer<ffi.WChar> _String,
-    int _Value,
-    int _MaxCount,
-  ) {
-    return _wcsnset1(
-      _String,
-      _Value,
-      _MaxCount,
-    );
-  }
-
-  late final _wcsnsetPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.WChar> Function(
-              ffi.Pointer<ffi.WChar>, ffi.WChar, ffi.Size)>>('wcsnset');
-  late final _wcsnset1 = _wcsnsetPtr.asFunction<
-      ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>, int, int)>();
-
-  ffi.Pointer<ffi.WChar> wcsrev(
-    ffi.Pointer<ffi.WChar> _String,
-  ) {
-    return _wcsrev1(
-      _String,
-    );
-  }
-
-  late final _wcsrevPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>)>>('wcsrev');
-  late final _wcsrev1 = _wcsrevPtr
-      .asFunction<ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>)>();
-
-  ffi.Pointer<ffi.WChar> wcsset(
-    ffi.Pointer<ffi.WChar> _String,
-    int _Value,
-  ) {
-    return _wcsset1(
-      _String,
-      _Value,
-    );
-  }
-
-  late final _wcssetPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.WChar> Function(
-              ffi.Pointer<ffi.WChar>, ffi.WChar)>>('wcsset');
-  late final _wcsset1 = _wcssetPtr.asFunction<
-      ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>, int)>();
-
-  ffi.Pointer<ffi.WChar> wcslwr(
-    ffi.Pointer<ffi.WChar> _String,
-  ) {
-    return _wcslwr1(
-      _String,
-    );
-  }
-
-  late final _wcslwrPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>)>>('wcslwr');
-  late final _wcslwr1 = _wcslwrPtr
-      .asFunction<ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>)>();
-
-  ffi.Pointer<ffi.WChar> wcsupr(
-    ffi.Pointer<ffi.WChar> _String,
-  ) {
-    return _wcsupr1(
-      _String,
-    );
-  }
-
-  late final _wcsuprPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>)>>('wcsupr');
-  late final _wcsupr1 = _wcsuprPtr
-      .asFunction<ffi.Pointer<ffi.WChar> Function(ffi.Pointer<ffi.WChar>)>();
-
-  int wcsicoll(
-    ffi.Pointer<ffi.WChar> _String1,
-    ffi.Pointer<ffi.WChar> _String2,
-  ) {
-    return _wcsicoll1(
-      _String1,
-      _String2,
-    );
-  }
-
-  late final _wcsicollPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>)>>('wcsicoll');
-  late final _wcsicoll1 = _wcsicollPtr.asFunction<
-      int Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>)>();
-
-  int strcpy_s(
-    ffi.Pointer<ffi.Char> _Destination,
-    int _SizeInBytes,
-    ffi.Pointer<ffi.Char> _Source,
-  ) {
-    return _strcpy_s(
-      _Destination,
-      _SizeInBytes,
-      _Source,
-    );
-  }
-
-  late final _strcpy_sPtr = _lookup<
-      ffi.NativeFunction<
-          errno_t Function(ffi.Pointer<ffi.Char>, rsize_t,
-              ffi.Pointer<ffi.Char>)>>('strcpy_s');
-  late final _strcpy_s = _strcpy_sPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Char>, int, ffi.Pointer<ffi.Char>)>();
-
-  int strcat_s(
-    ffi.Pointer<ffi.Char> _Destination,
-    int _SizeInBytes,
-    ffi.Pointer<ffi.Char> _Source,
-  ) {
-    return _strcat_s(
-      _Destination,
-      _SizeInBytes,
-      _Source,
-    );
-  }
-
-  late final _strcat_sPtr = _lookup<
-      ffi.NativeFunction<
-          errno_t Function(ffi.Pointer<ffi.Char>, rsize_t,
-              ffi.Pointer<ffi.Char>)>>('strcat_s');
-  late final _strcat_s = _strcat_sPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Char>, int, ffi.Pointer<ffi.Char>)>();
-
-  int strerror_s(
-    ffi.Pointer<ffi.Char> _Buffer,
-    int _SizeInBytes,
-    int _ErrorNumber,
-  ) {
-    return _strerror_s1(
-      _Buffer,
-      _SizeInBytes,
-      _ErrorNumber,
-    );
-  }
-
-  late final _strerror_sPtr = _lookup<
-      ffi.NativeFunction<
-          errno_t Function(
-              ffi.Pointer<ffi.Char>, ffi.Size, ffi.Int)>>('strerror_s');
-  late final _strerror_s1 = _strerror_sPtr
-      .asFunction<int Function(ffi.Pointer<ffi.Char>, int, int)>();
-
-  int strncat_s(
-    ffi.Pointer<ffi.Char> _Destination,
-    int _SizeInBytes,
-    ffi.Pointer<ffi.Char> _Source,
-    int _MaxCount,
-  ) {
-    return _strncat_s(
-      _Destination,
-      _SizeInBytes,
-      _Source,
-      _MaxCount,
-    );
-  }
-
-  late final _strncat_sPtr = _lookup<
-      ffi.NativeFunction<
-          errno_t Function(ffi.Pointer<ffi.Char>, rsize_t,
-              ffi.Pointer<ffi.Char>, rsize_t)>>('strncat_s');
-  late final _strncat_s = _strncat_sPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Char>, int, ffi.Pointer<ffi.Char>, int)>();
-
-  int strncpy_s(
-    ffi.Pointer<ffi.Char> _Destination,
-    int _SizeInBytes,
-    ffi.Pointer<ffi.Char> _Source,
-    int _MaxCount,
-  ) {
-    return _strncpy_s(
-      _Destination,
-      _SizeInBytes,
-      _Source,
-      _MaxCount,
-    );
-  }
-
-  late final _strncpy_sPtr = _lookup<
-      ffi.NativeFunction<
-          errno_t Function(ffi.Pointer<ffi.Char>, rsize_t,
-              ffi.Pointer<ffi.Char>, rsize_t)>>('strncpy_s');
-  late final _strncpy_s = _strncpy_sPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Char>, int, ffi.Pointer<ffi.Char>, int)>();
-
-  ffi.Pointer<ffi.Char> strtok_s(
-    ffi.Pointer<ffi.Char> _String,
-    ffi.Pointer<ffi.Char> _Delimiter,
-    ffi.Pointer<ffi.Pointer<ffi.Char>> _Context,
-  ) {
-    return _strtok_s(
-      _String,
-      _Delimiter,
-      _Context,
-    );
-  }
-
-  late final _strtok_sPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Char> Function(
-              ffi.Pointer<ffi.Char>,
-              ffi.Pointer<ffi.Char>,
-              ffi.Pointer<ffi.Pointer<ffi.Char>>)>>('strtok_s');
-  late final _strtok_s = _strtok_sPtr.asFunction<
-      ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>,
-          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Pointer<ffi.Char>>)>();
-
-  ffi.Pointer<ffi.Void> _memccpy(
-    ffi.Pointer<ffi.Void> _Dst,
-    ffi.Pointer<ffi.Void> _Src,
-    int _Val,
-    int _MaxCount,
-  ) {
-    return __memccpy(
-      _Dst,
-      _Src,
-      _Val,
-      _MaxCount,
-    );
-  }
-
-  late final __memccpyPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>,
-              ffi.Pointer<ffi.Void>, ffi.Int, ffi.Size)>>('_memccpy');
-  late final __memccpy = __memccpyPtr.asFunction<
-      ffi.Pointer<ffi.Void> Function(
-          ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int, int)>();
-
   ffi.Pointer<ffi.Char> strcat(
-    ffi.Pointer<ffi.Char> _Destination,
-    ffi.Pointer<ffi.Char> _Source,
+    ffi.Pointer<ffi.Char> __s1,
+    ffi.Pointer<ffi.Char> __s2,
   ) {
     return _strcat(
-      _Destination,
-      _Source,
+      __s1,
+      __s2,
     );
   }
 
@@ -1696,13 +132,30 @@ class Assimp {
       ffi.Pointer<ffi.Char> Function(
           ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
 
+  ffi.Pointer<ffi.Char> strchr(
+    ffi.Pointer<ffi.Char> __s,
+    int __c,
+  ) {
+    return _strchr(
+      __s,
+      __c,
+    );
+  }
+
+  late final _strchrPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>, ffi.Int)>>('strchr');
+  late final _strchr = _strchrPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>, int)>();
+
   int strcmp(
-    ffi.Pointer<ffi.Char> _Str1,
-    ffi.Pointer<ffi.Char> _Str2,
+    ffi.Pointer<ffi.Char> __s1,
+    ffi.Pointer<ffi.Char> __s2,
   ) {
     return _strcmp(
-      _Str1,
-      _Str2,
+      __s1,
+      __s2,
     );
   }
 
@@ -1713,30 +166,13 @@ class Assimp {
   late final _strcmp = _strcmpPtr
       .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
 
-  int _strcmpi(
-    ffi.Pointer<ffi.Char> _String1,
-    ffi.Pointer<ffi.Char> _String2,
-  ) {
-    return __strcmpi(
-      _String1,
-      _String2,
-    );
-  }
-
-  late final __strcmpiPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('_strcmpi');
-  late final __strcmpi = __strcmpiPtr
-      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
-
   int strcoll(
-    ffi.Pointer<ffi.Char> _String1,
-    ffi.Pointer<ffi.Char> _String2,
+    ffi.Pointer<ffi.Char> __s1,
+    ffi.Pointer<ffi.Char> __s2,
   ) {
     return _strcoll(
-      _String1,
-      _String2,
+      __s1,
+      __s2,
     );
   }
 
@@ -1747,32 +183,13 @@ class Assimp {
   late final _strcoll = _strcollPtr
       .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
 
-  int _strcoll_l(
-    ffi.Pointer<ffi.Char> _String1,
-    ffi.Pointer<ffi.Char> _String2,
-    _locale_t _Locale,
-  ) {
-    return __strcoll_l(
-      _String1,
-      _String2,
-      _Locale,
-    );
-  }
-
-  late final __strcoll_lPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
-              _locale_t)>>('_strcoll_l');
-  late final __strcoll_l = __strcoll_lPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, _locale_t)>();
-
   ffi.Pointer<ffi.Char> strcpy(
-    ffi.Pointer<ffi.Char> _Destination,
-    ffi.Pointer<ffi.Char> _Source,
+    ffi.Pointer<ffi.Char> __dst,
+    ffi.Pointer<ffi.Char> __src,
   ) {
     return _strcpy(
-      _Destination,
-      _Source,
+      __dst,
+      __src,
     );
   }
 
@@ -1785,244 +202,59 @@ class Assimp {
           ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
 
   int strcspn(
-    ffi.Pointer<ffi.Char> _Str,
-    ffi.Pointer<ffi.Char> _Control,
+    ffi.Pointer<ffi.Char> __s,
+    ffi.Pointer<ffi.Char> __charset,
   ) {
     return _strcspn(
-      _Str,
-      _Control,
+      __s,
+      __charset,
     );
   }
 
   late final _strcspnPtr = _lookup<
       ffi.NativeFunction<
-          ffi.UnsignedLongLong Function(
+          ffi.UnsignedLong Function(
               ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('strcspn');
   late final _strcspn = _strcspnPtr
       .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Char> _strdup(
-    ffi.Pointer<ffi.Char> _Source,
-  ) {
-    return __strdup(
-      _Source,
-    );
-  }
-
-  late final __strdupPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>('_strdup');
-  late final __strdup = __strdupPtr
-      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
-
-  ffi.Pointer<ffi.Char> _strerror(
-    ffi.Pointer<ffi.Char> _ErrorMessage,
-  ) {
-    return __strerror(
-      _ErrorMessage,
-    );
-  }
-
-  late final __strerrorPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>('_strerror');
-  late final __strerror = __strerrorPtr
-      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
-
-  int _strerror_s(
-    ffi.Pointer<ffi.Char> _Buffer,
-    int _SizeInBytes,
-    ffi.Pointer<ffi.Char> _ErrorMessage,
-  ) {
-    return __strerror_s(
-      _Buffer,
-      _SizeInBytes,
-      _ErrorMessage,
-    );
-  }
-
-  late final __strerror_sPtr = _lookup<
-      ffi.NativeFunction<
-          errno_t Function(ffi.Pointer<ffi.Char>, ffi.Size,
-              ffi.Pointer<ffi.Char>)>>('_strerror_s');
-  late final __strerror_s = __strerror_sPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Char>, int, ffi.Pointer<ffi.Char>)>();
-
   ffi.Pointer<ffi.Char> strerror(
-    int _ErrorMessage,
+    int __errnum,
   ) {
-    return _strerror1(
-      _ErrorMessage,
+    return _strerror(
+      __errnum,
     );
   }
 
   late final _strerrorPtr =
       _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function(ffi.Int)>>(
           'strerror');
-  late final _strerror1 =
+  late final _strerror =
       _strerrorPtr.asFunction<ffi.Pointer<ffi.Char> Function(int)>();
 
-  int _stricmp(
-    ffi.Pointer<ffi.Char> _String1,
-    ffi.Pointer<ffi.Char> _String2,
-  ) {
-    return __stricmp(
-      _String1,
-      _String2,
-    );
-  }
-
-  late final __stricmpPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('_stricmp');
-  late final __stricmp = __stricmpPtr
-      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
-
-  int _stricoll(
-    ffi.Pointer<ffi.Char> _String1,
-    ffi.Pointer<ffi.Char> _String2,
-  ) {
-    return __stricoll(
-      _String1,
-      _String2,
-    );
-  }
-
-  late final __stricollPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('_stricoll');
-  late final __stricoll = __stricollPtr
-      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
-
-  int _stricoll_l(
-    ffi.Pointer<ffi.Char> _String1,
-    ffi.Pointer<ffi.Char> _String2,
-    _locale_t _Locale,
-  ) {
-    return __stricoll_l(
-      _String1,
-      _String2,
-      _Locale,
-    );
-  }
-
-  late final __stricoll_lPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
-              _locale_t)>>('_stricoll_l');
-  late final __stricoll_l = __stricoll_lPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, _locale_t)>();
-
-  int _stricmp_l(
-    ffi.Pointer<ffi.Char> _String1,
-    ffi.Pointer<ffi.Char> _String2,
-    _locale_t _Locale,
-  ) {
-    return __stricmp_l(
-      _String1,
-      _String2,
-      _Locale,
-    );
-  }
-
-  late final __stricmp_lPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
-              _locale_t)>>('_stricmp_l');
-  late final __stricmp_l = __stricmp_lPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, _locale_t)>();
-
   int strlen(
-    ffi.Pointer<ffi.Char> _Str,
+    ffi.Pointer<ffi.Char> __s,
   ) {
     return _strlen(
-      _Str,
+      __s,
     );
   }
 
   late final _strlenPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.UnsignedLongLong Function(ffi.Pointer<ffi.Char>)>>('strlen');
+          ffi.NativeFunction<ffi.UnsignedLong Function(ffi.Pointer<ffi.Char>)>>(
+      'strlen');
   late final _strlen =
       _strlenPtr.asFunction<int Function(ffi.Pointer<ffi.Char>)>();
 
-  int _strlwr_s(
-    ffi.Pointer<ffi.Char> _String,
-    int _Size,
-  ) {
-    return __strlwr_s(
-      _String,
-      _Size,
-    );
-  }
-
-  late final __strlwr_sPtr = _lookup<
-      ffi.NativeFunction<
-          errno_t Function(ffi.Pointer<ffi.Char>, ffi.Size)>>('_strlwr_s');
-  late final __strlwr_s =
-      __strlwr_sPtr.asFunction<int Function(ffi.Pointer<ffi.Char>, int)>();
-
-  ffi.Pointer<ffi.Char> _strlwr(
-    ffi.Pointer<ffi.Char> _String,
-  ) {
-    return __strlwr(
-      _String,
-    );
-  }
-
-  late final __strlwrPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>('_strlwr');
-  late final __strlwr = __strlwrPtr
-      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
-
-  int _strlwr_s_l(
-    ffi.Pointer<ffi.Char> _String,
-    int _Size,
-    _locale_t _Locale,
-  ) {
-    return __strlwr_s_l(
-      _String,
-      _Size,
-      _Locale,
-    );
-  }
-
-  late final __strlwr_s_lPtr = _lookup<
-      ffi.NativeFunction<
-          errno_t Function(
-              ffi.Pointer<ffi.Char>, ffi.Size, _locale_t)>>('_strlwr_s_l');
-  late final __strlwr_s_l = __strlwr_s_lPtr
-      .asFunction<int Function(ffi.Pointer<ffi.Char>, int, _locale_t)>();
-
-  ffi.Pointer<ffi.Char> _strlwr_l(
-    ffi.Pointer<ffi.Char> _String,
-    _locale_t _Locale,
-  ) {
-    return __strlwr_l(
-      _String,
-      _Locale,
-    );
-  }
-
-  late final __strlwr_lPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Char> Function(
-              ffi.Pointer<ffi.Char>, _locale_t)>>('_strlwr_l');
-  late final __strlwr_l = __strlwr_lPtr.asFunction<
-      ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>, _locale_t)>();
-
   ffi.Pointer<ffi.Char> strncat(
-    ffi.Pointer<ffi.Char> _Destination,
-    ffi.Pointer<ffi.Char> _Source,
-    int _Count,
+    ffi.Pointer<ffi.Char> __s1,
+    ffi.Pointer<ffi.Char> __s2,
+    int __n,
   ) {
     return _strncat(
-      _Destination,
-      _Source,
-      _Count,
+      __s1,
+      __s2,
+      __n,
     );
   }
 
@@ -2035,14 +267,14 @@ class Assimp {
           ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
 
   int strncmp(
-    ffi.Pointer<ffi.Char> _Str1,
-    ffi.Pointer<ffi.Char> _Str2,
-    int _MaxCount,
+    ffi.Pointer<ffi.Char> __s1,
+    ffi.Pointer<ffi.Char> __s2,
+    int __n,
   ) {
     return _strncmp(
-      _Str1,
-      _Str2,
-      _MaxCount,
+      __s1,
+      __s2,
+      __n,
     );
   }
 
@@ -2053,154 +285,15 @@ class Assimp {
   late final _strncmp = _strncmpPtr.asFunction<
       int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
 
-  int _strnicmp(
-    ffi.Pointer<ffi.Char> _String1,
-    ffi.Pointer<ffi.Char> _String2,
-    int _MaxCount,
-  ) {
-    return __strnicmp(
-      _String1,
-      _String2,
-      _MaxCount,
-    );
-  }
-
-  late final __strnicmpPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
-              ffi.Size)>>('_strnicmp');
-  late final __strnicmp = __strnicmpPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
-
-  int _strnicmp_l(
-    ffi.Pointer<ffi.Char> _String1,
-    ffi.Pointer<ffi.Char> _String2,
-    int _MaxCount,
-    _locale_t _Locale,
-  ) {
-    return __strnicmp_l(
-      _String1,
-      _String2,
-      _MaxCount,
-      _Locale,
-    );
-  }
-
-  late final __strnicmp_lPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
-              ffi.Size, _locale_t)>>('_strnicmp_l');
-  late final __strnicmp_l = __strnicmp_lPtr.asFunction<
-      int Function(
-          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int, _locale_t)>();
-
-  int _strnicoll(
-    ffi.Pointer<ffi.Char> _String1,
-    ffi.Pointer<ffi.Char> _String2,
-    int _MaxCount,
-  ) {
-    return __strnicoll(
-      _String1,
-      _String2,
-      _MaxCount,
-    );
-  }
-
-  late final __strnicollPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
-              ffi.Size)>>('_strnicoll');
-  late final __strnicoll = __strnicollPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
-
-  int _strnicoll_l(
-    ffi.Pointer<ffi.Char> _String1,
-    ffi.Pointer<ffi.Char> _String2,
-    int _MaxCount,
-    _locale_t _Locale,
-  ) {
-    return __strnicoll_l(
-      _String1,
-      _String2,
-      _MaxCount,
-      _Locale,
-    );
-  }
-
-  late final __strnicoll_lPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
-              ffi.Size, _locale_t)>>('_strnicoll_l');
-  late final __strnicoll_l = __strnicoll_lPtr.asFunction<
-      int Function(
-          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int, _locale_t)>();
-
-  int _strncoll(
-    ffi.Pointer<ffi.Char> _String1,
-    ffi.Pointer<ffi.Char> _String2,
-    int _MaxCount,
-  ) {
-    return __strncoll(
-      _String1,
-      _String2,
-      _MaxCount,
-    );
-  }
-
-  late final __strncollPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
-              ffi.Size)>>('_strncoll');
-  late final __strncoll = __strncollPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
-
-  int _strncoll_l(
-    ffi.Pointer<ffi.Char> _String1,
-    ffi.Pointer<ffi.Char> _String2,
-    int _MaxCount,
-    _locale_t _Locale,
-  ) {
-    return __strncoll_l(
-      _String1,
-      _String2,
-      _MaxCount,
-      _Locale,
-    );
-  }
-
-  late final __strncoll_lPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
-              ffi.Size, _locale_t)>>('_strncoll_l');
-  late final __strncoll_l = __strncoll_lPtr.asFunction<
-      int Function(
-          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int, _locale_t)>();
-
-  int __strncnt(
-    ffi.Pointer<ffi.Char> _String,
-    int _Count,
-  ) {
-    return ___strncnt(
-      _String,
-      _Count,
-    );
-  }
-
-  late final ___strncntPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Size Function(ffi.Pointer<ffi.Char>, ffi.Size)>>('__strncnt');
-  late final ___strncnt =
-      ___strncntPtr.asFunction<int Function(ffi.Pointer<ffi.Char>, int)>();
-
   ffi.Pointer<ffi.Char> strncpy(
-    ffi.Pointer<ffi.Char> _Destination,
-    ffi.Pointer<ffi.Char> _Source,
-    int _Count,
+    ffi.Pointer<ffi.Char> __dst,
+    ffi.Pointer<ffi.Char> __src,
+    int __n,
   ) {
     return _strncpy(
-      _Destination,
-      _Source,
-      _Count,
+      __dst,
+      __src,
+      __n,
     );
   }
 
@@ -2212,69 +305,13 @@ class Assimp {
       ffi.Pointer<ffi.Char> Function(
           ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
 
-  int strnlen(
-    ffi.Pointer<ffi.Char> _String,
-    int _MaxCount,
-  ) {
-    return _strnlen(
-      _String,
-      _MaxCount,
-    );
-  }
-
-  late final _strnlenPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Size Function(ffi.Pointer<ffi.Char>, ffi.Size)>>('strnlen');
-  late final _strnlen =
-      _strnlenPtr.asFunction<int Function(ffi.Pointer<ffi.Char>, int)>();
-
-  int _strnset_s(
-    ffi.Pointer<ffi.Char> _String,
-    int _SizeInBytes,
-    int _Value,
-    int _MaxCount,
-  ) {
-    return __strnset_s(
-      _String,
-      _SizeInBytes,
-      _Value,
-      _MaxCount,
-    );
-  }
-
-  late final __strnset_sPtr = _lookup<
-      ffi.NativeFunction<
-          errno_t Function(ffi.Pointer<ffi.Char>, ffi.Size, ffi.Int,
-              ffi.Size)>>('_strnset_s');
-  late final __strnset_s = __strnset_sPtr
-      .asFunction<int Function(ffi.Pointer<ffi.Char>, int, int, int)>();
-
-  ffi.Pointer<ffi.Char> _strnset(
-    ffi.Pointer<ffi.Char> _Destination,
-    int _Value,
-    int _Count,
-  ) {
-    return __strnset(
-      _Destination,
-      _Value,
-      _Count,
-    );
-  }
-
-  late final __strnsetPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Char> Function(
-              ffi.Pointer<ffi.Char>, ffi.Int, ffi.Size)>>('_strnset');
-  late final __strnset = __strnsetPtr.asFunction<
-      ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>, int, int)>();
-
   ffi.Pointer<ffi.Char> strpbrk(
-    ffi.Pointer<ffi.Char> _Str,
-    ffi.Pointer<ffi.Char> _Control,
+    ffi.Pointer<ffi.Char> __s,
+    ffi.Pointer<ffi.Char> __charset,
   ) {
     return _strpbrk(
-      _Str,
-      _Control,
+      __s,
+      __charset,
     );
   }
 
@@ -2286,80 +323,65 @@ class Assimp {
       ffi.Pointer<ffi.Char> Function(
           ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Char> _strrev(
-    ffi.Pointer<ffi.Char> _Str,
+  ffi.Pointer<ffi.Char> strrchr(
+    ffi.Pointer<ffi.Char> __s,
+    int __c,
   ) {
-    return __strrev(
-      _Str,
+    return _strrchr(
+      __s,
+      __c,
     );
   }
 
-  late final __strrevPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>('_strrev');
-  late final __strrev = __strrevPtr
-      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
-
-  int _strset_s(
-    ffi.Pointer<ffi.Char> _Destination,
-    int _DestinationSize,
-    int _Value,
-  ) {
-    return __strset_s(
-      _Destination,
-      _DestinationSize,
-      _Value,
-    );
-  }
-
-  late final __strset_sPtr = _lookup<
-      ffi.NativeFunction<
-          errno_t Function(
-              ffi.Pointer<ffi.Char>, ffi.Size, ffi.Int)>>('_strset_s');
-  late final __strset_s =
-      __strset_sPtr.asFunction<int Function(ffi.Pointer<ffi.Char>, int, int)>();
-
-  ffi.Pointer<ffi.Char> _strset(
-    ffi.Pointer<ffi.Char> _Destination,
-    int _Value,
-  ) {
-    return __strset(
-      _Destination,
-      _Value,
-    );
-  }
-
-  late final __strsetPtr = _lookup<
+  late final _strrchrPtr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<ffi.Char> Function(
-              ffi.Pointer<ffi.Char>, ffi.Int)>>('_strset');
-  late final __strset = __strsetPtr
+              ffi.Pointer<ffi.Char>, ffi.Int)>>('strrchr');
+  late final _strrchr = _strrchrPtr
       .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>, int)>();
 
   int strspn(
-    ffi.Pointer<ffi.Char> _Str,
-    ffi.Pointer<ffi.Char> _Control,
+    ffi.Pointer<ffi.Char> __s,
+    ffi.Pointer<ffi.Char> __charset,
   ) {
     return _strspn(
-      _Str,
-      _Control,
+      __s,
+      __charset,
     );
   }
 
   late final _strspnPtr = _lookup<
       ffi.NativeFunction<
-          ffi.UnsignedLongLong Function(
+          ffi.UnsignedLong Function(
               ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('strspn');
   late final _strspn = _strspnPtr
       .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
 
+  ffi.Pointer<ffi.Char> strstr(
+    ffi.Pointer<ffi.Char> __big,
+    ffi.Pointer<ffi.Char> __little,
+  ) {
+    return _strstr(
+      __big,
+      __little,
+    );
+  }
+
+  late final _strstrPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('strstr');
+  late final _strstr = _strstrPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
   ffi.Pointer<ffi.Char> strtok(
-    ffi.Pointer<ffi.Char> _String,
-    ffi.Pointer<ffi.Char> _Delimiter,
+    ffi.Pointer<ffi.Char> __str,
+    ffi.Pointer<ffi.Char> __sep,
   ) {
     return _strtok(
-      _String,
-      _Delimiter,
+      __str,
+      __sep,
     );
   }
 
@@ -2371,257 +393,669 @@ class Assimp {
       ffi.Pointer<ffi.Char> Function(
           ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
 
-  int _strupr_s(
-    ffi.Pointer<ffi.Char> _String,
-    int _Size,
-  ) {
-    return __strupr_s(
-      _String,
-      _Size,
-    );
-  }
-
-  late final __strupr_sPtr = _lookup<
-      ffi.NativeFunction<
-          errno_t Function(ffi.Pointer<ffi.Char>, ffi.Size)>>('_strupr_s');
-  late final __strupr_s =
-      __strupr_sPtr.asFunction<int Function(ffi.Pointer<ffi.Char>, int)>();
-
-  ffi.Pointer<ffi.Char> _strupr(
-    ffi.Pointer<ffi.Char> _String,
-  ) {
-    return __strupr(
-      _String,
-    );
-  }
-
-  late final __struprPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>('_strupr');
-  late final __strupr = __struprPtr
-      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
-
-  int _strupr_s_l(
-    ffi.Pointer<ffi.Char> _String,
-    int _Size,
-    _locale_t _Locale,
-  ) {
-    return __strupr_s_l(
-      _String,
-      _Size,
-      _Locale,
-    );
-  }
-
-  late final __strupr_s_lPtr = _lookup<
-      ffi.NativeFunction<
-          errno_t Function(
-              ffi.Pointer<ffi.Char>, ffi.Size, _locale_t)>>('_strupr_s_l');
-  late final __strupr_s_l = __strupr_s_lPtr
-      .asFunction<int Function(ffi.Pointer<ffi.Char>, int, _locale_t)>();
-
-  ffi.Pointer<ffi.Char> _strupr_l(
-    ffi.Pointer<ffi.Char> _String,
-    _locale_t _Locale,
-  ) {
-    return __strupr_l(
-      _String,
-      _Locale,
-    );
-  }
-
-  late final __strupr_lPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Char> Function(
-              ffi.Pointer<ffi.Char>, _locale_t)>>('_strupr_l');
-  late final __strupr_l = __strupr_lPtr.asFunction<
-      ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>, _locale_t)>();
-
   int strxfrm(
-    ffi.Pointer<ffi.Char> _Destination,
-    ffi.Pointer<ffi.Char> _Source,
-    int _MaxCount,
+    ffi.Pointer<ffi.Char> __s1,
+    ffi.Pointer<ffi.Char> __s2,
+    int __n,
   ) {
     return _strxfrm(
-      _Destination,
-      _Source,
-      _MaxCount,
+      __s1,
+      __s2,
+      __n,
     );
   }
 
   late final _strxfrmPtr = _lookup<
       ffi.NativeFunction<
-          ffi.UnsignedLongLong Function(ffi.Pointer<ffi.Char>,
+          ffi.UnsignedLong Function(ffi.Pointer<ffi.Char>,
               ffi.Pointer<ffi.Char>, ffi.Size)>>('strxfrm');
   late final _strxfrm = _strxfrmPtr.asFunction<
       int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
 
-  int _strxfrm_l(
-    ffi.Pointer<ffi.Char> _Destination,
-    ffi.Pointer<ffi.Char> _Source,
-    int _MaxCount,
-    _locale_t _Locale,
+  ffi.Pointer<ffi.Char> strtok_r(
+    ffi.Pointer<ffi.Char> __str,
+    ffi.Pointer<ffi.Char> __sep,
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __lasts,
   ) {
-    return __strxfrm_l(
-      _Destination,
-      _Source,
-      _MaxCount,
-      _Locale,
+    return _strtok_r(
+      __str,
+      __sep,
+      __lasts,
     );
   }
 
-  late final __strxfrm_lPtr = _lookup<
+  late final _strtok_rPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Size Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
-              ffi.Size, _locale_t)>>('_strxfrm_l');
-  late final __strxfrm_l = __strxfrm_lPtr.asFunction<
-      int Function(
-          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int, _locale_t)>();
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Pointer<ffi.Char>>)>>('strtok_r');
+  late final _strtok_r = _strtok_rPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>,
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Pointer<ffi.Char>>)>();
+
+  int strerror_r(
+    int __errnum,
+    ffi.Pointer<ffi.Char> __strerrbuf,
+    int __buflen,
+  ) {
+    return _strerror_r(
+      __errnum,
+      __strerrbuf,
+      __buflen,
+    );
+  }
+
+  late final _strerror_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Int, ffi.Pointer<ffi.Char>, ffi.Size)>>('strerror_r');
+  late final _strerror_r = _strerror_rPtr
+      .asFunction<int Function(int, ffi.Pointer<ffi.Char>, int)>();
 
   ffi.Pointer<ffi.Char> strdup(
-    ffi.Pointer<ffi.Char> _String,
+    ffi.Pointer<ffi.Char> __s1,
   ) {
-    return _strdup1(
-      _String,
+    return _strdup(
+      __s1,
     );
   }
 
   late final _strdupPtr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>('strdup');
-  late final _strdup1 = _strdupPtr
+  late final _strdup = _strdupPtr
       .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
 
-  int strcmpi(
-    ffi.Pointer<ffi.Char> _String1,
-    ffi.Pointer<ffi.Char> _String2,
+  ffi.Pointer<ffi.Void> memccpy(
+    ffi.Pointer<ffi.Void> __dst,
+    ffi.Pointer<ffi.Void> __src,
+    int __c,
+    int __n,
   ) {
-    return _strcmpi1(
-      _String1,
-      _String2,
+    return _memccpy(
+      __dst,
+      __src,
+      __c,
+      __n,
     );
   }
 
-  late final _strcmpiPtr = _lookup<
+  late final _memccpyPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('strcmpi');
-  late final _strcmpi1 = _strcmpiPtr
-      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+          ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>,
+              ffi.Pointer<ffi.Void>, ffi.Int, ffi.Size)>>('memccpy');
+  late final _memccpy = _memccpyPtr.asFunction<
+      ffi.Pointer<ffi.Void> Function(
+          ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int, int)>();
 
-  int stricmp(
-    ffi.Pointer<ffi.Char> _String1,
-    ffi.Pointer<ffi.Char> _String2,
+  ffi.Pointer<ffi.Char> stpcpy(
+    ffi.Pointer<ffi.Char> __dst,
+    ffi.Pointer<ffi.Char> __src,
   ) {
-    return _stricmp1(
-      _String1,
-      _String2,
+    return _stpcpy(
+      __dst,
+      __src,
     );
   }
 
-  late final _stricmpPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(
-              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('stricmp');
-  late final _stricmp1 = _stricmpPtr
-      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
-
-  ffi.Pointer<ffi.Char> strlwr(
-    ffi.Pointer<ffi.Char> _String,
-  ) {
-    return _strlwr1(
-      _String,
-    );
-  }
-
-  late final _strlwrPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>('strlwr');
-  late final _strlwr1 = _strlwrPtr
-      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
-
-  int strnicmp(
-    ffi.Pointer<ffi.Char> _String1,
-    ffi.Pointer<ffi.Char> _String2,
-    int _MaxCount,
-  ) {
-    return _strnicmp1(
-      _String1,
-      _String2,
-      _MaxCount,
-    );
-  }
-
-  late final _strnicmpPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
-              ffi.Size)>>('strnicmp');
-  late final _strnicmp1 = _strnicmpPtr.asFunction<
-      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
-
-  ffi.Pointer<ffi.Char> strnset(
-    ffi.Pointer<ffi.Char> _String,
-    int _Value,
-    int _MaxCount,
-  ) {
-    return _strnset1(
-      _String,
-      _Value,
-      _MaxCount,
-    );
-  }
-
-  late final _strnsetPtr = _lookup<
+  late final _stpcpyPtr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<ffi.Char> Function(
-              ffi.Pointer<ffi.Char>, ffi.Int, ffi.Size)>>('strnset');
-  late final _strnset1 = _strnsetPtr.asFunction<
-      ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>, int, int)>();
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('stpcpy');
+  late final _stpcpy = _stpcpyPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
 
-  ffi.Pointer<ffi.Char> strrev(
-    ffi.Pointer<ffi.Char> _String,
+  ffi.Pointer<ffi.Char> stpncpy(
+    ffi.Pointer<ffi.Char> __dst,
+    ffi.Pointer<ffi.Char> __src,
+    int __n,
   ) {
-    return _strrev1(
-      _String,
+    return _stpncpy(
+      __dst,
+      __src,
+      __n,
     );
   }
 
-  late final _strrevPtr = _lookup<
+  late final _stpncpyPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>('strrev');
-  late final _strrev1 = _strrevPtr
-      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>, ffi.Size)>>('stpncpy');
+  late final _stpncpy = _stpncpyPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
 
-  ffi.Pointer<ffi.Char> strset(
-    ffi.Pointer<ffi.Char> _String,
-    int _Value,
+  ffi.Pointer<ffi.Char> strndup(
+    ffi.Pointer<ffi.Char> __s1,
+    int __n,
   ) {
-    return _strset1(
-      _String,
-      _Value,
+    return _strndup(
+      __s1,
+      __n,
     );
   }
 
-  late final _strsetPtr = _lookup<
+  late final _strndupPtr = _lookup<
       ffi.NativeFunction<
           ffi.Pointer<ffi.Char> Function(
-              ffi.Pointer<ffi.Char>, ffi.Int)>>('strset');
-  late final _strset1 = _strsetPtr
+              ffi.Pointer<ffi.Char>, ffi.Size)>>('strndup');
+  late final _strndup = _strndupPtr
       .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>, int)>();
 
-  ffi.Pointer<ffi.Char> strupr(
-    ffi.Pointer<ffi.Char> _String,
+  int strnlen(
+    ffi.Pointer<ffi.Char> __s1,
+    int __n,
   ) {
-    return _strupr1(
-      _String,
+    return _strnlen(
+      __s1,
+      __n,
     );
   }
 
-  late final _struprPtr = _lookup<
+  late final _strnlenPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>>('strupr');
-  late final _strupr1 = _struprPtr
-      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>)>();
+          ffi.Size Function(ffi.Pointer<ffi.Char>, ffi.Size)>>('strnlen');
+  late final _strnlen =
+      _strnlenPtr.asFunction<int Function(ffi.Pointer<ffi.Char>, int)>();
+
+  ffi.Pointer<ffi.Char> strsignal(
+    int __sig,
+  ) {
+    return _strsignal(
+      __sig,
+    );
+  }
+
+  late final _strsignalPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function(ffi.Int)>>(
+          'strsignal');
+  late final _strsignal =
+      _strsignalPtr.asFunction<ffi.Pointer<ffi.Char> Function(int)>();
+
+  int memset_s(
+    ffi.Pointer<ffi.Void> __s,
+    int __smax,
+    int __c,
+    int __n,
+  ) {
+    return _memset_s(
+      __s,
+      __smax,
+      __c,
+      __n,
+    );
+  }
+
+  late final _memset_sPtr = _lookup<
+      ffi.NativeFunction<
+          errno_t Function(
+              ffi.Pointer<ffi.Void>, rsize_t, ffi.Int, rsize_t)>>('memset_s');
+  late final _memset_s = _memset_sPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Void>, int, int, int)>();
+
+  ffi.Pointer<ffi.Void> memmem(
+    ffi.Pointer<ffi.Void> __big,
+    int __big_len,
+    ffi.Pointer<ffi.Void> __little,
+    int __little_len,
+  ) {
+    return _memmem(
+      __big,
+      __big_len,
+      __little,
+      __little_len,
+    );
+  }
+
+  late final _memmemPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Void> Function(ffi.Pointer<ffi.Void>, ffi.Size,
+              ffi.Pointer<ffi.Void>, ffi.Size)>>('memmem');
+  late final _memmem = _memmemPtr.asFunction<
+      ffi.Pointer<ffi.Void> Function(
+          ffi.Pointer<ffi.Void>, int, ffi.Pointer<ffi.Void>, int)>();
+
+  void memset_pattern4(
+    ffi.Pointer<ffi.Void> __b,
+    ffi.Pointer<ffi.Void> __pattern4,
+    int __len,
+  ) {
+    return _memset_pattern4(
+      __b,
+      __pattern4,
+      __len,
+    );
+  }
+
+  late final _memset_pattern4Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>,
+              ffi.Size)>>('memset_pattern4');
+  late final _memset_pattern4 = _memset_pattern4Ptr.asFunction<
+      void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+
+  void memset_pattern8(
+    ffi.Pointer<ffi.Void> __b,
+    ffi.Pointer<ffi.Void> __pattern8,
+    int __len,
+  ) {
+    return _memset_pattern8(
+      __b,
+      __pattern8,
+      __len,
+    );
+  }
+
+  late final _memset_pattern8Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>,
+              ffi.Size)>>('memset_pattern8');
+  late final _memset_pattern8 = _memset_pattern8Ptr.asFunction<
+      void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+
+  void memset_pattern16(
+    ffi.Pointer<ffi.Void> __b,
+    ffi.Pointer<ffi.Void> __pattern16,
+    int __len,
+  ) {
+    return _memset_pattern16(
+      __b,
+      __pattern16,
+      __len,
+    );
+  }
+
+  late final _memset_pattern16Ptr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>,
+              ffi.Size)>>('memset_pattern16');
+  late final _memset_pattern16 = _memset_pattern16Ptr.asFunction<
+      void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+
+  ffi.Pointer<ffi.Char> strcasestr(
+    ffi.Pointer<ffi.Char> __big,
+    ffi.Pointer<ffi.Char> __little,
+  ) {
+    return _strcasestr(
+      __big,
+      __little,
+    );
+  }
+
+  late final _strcasestrPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('strcasestr');
+  late final _strcasestr = _strcasestrPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> strnstr(
+    ffi.Pointer<ffi.Char> __big,
+    ffi.Pointer<ffi.Char> __little,
+    int __len,
+  ) {
+    return _strnstr(
+      __big,
+      __little,
+      __len,
+    );
+  }
+
+  late final _strnstrPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>, ffi.Size)>>('strnstr');
+  late final _strnstr = _strnstrPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
+
+  int strlcat(
+    ffi.Pointer<ffi.Char> __dst,
+    ffi.Pointer<ffi.Char> __source,
+    int __size,
+  ) {
+    return _strlcat(
+      __dst,
+      __source,
+      __size,
+    );
+  }
+
+  late final _strlcatPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.UnsignedLong Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>, ffi.Size)>>('strlcat');
+  late final _strlcat = _strlcatPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
+
+  int strlcpy(
+    ffi.Pointer<ffi.Char> __dst,
+    ffi.Pointer<ffi.Char> __source,
+    int __size,
+  ) {
+    return _strlcpy(
+      __dst,
+      __source,
+      __size,
+    );
+  }
+
+  late final _strlcpyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.UnsignedLong Function(ffi.Pointer<ffi.Char>,
+              ffi.Pointer<ffi.Char>, ffi.Size)>>('strlcpy');
+  late final _strlcpy = _strlcpyPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
+
+  void strmode(
+    int __mode,
+    ffi.Pointer<ffi.Char> __bp,
+  ) {
+    return _strmode(
+      __mode,
+      __bp,
+    );
+  }
+
+  late final _strmodePtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Int, ffi.Pointer<ffi.Char>)>>('strmode');
+  late final _strmode =
+      _strmodePtr.asFunction<void Function(int, ffi.Pointer<ffi.Char>)>();
+
+  ffi.Pointer<ffi.Char> strsep(
+    ffi.Pointer<ffi.Pointer<ffi.Char>> __stringp,
+    ffi.Pointer<ffi.Char> __delim,
+  ) {
+    return _strsep(
+      __stringp,
+      __delim,
+    );
+  }
+
+  late final _strsepPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Pointer<ffi.Char>>,
+              ffi.Pointer<ffi.Char>)>>('strsep');
+  late final _strsep = _strsepPtr.asFunction<
+      ffi.Pointer<ffi.Char> Function(
+          ffi.Pointer<ffi.Pointer<ffi.Char>>, ffi.Pointer<ffi.Char>)>();
+
+  void swab(
+    ffi.Pointer<ffi.Void> arg0,
+    ffi.Pointer<ffi.Void> arg1,
+    int arg2,
+  ) {
+    return _swab(
+      arg0,
+      arg1,
+      arg2,
+    );
+  }
+
+  late final _swabPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(
+              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, ssize_t)>>('swab');
+  late final _swab = _swabPtr.asFunction<
+      void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+
+  int timingsafe_bcmp(
+    ffi.Pointer<ffi.Void> __b1,
+    ffi.Pointer<ffi.Void> __b2,
+    int __len,
+  ) {
+    return _timingsafe_bcmp(
+      __b1,
+      __b2,
+      __len,
+    );
+  }
+
+  late final _timingsafe_bcmpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>,
+              ffi.Size)>>('timingsafe_bcmp');
+  late final _timingsafe_bcmp = _timingsafe_bcmpPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+
+  int strsignal_r(
+    int __sig,
+    ffi.Pointer<ffi.Char> __strsignalbuf,
+    int __buflen,
+  ) {
+    return _strsignal_r(
+      __sig,
+      __strsignalbuf,
+      __buflen,
+    );
+  }
+
+  late final _strsignal_rPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Int, ffi.Pointer<ffi.Char>, ffi.Size)>>('strsignal_r');
+  late final _strsignal_r = _strsignal_rPtr
+      .asFunction<int Function(int, ffi.Pointer<ffi.Char>, int)>();
+
+  int bcmp(
+    ffi.Pointer<ffi.Void> arg0,
+    ffi.Pointer<ffi.Void> arg1,
+    int arg2,
+  ) {
+    return _bcmp(
+      arg0,
+      arg1,
+      arg2,
+    );
+  }
+
+  late final _bcmpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, ffi.Size)>>('bcmp');
+  late final _bcmp = _bcmpPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+
+  void bcopy(
+    ffi.Pointer<ffi.Void> arg0,
+    ffi.Pointer<ffi.Void> arg1,
+    int arg2,
+  ) {
+    return _bcopy(
+      arg0,
+      arg1,
+      arg2,
+    );
+  }
+
+  late final _bcopyPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>,
+              ffi.Size)>>('bcopy');
+  late final _bcopy = _bcopyPtr.asFunction<
+      void Function(ffi.Pointer<ffi.Void>, ffi.Pointer<ffi.Void>, int)>();
+
+  void bzero(
+    ffi.Pointer<ffi.Void> arg0,
+    int arg1,
+  ) {
+    return _bzero(
+      arg0,
+      arg1,
+    );
+  }
+
+  late final _bzeroPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Void Function(ffi.Pointer<ffi.Void>, ffi.Size)>>('bzero');
+  late final _bzero =
+      _bzeroPtr.asFunction<void Function(ffi.Pointer<ffi.Void>, int)>();
+
+  ffi.Pointer<ffi.Char> index(
+    ffi.Pointer<ffi.Char> arg0,
+    int arg1,
+  ) {
+    return _index(
+      arg0,
+      arg1,
+    );
+  }
+
+  late final _indexPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>, ffi.Int)>>('index');
+  late final _index = _indexPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>, int)>();
+
+  ffi.Pointer<ffi.Char> rindex(
+    ffi.Pointer<ffi.Char> arg0,
+    int arg1,
+  ) {
+    return _rindex(
+      arg0,
+      arg1,
+    );
+  }
+
+  late final _rindexPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Pointer<ffi.Char> Function(
+              ffi.Pointer<ffi.Char>, ffi.Int)>>('rindex');
+  late final _rindex = _rindexPtr
+      .asFunction<ffi.Pointer<ffi.Char> Function(ffi.Pointer<ffi.Char>, int)>();
+
+  int ffs(
+    int arg0,
+  ) {
+    return _ffs(
+      arg0,
+    );
+  }
+
+  late final _ffsPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('ffs');
+  late final _ffs = _ffsPtr.asFunction<int Function(int)>();
+
+  int strcasecmp(
+    ffi.Pointer<ffi.Char> arg0,
+    ffi.Pointer<ffi.Char> arg1,
+  ) {
+    return _strcasecmp(
+      arg0,
+      arg1,
+    );
+  }
+
+  late final _strcasecmpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(
+              ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>>('strcasecmp');
+  late final _strcasecmp = _strcasecmpPtr
+      .asFunction<int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>)>();
+
+  int strncasecmp(
+    ffi.Pointer<ffi.Char> arg0,
+    ffi.Pointer<ffi.Char> arg1,
+    int arg2,
+  ) {
+    return _strncasecmp(
+      arg0,
+      arg1,
+      arg2,
+    );
+  }
+
+  late final _strncasecmpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>,
+              ffi.Size)>>('strncasecmp');
+  late final _strncasecmp = _strncasecmpPtr.asFunction<
+      int Function(ffi.Pointer<ffi.Char>, ffi.Pointer<ffi.Char>, int)>();
+
+  int ffsl(
+    int arg0,
+  ) {
+    return _ffsl(
+      arg0,
+    );
+  }
+
+  late final _ffslPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Long)>>('ffsl');
+  late final _ffsl = _ffslPtr.asFunction<int Function(int)>();
+
+  int ffsll(
+    int arg0,
+  ) {
+    return _ffsll(
+      arg0,
+    );
+  }
+
+  late final _ffsllPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.LongLong)>>('ffsll');
+  late final _ffsll = _ffsllPtr.asFunction<int Function(int)>();
+
+  int fls(
+    int arg0,
+  ) {
+    return _fls(
+      arg0,
+    );
+  }
+
+  late final _flsPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('fls');
+  late final _fls = _flsPtr.asFunction<int Function(int)>();
+
+  int flsl(
+    int arg0,
+  ) {
+    return _flsl(
+      arg0,
+    );
+  }
+
+  late final _flslPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Long)>>('flsl');
+  late final _flsl = _flslPtr.asFunction<int Function(int)>();
+
+  int flsll(
+    int arg0,
+  ) {
+    return _flsll(
+      arg0,
+    );
+  }
+
+  late final _flsllPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.LongLong)>>('flsll');
+  late final _flsll = _flsllPtr.asFunction<int Function(int)>();
+
+  int __darwin_check_fd_set_overflow(
+    int arg0,
+    ffi.Pointer<ffi.Void> arg1,
+    int arg2,
+  ) {
+    return ___darwin_check_fd_set_overflow(
+      arg0,
+      arg1,
+      arg2,
+    );
+  }
+
+  late final ___darwin_check_fd_set_overflowPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Int, ffi.Pointer<ffi.Void>,
+              ffi.Int)>>('__darwin_check_fd_set_overflow');
+  late final ___darwin_check_fd_set_overflow =
+      ___darwin_check_fd_set_overflowPtr
+          .asFunction<int Function(int, ffi.Pointer<ffi.Void>, int)>();
 
   late final ffi.Pointer<ai_real> _ai_epsilon = _lookup<ai_real>('ai_epsilon');
 
@@ -2629,553 +1063,59 @@ class Assimp {
 
   set ai_epsilon(double value) => _ai_epsilon.value = value;
 
-  late final ffi.Pointer<ffi.Double> __HUGE = _lookup<ffi.Double>('_HUGE');
+  int __math_errhandling() {
+    return ___math_errhandling();
+  }
 
-  double get _HUGE => __HUGE.value;
+  late final ___math_errhandlingPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function()>>('__math_errhandling');
+  late final ___math_errhandling =
+      ___math_errhandlingPtr.asFunction<int Function()>();
 
-  set _HUGE(double value) => __HUGE.value = value;
-
-  void _fperrraise(
-    int _Except,
+  int __fpclassifyf(
+    double arg0,
   ) {
-    return __fperrraise(
-      _Except,
+    return ___fpclassifyf(
+      arg0,
     );
   }
 
-  late final __fperrraisePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Int)>>('_fperrraise');
-  late final __fperrraise = __fperrraisePtr.asFunction<void Function(int)>();
+  late final ___fpclassifyfPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Float)>>('__fpclassifyf');
+  late final ___fpclassifyf =
+      ___fpclassifyfPtr.asFunction<int Function(double)>();
 
-  int _dclass(
-    double _X,
+  int __fpclassifyd(
+    double arg0,
   ) {
-    return __dclass(
-      _X,
+    return ___fpclassifyd(
+      arg0,
     );
   }
 
-  late final __dclassPtr =
-      _lookup<ffi.NativeFunction<ffi.Short Function(ffi.Double)>>('_dclass');
-  late final __dclass = __dclassPtr.asFunction<int Function(double)>();
+  late final ___fpclassifydPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Double)>>(
+          '__fpclassifyd');
+  late final ___fpclassifyd =
+      ___fpclassifydPtr.asFunction<int Function(double)>();
 
-  int _fdclass(
-    double _X,
+  double acosf(
+    double arg0,
   ) {
-    return __fdclass(
-      _X,
+    return _acosf(
+      arg0,
     );
   }
 
-  late final __fdclassPtr =
-      _lookup<ffi.NativeFunction<ffi.Short Function(ffi.Float)>>('_fdclass');
-  late final __fdclass = __fdclassPtr.asFunction<int Function(double)>();
-
-  int _dsign(
-    double _X,
-  ) {
-    return __dsign(
-      _X,
-    );
-  }
-
-  late final __dsignPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Double)>>('_dsign');
-  late final __dsign = __dsignPtr.asFunction<int Function(double)>();
-
-  int _fdsign(
-    double _X,
-  ) {
-    return __fdsign(
-      _X,
-    );
-  }
-
-  late final __fdsignPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Float)>>('_fdsign');
-  late final __fdsign = __fdsignPtr.asFunction<int Function(double)>();
-
-  int _dpcomp(
-    double _X,
-    double _Y,
-  ) {
-    return __dpcomp(
-      _X,
-      _Y,
-    );
-  }
-
-  late final __dpcompPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Double, ffi.Double)>>(
-          '_dpcomp');
-  late final __dpcomp = __dpcompPtr.asFunction<int Function(double, double)>();
-
-  int _fdpcomp(
-    double _X,
-    double _Y,
-  ) {
-    return __fdpcomp(
-      _X,
-      _Y,
-    );
-  }
-
-  late final __fdpcompPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Float, ffi.Float)>>(
-          '_fdpcomp');
-  late final __fdpcomp =
-      __fdpcompPtr.asFunction<int Function(double, double)>();
-
-  int _dtest(
-    ffi.Pointer<ffi.Double> _Px,
-  ) {
-    return __dtest(
-      _Px,
-    );
-  }
-
-  late final __dtestPtr =
-      _lookup<ffi.NativeFunction<ffi.Short Function(ffi.Pointer<ffi.Double>)>>(
-          '_dtest');
-  late final __dtest =
-      __dtestPtr.asFunction<int Function(ffi.Pointer<ffi.Double>)>();
-
-  int _fdtest(
-    ffi.Pointer<ffi.Float> _Px,
-  ) {
-    return __fdtest(
-      _Px,
-    );
-  }
-
-  late final __fdtestPtr =
-      _lookup<ffi.NativeFunction<ffi.Short Function(ffi.Pointer<ffi.Float>)>>(
-          '_fdtest');
-  late final __fdtest =
-      __fdtestPtr.asFunction<int Function(ffi.Pointer<ffi.Float>)>();
-
-  int _d_int(
-    ffi.Pointer<ffi.Double> _Px,
-    int _Xexp,
-  ) {
-    return __d_int(
-      _Px,
-      _Xexp,
-    );
-  }
-
-  late final __d_intPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Short Function(ffi.Pointer<ffi.Double>, ffi.Short)>>('_d_int');
-  late final __d_int =
-      __d_intPtr.asFunction<int Function(ffi.Pointer<ffi.Double>, int)>();
-
-  int _fd_int(
-    ffi.Pointer<ffi.Float> _Px,
-    int _Xexp,
-  ) {
-    return __fd_int(
-      _Px,
-      _Xexp,
-    );
-  }
-
-  late final __fd_intPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Short Function(ffi.Pointer<ffi.Float>, ffi.Short)>>('_fd_int');
-  late final __fd_int =
-      __fd_intPtr.asFunction<int Function(ffi.Pointer<ffi.Float>, int)>();
-
-  int _dscale(
-    ffi.Pointer<ffi.Double> _Px,
-    int _Lexp,
-  ) {
-    return __dscale(
-      _Px,
-      _Lexp,
-    );
-  }
-
-  late final __dscalePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Short Function(ffi.Pointer<ffi.Double>, ffi.Long)>>('_dscale');
-  late final __dscale =
-      __dscalePtr.asFunction<int Function(ffi.Pointer<ffi.Double>, int)>();
-
-  int _fdscale(
-    ffi.Pointer<ffi.Float> _Px,
-    int _Lexp,
-  ) {
-    return __fdscale(
-      _Px,
-      _Lexp,
-    );
-  }
-
-  late final __fdscalePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Short Function(ffi.Pointer<ffi.Float>, ffi.Long)>>('_fdscale');
-  late final __fdscale =
-      __fdscalePtr.asFunction<int Function(ffi.Pointer<ffi.Float>, int)>();
-
-  int _dunscale(
-    ffi.Pointer<ffi.Short> _Pex,
-    ffi.Pointer<ffi.Double> _Px,
-  ) {
-    return __dunscale(
-      _Pex,
-      _Px,
-    );
-  }
-
-  late final __dunscalePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Short Function(
-              ffi.Pointer<ffi.Short>, ffi.Pointer<ffi.Double>)>>('_dunscale');
-  late final __dunscale = __dunscalePtr.asFunction<
-      int Function(ffi.Pointer<ffi.Short>, ffi.Pointer<ffi.Double>)>();
-
-  int _fdunscale(
-    ffi.Pointer<ffi.Short> _Pex,
-    ffi.Pointer<ffi.Float> _Px,
-  ) {
-    return __fdunscale(
-      _Pex,
-      _Px,
-    );
-  }
-
-  late final __fdunscalePtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Short Function(
-              ffi.Pointer<ffi.Short>, ffi.Pointer<ffi.Float>)>>('_fdunscale');
-  late final __fdunscale = __fdunscalePtr.asFunction<
-      int Function(ffi.Pointer<ffi.Short>, ffi.Pointer<ffi.Float>)>();
-
-  int _dexp(
-    ffi.Pointer<ffi.Double> _Px,
-    double _Y,
-    int _Eoff,
-  ) {
-    return __dexp(
-      _Px,
-      _Y,
-      _Eoff,
-    );
-  }
-
-  late final __dexpPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Short Function(
-              ffi.Pointer<ffi.Double>, ffi.Double, ffi.Long)>>('_dexp');
-  late final __dexp = __dexpPtr
-      .asFunction<int Function(ffi.Pointer<ffi.Double>, double, int)>();
-
-  int _fdexp(
-    ffi.Pointer<ffi.Float> _Px,
-    double _Y,
-    int _Eoff,
-  ) {
-    return __fdexp(
-      _Px,
-      _Y,
-      _Eoff,
-    );
-  }
-
-  late final __fdexpPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Short Function(
-              ffi.Pointer<ffi.Float>, ffi.Float, ffi.Long)>>('_fdexp');
-  late final __fdexp = __fdexpPtr
-      .asFunction<int Function(ffi.Pointer<ffi.Float>, double, int)>();
-
-  int _dnorm(
-    ffi.Pointer<ffi.UnsignedShort> _Ps,
-  ) {
-    return __dnorm(
-      _Ps,
-    );
-  }
-
-  late final __dnormPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Short Function(ffi.Pointer<ffi.UnsignedShort>)>>('_dnorm');
-  late final __dnorm =
-      __dnormPtr.asFunction<int Function(ffi.Pointer<ffi.UnsignedShort>)>();
-
-  int _fdnorm(
-    ffi.Pointer<ffi.UnsignedShort> _Ps,
-  ) {
-    return __fdnorm(
-      _Ps,
-    );
-  }
-
-  late final __fdnormPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Short Function(ffi.Pointer<ffi.UnsignedShort>)>>('_fdnorm');
-  late final __fdnorm =
-      __fdnormPtr.asFunction<int Function(ffi.Pointer<ffi.UnsignedShort>)>();
-
-  double _dpoly(
-    double _X,
-    ffi.Pointer<ffi.Double> _Tab,
-    int _N,
-  ) {
-    return __dpoly(
-      _X,
-      _Tab,
-      _N,
-    );
-  }
-
-  late final __dpolyPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Double Function(
-              ffi.Double, ffi.Pointer<ffi.Double>, ffi.Int)>>('_dpoly');
-  late final __dpoly = __dpolyPtr
-      .asFunction<double Function(double, ffi.Pointer<ffi.Double>, int)>();
-
-  double _fdpoly(
-    double _X,
-    ffi.Pointer<ffi.Float> _Tab,
-    int _N,
-  ) {
-    return __fdpoly(
-      _X,
-      _Tab,
-      _N,
-    );
-  }
-
-  late final __fdpolyPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Float Function(
-              ffi.Float, ffi.Pointer<ffi.Float>, ffi.Int)>>('_fdpoly');
-  late final __fdpoly = __fdpolyPtr
-      .asFunction<double Function(double, ffi.Pointer<ffi.Float>, int)>();
-
-  double _dlog(
-    double _X,
-    int _Baseflag,
-  ) {
-    return __dlog(
-      _X,
-      _Baseflag,
-    );
-  }
-
-  late final __dlogPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Int)>>(
-          '_dlog');
-  late final __dlog = __dlogPtr.asFunction<double Function(double, int)>();
-
-  double _fdlog(
-    double _X,
-    int _Baseflag,
-  ) {
-    return __fdlog(
-      _X,
-      _Baseflag,
-    );
-  }
-
-  late final __fdlogPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Int)>>(
-          '_fdlog');
-  late final __fdlog = __fdlogPtr.asFunction<double Function(double, int)>();
-
-  double _dsin(
-    double _X,
-    int _Qoff,
-  ) {
-    return __dsin(
-      _X,
-      _Qoff,
-    );
-  }
-
-  late final __dsinPtr = _lookup<
-          ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.UnsignedInt)>>(
-      '_dsin');
-  late final __dsin = __dsinPtr.asFunction<double Function(double, int)>();
-
-  double _fdsin(
-    double _X,
-    int _Qoff,
-  ) {
-    return __fdsin(
-      _X,
-      _Qoff,
-    );
-  }
-
-  late final __fdsinPtr = _lookup<
-          ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.UnsignedInt)>>(
-      '_fdsin');
-  late final __fdsin = __fdsinPtr.asFunction<double Function(double, int)>();
-
-  late final ffi.Pointer<_float_const> __Denorm_C =
-      _lookup<_float_const>('_Denorm_C');
-
-  ffi.Pointer<_float_const> get _Denorm_C => __Denorm_C;
-
-  late final ffi.Pointer<_float_const> __Inf_C =
-      _lookup<_float_const>('_Inf_C');
-
-  ffi.Pointer<_float_const> get _Inf_C => __Inf_C;
-
-  late final ffi.Pointer<_float_const> __Nan_C =
-      _lookup<_float_const>('_Nan_C');
-
-  ffi.Pointer<_float_const> get _Nan_C => __Nan_C;
-
-  late final ffi.Pointer<_float_const> __Snan_C =
-      _lookup<_float_const>('_Snan_C');
-
-  ffi.Pointer<_float_const> get _Snan_C => __Snan_C;
-
-  late final ffi.Pointer<_float_const> __Hugeval_C =
-      _lookup<_float_const>('_Hugeval_C');
-
-  ffi.Pointer<_float_const> get _Hugeval_C => __Hugeval_C;
-
-  late final ffi.Pointer<_float_const> __FDenorm_C =
-      _lookup<_float_const>('_FDenorm_C');
-
-  ffi.Pointer<_float_const> get _FDenorm_C => __FDenorm_C;
-
-  late final ffi.Pointer<_float_const> __FInf_C =
-      _lookup<_float_const>('_FInf_C');
-
-  ffi.Pointer<_float_const> get _FInf_C => __FInf_C;
-
-  late final ffi.Pointer<_float_const> __FNan_C =
-      _lookup<_float_const>('_FNan_C');
-
-  ffi.Pointer<_float_const> get _FNan_C => __FNan_C;
-
-  late final ffi.Pointer<_float_const> __FSnan_C =
-      _lookup<_float_const>('_FSnan_C');
-
-  ffi.Pointer<_float_const> get _FSnan_C => __FSnan_C;
-
-  late final ffi.Pointer<_float_const> __LDenorm_C =
-      _lookup<_float_const>('_LDenorm_C');
-
-  ffi.Pointer<_float_const> get _LDenorm_C => __LDenorm_C;
-
-  late final ffi.Pointer<_float_const> __LInf_C =
-      _lookup<_float_const>('_LInf_C');
-
-  ffi.Pointer<_float_const> get _LInf_C => __LInf_C;
-
-  late final ffi.Pointer<_float_const> __LNan_C =
-      _lookup<_float_const>('_LNan_C');
-
-  ffi.Pointer<_float_const> get _LNan_C => __LNan_C;
-
-  late final ffi.Pointer<_float_const> __LSnan_C =
-      _lookup<_float_const>('_LSnan_C');
-
-  ffi.Pointer<_float_const> get _LSnan_C => __LSnan_C;
-
-  late final ffi.Pointer<_float_const> __Eps_C =
-      _lookup<_float_const>('_Eps_C');
-
-  ffi.Pointer<_float_const> get _Eps_C => __Eps_C;
-
-  late final ffi.Pointer<_float_const> __Rteps_C =
-      _lookup<_float_const>('_Rteps_C');
-
-  ffi.Pointer<_float_const> get _Rteps_C => __Rteps_C;
-
-  late final ffi.Pointer<_float_const> __FEps_C =
-      _lookup<_float_const>('_FEps_C');
-
-  ffi.Pointer<_float_const> get _FEps_C => __FEps_C;
-
-  late final ffi.Pointer<_float_const> __FRteps_C =
-      _lookup<_float_const>('_FRteps_C');
-
-  ffi.Pointer<_float_const> get _FRteps_C => __FRteps_C;
-
-  late final ffi.Pointer<_float_const> __LEps_C =
-      _lookup<_float_const>('_LEps_C');
-
-  ffi.Pointer<_float_const> get _LEps_C => __LEps_C;
-
-  late final ffi.Pointer<_float_const> __LRteps_C =
-      _lookup<_float_const>('_LRteps_C');
-
-  ffi.Pointer<_float_const> get _LRteps_C => __LRteps_C;
-
-  late final ffi.Pointer<ffi.Double> __Zero_C = _lookup<ffi.Double>('_Zero_C');
-
-  double get _Zero_C => __Zero_C.value;
-
-  set _Zero_C(double value) => __Zero_C.value = value;
-
-  late final ffi.Pointer<ffi.Double> __Xbig_C = _lookup<ffi.Double>('_Xbig_C');
-
-  double get _Xbig_C => __Xbig_C.value;
-
-  set _Xbig_C(double value) => __Xbig_C.value = value;
-
-  late final ffi.Pointer<ffi.Float> __FZero_C = _lookup<ffi.Float>('_FZero_C');
-
-  double get _FZero_C => __FZero_C.value;
-
-  set _FZero_C(double value) => __FZero_C.value = value;
-
-  late final ffi.Pointer<ffi.Float> __FXbig_C = _lookup<ffi.Float>('_FXbig_C');
-
-  double get _FXbig_C => __FXbig_C.value;
-
-  set _FXbig_C(double value) => __FXbig_C.value = value;
-
-  int abs(
-    int _X,
-  ) {
-    return _abs(
-      _X,
-    );
-  }
-
-  late final _absPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>('abs');
-  late final _abs = _absPtr.asFunction<int Function(int)>();
-
-  int labs(
-    int _X,
-  ) {
-    return _labs(
-      _X,
-    );
-  }
-
-  late final _labsPtr =
-      _lookup<ffi.NativeFunction<ffi.Long Function(ffi.Long)>>('labs');
-  late final _labs = _labsPtr.asFunction<int Function(int)>();
-
-  int llabs(
-    int _X,
-  ) {
-    return _llabs(
-      _X,
-    );
-  }
-
-  late final _llabsPtr =
-      _lookup<ffi.NativeFunction<ffi.LongLong Function(ffi.LongLong)>>('llabs');
-  late final _llabs = _llabsPtr.asFunction<int Function(int)>();
+  late final _acosfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('acosf');
+  late final _acosf = _acosfPtr.asFunction<double Function(double)>();
 
   double acos(
-    double _X,
+    double arg0,
   ) {
     return _acos(
-      _X,
+      arg0,
     );
   }
 
@@ -3183,11 +1123,23 @@ class Assimp {
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('acos');
   late final _acos = _acosPtr.asFunction<double Function(double)>();
 
+  double asinf(
+    double arg0,
+  ) {
+    return _asinf(
+      arg0,
+    );
+  }
+
+  late final _asinfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('asinf');
+  late final _asinf = _asinfPtr.asFunction<double Function(double)>();
+
   double asin(
-    double _X,
+    double arg0,
   ) {
     return _asin(
-      _X,
+      arg0,
     );
   }
 
@@ -3195,11 +1147,23 @@ class Assimp {
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('asin');
   late final _asin = _asinPtr.asFunction<double Function(double)>();
 
+  double atanf(
+    double arg0,
+  ) {
+    return _atanf(
+      arg0,
+    );
+  }
+
+  late final _atanfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('atanf');
+  late final _atanf = _atanfPtr.asFunction<double Function(double)>();
+
   double atan(
-    double _X,
+    double arg0,
   ) {
     return _atan(
-      _X,
+      arg0,
     );
   }
 
@@ -3207,13 +1171,28 @@ class Assimp {
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('atan');
   late final _atan = _atanPtr.asFunction<double Function(double)>();
 
+  double atan2f(
+    double arg0,
+    double arg1,
+  ) {
+    return _atan2f(
+      arg0,
+      arg1,
+    );
+  }
+
+  late final _atan2fPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
+          'atan2f');
+  late final _atan2f = _atan2fPtr.asFunction<double Function(double, double)>();
+
   double atan2(
-    double _Y,
-    double _X,
+    double arg0,
+    double arg1,
   ) {
     return _atan2(
-      _Y,
-      _X,
+      arg0,
+      arg1,
     );
   }
 
@@ -3222,11 +1201,23 @@ class Assimp {
           'atan2');
   late final _atan2 = _atan2Ptr.asFunction<double Function(double, double)>();
 
+  double cosf(
+    double arg0,
+  ) {
+    return _cosf(
+      arg0,
+    );
+  }
+
+  late final _cosfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('cosf');
+  late final _cosf = _cosfPtr.asFunction<double Function(double)>();
+
   double cos(
-    double _X,
+    double arg0,
   ) {
     return _cos(
-      _X,
+      arg0,
     );
   }
 
@@ -3234,101 +1225,23 @@ class Assimp {
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('cos');
   late final _cos = _cosPtr.asFunction<double Function(double)>();
 
-  double cosh(
-    double _X,
+  double sinf(
+    double arg0,
   ) {
-    return _cosh(
-      _X,
+    return _sinf(
+      arg0,
     );
   }
 
-  late final _coshPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('cosh');
-  late final _cosh = _coshPtr.asFunction<double Function(double)>();
-
-  double exp(
-    double _X,
-  ) {
-    return _exp(
-      _X,
-    );
-  }
-
-  late final _expPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('exp');
-  late final _exp = _expPtr.asFunction<double Function(double)>();
-
-  double fabs(
-    double _X,
-  ) {
-    return _fabs(
-      _X,
-    );
-  }
-
-  late final _fabsPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('fabs');
-  late final _fabs = _fabsPtr.asFunction<double Function(double)>();
-
-  double fmod(
-    double _X,
-    double _Y,
-  ) {
-    return _fmod(
-      _X,
-      _Y,
-    );
-  }
-
-  late final _fmodPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
-          'fmod');
-  late final _fmod = _fmodPtr.asFunction<double Function(double, double)>();
-
-  double log(
-    double _X,
-  ) {
-    return _log(
-      _X,
-    );
-  }
-
-  late final _logPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('log');
-  late final _log = _logPtr.asFunction<double Function(double)>();
-
-  double log10(
-    double _X,
-  ) {
-    return _log10(
-      _X,
-    );
-  }
-
-  late final _log10Ptr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('log10');
-  late final _log10 = _log10Ptr.asFunction<double Function(double)>();
-
-  double pow(
-    double _X,
-    double _Y,
-  ) {
-    return _pow(
-      _X,
-      _Y,
-    );
-  }
-
-  late final _powPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
-          'pow');
-  late final _pow = _powPtr.asFunction<double Function(double, double)>();
+  late final _sinfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('sinf');
+  late final _sinf = _sinfPtr.asFunction<double Function(double)>();
 
   double sin(
-    double _X,
+    double arg0,
   ) {
     return _sin(
-      _X,
+      arg0,
     );
   }
 
@@ -3336,35 +1249,23 @@ class Assimp {
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('sin');
   late final _sin = _sinPtr.asFunction<double Function(double)>();
 
-  double sinh(
-    double _X,
+  double tanf(
+    double arg0,
   ) {
-    return _sinh(
-      _X,
+    return _tanf(
+      arg0,
     );
   }
 
-  late final _sinhPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('sinh');
-  late final _sinh = _sinhPtr.asFunction<double Function(double)>();
-
-  double sqrt(
-    double _X,
-  ) {
-    return _sqrt(
-      _X,
-    );
-  }
-
-  late final _sqrtPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('sqrt');
-  late final _sqrt = _sqrtPtr.asFunction<double Function(double)>();
+  late final _tanfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('tanf');
+  late final _tanf = _tanfPtr.asFunction<double Function(double)>();
 
   double tan(
-    double _X,
+    double arg0,
   ) {
     return _tan(
-      _X,
+      arg0,
     );
   }
 
@@ -3372,23 +1273,23 @@ class Assimp {
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('tan');
   late final _tan = _tanPtr.asFunction<double Function(double)>();
 
-  double tanh(
-    double _X,
+  double acoshf(
+    double arg0,
   ) {
-    return _tanh(
-      _X,
+    return _acoshf(
+      arg0,
     );
   }
 
-  late final _tanhPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('tanh');
-  late final _tanh = _tanhPtr.asFunction<double Function(double)>();
+  late final _acoshfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('acoshf');
+  late final _acoshf = _acoshfPtr.asFunction<double Function(double)>();
 
   double acosh(
-    double _X,
+    double arg0,
   ) {
     return _acosh(
-      _X,
+      arg0,
     );
   }
 
@@ -3396,11 +1297,23 @@ class Assimp {
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('acosh');
   late final _acosh = _acoshPtr.asFunction<double Function(double)>();
 
+  double asinhf(
+    double arg0,
+  ) {
+    return _asinhf(
+      arg0,
+    );
+  }
+
+  late final _asinhfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('asinhf');
+  late final _asinhf = _asinhfPtr.asFunction<double Function(double)>();
+
   double asinh(
-    double _X,
+    double arg0,
   ) {
     return _asinh(
-      _X,
+      arg0,
     );
   }
 
@@ -3408,11 +1321,23 @@ class Assimp {
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('asinh');
   late final _asinh = _asinhPtr.asFunction<double Function(double)>();
 
+  double atanhf(
+    double arg0,
+  ) {
+    return _atanhf(
+      arg0,
+    );
+  }
+
+  late final _atanhfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('atanhf');
+  late final _atanhf = _atanhfPtr.asFunction<double Function(double)>();
+
   double atanh(
-    double _X,
+    double arg0,
   ) {
     return _atanh(
-      _X,
+      arg0,
     );
   }
 
@@ -3420,145 +1345,119 @@ class Assimp {
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('atanh');
   late final _atanh = _atanhPtr.asFunction<double Function(double)>();
 
-  double atof(
-    ffi.Pointer<ffi.Char> _String,
+  double coshf(
+    double arg0,
   ) {
-    return _atof(
-      _String,
+    return _coshf(
+      arg0,
     );
   }
 
-  late final _atofPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Pointer<ffi.Char>)>>(
-          'atof');
-  late final _atof =
-      _atofPtr.asFunction<double Function(ffi.Pointer<ffi.Char>)>();
+  late final _coshfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('coshf');
+  late final _coshf = _coshfPtr.asFunction<double Function(double)>();
 
-  double _atof_l(
-    ffi.Pointer<ffi.Char> _String,
-    _locale_t _Locale,
+  double cosh(
+    double arg0,
   ) {
-    return __atof_l(
-      _String,
-      _Locale,
+    return _cosh(
+      arg0,
     );
   }
 
-  late final __atof_lPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Double Function(ffi.Pointer<ffi.Char>, _locale_t)>>('_atof_l');
-  late final __atof_l = __atof_lPtr
-      .asFunction<double Function(ffi.Pointer<ffi.Char>, _locale_t)>();
+  late final _coshPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('cosh');
+  late final _cosh = _coshPtr.asFunction<double Function(double)>();
 
-  double _cabs(
-    _complex _Complex_value,
+  double sinhf(
+    double arg0,
   ) {
-    return __cabs(
-      _Complex_value,
+    return _sinhf(
+      arg0,
     );
   }
 
-  late final __cabsPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(_complex)>>('_cabs');
-  late final __cabs = __cabsPtr.asFunction<double Function(_complex)>();
+  late final _sinhfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('sinhf');
+  late final _sinhf = _sinhfPtr.asFunction<double Function(double)>();
 
-  double cbrt(
-    double _X,
+  double sinh(
+    double arg0,
   ) {
-    return _cbrt(
-      _X,
+    return _sinh(
+      arg0,
     );
   }
 
-  late final _cbrtPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('cbrt');
-  late final _cbrt = _cbrtPtr.asFunction<double Function(double)>();
+  late final _sinhPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('sinh');
+  late final _sinh = _sinhPtr.asFunction<double Function(double)>();
 
-  double ceil(
-    double _X,
+  double tanhf(
+    double arg0,
   ) {
-    return _ceil(
-      _X,
+    return _tanhf(
+      arg0,
     );
   }
 
-  late final _ceilPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('ceil');
-  late final _ceil = _ceilPtr.asFunction<double Function(double)>();
+  late final _tanhfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('tanhf');
+  late final _tanhf = _tanhfPtr.asFunction<double Function(double)>();
 
-  double _chgsign(
-    double _X,
+  double tanh(
+    double arg0,
   ) {
-    return __chgsign(
-      _X,
+    return _tanh(
+      arg0,
     );
   }
 
-  late final __chgsignPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('_chgsign');
-  late final __chgsign = __chgsignPtr.asFunction<double Function(double)>();
+  late final _tanhPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('tanh');
+  late final _tanh = _tanhPtr.asFunction<double Function(double)>();
 
-  double copysign(
-    double _Number,
-    double _Sign,
+  double expf(
+    double arg0,
   ) {
-    return _copysign1(
-      _Number,
-      _Sign,
+    return _expf(
+      arg0,
     );
   }
 
-  late final _copysignPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
-          'copysign');
-  late final _copysign1 =
-      _copysignPtr.asFunction<double Function(double, double)>();
+  late final _expfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('expf');
+  late final _expf = _expfPtr.asFunction<double Function(double)>();
 
-  double _copysign(
-    double _Number,
-    double _Sign,
+  double exp(
+    double arg0,
   ) {
-    return __copysign(
-      _Number,
-      _Sign,
+    return _exp(
+      arg0,
     );
   }
 
-  late final __copysignPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
-          '_copysign');
-  late final __copysign =
-      __copysignPtr.asFunction<double Function(double, double)>();
+  late final _expPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('exp');
+  late final _exp = _expPtr.asFunction<double Function(double)>();
 
-  double erf(
-    double _X,
+  double exp2f(
+    double arg0,
   ) {
-    return _erf(
-      _X,
+    return _exp2f(
+      arg0,
     );
   }
 
-  late final _erfPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('erf');
-  late final _erf = _erfPtr.asFunction<double Function(double)>();
-
-  double erfc(
-    double _X,
-  ) {
-    return _erfc(
-      _X,
-    );
-  }
-
-  late final _erfcPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('erfc');
-  late final _erfc = _erfcPtr.asFunction<double Function(double)>();
+  late final _exp2fPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('exp2f');
+  late final _exp2f = _exp2fPtr.asFunction<double Function(double)>();
 
   double exp2(
-    double _X,
+    double arg0,
   ) {
     return _exp2(
-      _X,
+      arg0,
     );
   }
 
@@ -3566,11 +1465,23 @@ class Assimp {
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('exp2');
   late final _exp2 = _exp2Ptr.asFunction<double Function(double)>();
 
+  double expm1f(
+    double arg0,
+  ) {
+    return _expm1f(
+      arg0,
+    );
+  }
+
+  late final _expm1fPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('expm1f');
+  late final _expm1f = _expm1fPtr.asFunction<double Function(double)>();
+
   double expm1(
-    double _X,
+    double arg0,
   ) {
     return _expm1(
-      _X,
+      arg0,
     );
   }
 
@@ -3578,207 +1489,71 @@ class Assimp {
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('expm1');
   late final _expm1 = _expm1Ptr.asFunction<double Function(double)>();
 
-  double fdim(
-    double _X,
-    double _Y,
+  double logf(
+    double arg0,
   ) {
-    return _fdim(
-      _X,
-      _Y,
+    return _logf(
+      arg0,
     );
   }
 
-  late final _fdimPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
-          'fdim');
-  late final _fdim = _fdimPtr.asFunction<double Function(double, double)>();
+  late final _logfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('logf');
+  late final _logf = _logfPtr.asFunction<double Function(double)>();
 
-  double floor(
-    double _X,
+  double log(
+    double arg0,
   ) {
-    return _floor(
-      _X,
+    return _log(
+      arg0,
     );
   }
 
-  late final _floorPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('floor');
-  late final _floor = _floorPtr.asFunction<double Function(double)>();
+  late final _logPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('log');
+  late final _log = _logPtr.asFunction<double Function(double)>();
 
-  double fma(
-    double _X,
-    double _Y,
-    double _Z,
+  double log10f(
+    double arg0,
   ) {
-    return _fma(
-      _X,
-      _Y,
-      _Z,
+    return _log10f(
+      arg0,
     );
   }
 
-  late final _fmaPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Double Function(ffi.Double, ffi.Double, ffi.Double)>>('fma');
-  late final _fma =
-      _fmaPtr.asFunction<double Function(double, double, double)>();
+  late final _log10fPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('log10f');
+  late final _log10f = _log10fPtr.asFunction<double Function(double)>();
 
-  double fmax(
-    double _X,
-    double _Y,
+  double log10(
+    double arg0,
   ) {
-    return _fmax(
-      _X,
-      _Y,
+    return _log10(
+      arg0,
     );
   }
 
-  late final _fmaxPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
-          'fmax');
-  late final _fmax = _fmaxPtr.asFunction<double Function(double, double)>();
+  late final _log10Ptr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('log10');
+  late final _log10 = _log10Ptr.asFunction<double Function(double)>();
 
-  double fmin(
-    double _X,
-    double _Y,
+  double log2f(
+    double arg0,
   ) {
-    return _fmin(
-      _X,
-      _Y,
+    return _log2f(
+      arg0,
     );
   }
 
-  late final _fminPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
-          'fmin');
-  late final _fmin = _fminPtr.asFunction<double Function(double, double)>();
-
-  double frexp(
-    double _X,
-    ffi.Pointer<ffi.Int> _Y,
-  ) {
-    return _frexp(
-      _X,
-      _Y,
-    );
-  }
-
-  late final _frexpPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Double Function(ffi.Double, ffi.Pointer<ffi.Int>)>>('frexp');
-  late final _frexp =
-      _frexpPtr.asFunction<double Function(double, ffi.Pointer<ffi.Int>)>();
-
-  double hypot(
-    double _X,
-    double _Y,
-  ) {
-    return _hypot1(
-      _X,
-      _Y,
-    );
-  }
-
-  late final _hypotPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
-          'hypot');
-  late final _hypot1 = _hypotPtr.asFunction<double Function(double, double)>();
-
-  double _hypot(
-    double _X,
-    double _Y,
-  ) {
-    return __hypot(
-      _X,
-      _Y,
-    );
-  }
-
-  late final __hypotPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
-          '_hypot');
-  late final __hypot = __hypotPtr.asFunction<double Function(double, double)>();
-
-  int ilogb(
-    double _X,
-  ) {
-    return _ilogb(
-      _X,
-    );
-  }
-
-  late final _ilogbPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Double)>>('ilogb');
-  late final _ilogb = _ilogbPtr.asFunction<int Function(double)>();
-
-  double ldexp(
-    double _X,
-    int _Y,
-  ) {
-    return _ldexp(
-      _X,
-      _Y,
-    );
-  }
-
-  late final _ldexpPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Int)>>(
-          'ldexp');
-  late final _ldexp = _ldexpPtr.asFunction<double Function(double, int)>();
-
-  double lgamma(
-    double _X,
-  ) {
-    return _lgamma(
-      _X,
-    );
-  }
-
-  late final _lgammaPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('lgamma');
-  late final _lgamma = _lgammaPtr.asFunction<double Function(double)>();
-
-  int llrint(
-    double _X,
-  ) {
-    return _llrint(
-      _X,
-    );
-  }
-
-  late final _llrintPtr =
-      _lookup<ffi.NativeFunction<ffi.LongLong Function(ffi.Double)>>('llrint');
-  late final _llrint = _llrintPtr.asFunction<int Function(double)>();
-
-  int llround(
-    double _X,
-  ) {
-    return _llround(
-      _X,
-    );
-  }
-
-  late final _llroundPtr =
-      _lookup<ffi.NativeFunction<ffi.LongLong Function(ffi.Double)>>('llround');
-  late final _llround = _llroundPtr.asFunction<int Function(double)>();
-
-  double log1p(
-    double _X,
-  ) {
-    return _log1p(
-      _X,
-    );
-  }
-
-  late final _log1pPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('log1p');
-  late final _log1p = _log1pPtr.asFunction<double Function(double)>();
+  late final _log2fPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('log2f');
+  late final _log2f = _log2fPtr.asFunction<double Function(double)>();
 
   double log2(
-    double _X,
+    double arg0,
   ) {
     return _log2(
-      _X,
+      arg0,
     );
   }
 
@@ -3786,11 +1561,47 @@ class Assimp {
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('log2');
   late final _log2 = _log2Ptr.asFunction<double Function(double)>();
 
+  double log1pf(
+    double arg0,
+  ) {
+    return _log1pf(
+      arg0,
+    );
+  }
+
+  late final _log1pfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('log1pf');
+  late final _log1pf = _log1pfPtr.asFunction<double Function(double)>();
+
+  double log1p(
+    double arg0,
+  ) {
+    return _log1p(
+      arg0,
+    );
+  }
+
+  late final _log1pPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('log1p');
+  late final _log1p = _log1pPtr.asFunction<double Function(double)>();
+
+  double logbf(
+    double arg0,
+  ) {
+    return _logbf(
+      arg0,
+    );
+  }
+
+  late final _logbfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('logbf');
+  late final _logbf = _logbfPtr.asFunction<double Function(double)>();
+
   double logb(
-    double _X,
+    double arg0,
   ) {
     return _logb(
-      _X,
+      arg0,
     );
   }
 
@@ -3798,51 +1609,29 @@ class Assimp {
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('logb');
   late final _logb = _logbPtr.asFunction<double Function(double)>();
 
-  int lrint(
-    double _X,
+  double modff(
+    double arg0,
+    ffi.Pointer<ffi.Float> arg1,
   ) {
-    return _lrint(
-      _X,
+    return _modff(
+      arg0,
+      arg1,
     );
   }
 
-  late final _lrintPtr =
-      _lookup<ffi.NativeFunction<ffi.Long Function(ffi.Double)>>('lrint');
-  late final _lrint = _lrintPtr.asFunction<int Function(double)>();
-
-  int lround(
-    double _X,
-  ) {
-    return _lround(
-      _X,
-    );
-  }
-
-  late final _lroundPtr =
-      _lookup<ffi.NativeFunction<ffi.Long Function(ffi.Double)>>('lround');
-  late final _lround = _lroundPtr.asFunction<int Function(double)>();
-
-  int _matherr(
-    ffi.Pointer<_exception> _Except,
-  ) {
-    return __matherr(
-      _Except,
-    );
-  }
-
-  late final __matherrPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<_exception>)>>(
-          '_matherr');
-  late final __matherr =
-      __matherrPtr.asFunction<int Function(ffi.Pointer<_exception>)>();
+  late final _modffPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Float Function(ffi.Float, ffi.Pointer<ffi.Float>)>>('modff');
+  late final _modff =
+      _modffPtr.asFunction<double Function(double, ffi.Pointer<ffi.Float>)>();
 
   double modf(
-    double _X,
-    ffi.Pointer<ffi.Double> _Y,
+    double arg0,
+    ffi.Pointer<ffi.Double> arg1,
   ) {
     return _modf(
-      _X,
-      _Y,
+      arg0,
+      arg1,
     );
   }
 
@@ -3852,129 +1641,114 @@ class Assimp {
   late final _modf =
       _modfPtr.asFunction<double Function(double, ffi.Pointer<ffi.Double>)>();
 
-  double nan(
-    ffi.Pointer<ffi.Char> _X,
+  double ldexpf(
+    double arg0,
+    int arg1,
   ) {
-    return _nan(
-      _X,
+    return _ldexpf(
+      arg0,
+      arg1,
     );
   }
 
-  late final _nanPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Pointer<ffi.Char>)>>(
-          'nan');
-  late final _nan =
-      _nanPtr.asFunction<double Function(ffi.Pointer<ffi.Char>)>();
+  late final _ldexpfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Int)>>(
+          'ldexpf');
+  late final _ldexpf = _ldexpfPtr.asFunction<double Function(double, int)>();
 
-  double nearbyint(
-    double _X,
+  double ldexp(
+    double arg0,
+    int arg1,
   ) {
-    return _nearbyint(
-      _X,
+    return _ldexp(
+      arg0,
+      arg1,
     );
   }
 
-  late final _nearbyintPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('nearbyint');
-  late final _nearbyint = _nearbyintPtr.asFunction<double Function(double)>();
+  late final _ldexpPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Int)>>(
+          'ldexp');
+  late final _ldexp = _ldexpPtr.asFunction<double Function(double, int)>();
 
-  double nextafter(
-    double _X,
-    double _Y,
+  double frexpf(
+    double arg0,
+    ffi.Pointer<ffi.Int> arg1,
   ) {
-    return _nextafter(
-      _X,
-      _Y,
+    return _frexpf(
+      arg0,
+      arg1,
     );
   }
 
-  late final _nextafterPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
-          'nextafter');
-  late final _nextafter =
-      _nextafterPtr.asFunction<double Function(double, double)>();
-
-  double remainder(
-    double _X,
-    double _Y,
-  ) {
-    return _remainder(
-      _X,
-      _Y,
-    );
-  }
-
-  late final _remainderPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
-          'remainder');
-  late final _remainder =
-      _remainderPtr.asFunction<double Function(double, double)>();
-
-  double remquo(
-    double _X,
-    double _Y,
-    ffi.Pointer<ffi.Int> _Z,
-  ) {
-    return _remquo(
-      _X,
-      _Y,
-      _Z,
-    );
-  }
-
-  late final _remquoPtr = _lookup<
+  late final _frexpfPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Double Function(
-              ffi.Double, ffi.Double, ffi.Pointer<ffi.Int>)>>('remquo');
-  late final _remquo = _remquoPtr
-      .asFunction<double Function(double, double, ffi.Pointer<ffi.Int>)>();
+          ffi.Float Function(ffi.Float, ffi.Pointer<ffi.Int>)>>('frexpf');
+  late final _frexpf =
+      _frexpfPtr.asFunction<double Function(double, ffi.Pointer<ffi.Int>)>();
 
-  double rint(
-    double _X,
+  double frexp(
+    double arg0,
+    ffi.Pointer<ffi.Int> arg1,
   ) {
-    return _rint(
-      _X,
+    return _frexp(
+      arg0,
+      arg1,
     );
   }
 
-  late final _rintPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('rint');
-  late final _rint = _rintPtr.asFunction<double Function(double)>();
+  late final _frexpPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Double Function(ffi.Double, ffi.Pointer<ffi.Int>)>>('frexp');
+  late final _frexp =
+      _frexpPtr.asFunction<double Function(double, ffi.Pointer<ffi.Int>)>();
 
-  double round(
-    double _X,
+  int ilogbf(
+    double arg0,
   ) {
-    return _round(
-      _X,
+    return _ilogbf(
+      arg0,
     );
   }
 
-  late final _roundPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('round');
-  late final _round = _roundPtr.asFunction<double Function(double)>();
+  late final _ilogbfPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Float)>>('ilogbf');
+  late final _ilogbf = _ilogbfPtr.asFunction<int Function(double)>();
 
-  double scalbln(
-    double _X,
-    int _Y,
+  int ilogb(
+    double arg0,
   ) {
-    return _scalbln(
-      _X,
-      _Y,
+    return _ilogb(
+      arg0,
     );
   }
 
-  late final _scalblnPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Long)>>(
-          'scalbln');
-  late final _scalbln = _scalblnPtr.asFunction<double Function(double, int)>();
+  late final _ilogbPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Double)>>('ilogb');
+  late final _ilogb = _ilogbPtr.asFunction<int Function(double)>();
+
+  double scalbnf(
+    double arg0,
+    int arg1,
+  ) {
+    return _scalbnf(
+      arg0,
+      arg1,
+    );
+  }
+
+  late final _scalbnfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Int)>>(
+          'scalbnf');
+  late final _scalbnf = _scalbnfPtr.asFunction<double Function(double, int)>();
 
   double scalbn(
-    double _X,
-    int _Y,
+    double arg0,
+    int arg1,
   ) {
     return _scalbn(
-      _X,
-      _Y,
+      arg0,
+      arg1,
     );
   }
 
@@ -3983,149 +1757,66 @@ class Assimp {
           'scalbn');
   late final _scalbn = _scalbnPtr.asFunction<double Function(double, int)>();
 
-  double tgamma(
-    double _X,
+  double scalblnf(
+    double arg0,
+    int arg1,
   ) {
-    return _tgamma(
-      _X,
+    return _scalblnf(
+      arg0,
+      arg1,
     );
   }
 
-  late final _tgammaPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('tgamma');
-  late final _tgamma = _tgammaPtr.asFunction<double Function(double)>();
+  late final _scalblnfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Long)>>(
+          'scalblnf');
+  late final _scalblnf =
+      _scalblnfPtr.asFunction<double Function(double, int)>();
 
-  double trunc(
-    double _X,
+  double scalbln(
+    double arg0,
+    int arg1,
   ) {
-    return _trunc(
-      _X,
+    return _scalbln(
+      arg0,
+      arg1,
     );
   }
 
-  late final _truncPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('trunc');
-  late final _trunc = _truncPtr.asFunction<double Function(double)>();
+  late final _scalblnPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Long)>>(
+          'scalbln');
+  late final _scalbln = _scalblnPtr.asFunction<double Function(double, int)>();
 
-  double _j0(
-    double _X,
+  double fabsf(
+    double arg0,
   ) {
-    return __j0(
-      _X,
+    return _fabsf(
+      arg0,
     );
   }
 
-  late final __j0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('_j0');
-  late final __j0 = __j0Ptr.asFunction<double Function(double)>();
+  late final _fabsfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('fabsf');
+  late final _fabsf = _fabsfPtr.asFunction<double Function(double)>();
 
-  double _j1(
-    double _X,
+  double fabs(
+    double arg0,
   ) {
-    return __j1(
-      _X,
+    return _fabs(
+      arg0,
     );
   }
 
-  late final __j1Ptr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('_j1');
-  late final __j1 = __j1Ptr.asFunction<double Function(double)>();
-
-  double _jn(
-    int _X,
-    double _Y,
-  ) {
-    return __jn(
-      _X,
-      _Y,
-    );
-  }
-
-  late final __jnPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Int, ffi.Double)>>(
-          '_jn');
-  late final __jn = __jnPtr.asFunction<double Function(int, double)>();
-
-  double _y0(
-    double _X,
-  ) {
-    return __y0(
-      _X,
-    );
-  }
-
-  late final __y0Ptr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('_y0');
-  late final __y0 = __y0Ptr.asFunction<double Function(double)>();
-
-  double _y1(
-    double _X,
-  ) {
-    return __y1(
-      _X,
-    );
-  }
-
-  late final __y1Ptr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('_y1');
-  late final __y1 = __y1Ptr.asFunction<double Function(double)>();
-
-  double _yn(
-    int _X,
-    double _Y,
-  ) {
-    return __yn(
-      _X,
-      _Y,
-    );
-  }
-
-  late final __ynPtr =
-      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Int, ffi.Double)>>(
-          '_yn');
-  late final __yn = __ynPtr.asFunction<double Function(int, double)>();
-
-  double acoshf(
-    double _X,
-  ) {
-    return _acoshf(
-      _X,
-    );
-  }
-
-  late final _acoshfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('acoshf');
-  late final _acoshf = _acoshfPtr.asFunction<double Function(double)>();
-
-  double asinhf(
-    double _X,
-  ) {
-    return _asinhf(
-      _X,
-    );
-  }
-
-  late final _asinhfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('asinhf');
-  late final _asinhf = _asinhfPtr.asFunction<double Function(double)>();
-
-  double atanhf(
-    double _X,
-  ) {
-    return _atanhf(
-      _X,
-    );
-  }
-
-  late final _atanhfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('atanhf');
-  late final _atanhf = _atanhfPtr.asFunction<double Function(double)>();
+  late final _fabsPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('fabs');
+  late final _fabs = _fabsPtr.asFunction<double Function(double)>();
 
   double cbrtf(
-    double _X,
+    double arg0,
   ) {
     return _cbrtf(
-      _X,
+      arg0,
     );
   }
 
@@ -4133,55 +1824,107 @@ class Assimp {
       _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('cbrtf');
   late final _cbrtf = _cbrtfPtr.asFunction<double Function(double)>();
 
-  double _chgsignf(
-    double _X,
+  double cbrt(
+    double arg0,
   ) {
-    return __chgsignf(
-      _X,
+    return _cbrt(
+      arg0,
     );
   }
 
-  late final __chgsignfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('_chgsignf');
-  late final __chgsignf = __chgsignfPtr.asFunction<double Function(double)>();
+  late final _cbrtPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('cbrt');
+  late final _cbrt = _cbrtPtr.asFunction<double Function(double)>();
 
-  double copysignf(
-    double _Number,
-    double _Sign,
+  double hypotf(
+    double arg0,
+    double arg1,
   ) {
-    return _copysignf1(
-      _Number,
-      _Sign,
+    return _hypotf(
+      arg0,
+      arg1,
     );
   }
 
-  late final _copysignfPtr =
+  late final _hypotfPtr =
       _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
-          'copysignf');
-  late final _copysignf1 =
-      _copysignfPtr.asFunction<double Function(double, double)>();
+          'hypotf');
+  late final _hypotf = _hypotfPtr.asFunction<double Function(double, double)>();
 
-  double _copysignf(
-    double _Number,
-    double _Sign,
+  double hypot(
+    double arg0,
+    double arg1,
   ) {
-    return __copysignf(
-      _Number,
-      _Sign,
+    return _hypot(
+      arg0,
+      arg1,
     );
   }
 
-  late final __copysignfPtr =
+  late final _hypotPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
+          'hypot');
+  late final _hypot = _hypotPtr.asFunction<double Function(double, double)>();
+
+  double powf(
+    double arg0,
+    double arg1,
+  ) {
+    return _powf(
+      arg0,
+      arg1,
+    );
+  }
+
+  late final _powfPtr =
       _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
-          '_copysignf');
-  late final __copysignf =
-      __copysignfPtr.asFunction<double Function(double, double)>();
+          'powf');
+  late final _powf = _powfPtr.asFunction<double Function(double, double)>();
+
+  double pow(
+    double arg0,
+    double arg1,
+  ) {
+    return _pow(
+      arg0,
+      arg1,
+    );
+  }
+
+  late final _powPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
+          'pow');
+  late final _pow = _powPtr.asFunction<double Function(double, double)>();
+
+  double sqrtf(
+    double arg0,
+  ) {
+    return _sqrtf(
+      arg0,
+    );
+  }
+
+  late final _sqrtfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('sqrtf');
+  late final _sqrtf = _sqrtfPtr.asFunction<double Function(double)>();
+
+  double sqrt(
+    double arg0,
+  ) {
+    return _sqrt(
+      arg0,
+    );
+  }
+
+  late final _sqrtPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('sqrt');
+  late final _sqrt = _sqrtPtr.asFunction<double Function(double)>();
 
   double erff(
-    double _X,
+    double arg0,
   ) {
     return _erff(
-      _X,
+      arg0,
     );
   }
 
@@ -4189,11 +1932,23 @@ class Assimp {
       _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('erff');
   late final _erff = _erffPtr.asFunction<double Function(double)>();
 
+  double erf(
+    double arg0,
+  ) {
+    return _erf(
+      arg0,
+    );
+  }
+
+  late final _erfPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('erf');
+  late final _erf = _erfPtr.asFunction<double Function(double)>();
+
   double erfcf(
-    double _X,
+    double arg0,
   ) {
     return _erfcf(
-      _X,
+      arg0,
     );
   }
 
@@ -4201,126 +1956,23 @@ class Assimp {
       _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('erfcf');
   late final _erfcf = _erfcfPtr.asFunction<double Function(double)>();
 
-  double expm1f(
-    double _X,
+  double erfc(
+    double arg0,
   ) {
-    return _expm1f(
-      _X,
+    return _erfc(
+      arg0,
     );
   }
 
-  late final _expm1fPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('expm1f');
-  late final _expm1f = _expm1fPtr.asFunction<double Function(double)>();
-
-  double exp2f(
-    double _X,
-  ) {
-    return _exp2f(
-      _X,
-    );
-  }
-
-  late final _exp2fPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('exp2f');
-  late final _exp2f = _exp2fPtr.asFunction<double Function(double)>();
-
-  double fdimf(
-    double _X,
-    double _Y,
-  ) {
-    return _fdimf(
-      _X,
-      _Y,
-    );
-  }
-
-  late final _fdimfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
-          'fdimf');
-  late final _fdimf = _fdimfPtr.asFunction<double Function(double, double)>();
-
-  double fmaf(
-    double _X,
-    double _Y,
-    double _Z,
-  ) {
-    return _fmaf(
-      _X,
-      _Y,
-      _Z,
-    );
-  }
-
-  late final _fmafPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Float Function(ffi.Float, ffi.Float, ffi.Float)>>('fmaf');
-  late final _fmaf =
-      _fmafPtr.asFunction<double Function(double, double, double)>();
-
-  double fmaxf(
-    double _X,
-    double _Y,
-  ) {
-    return _fmaxf(
-      _X,
-      _Y,
-    );
-  }
-
-  late final _fmaxfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
-          'fmaxf');
-  late final _fmaxf = _fmaxfPtr.asFunction<double Function(double, double)>();
-
-  double fminf(
-    double _X,
-    double _Y,
-  ) {
-    return _fminf(
-      _X,
-      _Y,
-    );
-  }
-
-  late final _fminfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
-          'fminf');
-  late final _fminf = _fminfPtr.asFunction<double Function(double, double)>();
-
-  double _hypotf(
-    double _X,
-    double _Y,
-  ) {
-    return __hypotf(
-      _X,
-      _Y,
-    );
-  }
-
-  late final __hypotfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
-          '_hypotf');
-  late final __hypotf =
-      __hypotfPtr.asFunction<double Function(double, double)>();
-
-  int ilogbf(
-    double _X,
-  ) {
-    return _ilogbf(
-      _X,
-    );
-  }
-
-  late final _ilogbfPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Float)>>('ilogbf');
-  late final _ilogbf = _ilogbfPtr.asFunction<int Function(double)>();
+  late final _erfcPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('erfc');
+  late final _erfc = _erfcPtr.asFunction<double Function(double)>();
 
   double lgammaf(
-    double _X,
+    double arg0,
   ) {
     return _lgammaf(
-      _X,
+      arg0,
     );
   }
 
@@ -4328,109 +1980,95 @@ class Assimp {
       _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('lgammaf');
   late final _lgammaf = _lgammafPtr.asFunction<double Function(double)>();
 
-  int llrintf(
-    double _X,
+  double lgamma(
+    double arg0,
   ) {
-    return _llrintf(
-      _X,
+    return _lgamma(
+      arg0,
     );
   }
 
-  late final _llrintfPtr =
-      _lookup<ffi.NativeFunction<ffi.LongLong Function(ffi.Float)>>('llrintf');
-  late final _llrintf = _llrintfPtr.asFunction<int Function(double)>();
+  late final _lgammaPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('lgamma');
+  late final _lgamma = _lgammaPtr.asFunction<double Function(double)>();
 
-  int llroundf(
-    double _X,
+  double tgammaf(
+    double arg0,
   ) {
-    return _llroundf(
-      _X,
+    return _tgammaf(
+      arg0,
     );
   }
 
-  late final _llroundfPtr =
-      _lookup<ffi.NativeFunction<ffi.LongLong Function(ffi.Float)>>('llroundf');
-  late final _llroundf = _llroundfPtr.asFunction<int Function(double)>();
+  late final _tgammafPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('tgammaf');
+  late final _tgammaf = _tgammafPtr.asFunction<double Function(double)>();
 
-  double log1pf(
-    double _X,
+  double tgamma(
+    double arg0,
   ) {
-    return _log1pf(
-      _X,
+    return _tgamma(
+      arg0,
     );
   }
 
-  late final _log1pfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('log1pf');
-  late final _log1pf = _log1pfPtr.asFunction<double Function(double)>();
+  late final _tgammaPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('tgamma');
+  late final _tgamma = _tgammaPtr.asFunction<double Function(double)>();
 
-  double log2f(
-    double _X,
+  double ceilf(
+    double arg0,
   ) {
-    return _log2f(
-      _X,
+    return _ceilf(
+      arg0,
     );
   }
 
-  late final _log2fPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('log2f');
-  late final _log2f = _log2fPtr.asFunction<double Function(double)>();
+  late final _ceilfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('ceilf');
+  late final _ceilf = _ceilfPtr.asFunction<double Function(double)>();
 
-  double logbf(
-    double _X,
+  double ceil(
+    double arg0,
   ) {
-    return _logbf1(
-      _X,
+    return _ceil(
+      arg0,
     );
   }
 
-  late final _logbfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('logbf');
-  late final _logbf1 = _logbfPtr.asFunction<double Function(double)>();
+  late final _ceilPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('ceil');
+  late final _ceil = _ceilPtr.asFunction<double Function(double)>();
 
-  int lrintf(
-    double _X,
+  double floorf(
+    double arg0,
   ) {
-    return _lrintf(
-      _X,
+    return _floorf(
+      arg0,
     );
   }
 
-  late final _lrintfPtr =
-      _lookup<ffi.NativeFunction<ffi.Long Function(ffi.Float)>>('lrintf');
-  late final _lrintf = _lrintfPtr.asFunction<int Function(double)>();
+  late final _floorfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('floorf');
+  late final _floorf = _floorfPtr.asFunction<double Function(double)>();
 
-  int lroundf(
-    double _X,
+  double floor(
+    double arg0,
   ) {
-    return _lroundf(
-      _X,
+    return _floor(
+      arg0,
     );
   }
 
-  late final _lroundfPtr =
-      _lookup<ffi.NativeFunction<ffi.Long Function(ffi.Float)>>('lroundf');
-  late final _lroundf = _lroundfPtr.asFunction<int Function(double)>();
-
-  double nanf(
-    ffi.Pointer<ffi.Char> _X,
-  ) {
-    return _nanf(
-      _X,
-    );
-  }
-
-  late final _nanfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Pointer<ffi.Char>)>>(
-          'nanf');
-  late final _nanf =
-      _nanfPtr.asFunction<double Function(ffi.Pointer<ffi.Char>)>();
+  late final _floorPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('floor');
+  late final _floor = _floorPtr.asFunction<double Function(double)>();
 
   double nearbyintf(
-    double _X,
+    double arg0,
   ) {
     return _nearbyintf(
-      _X,
+      arg0,
     );
   }
 
@@ -4438,29 +2076,223 @@ class Assimp {
       _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('nearbyintf');
   late final _nearbyintf = _nearbyintfPtr.asFunction<double Function(double)>();
 
-  double nextafterf(
-    double _X,
-    double _Y,
+  double nearbyint(
+    double arg0,
   ) {
-    return _nextafterf1(
-      _X,
-      _Y,
+    return _nearbyint(
+      arg0,
     );
   }
 
-  late final _nextafterfPtr =
+  late final _nearbyintPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('nearbyint');
+  late final _nearbyint = _nearbyintPtr.asFunction<double Function(double)>();
+
+  double rintf(
+    double arg0,
+  ) {
+    return _rintf(
+      arg0,
+    );
+  }
+
+  late final _rintfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('rintf');
+  late final _rintf = _rintfPtr.asFunction<double Function(double)>();
+
+  double rint(
+    double arg0,
+  ) {
+    return _rint(
+      arg0,
+    );
+  }
+
+  late final _rintPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('rint');
+  late final _rint = _rintPtr.asFunction<double Function(double)>();
+
+  int lrintf(
+    double arg0,
+  ) {
+    return _lrintf(
+      arg0,
+    );
+  }
+
+  late final _lrintfPtr =
+      _lookup<ffi.NativeFunction<ffi.Long Function(ffi.Float)>>('lrintf');
+  late final _lrintf = _lrintfPtr.asFunction<int Function(double)>();
+
+  int lrint(
+    double arg0,
+  ) {
+    return _lrint(
+      arg0,
+    );
+  }
+
+  late final _lrintPtr =
+      _lookup<ffi.NativeFunction<ffi.Long Function(ffi.Double)>>('lrint');
+  late final _lrint = _lrintPtr.asFunction<int Function(double)>();
+
+  double roundf(
+    double arg0,
+  ) {
+    return _roundf(
+      arg0,
+    );
+  }
+
+  late final _roundfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('roundf');
+  late final _roundf = _roundfPtr.asFunction<double Function(double)>();
+
+  double round(
+    double arg0,
+  ) {
+    return _round(
+      arg0,
+    );
+  }
+
+  late final _roundPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('round');
+  late final _round = _roundPtr.asFunction<double Function(double)>();
+
+  int lroundf(
+    double arg0,
+  ) {
+    return _lroundf(
+      arg0,
+    );
+  }
+
+  late final _lroundfPtr =
+      _lookup<ffi.NativeFunction<ffi.Long Function(ffi.Float)>>('lroundf');
+  late final _lroundf = _lroundfPtr.asFunction<int Function(double)>();
+
+  int lround(
+    double arg0,
+  ) {
+    return _lround(
+      arg0,
+    );
+  }
+
+  late final _lroundPtr =
+      _lookup<ffi.NativeFunction<ffi.Long Function(ffi.Double)>>('lround');
+  late final _lround = _lroundPtr.asFunction<int Function(double)>();
+
+  int llrintf(
+    double arg0,
+  ) {
+    return _llrintf(
+      arg0,
+    );
+  }
+
+  late final _llrintfPtr =
+      _lookup<ffi.NativeFunction<ffi.LongLong Function(ffi.Float)>>('llrintf');
+  late final _llrintf = _llrintfPtr.asFunction<int Function(double)>();
+
+  int llrint(
+    double arg0,
+  ) {
+    return _llrint(
+      arg0,
+    );
+  }
+
+  late final _llrintPtr =
+      _lookup<ffi.NativeFunction<ffi.LongLong Function(ffi.Double)>>('llrint');
+  late final _llrint = _llrintPtr.asFunction<int Function(double)>();
+
+  int llroundf(
+    double arg0,
+  ) {
+    return _llroundf(
+      arg0,
+    );
+  }
+
+  late final _llroundfPtr =
+      _lookup<ffi.NativeFunction<ffi.LongLong Function(ffi.Float)>>('llroundf');
+  late final _llroundf = _llroundfPtr.asFunction<int Function(double)>();
+
+  int llround(
+    double arg0,
+  ) {
+    return _llround(
+      arg0,
+    );
+  }
+
+  late final _llroundPtr =
+      _lookup<ffi.NativeFunction<ffi.LongLong Function(ffi.Double)>>('llround');
+  late final _llround = _llroundPtr.asFunction<int Function(double)>();
+
+  double truncf(
+    double arg0,
+  ) {
+    return _truncf(
+      arg0,
+    );
+  }
+
+  late final _truncfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('truncf');
+  late final _truncf = _truncfPtr.asFunction<double Function(double)>();
+
+  double trunc(
+    double arg0,
+  ) {
+    return _trunc(
+      arg0,
+    );
+  }
+
+  late final _truncPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('trunc');
+  late final _trunc = _truncPtr.asFunction<double Function(double)>();
+
+  double fmodf(
+    double arg0,
+    double arg1,
+  ) {
+    return _fmodf(
+      arg0,
+      arg1,
+    );
+  }
+
+  late final _fmodfPtr =
       _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
-          'nextafterf');
-  late final _nextafterf1 =
-      _nextafterfPtr.asFunction<double Function(double, double)>();
+          'fmodf');
+  late final _fmodf = _fmodfPtr.asFunction<double Function(double, double)>();
+
+  double fmod(
+    double arg0,
+    double arg1,
+  ) {
+    return _fmod(
+      arg0,
+      arg1,
+    );
+  }
+
+  late final _fmodPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
+          'fmod');
+  late final _fmod = _fmodPtr.asFunction<double Function(double, double)>();
 
   double remainderf(
-    double _X,
-    double _Y,
+    double arg0,
+    double arg1,
   ) {
     return _remainderf(
-      _X,
-      _Y,
+      arg0,
+      arg1,
     );
   }
 
@@ -4470,15 +2302,31 @@ class Assimp {
   late final _remainderf =
       _remainderfPtr.asFunction<double Function(double, double)>();
 
+  double remainder(
+    double arg0,
+    double arg1,
+  ) {
+    return _remainder(
+      arg0,
+      arg1,
+    );
+  }
+
+  late final _remainderPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
+          'remainder');
+  late final _remainder =
+      _remainderPtr.asFunction<double Function(double, double)>();
+
   double remquof(
-    double _X,
-    double _Y,
-    ffi.Pointer<ffi.Int> _Z,
+    double arg0,
+    double arg1,
+    ffi.Pointer<ffi.Int> arg2,
   ) {
     return _remquof(
-      _X,
-      _Y,
-      _Z,
+      arg0,
+      arg1,
+      arg2,
     );
   }
 
@@ -4489,496 +2337,493 @@ class Assimp {
   late final _remquof = _remquofPtr
       .asFunction<double Function(double, double, ffi.Pointer<ffi.Int>)>();
 
-  double rintf(
-    double _X,
+  double remquo(
+    double arg0,
+    double arg1,
+    ffi.Pointer<ffi.Int> arg2,
   ) {
-    return _rintf(
-      _X,
+    return _remquo(
+      arg0,
+      arg1,
+      arg2,
     );
   }
 
-  late final _rintfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('rintf');
-  late final _rintf = _rintfPtr.asFunction<double Function(double)>();
-
-  double roundf(
-    double _X,
-  ) {
-    return _roundf(
-      _X,
-    );
-  }
-
-  late final _roundfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('roundf');
-  late final _roundf = _roundfPtr.asFunction<double Function(double)>();
-
-  double scalblnf(
-    double _X,
-    int _Y,
-  ) {
-    return _scalblnf(
-      _X,
-      _Y,
-    );
-  }
-
-  late final _scalblnfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Long)>>(
-          'scalblnf');
-  late final _scalblnf =
-      _scalblnfPtr.asFunction<double Function(double, int)>();
-
-  double scalbnf(
-    double _X,
-    int _Y,
-  ) {
-    return _scalbnf(
-      _X,
-      _Y,
-    );
-  }
-
-  late final _scalbnfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Int)>>(
-          'scalbnf');
-  late final _scalbnf = _scalbnfPtr.asFunction<double Function(double, int)>();
-
-  double tgammaf(
-    double _X,
-  ) {
-    return _tgammaf(
-      _X,
-    );
-  }
-
-  late final _tgammafPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('tgammaf');
-  late final _tgammaf = _tgammafPtr.asFunction<double Function(double)>();
-
-  double truncf(
-    double _X,
-  ) {
-    return _truncf(
-      _X,
-    );
-  }
-
-  late final _truncfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('truncf');
-  late final _truncf = _truncfPtr.asFunction<double Function(double)>();
-
-  double _logbf(
-    double _X,
-  ) {
-    return __logbf(
-      _X,
-    );
-  }
-
-  late final __logbfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('_logbf');
-  late final __logbf = __logbfPtr.asFunction<double Function(double)>();
-
-  double _nextafterf(
-    double _X,
-    double _Y,
-  ) {
-    return __nextafterf(
-      _X,
-      _Y,
-    );
-  }
-
-  late final __nextafterfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
-          '_nextafterf');
-  late final __nextafterf =
-      __nextafterfPtr.asFunction<double Function(double, double)>();
-
-  int _finitef(
-    double _X,
-  ) {
-    return __finitef(
-      _X,
-    );
-  }
-
-  late final __finitefPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Float)>>('_finitef');
-  late final __finitef = __finitefPtr.asFunction<int Function(double)>();
-
-  int _isnanf(
-    double _X,
-  ) {
-    return __isnanf(
-      _X,
-    );
-  }
-
-  late final __isnanfPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Float)>>('_isnanf');
-  late final __isnanf = __isnanfPtr.asFunction<int Function(double)>();
-
-  int _fpclassf(
-    double _X,
-  ) {
-    return __fpclassf(
-      _X,
-    );
-  }
-
-  late final __fpclassfPtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Float)>>('_fpclassf');
-  late final __fpclassf = __fpclassfPtr.asFunction<int Function(double)>();
-
-  int _set_FMA3_enable(
-    int _Flag,
-  ) {
-    return __set_FMA3_enable(
-      _Flag,
-    );
-  }
-
-  late final __set_FMA3_enablePtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Int)>>(
-          '_set_FMA3_enable');
-  late final __set_FMA3_enable =
-      __set_FMA3_enablePtr.asFunction<int Function(int)>();
-
-  int _get_FMA3_enable() {
-    return __get_FMA3_enable();
-  }
-
-  late final __get_FMA3_enablePtr =
-      _lookup<ffi.NativeFunction<ffi.Int Function()>>('_get_FMA3_enable');
-  late final __get_FMA3_enable =
-      __get_FMA3_enablePtr.asFunction<int Function()>();
-
-  double acosf(
-    double _X,
-  ) {
-    return _acosf(
-      _X,
-    );
-  }
-
-  late final _acosfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('acosf');
-  late final _acosf = _acosfPtr.asFunction<double Function(double)>();
-
-  double asinf(
-    double _X,
-  ) {
-    return _asinf(
-      _X,
-    );
-  }
-
-  late final _asinfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('asinf');
-  late final _asinf = _asinfPtr.asFunction<double Function(double)>();
-
-  double atan2f(
-    double _Y,
-    double _X,
-  ) {
-    return _atan2f(
-      _Y,
-      _X,
-    );
-  }
-
-  late final _atan2fPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
-          'atan2f');
-  late final _atan2f = _atan2fPtr.asFunction<double Function(double, double)>();
-
-  double atanf(
-    double _X,
-  ) {
-    return _atanf(
-      _X,
-    );
-  }
-
-  late final _atanfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('atanf');
-  late final _atanf = _atanfPtr.asFunction<double Function(double)>();
-
-  double ceilf(
-    double _X,
-  ) {
-    return _ceilf(
-      _X,
-    );
-  }
-
-  late final _ceilfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('ceilf');
-  late final _ceilf = _ceilfPtr.asFunction<double Function(double)>();
-
-  double cosf(
-    double _X,
-  ) {
-    return _cosf(
-      _X,
-    );
-  }
-
-  late final _cosfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('cosf');
-  late final _cosf = _cosfPtr.asFunction<double Function(double)>();
-
-  double coshf(
-    double _X,
-  ) {
-    return _coshf(
-      _X,
-    );
-  }
-
-  late final _coshfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('coshf');
-  late final _coshf = _coshfPtr.asFunction<double Function(double)>();
-
-  double expf(
-    double _X,
-  ) {
-    return _expf(
-      _X,
-    );
-  }
-
-  late final _expfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('expf');
-  late final _expf = _expfPtr.asFunction<double Function(double)>();
-
-  double floorf(
-    double _X,
-  ) {
-    return _floorf(
-      _X,
-    );
-  }
-
-  late final _floorfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('floorf');
-  late final _floorf = _floorfPtr.asFunction<double Function(double)>();
-
-  double fmodf(
-    double _X,
-    double _Y,
-  ) {
-    return _fmodf(
-      _X,
-      _Y,
-    );
-  }
-
-  late final _fmodfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
-          'fmodf');
-  late final _fmodf = _fmodfPtr.asFunction<double Function(double, double)>();
-
-  double log10f(
-    double _X,
-  ) {
-    return _log10f(
-      _X,
-    );
-  }
-
-  late final _log10fPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('log10f');
-  late final _log10f = _log10fPtr.asFunction<double Function(double)>();
-
-  double logf(
-    double _X,
-  ) {
-    return _logf(
-      _X,
-    );
-  }
-
-  late final _logfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('logf');
-  late final _logf = _logfPtr.asFunction<double Function(double)>();
-
-  double modff(
-    double _X,
-    ffi.Pointer<ffi.Float> _Y,
-  ) {
-    return _modff(
-      _X,
-      _Y,
-    );
-  }
-
-  late final _modffPtr = _lookup<
+  late final _remquoPtr = _lookup<
       ffi.NativeFunction<
-          ffi.Float Function(ffi.Float, ffi.Pointer<ffi.Float>)>>('modff');
-  late final _modff =
-      _modffPtr.asFunction<double Function(double, ffi.Pointer<ffi.Float>)>();
+          ffi.Double Function(
+              ffi.Double, ffi.Double, ffi.Pointer<ffi.Int>)>>('remquo');
+  late final _remquo = _remquoPtr
+      .asFunction<double Function(double, double, ffi.Pointer<ffi.Int>)>();
 
-  double powf(
-    double _X,
-    double _Y,
+  double copysignf(
+    double arg0,
+    double arg1,
   ) {
-    return _powf(
-      _X,
-      _Y,
+    return _copysignf(
+      arg0,
+      arg1,
     );
   }
 
-  late final _powfPtr =
+  late final _copysignfPtr =
       _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
-          'powf');
-  late final _powf = _powfPtr.asFunction<double Function(double, double)>();
+          'copysignf');
+  late final _copysignf =
+      _copysignfPtr.asFunction<double Function(double, double)>();
 
-  double sinf(
-    double _X,
+  double copysign(
+    double arg0,
+    double arg1,
   ) {
-    return _sinf(
-      _X,
+    return _copysign(
+      arg0,
+      arg1,
     );
   }
 
-  late final _sinfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('sinf');
-  late final _sinf = _sinfPtr.asFunction<double Function(double)>();
+  late final _copysignPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
+          'copysign');
+  late final _copysign =
+      _copysignPtr.asFunction<double Function(double, double)>();
 
-  double sinhf(
-    double _X,
+  double nanf(
+    ffi.Pointer<ffi.Char> arg0,
   ) {
-    return _sinhf(
-      _X,
+    return _nanf(
+      arg0,
     );
   }
 
-  late final _sinhfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('sinhf');
-  late final _sinhf = _sinhfPtr.asFunction<double Function(double)>();
+  late final _nanfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Pointer<ffi.Char>)>>(
+          'nanf');
+  late final _nanf =
+      _nanfPtr.asFunction<double Function(ffi.Pointer<ffi.Char>)>();
 
-  double sqrtf(
-    double _X,
+  double nan(
+    ffi.Pointer<ffi.Char> arg0,
   ) {
-    return _sqrtf(
-      _X,
+    return _nan(
+      arg0,
     );
   }
 
-  late final _sqrtfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('sqrtf');
-  late final _sqrtf = _sqrtfPtr.asFunction<double Function(double)>();
+  late final _nanPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Pointer<ffi.Char>)>>(
+          'nan');
+  late final _nan =
+      _nanPtr.asFunction<double Function(ffi.Pointer<ffi.Char>)>();
 
-  double tanf(
-    double _X,
+  double nextafterf(
+    double arg0,
+    double arg1,
   ) {
-    return _tanf(
-      _X,
+    return _nextafterf(
+      arg0,
+      arg1,
     );
   }
 
-  late final _tanfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('tanf');
-  late final _tanf = _tanfPtr.asFunction<double Function(double)>();
+  late final _nextafterfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
+          'nextafterf');
+  late final _nextafterf =
+      _nextafterfPtr.asFunction<double Function(double, double)>();
 
-  double tanhf(
-    double _X,
+  double nextafter(
+    double arg0,
+    double arg1,
   ) {
-    return _tanhf(
-      _X,
+    return _nextafter(
+      arg0,
+      arg1,
     );
   }
 
-  late final _tanhfPtr =
-      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('tanhf');
-  late final _tanhf = _tanhfPtr.asFunction<double Function(double)>();
+  late final _nextafterPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
+          'nextafter');
+  late final _nextafter =
+      _nextafterPtr.asFunction<double Function(double, double)>();
 
-  late final ffi.Pointer<ffi.Double> _HUGE1 = _lookup<ffi.Double>('HUGE');
+  double fdimf(
+    double arg0,
+    double arg1,
+  ) {
+    return _fdimf(
+      arg0,
+      arg1,
+    );
+  }
 
-  double get HUGE => _HUGE1.value;
+  late final _fdimfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
+          'fdimf');
+  late final _fdimf = _fdimfPtr.asFunction<double Function(double, double)>();
 
-  set HUGE(double value) => _HUGE1.value = value;
+  double fdim(
+    double arg0,
+    double arg1,
+  ) {
+    return _fdim(
+      arg0,
+      arg1,
+    );
+  }
+
+  late final _fdimPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
+          'fdim');
+  late final _fdim = _fdimPtr.asFunction<double Function(double, double)>();
+
+  double fmaxf(
+    double arg0,
+    double arg1,
+  ) {
+    return _fmaxf(
+      arg0,
+      arg1,
+    );
+  }
+
+  late final _fmaxfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
+          'fmaxf');
+  late final _fmaxf = _fmaxfPtr.asFunction<double Function(double, double)>();
+
+  double fmax(
+    double arg0,
+    double arg1,
+  ) {
+    return _fmax(
+      arg0,
+      arg1,
+    );
+  }
+
+  late final _fmaxPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
+          'fmax');
+  late final _fmax = _fmaxPtr.asFunction<double Function(double, double)>();
+
+  double fminf(
+    double arg0,
+    double arg1,
+  ) {
+    return _fminf(
+      arg0,
+      arg1,
+    );
+  }
+
+  late final _fminfPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float, ffi.Float)>>(
+          'fminf');
+  late final _fminf = _fminfPtr.asFunction<double Function(double, double)>();
+
+  double fmin(
+    double arg0,
+    double arg1,
+  ) {
+    return _fmin(
+      arg0,
+      arg1,
+    );
+  }
+
+  late final _fminPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
+          'fmin');
+  late final _fmin = _fminPtr.asFunction<double Function(double, double)>();
+
+  double fmaf(
+    double arg0,
+    double arg1,
+    double arg2,
+  ) {
+    return _fmaf(
+      arg0,
+      arg1,
+      arg2,
+    );
+  }
+
+  late final _fmafPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Float Function(ffi.Float, ffi.Float, ffi.Float)>>('fmaf');
+  late final _fmaf =
+      _fmafPtr.asFunction<double Function(double, double, double)>();
+
+  double fma(
+    double arg0,
+    double arg1,
+    double arg2,
+  ) {
+    return _fma(
+      arg0,
+      arg1,
+      arg2,
+    );
+  }
+
+  late final _fmaPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Double Function(ffi.Double, ffi.Double, ffi.Double)>>('fma');
+  late final _fma =
+      _fmaPtr.asFunction<double Function(double, double, double)>();
+
+  double __exp10f(
+    double arg0,
+  ) {
+    return ___exp10f(
+      arg0,
+    );
+  }
+
+  late final ___exp10fPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('__exp10f');
+  late final ___exp10f = ___exp10fPtr.asFunction<double Function(double)>();
+
+  double __exp10(
+    double arg0,
+  ) {
+    return ___exp10(
+      arg0,
+    );
+  }
+
+  late final ___exp10Ptr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('__exp10');
+  late final ___exp10 = ___exp10Ptr.asFunction<double Function(double)>();
+
+  double __cospif(
+    double arg0,
+  ) {
+    return ___cospif(
+      arg0,
+    );
+  }
+
+  late final ___cospifPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('__cospif');
+  late final ___cospif = ___cospifPtr.asFunction<double Function(double)>();
+
+  double __cospi(
+    double arg0,
+  ) {
+    return ___cospi(
+      arg0,
+    );
+  }
+
+  late final ___cospiPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('__cospi');
+  late final ___cospi = ___cospiPtr.asFunction<double Function(double)>();
+
+  double __sinpif(
+    double arg0,
+  ) {
+    return ___sinpif(
+      arg0,
+    );
+  }
+
+  late final ___sinpifPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('__sinpif');
+  late final ___sinpif = ___sinpifPtr.asFunction<double Function(double)>();
+
+  double __sinpi(
+    double arg0,
+  ) {
+    return ___sinpi(
+      arg0,
+    );
+  }
+
+  late final ___sinpiPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('__sinpi');
+  late final ___sinpi = ___sinpiPtr.asFunction<double Function(double)>();
+
+  double __tanpif(
+    double arg0,
+  ) {
+    return ___tanpif(
+      arg0,
+    );
+  }
+
+  late final ___tanpifPtr =
+      _lookup<ffi.NativeFunction<ffi.Float Function(ffi.Float)>>('__tanpif');
+  late final ___tanpif = ___tanpifPtr.asFunction<double Function(double)>();
+
+  double __tanpi(
+    double arg0,
+  ) {
+    return ___tanpi(
+      arg0,
+    );
+  }
+
+  late final ___tanpiPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('__tanpi');
+  late final ___tanpi = ___tanpiPtr.asFunction<double Function(double)>();
+
+  __float2 __sincosf_stret(
+    double arg0,
+  ) {
+    return ___sincosf_stret(
+      arg0,
+    );
+  }
+
+  late final ___sincosf_stretPtr =
+      _lookup<ffi.NativeFunction<__float2 Function(ffi.Float)>>(
+          '__sincosf_stret');
+  late final ___sincosf_stret =
+      ___sincosf_stretPtr.asFunction<__float2 Function(double)>();
+
+  __double2 __sincos_stret(
+    double arg0,
+  ) {
+    return ___sincos_stret(
+      arg0,
+    );
+  }
+
+  late final ___sincos_stretPtr =
+      _lookup<ffi.NativeFunction<__double2 Function(ffi.Double)>>(
+          '__sincos_stret');
+  late final ___sincos_stret =
+      ___sincos_stretPtr.asFunction<__double2 Function(double)>();
+
+  __float2 __sincospif_stret(
+    double arg0,
+  ) {
+    return ___sincospif_stret(
+      arg0,
+    );
+  }
+
+  late final ___sincospif_stretPtr =
+      _lookup<ffi.NativeFunction<__float2 Function(ffi.Float)>>(
+          '__sincospif_stret');
+  late final ___sincospif_stret =
+      ___sincospif_stretPtr.asFunction<__float2 Function(double)>();
+
+  __double2 __sincospi_stret(
+    double arg0,
+  ) {
+    return ___sincospi_stret(
+      arg0,
+    );
+  }
+
+  late final ___sincospi_stretPtr =
+      _lookup<ffi.NativeFunction<__double2 Function(ffi.Double)>>(
+          '__sincospi_stret');
+  late final ___sincospi_stret =
+      ___sincospi_stretPtr.asFunction<__double2 Function(double)>();
 
   double j0(
-    double _X,
+    double arg0,
   ) {
-    return _j01(
-      _X,
+    return _j0(
+      arg0,
     );
   }
 
   late final _j0Ptr =
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('j0');
-  late final _j01 = _j0Ptr.asFunction<double Function(double)>();
+  late final _j0 = _j0Ptr.asFunction<double Function(double)>();
 
   double j1(
-    double _X,
+    double arg0,
   ) {
-    return _j11(
-      _X,
+    return _j1(
+      arg0,
     );
   }
 
   late final _j1Ptr =
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('j1');
-  late final _j11 = _j1Ptr.asFunction<double Function(double)>();
+  late final _j1 = _j1Ptr.asFunction<double Function(double)>();
 
   double jn(
-    int _X,
-    double _Y,
+    int arg0,
+    double arg1,
   ) {
-    return _jn1(
-      _X,
-      _Y,
+    return _jn(
+      arg0,
+      arg1,
     );
   }
 
   late final _jnPtr =
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Int, ffi.Double)>>(
           'jn');
-  late final _jn1 = _jnPtr.asFunction<double Function(int, double)>();
+  late final _jn = _jnPtr.asFunction<double Function(int, double)>();
 
   double y0(
-    double _X,
+    double arg0,
   ) {
-    return _y01(
-      _X,
+    return _y0(
+      arg0,
     );
   }
 
   late final _y0Ptr =
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('y0');
-  late final _y01 = _y0Ptr.asFunction<double Function(double)>();
+  late final _y0 = _y0Ptr.asFunction<double Function(double)>();
 
   double y1(
-    double _X,
+    double arg0,
   ) {
-    return _y11(
-      _X,
+    return _y1(
+      arg0,
     );
   }
 
   late final _y1Ptr =
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double)>>('y1');
-  late final _y11 = _y1Ptr.asFunction<double Function(double)>();
+  late final _y1 = _y1Ptr.asFunction<double Function(double)>();
 
   double yn(
-    int _X,
-    double _Y,
+    int arg0,
+    double arg1,
   ) {
-    return _yn1(
-      _X,
-      _Y,
+    return _yn(
+      arg0,
+      arg1,
     );
   }
 
   late final _ynPtr =
       _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Int, ffi.Double)>>(
           'yn');
-  late final _yn1 = _ynPtr.asFunction<double Function(int, double)>();
+  late final _yn = _ynPtr.asFunction<double Function(int, double)>();
+
+  double scalb(
+    double arg0,
+    double arg1,
+  ) {
+    return _scalb(
+      arg0,
+      arg1,
+    );
+  }
+
+  late final _scalbPtr =
+      _lookup<ffi.NativeFunction<ffi.Double Function(ffi.Double, ffi.Double)>>(
+          'scalb');
+  late final _scalb = _scalbPtr.asFunction<double Function(double, double)>();
+
+  late final ffi.Pointer<ffi.Int> _signgam = _lookup<ffi.Int>('signgam');
+
+  int get signgam => _signgam.value;
+
+  set signgam(int value) => _signgam.value = value;
 
   ffi.Pointer<ffi.Char> aiTextureTypeToString(
     int in1,
@@ -4994,15 +2839,6 @@ class Assimp {
   late final _aiTextureTypeToString = _aiTextureTypeToStringPtr
       .asFunction<ffi.Pointer<ffi.Char> Function(int)>();
 
-  /// @brief Retrieve a material property with a specific key from the material
-  ///
-  /// @param pMat Pointer to the input material. May not be NULL
-  /// @param pKey Key to search for. One of the AI_MATKEY_XXX constants.
-  /// @param type Specifies the type of the texture to be retrieved (
-  /// e.g. diffuse, specular, height map ...)
-  /// @param index Index of the texture to be retrieved.
-  /// @param pPropOut Pointer to receive a pointer to a valid aiMaterialProperty
-  /// structure or NULL if the key has not been found.
   int aiGetMaterialProperty(
     ffi.Pointer<aiMaterial> pMat,
     ffi.Pointer<ffi.Char> pKey,
@@ -5032,30 +2868,6 @@ class Assimp {
       int Function(ffi.Pointer<aiMaterial>, ffi.Pointer<ffi.Char>, int, int,
           ffi.Pointer<ffi.Pointer<aiMaterialProperty>>)>();
 
-  /// @brief Retrieve an array of float values with a specific key
-  /// from the material
-  ///
-  /// Pass one of the AI_MATKEY_XXX constants for the last three parameters (the
-  /// example reads the #AI_MATKEY_UVTRANSFORM property of the first diffuse texture)
-  /// @code
-  /// aiUVTransform trafo;
-  /// unsigned int max = sizeof(aiUVTransform);
-  /// if (AI_SUCCESS != aiGetMaterialFloatArray(mat, AI_MATKEY_UVTRANSFORM(aiTextureType_DIFFUSE,0),
-  /// (float*)&trafo, &max) || sizeof(aiUVTransform) != max)
-  /// {
-  /// // error handling
-  /// }
-  /// @endcode
-  ///
-  /// @param pMat Pointer to the input material. May not be NULL
-  /// @param pKey Key to search for. One of the AI_MATKEY_XXX constants.
-  /// @param pOut Pointer to a buffer to receive the result.
-  /// @param pMax Specifies the size of the given buffer, in float's.
-  /// Receives the number of values (not bytes!) read.
-  /// @param type (see the code sample above)
-  /// @param index (see the code sample above)
-  /// @return Specifies whether the key has been found. If not, the output
-  /// arrays remains unmodified and pMax is set to 0.
   int aiGetMaterialFloatArray(
     ffi.Pointer<aiMaterial> pMat,
     ffi.Pointer<ffi.Char> pKey,
@@ -5087,10 +2899,6 @@ class Assimp {
       int Function(ffi.Pointer<aiMaterial>, ffi.Pointer<ffi.Char>, int, int,
           ffi.Pointer<ai_real>, ffi.Pointer<ffi.UnsignedInt>)>();
 
-  /// @brief Retrieve an array of integer values with a specific key
-  /// from a material
-  ///
-  /// See the sample for aiGetMaterialFloatArray for more information.
   int aiGetMaterialIntegerArray(
     ffi.Pointer<aiMaterial> pMat,
     ffi.Pointer<ffi.Char> pKey,
@@ -5123,9 +2931,6 @@ class Assimp {
           int Function(ffi.Pointer<aiMaterial>, ffi.Pointer<ffi.Char>, int, int,
               ffi.Pointer<ffi.Int>, ffi.Pointer<ffi.UnsignedInt>)>();
 
-  /// @brief Retrieve a color value from the material property table
-  ///
-  /// See the sample for aiGetMaterialFloat for more information
   int aiGetMaterialColor(
     ffi.Pointer<aiMaterial> pMat,
     ffi.Pointer<ffi.Char> pKey,
@@ -5154,9 +2959,6 @@ class Assimp {
       int Function(ffi.Pointer<aiMaterial>, ffi.Pointer<ffi.Char>, int, int,
           ffi.Pointer<aiColor4D>)>();
 
-  /// @brief Retrieve a aiUVTransform value from the material property table
-  ///
-  /// See the sample for aiGetMaterialFloat for more information
   int aiGetMaterialUVTransform(
     ffi.Pointer<aiMaterial> pMat,
     ffi.Pointer<ffi.Char> pKey,
@@ -5186,9 +2988,6 @@ class Assimp {
           int Function(ffi.Pointer<aiMaterial>, ffi.Pointer<ffi.Char>, int, int,
               ffi.Pointer<aiUVTransform>)>();
 
-  /// @brief Retrieve a string from the material property table
-  ///
-  /// See the sample for aiGetMaterialFloat for more information.
   int aiGetMaterialString(
     ffi.Pointer<aiMaterial> pMat,
     ffi.Pointer<ffi.Char> pKey,
@@ -5217,11 +3016,6 @@ class Assimp {
       int Function(ffi.Pointer<aiMaterial>, ffi.Pointer<ffi.Char>, int, int,
           ffi.Pointer<aiString>)>();
 
-  /// Get the number of textures for a particular texture type.
-  /// @param[in] pMat Pointer to the input material. May not be NULL
-  /// @param type Texture type to check for
-  /// @return Number of textures for this type.
-  /// @note A texture can be easily queried using #aiGetMaterialTexture()
   int aiGetMaterialTextureCount(
     ffi.Pointer<aiMaterial> pMat,
     int type,
@@ -5527,11 +3321,6 @@ class Assimp {
   late final _aiReleaseExportBlob = _aiReleaseExportBlobPtr
       .asFunction<void Function(ffi.Pointer<aiExportDataBlob>)>();
 
-  /// \brief  Returns the Importer description for a given extension.
-  ///
-  /// Will return a nullptr if no assigned importer desc. was found for the given extension
-  /// \param  extension   [in] The extension to look for
-  /// \return A pointer showing to the ImporterDesc, \see aiImporterDesc.
   ffi.Pointer<aiImporterDesc> aiGetImporterDesc(
     ffi.Pointer<ffi.Char> extension1,
   ) {
@@ -7941,95 +5730,163 @@ class Assimp {
       _aiGetCompileFlagsPtr.asFunction<int Function()>();
 }
 
-typedef va_list = ffi.Pointer<ffi.Char>;
-typedef uintptr_t = ffi.UnsignedLongLong;
+class __mbstate_t extends ffi.Union {
+  @ffi.Array.multi([128])
+  external ffi.Array<ffi.Char> __mbstate8;
 
-class __crt_locale_data_public extends ffi.Struct {
-  external ffi.Pointer<ffi.UnsignedShort> _locale_pctype;
-
-  @ffi.Int()
-  external int _locale_mb_cur_max;
-
-  @ffi.UnsignedInt()
-  external int _locale_lc_codepage;
+  @ffi.LongLong()
+  external int _mbstateL;
 }
 
-class __crt_locale_pointers extends ffi.Struct {
-  external ffi.Pointer<__crt_locale_data> locinfo;
+class __darwin_pthread_handler_rec extends ffi.Struct {
+  external ffi
+          .Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>
+      __routine;
 
-  external ffi.Pointer<__crt_multibyte_data> mbcinfo;
+  external ffi.Pointer<ffi.Void> __arg;
+
+  external ffi.Pointer<__darwin_pthread_handler_rec> __next;
 }
 
-class __crt_locale_data extends ffi.Opaque {}
+class _opaque_pthread_attr_t extends ffi.Struct {
+  @ffi.Long()
+  external int __sig;
 
-class __crt_multibyte_data extends ffi.Opaque {}
+  @ffi.Array.multi([56])
+  external ffi.Array<ffi.Char> __opaque;
+}
 
-class _Mbstatet extends ffi.Struct {
-  @ffi.UnsignedLong()
-  external int _Wchar;
+class _opaque_pthread_cond_t extends ffi.Struct {
+  @ffi.Long()
+  external int __sig;
 
-  @ffi.UnsignedShort()
-  external int _Byte;
+  @ffi.Array.multi([40])
+  external ffi.Array<ffi.Char> __opaque;
+}
 
-  @ffi.UnsignedShort()
-  external int _State;
+class _opaque_pthread_condattr_t extends ffi.Struct {
+  @ffi.Long()
+  external int __sig;
+
+  @ffi.Array.multi([8])
+  external ffi.Array<ffi.Char> __opaque;
+}
+
+class _opaque_pthread_mutex_t extends ffi.Struct {
+  @ffi.Long()
+  external int __sig;
+
+  @ffi.Array.multi([56])
+  external ffi.Array<ffi.Char> __opaque;
+}
+
+class _opaque_pthread_mutexattr_t extends ffi.Struct {
+  @ffi.Long()
+  external int __sig;
+
+  @ffi.Array.multi([8])
+  external ffi.Array<ffi.Char> __opaque;
+}
+
+class _opaque_pthread_once_t extends ffi.Struct {
+  @ffi.Long()
+  external int __sig;
+
+  @ffi.Array.multi([8])
+  external ffi.Array<ffi.Char> __opaque;
+}
+
+class _opaque_pthread_rwlock_t extends ffi.Struct {
+  @ffi.Long()
+  external int __sig;
+
+  @ffi.Array.multi([192])
+  external ffi.Array<ffi.Char> __opaque;
+}
+
+class _opaque_pthread_rwlockattr_t extends ffi.Struct {
+  @ffi.Long()
+  external int __sig;
+
+  @ffi.Array.multi([16])
+  external ffi.Array<ffi.Char> __opaque;
+}
+
+class _opaque_pthread_t extends ffi.Struct {
+  @ffi.Long()
+  external int __sig;
+
+  external ffi.Pointer<__darwin_pthread_handler_rec> __cleanup_stack;
+
+  @ffi.Array.multi([8176])
+  external ffi.Array<ffi.Char> __opaque;
 }
 
 typedef errno_t = ffi.Int;
-typedef _locale_t = ffi.Pointer<__crt_locale_pointers>;
-typedef rsize_t = ffi.Size;
+typedef rsize_t = __darwin_size_t;
+typedef __darwin_size_t = ffi.UnsignedLong;
+typedef ssize_t = __darwin_ssize_t;
+typedef __darwin_ssize_t = ffi.Long;
 
-/// @brief Enumerates components of the aiScene and aiMesh data structures
-/// that can be excluded from the import using the #aiProcess_RemoveComponent step.
-///
-/// See the documentation to #aiProcess_RemoveComponent for more details.
+@ffi.Packed(1)
+class _OSUnalignedU16 extends ffi.Struct {
+  @ffi.Uint16()
+  external int __val;
+}
+
+@ffi.Packed(1)
+class _OSUnalignedU32 extends ffi.Struct {
+  @ffi.Uint32()
+  external int __val;
+}
+
+@ffi.Packed(1)
+class _OSUnalignedU64 extends ffi.Struct {
+  @ffi.Uint64()
+  external int __val;
+}
+
+class fd_set extends ffi.Struct {
+  @ffi.Array.multi([32])
+  external ffi.Array<__int32_t> fds_bits;
+}
+
+typedef __int32_t = ffi.Int;
+
 abstract class aiComponent {
   static const int aiComponent_NORMALS = 2;
   static const int aiComponent_TANGENTS_AND_BITANGENTS = 4;
-
-  /// ALL color sets
-  /// Use aiComponent_COLORn(N) to specify the N'th set
   static const int aiComponent_COLORS = 8;
-
-  /// ALL texture UV sets
-  /// aiComponent_TEXCOORDn(N) to specify the N'th set
   static const int aiComponent_TEXCOORDS = 16;
-
-  /// Removes all bone weights from all meshes.
-  /// The scenegraph nodes corresponding to the bones are NOT removed.
-  /// use the #aiProcess_OptimizeGraph step to do this
   static const int aiComponent_BONEWEIGHTS = 32;
-
-  /// Removes all node animations (aiScene::mAnimations).
-  /// The corresponding scenegraph nodes are NOT removed.
-  /// use the #aiProcess_OptimizeGraph step to do this
   static const int aiComponent_ANIMATIONS = 64;
-
-  /// Removes all embedded textures (aiScene::mTextures)
   static const int aiComponent_TEXTURES = 128;
-
-  /// Removes all light sources (aiScene::mLights).
-  /// The corresponding scenegraph nodes are NOT removed.
-  /// use the #aiProcess_OptimizeGraph step to do this
   static const int aiComponent_LIGHTS = 256;
-
-  /// Removes all cameras (aiScene::mCameras).
-  /// The corresponding scenegraph nodes are NOT removed.
-  /// use the #aiProcess_OptimizeGraph step to do this
   static const int aiComponent_CAMERAS = 512;
-
-  /// Removes all meshes (aiScene::mMeshes).
   static const int aiComponent_MESHES = 1024;
-
-  /// Removes all materials. One default material will
-  /// be generated, so aiScene::mNumMaterials will be 1.
   static const int aiComponent_MATERIALS = 2048;
   static const int _aiComponent_Force32Bit = -1610612737;
 }
 
 typedef ai_real = ffi.Float;
 
-class _exception extends ffi.Struct {
+class __float2 extends ffi.Struct {
+  @ffi.Float()
+  external double __sinval;
+
+  @ffi.Float()
+  external double __cosval;
+}
+
+class __double2 extends ffi.Struct {
+  @ffi.Double()
+  external double __sinval;
+
+  @ffi.Double()
+  external double __cosval;
+}
+
+class exception extends ffi.Struct {
   @ffi.Int()
   external int type;
 
@@ -8045,40 +5902,23 @@ class _exception extends ffi.Struct {
   external double retval;
 }
 
-class _complex extends ffi.Struct {
-  @ffi.Double()
-  external double x;
-
-  @ffi.Double()
-  external double y;
-}
-
-class _double_val extends ffi.Union {
-  @ffi.Array.multi([4])
-  external ffi.Array<ffi.UnsignedShort> _Sh;
-
-  @ffi.Double()
-  external double _Val;
-}
-
-class _float_val extends ffi.Union {
-  @ffi.Array.multi([2])
-  external ffi.Array<ffi.UnsignedShort> _Sh;
-
-  @ffi.Float()
-  external double _Val;
-}
-
-class _ldouble_val extends ffi.Opaque {}
-
-class _float_const extends ffi.Opaque {}
-
 class aiVector2D extends ffi.Struct {
   @ai_real()
   external double x;
 
   @ai_real()
   external double y;
+}
+
+class aiVector3D extends ffi.Struct {
+  @ai_real()
+  external double x;
+
+  @ai_real()
+  external double y;
+
+  @ai_real()
+  external double z;
 }
 
 class aiColor4D extends ffi.Struct {
@@ -8122,17 +5962,6 @@ class aiMatrix3x3 extends ffi.Struct {
 
   @ai_real()
   external double c3;
-}
-
-class aiVector3D extends ffi.Struct {
-  @ai_real()
-  external double x;
-
-  @ai_real()
-  external double y;
-
-  @ai_real()
-  external double z;
 }
 
 class aiMatrix4x4 extends ffi.Struct {
@@ -8199,9 +6028,7 @@ class aiQuaternion extends ffi.Struct {
   external double z;
 }
 
-/// Represents a plane in a three-dimensional, euclidean space
 class aiPlane extends ffi.Struct {
-  /// ! Plane equation
   @ai_real()
   external double a;
 
@@ -8215,17 +6042,13 @@ class aiPlane extends ffi.Struct {
   external double d;
 }
 
-/// Represents a ray
 class aiRay extends ffi.Struct {
-  /// ! Position and direction of the ray
   external aiVector3D pos;
 
   external aiVector3D dir;
 }
 
-/// Represents a color in Red-Green-Blue space.
 class aiColor3D extends ffi.Struct {
-  /// ! Red, green and blue color values
   @ai_real()
   external double r;
 
@@ -8236,29 +6059,7 @@ class aiColor3D extends ffi.Struct {
   external double b;
 }
 
-/// Represents an UTF-8 string, zero byte terminated.
-///
-/// The character set of an aiString is explicitly defined to be UTF-8. This Unicode
-/// transformation was chosen in the belief that most strings in 3d files are limited
-/// to ASCII, thus the character set needed to be strictly ASCII compatible.
-///
-/// Most text file loaders provide proper Unicode input file handling, special unicode
-/// characters are correctly transcoded to UTF8 and are kept throughout the libraries'
-/// import pipeline.
-///
-/// For most applications, it will be absolutely sufficient to interpret the
-/// aiString as ASCII data and work with it as one would work with a plain char*.
-/// Windows users in need of proper support for i.e asian characters can use the
-/// MultiByteToWideChar(), WideCharToMultiByte() WinAPI functionality to convert the
-/// UTF-8 strings to their working character set (i.e. MBCS, WideChar).
-///
-/// We use this representation instead of std::string to be C-compatible. The
-/// (binary) length of such a string is limited to MAXLEN characters (including the
-/// the terminating zero).
 class aiString extends ffi.Struct {
-  /// Binary length of the string excluding the terminal 0. This is NOT the
-  /// logical length of strings containing UTF-8 multi-byte sequences! It's
-  /// the number of bytes from the beginning of the string to its end.
   @ai_uint32()
   external int length;
 
@@ -8268,103 +6069,54 @@ class aiString extends ffi.Struct {
 
 typedef ai_uint32 = ffi.Uint32;
 
-/// Standard return type for some library functions.
-/// Rarely used, and if, mostly in the C API.
 abstract class aiReturn {
-  /// Indicates that a function was successful
   static const int aiReturn_SUCCESS = 0;
-
-  /// Indicates that a function failed
   static const int aiReturn_FAILURE = -1;
-
-  /// Indicates that not enough memory was available
-  /// to perform the requested operation
   static const int aiReturn_OUTOFMEMORY = -3;
-
-  /// @cond never
-  /// Force 32-bit size enum
   static const int _AI_ENFORCE_ENUM_SIZE = 2147483647;
 }
 
-/// Seek origins (for the virtual file system API).
-/// Much cooler than using SEEK_SET, SEEK_CUR or SEEK_END.
 abstract class aiOrigin {
-  /// Beginning of the file
   static const int aiOrigin_SET = 0;
-
-  /// Current position of the file pointer
   static const int aiOrigin_CUR = 1;
-
-  /// End of the file, offsets must be negative
   static const int aiOrigin_END = 2;
-
-  /// @cond never
-  /// Force 32-bit size enum
   static const int _AI_ORIGIN_ENFORCE_ENUM_SIZE = 2147483647;
 }
 
-/// @brief Enumerates predefined log streaming destinations.
-/// Logging to these streams can be enabled with a single call to
-/// #LogStream::createDefaultStream.
 abstract class aiDefaultLogStream {
-  /// Stream the log to a file
   static const int aiDefaultLogStream_FILE = 1;
-
-  /// Stream the log to std::cout
   static const int aiDefaultLogStream_STDOUT = 2;
-
-  /// Stream the log to std::cerr
   static const int aiDefaultLogStream_STDERR = 4;
-
-  /// MSVC only: Stream the log the the debugger
-  /// (this relies on OutputDebugString from the Win32 SDK)
   static const int aiDefaultLogStream_DEBUGGER = 8;
-
-  /// @cond never
-  /// Force 32-bit size enum
   static const int _AI_DLS_ENFORCE_ENUM_SIZE = 2147483647;
 }
 
-/// Stores the memory requirements for different components (e.g. meshes, materials,
-/// animations) of an import. All sizes are in bytes.
-/// @see Importer::GetMemoryRequirements()
 class aiMemoryInfo extends ffi.Struct {
-  /// Storage allocated for texture data
   @ffi.UnsignedInt()
   external int textures;
 
-  /// Storage allocated for material data
   @ffi.UnsignedInt()
   external int materials;
 
-  /// Storage allocated for mesh data
   @ffi.UnsignedInt()
   external int meshes;
 
-  /// Storage allocated for node data
   @ffi.UnsignedInt()
   external int nodes;
 
-  /// Storage allocated for animation data
   @ffi.UnsignedInt()
   external int animations;
 
-  /// Storage allocated for camera data
   @ffi.UnsignedInt()
   external int cameras;
 
-  /// Storage allocated for light data
   @ffi.UnsignedInt()
   external int lights;
 
-  /// Total storage allocated for the full import.
   @ffi.UnsignedInt()
   external int total;
 }
 
-/// @brief Helper structure to represent a texel in a ARGB8888 format
-///
-/// Used by aiTexture.
 @ffi.Packed(1)
 class aiTexel extends ffi.Struct {
   @ffi.UnsignedChar()
@@ -8380,98 +6132,38 @@ class aiTexel extends ffi.Struct {
   external int a;
 }
 
-/// Helper structure to describe an embedded texture
-///
-/// Normally textures are contained in external files but some file formats embed
-/// them directly in the model file. There are two types of embedded textures:
-/// 1. Uncompressed textures. The color data is given in an uncompressed format.
-/// 2. Compressed textures stored in a file format like png or jpg. The raw file
-/// bytes are given so the application must utilize an image decoder (e.g. DevIL) to
-/// get access to the actual color data.
-///
-/// Embedded textures are referenced from materials using strings like "*0", "*1", etc.
-/// as the texture paths (a single asterisk character followed by the
-/// zero-based index of the texture in the aiScene::mTextures array).
 class aiTexture extends ffi.Struct {
-  /// Width of the texture, in pixels
-  ///
-  /// If mHeight is zero the texture is compressed in a format
-  /// like JPEG. In this case mWidth specifies the size of the
-  /// memory area pcData is pointing to, in bytes.
   @ffi.UnsignedInt()
   external int mWidth;
 
-  /// Height of the texture, in pixels
-  ///
-  /// If this value is zero, pcData points to an compressed texture
-  /// in any format (e.g. JPEG).
   @ffi.UnsignedInt()
   external int mHeight;
 
   @ffi.Array.multi([9])
   external ffi.Array<ffi.Char> achFormatHint;
 
-  /// Data of the texture.
-  ///
-  /// Points to an array of mWidth * mHeight aiTexel's.
-  /// The format of the texture data is always ARGB8888 to
-  /// make the implementation for user of the library as easy
-  /// as possible. If mHeight = 0 this is a pointer to a memory
-  /// buffer of size mWidth containing the compressed texture
-  /// data. Good luck, have fun!
   external ffi.Pointer<aiTexel> pcData;
 
-  /// Texture original filename
-  ///
-  /// Used to get the texture reference
   external aiString mFilename;
 }
 
-/// An axis-aligned bounding box.
 class aiAABB extends ffi.Struct {
   external aiVector3D mMin;
 
   external aiVector3D mMax;
 }
 
-/// @brief A single face in a mesh, referring to multiple vertices.
-///
-/// If mNumIndices is 3, we call the face 'triangle', for mNumIndices > 3
-/// it's called 'polygon' (hey, that's just a definition!).
-/// <br>
-/// aiMesh::mPrimitiveTypes can be queried to quickly examine which types of
-/// primitive are actually present in a mesh. The #aiProcess_SortByPType flag
-/// executes a special post-processing algorithm which splits meshes with
-/// *different* primitive types mixed up (e.g. lines and triangles) in several
-/// 'clean' submeshes. Furthermore there is a configuration option (
-/// #AI_CONFIG_PP_SBP_REMOVE) to force #aiProcess_SortByPType to remove
-/// specific kinds of primitives from the imported scene, completely and forever.
-/// In many cases you'll probably want to set this setting to
-/// @code
-/// aiPrimitiveType_LINE|aiPrimitiveType_POINT
-/// @endcode
-/// Together with the #aiProcess_Triangulate flag you can then be sure that
-/// #aiFace::mNumIndices is always 3.
-/// @note Take a look at the @link data Data Structures page @endlink for
-/// more information on the layout and winding order of a face.
 class aiFace extends ffi.Struct {
-  /// ! Number of indices defining this face.
-  /// ! The maximum value for this member is #AI_MAX_FACE_INDICES.
   @ffi.UnsignedInt()
   external int mNumIndices;
 
-  /// ! Pointer to the indices array. Size of the array is given in numIndices.
   external ffi.Pointer<ffi.UnsignedInt> mIndices;
 }
 
-/// @brief A single influence of a bone on a vertex.
 class aiVertexWeight extends ffi.Struct {
-  /// ! Index of the vertex which is influenced by the bone.
   @ffi.UnsignedInt()
   external int mVertexId;
 
-  /// ! The strength of the influence in the range (0...1).
-  /// ! The influence from all bones at one vertex amounts to 1.
   @ai_real()
   external double mWeight;
 }
@@ -8534,25 +6226,15 @@ class aiNode extends ffi.Struct {
   external ffi.Pointer<aiMetadata> mMetaData;
 }
 
-/// Container for holding metadata.
-///
-/// Metadata is a key-value store using string keys and values.
 class aiMetadata extends ffi.Struct {
-  /// Length of the mKeys and mValues arrays, respectively
   @ffi.UnsignedInt()
   external int mNumProperties;
 
-  /// Arrays of keys, may not be NULL. Entries in this array may not be NULL as well.
   external ffi.Pointer<aiString> mKeys;
 
-  /// Arrays of values, may not be NULL. Entries in this array may be NULL if the
-  /// corresponding property key has no assigned value.
   external ffi.Pointer<aiMetadataEntry> mValues;
 }
 
-/// Metadata entry
-///
-/// The type field uniquely identifies the underlying type of the data field
 class aiMetadataEntry extends ffi.Struct {
   @ffi.Int32()
   external int mType;
@@ -8560,7 +6242,6 @@ class aiMetadataEntry extends ffi.Struct {
   external ffi.Pointer<ffi.Void> mData;
 }
 
-/// Enum used to distinguish data types
 abstract class aiMetadataType {
   static const int AI_BOOL = 0;
   static const int AI_INT32 = 1;
@@ -8574,18 +6255,9 @@ abstract class aiMetadataType {
   static const int FORCE_32BIT = 2147483647;
 }
 
-/// @brief A single bone of a mesh.
-///
-/// A bone has a name by which it can be found in the frame hierarchy and by
-/// which it can be addressed by animations. In addition it has a number of
-/// influences on vertices, and a matrix relating the mesh position to the
-/// position of the bone at the time of binding.
 class aiBone extends ffi.Struct {
-  /// ! The name of the bone.
   external aiString mName;
 
-  /// ! The number of vertices affected by this bone.
-  /// ! The maximum value for this member is #AI_MAX_BONE_WEIGHTS.
   @ffi.UnsignedInt()
   external int mNumWeights;
 
@@ -8593,100 +6265,29 @@ class aiBone extends ffi.Struct {
 
   external ffi.Pointer<aiNode> mNode;
 
-  /// ! The influence weights of this bone, by vertex index.
   external ffi.Pointer<aiVertexWeight> mWeights;
 
-  /// Matrix that transforms from bone space to mesh space in bind pose.
-  ///
-  /// This matrix describes the position of the mesh
-  /// in the local space of this bone when the skeleton was bound.
-  /// Thus it can be used directly to determine a desired vertex position,
-  /// given the world-space transform of the bone when animated,
-  /// and the position of the vertex in mesh space.
-  ///
-  /// It is sometimes called an inverse-bind matrix,
-  /// or inverse bind pose matrix.
   external aiMatrix4x4 mOffsetMatrix;
 }
 
-/// @brief Enumerates the types of geometric primitives supported by Assimp.
-///
-/// @see aiFace Face data structure
-/// @see aiProcess_SortByPType Per-primitive sorting of meshes
-/// @see aiProcess_Triangulate Automatic triangulation
-/// @see AI_CONFIG_PP_SBP_REMOVE Removal of specific primitive types.
 abstract class aiPrimitiveType {
-  /// A point primitive.
-  ///
-  /// This is just a single vertex in the virtual world,
-  /// #aiFace contains just one index for such a primitive.
   static const int aiPrimitiveType_POINT = 1;
-
-  /// A line primitive.
-  ///
-  /// This is a line defined through a start and an end position.
-  /// #aiFace contains exactly two indices for such a primitive.
   static const int aiPrimitiveType_LINE = 2;
-
-  /// A triangular primitive.
-  ///
-  /// A triangle consists of three indices.
   static const int aiPrimitiveType_TRIANGLE = 4;
-
-  /// A higher-level polygon with more than 3 edges.
-  ///
-  /// A triangle is a polygon, but polygon in this context means
-  /// "all polygons that are not triangles". The "Triangulate"-Step
-  /// is provided for your convenience, it splits all polygons in
-  /// triangles (which are much easier to handle).
   static const int aiPrimitiveType_POLYGON = 8;
-
-  /// A flag to determine whether this triangles only mesh is NGON encoded.
-  ///
-  /// NGON encoding is a special encoding that tells whether 2 or more consecutive triangles
-  /// should be considered as a triangle fan. This is identified by looking at the first vertex index.
-  /// 2 consecutive triangles with the same 1st vertex index are part of the same
-  /// NGON.
-  ///
-  /// At the moment, only quads (concave or convex) are supported, meaning that polygons are 'seen' as
-  /// triangles, as usual after a triangulation pass.
-  ///
-  /// To get an NGON encoded mesh, please use the aiProcess_Triangulate post process.
-  ///
-  /// @see aiProcess_Triangulate
-  /// @link https://github.com/KhronosGroup/glTF/pull/1620
   static const int aiPrimitiveType_NGONEncodingFlag = 16;
   static const int _aiPrimitiveType_Force32Bit = 2147483647;
 }
 
-/// @brief An AnimMesh is an attachment to an #aiMesh stores per-vertex
-/// animations for a particular frame.
-///
-/// You may think of an #aiAnimMesh as a `patch` for the host mesh, which
-/// replaces only certain vertex data streams at a particular time.
-/// Each mesh stores n attached attached meshes (#aiMesh::mAnimMeshes).
-/// The actual relationship between the time line and anim meshes is
-/// established by #aiMeshAnim, which references singular mesh attachments
-/// by their ID and binds them to a time offset.
 class aiAnimMesh extends ffi.Struct {
-  /// Anim Mesh name
   external aiString mName;
 
-  /// Replacement for aiMesh::mVertices. If this array is non-nullptr,
-  /// it *must* contain mNumVertices entries. The corresponding
-  /// array in the host mesh must be non-nullptr as well - animation
-  /// meshes may neither add or nor remove vertex components (if
-  /// a replacement array is nullptr and the corresponding source
-  /// array is not, the source data is taken instead)
   external ffi.Pointer<aiVector3D> mVertices;
 
-  /// Replacement for aiMesh::mNormals.
   external ffi.Pointer<aiVector3D> mNormals;
 
-  /// Replacement for aiMesh::mTangents.
   external ffi.Pointer<aiVector3D> mTangents;
 
-  /// Replacement for aiMesh::mBitangents.
   external ffi.Pointer<aiVector3D> mBitangents;
 
   @ffi.Array.multi([8])
@@ -8695,116 +6296,36 @@ class aiAnimMesh extends ffi.Struct {
   @ffi.Array.multi([8])
   external ffi.Array<ffi.Pointer<aiVector3D>> mTextureCoords;
 
-  /// The number of vertices in the aiAnimMesh, and thus the length of all
-  /// the member arrays.
-  ///
-  /// This has always the same value as the mNumVertices property in the
-  /// corresponding aiMesh. It is duplicated here merely to make the length
-  /// of the member arrays accessible even if the aiMesh is not known, e.g.
-  /// from language bindings.
   @ffi.UnsignedInt()
   external int mNumVertices;
 
-  /// Weight of the AnimMesh.
   @ffi.Float()
   external double mWeight;
 }
 
-/// @brief Enumerates the methods of mesh morphing supported by Assimp.
 abstract class aiMorphingMethod {
-  /// Interpolation between morph targets
   static const int aiMorphingMethod_VERTEX_BLEND = 1;
-
-  /// Normalized morphing between morph targets
   static const int aiMorphingMethod_MORPH_NORMALIZED = 2;
-
-  /// Relative morphing between morph targets
   static const int aiMorphingMethod_MORPH_RELATIVE = 3;
   static const int _aiMorphingMethod_Force32Bit = 2147483647;
 }
 
-/// @brief A mesh represents a geometry or model with a single material.
-///
-/// It usually consists of a number of vertices and a series of primitives/faces
-/// referencing the vertices. In addition there might be a series of bones, each
-/// of them addressing a number of vertices with a certain weight. Vertex data
-/// is presented in channels with each channel containing a single per-vertex
-/// information such as a set of texture coordinates or a normal vector.
-/// If a data pointer is non-null, the corresponding data stream is present.
-/// From C++-programs you can also use the comfort functions Has*() to
-/// test for the presence of various data streams.
-///
-/// A Mesh uses only a single material which is referenced by a material ID.
-/// @note The mPositions member is usually not optional. However, vertex positions
-/// *could* be missing if the #AI_SCENE_FLAGS_INCOMPLETE flag is set in
-/// @code
-/// aiScene::mFlags
-/// @endcode
 class aiMesh extends ffi.Struct {
-  /// Bitwise combination of the members of the #aiPrimitiveType enum.
-  /// This specifies which types of primitives are present in the mesh.
-  /// The "SortByPrimitiveType"-Step can be used to make sure the
-  /// output meshes consist of one primitive type each.
   @ffi.UnsignedInt()
   external int mPrimitiveTypes;
 
-  /// The number of vertices in this mesh.
-  /// This is also the size of all of the per-vertex data arrays.
-  /// The maximum value for this member is #AI_MAX_VERTICES.
   @ffi.UnsignedInt()
   external int mNumVertices;
 
-  /// The number of primitives (triangles, polygons, lines) in this  mesh.
-  /// This is also the size of the mFaces array.
-  /// The maximum value for this member is #AI_MAX_FACES.
   @ffi.UnsignedInt()
   external int mNumFaces;
 
-  /// Vertex positions.
-  /// This array is always present in a mesh. The array is
-  /// mNumVertices in size.
   external ffi.Pointer<aiVector3D> mVertices;
 
-  /// Vertex normals.
-  /// The array contains normalized vectors, nullptr if not present.
-  /// The array is mNumVertices in size. Normals are undefined for
-  /// point and line primitives. A mesh consisting of points and
-  /// lines only may not have normal vectors. Meshes with mixed
-  /// primitive types (i.e. lines and triangles) may have normals,
-  /// but the normals for vertices that are only referenced by
-  /// point or line primitives are undefined and set to QNaN (WARN:
-  /// qNaN compares to inequal to *everything*, even to qNaN itself.
-  /// Using code like this to check whether a field is qnan is:
-  /// @code
-  /// #define IS_QNAN(f) (f != f)
-  /// @endcode
-  /// still dangerous because even 1.f == 1.f could evaluate to false! (
-  /// remember the subtleties of IEEE754 artithmetics). Use stuff like
-  /// @c fpclassify instead.
-  /// @note Normal vectors computed by Assimp are always unit-length.
-  /// However, this needn't apply for normals that have been taken
-  /// directly from the model file.
   external ffi.Pointer<aiVector3D> mNormals;
 
-  /// Vertex tangents.
-  /// The tangent of a vertex points in the direction of the positive
-  /// X texture axis. The array contains normalized vectors, nullptr if
-  /// not present. The array is mNumVertices in size. A mesh consisting
-  /// of points and lines only may not have normal vectors. Meshes with
-  /// mixed primitive types (i.e. lines and triangles) may have
-  /// normals, but the normals for vertices that are only referenced by
-  /// point or line primitives are undefined and set to qNaN.  See
-  /// the #mNormals member for a detailed discussion of qNaNs.
-  /// @note If the mesh contains tangents, it automatically also
-  /// contains bitangents.
   external ffi.Pointer<aiVector3D> mTangents;
 
-  /// Vertex bitangents.
-  /// The bitangent of a vertex points in the direction of the positive
-  /// Y texture axis. The array contains normalized vectors, nullptr if not
-  /// present. The array is mNumVertices in size.
-  /// @note If the mesh contains tangents, it automatically also contains
-  /// bitangents.
   external ffi.Pointer<aiVector3D> mBitangents;
 
   @ffi.Array.multi([8])
@@ -8816,1041 +6337,338 @@ class aiMesh extends ffi.Struct {
   @ffi.Array.multi([8])
   external ffi.Array<ffi.UnsignedInt> mNumUVComponents;
 
-  /// The faces the mesh is constructed from.
-  /// Each face refers to a number of vertices by their indices.
-  /// This array is always present in a mesh, its size is given
-  /// in mNumFaces. If the #AI_SCENE_FLAGS_NON_VERBOSE_FORMAT
-  /// is NOT set each face references an unique set of vertices.
   external ffi.Pointer<aiFace> mFaces;
 
-  /// The number of bones this mesh contains.
-  /// Can be 0, in which case the mBones array is nullptr.
   @ffi.UnsignedInt()
   external int mNumBones;
 
-  /// The bones of this mesh.
-  /// A bone consists of a name by which it can be found in the
-  /// frame hierarchy and a set of vertex weights.
   external ffi.Pointer<ffi.Pointer<aiBone>> mBones;
 
-  /// The material used by this mesh.
-  /// A mesh uses only a single material. If an imported model uses
-  /// multiple materials, the import splits up the mesh. Use this value
-  /// as index into the scene's material list.
   @ffi.UnsignedInt()
   external int mMaterialIndex;
 
-  /// Name of the mesh. Meshes can be named, but this is not a
-  /// requirement and leaving this field empty is totally fine.
-  /// There are mainly three uses for mesh names:
-  /// - some formats name nodes and meshes independently.
-  /// - importers tend to split meshes up to meet the
-  /// one-material-per-mesh requirement. Assigning
-  /// the same (dummy) name to each of the result meshes
-  /// aids the caller at recovering the original mesh
-  /// partitioning.
-  /// - Vertex animations refer to meshes by their names.
   external aiString mName;
 
-  /// The number of attachment meshes. Note! Currently only works with Collada loader.
   @ffi.UnsignedInt()
   external int mNumAnimMeshes;
 
-  /// Attachment meshes for this mesh, for vertex-based animation.
-  /// Attachment meshes carry replacement data for some of the
-  /// mesh'es vertex components (usually positions, normals).
-  /// Note! Currently only works with Collada loader.
   external ffi.Pointer<ffi.Pointer<aiAnimMesh>> mAnimMeshes;
 
-  /// Method of morphing when anim-meshes are specified.
-  /// @see aiMorphingMethod to learn more about the provided morphing targets.
   @ffi.UnsignedInt()
   external int mMethod;
 
-  /// The bounding box.
   external aiAABB mAABB;
 
-  /// Vertex UV stream names. Pointer to array of size AI_MAX_NUMBER_OF_TEXTURECOORDS
   external ffi.Pointer<ffi.Pointer<aiString>> mTextureCoordsNames;
 }
 
-/// Enumerates all supported types of light sources.
 abstract class aiLightSourceType {
   static const int aiLightSource_UNDEFINED = 0;
-
-  /// ! A directional light source has a well-defined direction
-  /// ! but is infinitely far away. That's quite a good
-  /// ! approximation for sun light.
   static const int aiLightSource_DIRECTIONAL = 1;
-
-  /// ! A point light source has a well-defined position
-  /// ! in space but no direction - it emits light in all
-  /// ! directions. A normal bulb is a point light.
   static const int aiLightSource_POINT = 2;
-
-  /// ! A spot light source emits light in a specific
-  /// ! angle. It has a position and a direction it is pointing to.
-  /// ! A good example for a spot light is a light spot in
-  /// ! sport arenas.
   static const int aiLightSource_SPOT = 3;
-
-  /// ! The generic light level of the world, including the bounces
-  /// ! of all other light sources.
-  /// ! Typically, there's at most one ambient light in a scene.
-  /// ! This light type doesn't have a valid position, direction, or
-  /// ! other properties, just a color.
   static const int aiLightSource_AMBIENT = 4;
-
-  /// ! An area light is a rectangle with predefined size that uniformly
-  /// ! emits light from one of its sides. The position is center of the
-  /// ! rectangle and direction is its normal vector.
   static const int aiLightSource_AREA = 5;
   static const int _aiLightSource_Force32Bit = 2147483647;
 }
 
-/// Helper structure to describe a light source.
-///
-/// Assimp supports multiple sorts of light sources, including
-/// directional, point and spot lights. All of them are defined with just
-/// a single structure and distinguished by their parameters.
-/// Note - some file formats (such as 3DS, ASE) export a "target point" -
-/// the point a spot light is looking at (it can even be animated). Assimp
-/// writes the target point as a sub-node of a spot-lights's main node,
-/// called "<spotName>.Target". However, this is just additional information
-/// then, the transformation tracks of the main node make the
-/// spot light already point in the right direction.
 class aiLight extends ffi.Struct {
-  /// The name of the light source.
-  ///
-  /// There must be a node in the scene-graph with the same name.
-  /// This node specifies the position of the light in the scene
-  /// hierarchy and can be animated.
   external aiString mName;
 
-  /// The type of the light source.
-  ///
-  /// aiLightSource_UNDEFINED is not a valid value for this member.
   @ffi.Int32()
   external int mType;
 
-  /// Position of the light source in space. Relative to the
-  /// transformation of the node corresponding to the light.
-  ///
-  /// The position is undefined for directional lights.
   external aiVector3D mPosition;
 
-  /// Direction of the light source in space. Relative to the
-  /// transformation of the node corresponding to the light.
-  ///
-  /// The direction is undefined for point lights. The vector
-  /// may be normalized, but it needn't.
   external aiVector3D mDirection;
 
-  /// Up direction of the light source in space. Relative to the
-  /// transformation of the node corresponding to the light.
-  ///
-  /// The direction is undefined for point lights. The vector
-  /// may be normalized, but it needn't.
   external aiVector3D mUp;
 
-  /// Constant light attenuation factor.
-  ///
-  /// The intensity of the light source at a given distance 'd' from
-  /// the light's position is
-  /// @code
-  /// Atten = 1/( att0 + att1 * d + att2 * d*d)
-  /// @endcode
-  /// This member corresponds to the att0 variable in the equation.
-  /// Naturally undefined for directional lights.
   @ffi.Float()
   external double mAttenuationConstant;
 
-  /// Linear light attenuation factor.
-  ///
-  /// The intensity of the light source at a given distance 'd' from
-  /// the light's position is
-  /// @code
-  /// Atten = 1/( att0 + att1 * d + att2 * d*d)
-  /// @endcode
-  /// This member corresponds to the att1 variable in the equation.
-  /// Naturally undefined for directional lights.
   @ffi.Float()
   external double mAttenuationLinear;
 
-  /// Quadratic light attenuation factor.
-  ///
-  /// The intensity of the light source at a given distance 'd' from
-  /// the light's position is
-  /// @code
-  /// Atten = 1/( att0 + att1 * d + att2 * d*d)
-  /// @endcode
-  /// This member corresponds to the att2 variable in the equation.
-  /// Naturally undefined for directional lights.
   @ffi.Float()
   external double mAttenuationQuadratic;
 
-  /// Diffuse color of the light source
-  ///
-  /// The diffuse light color is multiplied with the diffuse
-  /// material color to obtain the final color that contributes
-  /// to the diffuse shading term.
   external aiColor3D mColorDiffuse;
 
-  /// Specular color of the light source
-  ///
-  /// The specular light color is multiplied with the specular
-  /// material color to obtain the final color that contributes
-  /// to the specular shading term.
   external aiColor3D mColorSpecular;
 
-  /// Ambient color of the light source
-  ///
-  /// The ambient light color is multiplied with the ambient
-  /// material color to obtain the final color that contributes
-  /// to the ambient shading term. Most renderers will ignore
-  /// this value it, is just a remaining of the fixed-function pipeline
-  /// that is still supported by quite many file formats.
   external aiColor3D mColorAmbient;
 
-  /// Inner angle of a spot light's light cone.
-  ///
-  /// The spot light has maximum influence on objects inside this
-  /// angle. The angle is given in radians. It is 2PI for point
-  /// lights and undefined for directional lights.
   @ffi.Float()
   external double mAngleInnerCone;
 
-  /// Outer angle of a spot light's light cone.
-  ///
-  /// The spot light does not affect objects outside this angle.
-  /// The angle is given in radians. It is 2PI for point lights and
-  /// undefined for directional lights. The outer angle must be
-  /// greater than or equal to the inner angle.
-  /// It is assumed that the application uses a smooth
-  /// interpolation between the inner and the outer cone of the
-  /// spot light.
   @ffi.Float()
   external double mAngleOuterCone;
 
-  /// Size of area light source.
   external aiVector2D mSize;
 }
 
-/// Helper structure to describe a virtual camera.
-///
-/// Cameras have a representation in the node graph and can be animated.
-/// An important aspect is that the camera itself is also part of the
-/// scene-graph. This means, any values such as the look-at vector are not
-/// *absolute*, they're <b>relative</b> to the coordinate system defined
-/// by the node which corresponds to the camera. This allows for camera
-/// animations. For static cameras parameters like the 'look-at' or 'up' vectors
-/// are usually specified directly in aiCamera, but beware, they could also
-/// be encoded in the node transformation. The following (pseudo)code sample
-/// shows how to do it: <br><br>
-/// @code
-/// // Get the camera matrix for a camera at a specific time
-/// // if the node hierarchy for the camera does not contain
-/// // at least one animated node this is a static computation
-/// get-camera-matrix (node sceneRoot, camera cam) : matrix
-/// {
-/// node   cnd = find-node-for-camera(cam)
-/// matrix cmt = identity()
-///
-/// // as usual - get the absolute camera transformation for this frame
-/// for each node nd in hierarchy from sceneRoot to cnd
-/// matrix cur
-/// if (is-animated(nd))
-/// cur = eval-animation(nd)
-/// else cur = nd->mTransformation;
-/// cmt = mult-matrices( cmt, cur )
-/// end for
-///
-/// // now multiply with the camera's own local transform
-/// cam = mult-matrices (cam, get-camera-matrix(cmt) )
-/// }
-/// @endcode
-///
-/// @note some file formats (such as 3DS, ASE) export a "target point" -
-/// the point the camera is looking at (it can even be animated). Assimp
-/// writes the target point as a subnode of the camera's main node,
-/// called "<camName>.Target". However this is just additional information
-/// then the transformation tracks of the camera main node make the
-/// camera already look in the right direction.
 class aiCamera extends ffi.Struct {
-  /// The name of the camera.
-  ///
-  /// There must be a node in the scenegraph with the same name.
-  /// This node specifies the position of the camera in the scene
-  /// hierarchy and can be animated.
   external aiString mName;
 
-  /// Position of the camera relative to the coordinate space
-  /// defined by the corresponding node.
-  ///
-  /// The default value is 0|0|0.
   external aiVector3D mPosition;
 
-  /// 'Up' - vector of the camera coordinate system relative to
-  /// the coordinate space defined by the corresponding node.
-  ///
-  /// The 'right' vector of the camera coordinate system is
-  /// the cross product of  the up and lookAt vectors.
-  /// The default value is 0|1|0. The vector
-  /// may be normalized, but it needn't.
   external aiVector3D mUp;
 
-  /// 'LookAt' - vector of the camera coordinate system relative to
-  /// the coordinate space defined by the corresponding node.
-  ///
-  /// This is the viewing direction of the user.
-  /// The default value is 0|0|1. The vector
-  /// may be normalized, but it needn't.
   external aiVector3D mLookAt;
 
-  /// Horizontal field of view angle, in radians.
-  ///
-  /// The field of view angle is the angle between the center
-  /// line of the screen and the left or right border.
-  /// The default value is 1/4PI.
   @ffi.Float()
   external double mHorizontalFOV;
 
-  /// Distance of the near clipping plane from the camera.
-  ///
-  /// The value may not be 0.f (for arithmetic reasons to prevent
-  /// a division through zero). The default value is 0.1f.
   @ffi.Float()
   external double mClipPlaneNear;
 
-  /// Distance of the far clipping plane from the camera.
-  ///
-  /// The far clipping plane must, of course, be further away than the
-  /// near clipping plane. The default value is 1000.f. The ratio
-  /// between the near and the far plane should not be too
-  /// large (between 1000-10000 should be ok) to avoid floating-point
-  /// inaccuracies which could lead to z-fighting.
   @ffi.Float()
   external double mClipPlaneFar;
 
-  /// Screen aspect ratio.
-  ///
-  /// This is the ration between the width and the height of the
-  /// screen. Typical values are 4/3, 1/2 or 1/1. This value is
-  /// 0 if the aspect ratio is not defined in the source file.
-  /// 0 is also the default value.
   @ffi.Float()
   external double mAspect;
 
-  /// Half horizontal orthographic width, in scene units.
-  ///
-  /// The orthographic width specifies the half width of the
-  /// orthographic view box. If non-zero the camera is
-  /// orthographic and the mAspect should define to the
-  /// ratio between the orthographic width and height
-  /// and mHorizontalFOV should be set to 0.
-  /// The default value is 0 (not orthographic).
   @ffi.Float()
   external double mOrthographicWidth;
 }
 
-/// @brief Defines how the Nth texture of a specific type is combined with
-/// the result of all previous layers.
-///
-/// Example (left: key, right: value): <br>
-/// @code
-/// DiffColor0     - gray
-/// DiffTextureOp0 - aiTextureOpMultiply
-/// DiffTexture0   - tex1.png
-/// DiffTextureOp0 - aiTextureOpAdd
-/// DiffTexture1   - tex2.png
-/// @endcode
-/// Written as equation, the final diffuse term for a specific pixel would be:
-/// @code
-/// diffFinal = DiffColor0 * sampleTex(DiffTexture0,UV0) +
-/// sampleTex(DiffTexture1,UV0) * diffContrib;
-/// @endcode
-/// where 'diffContrib' is the intensity of the incoming light for that pixel.
 abstract class aiTextureOp {
-  /// T = T1 * T2
   static const int aiTextureOp_Multiply = 0;
-
-  /// T = T1 + T2
   static const int aiTextureOp_Add = 1;
-
-  /// T = T1 - T2
   static const int aiTextureOp_Subtract = 2;
-
-  /// T = T1 / T2
   static const int aiTextureOp_Divide = 3;
-
-  /// T = (T1 + T2) - (T1 * T2)
   static const int aiTextureOp_SmoothAdd = 4;
-
-  /// T = T1 + (T2-0.5)
   static const int aiTextureOp_SignedAdd = 5;
   static const int _aiTextureOp_Force32Bit = 2147483647;
 }
 
-/// @brief Defines how UV coordinates outside the [0...1] range are handled.
-///
-/// Commonly referred to as 'wrapping mode'.
 abstract class aiTextureMapMode {
-  /// A texture coordinate u|v is translated to u%1|v%1
   static const int aiTextureMapMode_Wrap = 0;
-
-  /// Texture coordinates outside [0...1]
-  /// are clamped to the nearest valid value.
   static const int aiTextureMapMode_Clamp = 1;
-
-  /// If the texture coordinates for a pixel are outside [0...1]
-  /// the texture is not applied to that pixel
   static const int aiTextureMapMode_Decal = 3;
-
-  /// A texture coordinate u|v becomes u%1|v%1 if (u-(u%1))%2 is zero and
-  /// 1-(u%1)|1-(v%1) otherwise
   static const int aiTextureMapMode_Mirror = 2;
   static const int _aiTextureMapMode_Force32Bit = 2147483647;
 }
 
-/// @brief Defines how the mapping coords for a texture are generated.
-///
-/// Real-time applications typically require full UV coordinates, so the use of
-/// the aiProcess_GenUVCoords step is highly recommended. It generates proper
-/// UV channels for non-UV mapped objects, as long as an accurate description
-/// how the mapping should look like (e.g spherical) is given.
-/// See the #AI_MATKEY_MAPPING property for more details.
 abstract class aiTextureMapping {
-  /// The mapping coordinates are taken from an UV channel.
-  ///
-  /// #AI_MATKEY_UVWSRC property specifies from which UV channel
-  /// the texture coordinates are to be taken from (remember,
-  /// meshes can have more than one UV channel).
   static const int aiTextureMapping_UV = 0;
-
-  /// Spherical mapping
   static const int aiTextureMapping_SPHERE = 1;
-
-  /// Cylindrical mapping
   static const int aiTextureMapping_CYLINDER = 2;
-
-  /// Cubic mapping
   static const int aiTextureMapping_BOX = 3;
-
-  /// Planar mapping
   static const int aiTextureMapping_PLANE = 4;
-
-  /// Undefined mapping. Have fun.
   static const int aiTextureMapping_OTHER = 5;
   static const int _aiTextureMapping_Force32Bit = 2147483647;
 }
 
-/// @brief Defines the purpose of a texture
-///
-/// This is a very difficult topic. Different 3D packages support different
-/// kinds of textures. For very common texture types, such as bumpmaps, the
-/// rendering results depend on implementation details in the rendering
-/// pipelines of these applications. Assimp loads all texture references from
-/// the model file and tries to determine which of the predefined texture
-/// types below is the best choice to match the original use of the texture
-/// as closely as possible.<br>
-///
-/// In content pipelines you'll usually define how textures have to be handled,
-/// and the artists working on models have to conform to this specification,
-/// regardless which 3D tool they're using.
 abstract class aiTextureType {
-  /// Dummy value.
-  ///
-  /// No texture, but the value to be used as 'texture semantic'
-  /// (#aiMaterialProperty::mSemantic) for all material properties
-  /// *not* related to textures.
   static const int aiTextureType_NONE = 0;
-
-  /// The texture is combined with the result of the diffuse
-  /// lighting equation.
-  /// OR
-  /// PBR Specular/Glossiness
   static const int aiTextureType_DIFFUSE = 1;
-
-  /// The texture is combined with the result of the specular
-  /// lighting equation.
-  /// OR
-  /// PBR Specular/Glossiness
   static const int aiTextureType_SPECULAR = 2;
-
-  /// The texture is combined with the result of the ambient
-  /// lighting equation.
   static const int aiTextureType_AMBIENT = 3;
-
-  /// The texture is added to the result of the lighting
-  /// calculation. It isn't influenced by incoming light.
   static const int aiTextureType_EMISSIVE = 4;
-
-  /// The texture is a height map.
-  ///
-  /// By convention, higher gray-scale values stand for
-  /// higher elevations from the base height.
   static const int aiTextureType_HEIGHT = 5;
-
-  /// The texture is a (tangent space) normal-map.
-  ///
-  /// Again, there are several conventions for tangent-space
-  /// normal maps. Assimp does (intentionally) not
-  /// distinguish here.
   static const int aiTextureType_NORMALS = 6;
-
-  /// The texture defines the glossiness of the material.
-  ///
-  /// The glossiness is in fact the exponent of the specular
-  /// (phong) lighting equation. Usually there is a conversion
-  /// function defined to map the linear color values in the
-  /// texture to a suitable exponent. Have fun.
   static const int aiTextureType_SHININESS = 7;
-
-  /// The texture defines per-pixel opacity.
-  ///
-  /// Usually 'white' means opaque and 'black' means
-  /// 'transparency'. Or quite the opposite. Have fun.
   static const int aiTextureType_OPACITY = 8;
-
-  /// Displacement texture
-  ///
-  /// The exact purpose and format is application-dependent.
-  /// Higher color values stand for higher vertex displacements.
   static const int aiTextureType_DISPLACEMENT = 9;
-
-  /// Lightmap texture (aka Ambient Occlusion)
-  ///
-  /// Both 'Lightmaps' and dedicated 'ambient occlusion maps' are
-  /// covered by this material property. The texture contains a
-  /// scaling value for the final color value of a pixel. Its
-  /// intensity is not affected by incoming light.
   static const int aiTextureType_LIGHTMAP = 10;
-
-  /// Reflection texture
-  ///
-  /// Contains the color of a perfect mirror reflection.
-  /// Rarely used, almost never for real-time applications.
   static const int aiTextureType_REFLECTION = 11;
-
-  /// PBR Materials
-  /// PBR definitions from maya and other modelling packages now use this standard.
-  /// This was originally introduced around 2012.
-  /// Support for this is in game engines like Godot, Unreal or Unity3D.
-  /// Modelling packages which use this are very common now.
   static const int aiTextureType_BASE_COLOR = 12;
   static const int aiTextureType_NORMAL_CAMERA = 13;
   static const int aiTextureType_EMISSION_COLOR = 14;
   static const int aiTextureType_METALNESS = 15;
   static const int aiTextureType_DIFFUSE_ROUGHNESS = 16;
   static const int aiTextureType_AMBIENT_OCCLUSION = 17;
-
-  /// Sheen
-  /// Generally used to simulate textiles that are covered in a layer of microfibers
-  /// eg velvet
-  /// https://github.com/KhronosGroup/glTF/tree/master/extensions/2.0/Khronos/KHR_materials_sheen
   static const int aiTextureType_SHEEN = 19;
-
-  /// Clearcoat
-  /// Simulates a layer of 'polish' or 'laquer' layered on top of a PBR substrate
-  /// https://autodesk.github.io/standard-surface/#closures/coating
-  /// https://github.com/KhronosGroup/glTF/tree/master/extensions/2.0/Khronos/KHR_materials_clearcoat
   static const int aiTextureType_CLEARCOAT = 20;
-
-  /// Transmission
-  /// Simulates transmission through the surface
-  /// May include further information such as wall thickness
   static const int aiTextureType_TRANSMISSION = 21;
-
-  /// Unknown texture
-  ///
-  /// A texture reference that does not match any of the definitions
-  /// above is considered to be 'unknown'. It is still imported,
-  /// but is excluded from any further post-processing.
   static const int aiTextureType_UNKNOWN = 18;
   static const int _aiTextureType_Force32Bit = 2147483647;
 }
 
-/// @brief Defines all shading models supported by the library
-///
-/// Property: #AI_MATKEY_SHADING_MODEL
-///
-/// The list of shading modes has been taken from Blender.
-/// See Blender documentation for more information. The API does
-/// not distinguish between "specular" and "diffuse" shaders (thus the
-/// specular term for diffuse shading models like Oren-Nayar remains
-/// undefined). <br>
-/// Again, this value is just a hint. Assimp tries to select the shader whose
-/// most common implementation matches the original rendering results of the
-/// 3D modeler which wrote a particular model as closely as possible.
 abstract class aiShadingMode {
-  /// Flat shading. Shading is done on per-face base,
-  /// diffuse only. Also known as 'faceted shading'.
   static const int aiShadingMode_Flat = 1;
-
-  /// Simple Gouraud shading.
   static const int aiShadingMode_Gouraud = 2;
-
-  /// Phong-Shading -
   static const int aiShadingMode_Phong = 3;
-
-  /// Phong-Blinn-Shading
   static const int aiShadingMode_Blinn = 4;
-
-  /// Toon-Shading per pixel
-  ///
-  /// Also known as 'comic' shader.
   static const int aiShadingMode_Toon = 5;
-
-  /// OrenNayar-Shading per pixel
-  ///
-  /// Extension to standard Lambertian shading, taking the
-  /// roughness of the material into account
   static const int aiShadingMode_OrenNayar = 6;
-
-  /// Minnaert-Shading per pixel
-  ///
-  /// Extension to standard Lambertian shading, taking the
-  /// "darkness" of the material into account
   static const int aiShadingMode_Minnaert = 7;
-
-  /// CookTorrance-Shading per pixel
-  ///
-  /// Special shader for metallic surfaces.
   static const int aiShadingMode_CookTorrance = 8;
-
-  /// No shading at all. Constant light influence of 1.0.
-  /// Also known as "Unlit"
   static const int aiShadingMode_NoShading = 9;
   static const int aiShadingMode_Unlit = 9;
-
-  /// Fresnel shading
   static const int aiShadingMode_Fresnel = 10;
-
-  /// Physically-Based Rendering (PBR) shading using
-  /// Bidirectional scattering/reflectance distribution function (BSDF/BRDF)
-  /// There are multiple methods under this banner, and model files may provide
-  /// data for more than one PBR-BRDF method.
-  /// Applications should use the set of provided properties to determine which
-  /// of their preferred PBR rendering methods are likely to be available
-  /// eg:
-  /// - If AI_MATKEY_METALLIC_FACTOR is set, then a Metallic/Roughness is available
-  /// - If AI_MATKEY_GLOSSINESS_FACTOR is set, then a Specular/Glossiness is available
-  /// Note that some PBR methods allow layering of techniques
   static const int aiShadingMode_PBR_BRDF = 11;
   static const int _aiShadingMode_Force32Bit = 2147483647;
 }
 
-/// @brief Defines some mixed flags for a particular texture.
-///
-/// Usually you'll instruct your cg artists how textures have to look like ...
-/// and how they will be processed in your application. However, if you use
-/// Assimp for completely generic loading purposes you might also need to
-/// process these flags in order to display as many 'unknown' 3D models as
-/// possible correctly.
-///
-/// This corresponds to the #AI_MATKEY_TEXFLAGS property.
 abstract class aiTextureFlags {
-  /// The texture's color values have to be inverted (component-wise 1-n)
   static const int aiTextureFlags_Invert = 1;
-
-  /// Explicit request to the application to process the alpha channel
-  /// of the texture.
-  ///
-  /// Mutually exclusive with #aiTextureFlags_IgnoreAlpha. These
-  /// flags are set if the library can say for sure that the alpha
-  /// channel is used/is not used. If the model format does not
-  /// define this, it is left to the application to decide whether
-  /// the texture alpha channel - if any - is evaluated or not.
   static const int aiTextureFlags_UseAlpha = 2;
-
-  /// Explicit request to the application to ignore the alpha channel
-  /// of the texture.
-  ///
-  /// Mutually exclusive with #aiTextureFlags_UseAlpha.
   static const int aiTextureFlags_IgnoreAlpha = 4;
   static const int _aiTextureFlags_Force32Bit = 2147483647;
 }
 
-/// @brief Defines alpha-blend flags.
-///
-/// If you're familiar with OpenGL or D3D, these flags aren't new to you.
-/// They define *how* the final color value of a pixel is computed, basing
-/// on the previous color at that pixel and the new color value from the
-/// material.
-/// The blend formula is:
-/// @code
-/// SourceColor * SourceBlend + DestColor * DestBlend
-/// @endcode
-/// where DestColor is the previous color in the frame-buffer at this
-/// position and SourceColor is the material color before the transparency
-/// calculation.<br>
-/// This corresponds to the #AI_MATKEY_BLEND_FUNC property.
 abstract class aiBlendMode {
-  /// Formula:
-  /// @code
-  /// SourceColor*SourceAlpha + DestColor*(1-SourceAlpha)
-  /// @endcode
   static const int aiBlendMode_Default = 0;
-
-  /// Additive blending
-  ///
-  /// Formula:
-  /// @code
-  /// SourceColor*1 + DestColor*1
-  /// @endcode
   static const int aiBlendMode_Additive = 1;
   static const int _aiBlendMode_Force32Bit = 2147483647;
 }
 
-/// @brief Defines how an UV channel is transformed.
-///
-/// This is just a helper structure for the #AI_MATKEY_UVTRANSFORM key.
-/// See its documentation for more details.
-///
-/// Typically you'll want to build a matrix of this information. However,
-/// we keep separate scaling/translation/rotation values to make it
-/// easier to process and optimize UV transformations internally.
 class aiUVTransform extends ffi.Struct {
-  /// Translation on the u and v axes.
-  ///
-  /// The default value is (0|0).
   external aiVector2D mTranslation;
 
-  /// Scaling on the u and v axes.
-  ///
-  /// The default value is (1|1).
   external aiVector2D mScaling;
 
-  /// Rotation - in counter-clockwise direction.
-  ///
-  /// The rotation angle is specified in radians. The
-  /// rotation center is 0.5f|0.5f. The default value
-  /// 0.f.
   @ai_real()
   external double mRotation;
 }
 
-/// @brief A very primitive RTTI system for the contents of material
-/// properties.
 abstract class aiPropertyTypeInfo {
-  /// Array of single-precision (32 Bit) floats
-  ///
-  /// It is possible to use aiGetMaterialInteger[Array]() (or the C++-API
-  /// aiMaterial::Get()) to query properties stored in floating-point format.
-  /// The material system performs the type conversion automatically.
   static const int aiPTI_Float = 1;
-
-  /// Array of double-precision (64 Bit) floats
-  ///
-  /// It is possible to use aiGetMaterialInteger[Array]() (or the C++-API
-  /// aiMaterial::Get()) to query properties stored in floating-point format.
-  /// The material system performs the type conversion automatically.
   static const int aiPTI_Double = 2;
-
-  /// The material property is an aiString.
-  ///
-  /// Arrays of strings aren't possible, aiGetMaterialString() (or the
-  /// C++-API aiMaterial::Get()) *must* be used to query a string property.
   static const int aiPTI_String = 3;
-
-  /// Array of (32 Bit) integers
-  ///
-  /// It is possible to use aiGetMaterialFloat[Array]() (or the C++-API
-  /// aiMaterial::Get()) to query properties stored in integer format.
-  /// The material system performs the type conversion automatically.
   static const int aiPTI_Integer = 4;
-
-  /// Simple binary buffer, content undefined. Not convertible to anything.
   static const int aiPTI_Buffer = 5;
   static const int _aiPTI_Force32Bit = 2147483647;
 }
 
-/// @brief Data structure for a single material property
-///
-/// As an user, you'll probably never need to deal with this data structure.
-/// Just use the provided aiGetMaterialXXX() or aiMaterial::Get() family
-/// of functions to query material properties easily. Processing them
-/// manually is faster, but it is not the recommended way. It isn't worth
-/// the effort. <br>
-/// Material property names follow a simple scheme:
-/// @code
-/// $<name>
-/// ?<name>
-/// A public property, there must be corresponding AI_MATKEY_XXX define
-/// 2nd: Public, but ignored by the #aiProcess_RemoveRedundantMaterials
-/// post-processing step.
-/// ~<name>
-/// A temporary property for internal use.
-/// @endcode
-/// @see aiMaterial
 class aiMaterialProperty extends ffi.Struct {
-  /// Specifies the name of the property (key)
-  /// Keys are generally case insensitive.
   external aiString mKey;
 
-  /// Textures: Specifies their exact usage semantic.
-  /// For non-texture properties, this member is always 0
-  /// (or, better-said, #aiTextureType_NONE).
   @ffi.UnsignedInt()
   external int mSemantic;
 
-  /// Textures: Specifies the index of the texture.
-  /// For non-texture properties, this member is always 0.
   @ffi.UnsignedInt()
   external int mIndex;
 
-  /// Size of the buffer mData is pointing to, in bytes.
-  /// This value may not be 0.
   @ffi.UnsignedInt()
   external int mDataLength;
 
-  /// Type information for the property.
-  ///
-  /// Defines the data layout inside the data buffer. This is used
-  /// by the library internally to perform debug checks and to
-  /// utilize proper type conversions.
-  /// (It's probably a hacky solution, but it works.)
   @ffi.Int32()
   external int mType;
 
-  /// Binary buffer to hold the property's value.
-  /// The size of the buffer is always mDataLength.
   external ffi.Pointer<ffi.Char> mData;
 }
 
 class aiMaterial extends ffi.Struct {
-  /// List of all material properties loaded.
   external ffi.Pointer<ffi.Pointer<aiMaterialProperty>> mProperties;
 
-  /// Number of properties in the data base
   @ffi.UnsignedInt()
   external int mNumProperties;
 
-  /// Storage allocated
   @ffi.UnsignedInt()
   external int mNumAllocated;
 }
 
-/// A time-value pair specifying a certain 3D vector for the given time.
 class aiVectorKey extends ffi.Struct {
-  /// The time of this key
   @ffi.Double()
   external double mTime;
 
-  /// The value of this key
   external aiVector3D mValue;
 }
 
-/// A time-value pair specifying a rotation for the given time.
-/// Rotations are expressed with quaternions.
 class aiQuatKey extends ffi.Struct {
-  /// The time of this key
   @ffi.Double()
   external double mTime;
 
-  /// The value of this key
   external aiQuaternion mValue;
 }
 
-/// Binds a anim-mesh to a specific point in time.
 class aiMeshKey extends ffi.Struct {
-  /// The time of this key
   @ffi.Double()
   external double mTime;
 
-  /// Index into the aiMesh::mAnimMeshes array of the
-  /// mesh corresponding to the #aiMeshAnim hosting this
-  /// key frame. The referenced anim mesh is evaluated
-  /// according to the rules defined in the docs for #aiAnimMesh.
   @ffi.UnsignedInt()
   external int mValue;
 }
 
-/// Binds a morph anim mesh to a specific point in time.
 class aiMeshMorphKey extends ffi.Struct {
-  /// The time of this key
   @ffi.Double()
   external double mTime;
 
-  /// The values and weights at the time of this key
   external ffi.Pointer<ffi.UnsignedInt> mValues;
 
   external ffi.Pointer<ffi.Double> mWeights;
 
-  /// The number of values and weights
   @ffi.UnsignedInt()
   external int mNumValuesAndWeights;
 }
 
-/// Defines how an animation channel behaves outside the defined time
-/// range. This corresponds to aiNodeAnim::mPreState and
-/// aiNodeAnim::mPostState.
 abstract class aiAnimBehaviour {
-  /// The value from the default node transformation is taken
   static const int aiAnimBehaviour_DEFAULT = 0;
-
-  /// The nearest key value is used without interpolation
   static const int aiAnimBehaviour_CONSTANT = 1;
-
-  /// The value of the nearest two keys is linearly
-  /// extrapolated for the current time value.
   static const int aiAnimBehaviour_LINEAR = 2;
-
-  /// The animation is repeated.
-  ///
-  /// If the animation key go from n to m and the current
-  /// time is t, use the value at (t-n) % (|m-n|).
   static const int aiAnimBehaviour_REPEAT = 3;
   static const int _aiAnimBehaviour_Force32Bit = 2147483647;
 }
 
-/// Describes the animation of a single node. The name specifies the
-/// bone/node which is affected by this animation channel. The keyframes
-/// are given in three separate series of values, one each for position,
-/// rotation and scaling. The transformation matrix computed from these
-/// values replaces the node's original transformation matrix at a
-/// specific time.
-/// This means all keys are absolute and not relative to the bone default pose.
-/// The order in which the transformations are applied is
-/// - as usual - scaling, rotation, translation.
-///
-/// @note All keys are returned in their correct, chronological order.
-/// Duplicate keys don't pass the validation step. Most likely there
-/// will be no negative time values, but they are not forbidden also ( so
-/// implementations need to cope with them! )
 class aiNodeAnim extends ffi.Struct {
-  /// The name of the node affected by this animation. The node
-  /// must exist and it must be unique.
   external aiString mNodeName;
 
-  /// The number of position keys
   @ffi.UnsignedInt()
   external int mNumPositionKeys;
 
-  /// The position keys of this animation channel. Positions are
-  /// specified as 3D vector. The array is mNumPositionKeys in size.
-  ///
-  /// If there are position keys, there will also be at least one
-  /// scaling and one rotation key.
   external ffi.Pointer<aiVectorKey> mPositionKeys;
 
-  /// The number of rotation keys
   @ffi.UnsignedInt()
   external int mNumRotationKeys;
 
-  /// The rotation keys of this animation channel. Rotations are
-  /// given as quaternions,  which are 4D vectors. The array is
-  /// mNumRotationKeys in size.
-  ///
-  /// If there are rotation keys, there will also be at least one
-  /// scaling and one position key.
   external ffi.Pointer<aiQuatKey> mRotationKeys;
 
-  /// The number of scaling keys
   @ffi.UnsignedInt()
   external int mNumScalingKeys;
 
-  /// The scaling keys of this animation channel. Scalings are
-  /// specified as 3D vector. The array is mNumScalingKeys in size.
-  ///
-  /// If there are scaling keys, there will also be at least one
-  /// position and one rotation key.
   external ffi.Pointer<aiVectorKey> mScalingKeys;
 
-  /// Defines how the animation behaves before the first
-  /// key is encountered.
-  ///
-  /// The default value is aiAnimBehaviour_DEFAULT (the original
-  /// transformation matrix of the affected node is used).
   @ffi.Int32()
   external int mPreState;
 
-  /// Defines how the animation behaves after the last
-  /// key was processed.
-  ///
-  /// The default value is aiAnimBehaviour_DEFAULT (the original
-  /// transformation matrix of the affected node is taken).
   @ffi.Int32()
   external int mPostState;
 }
 
-/// Describes vertex-based animations for a single mesh or a group of
-/// meshes. Meshes carry the animation data for each frame in their
-/// aiMesh::mAnimMeshes array. The purpose of aiMeshAnim is to
-/// define keyframes linking each mesh attachment to a particular
-/// point in time.
 class aiMeshAnim extends ffi.Struct {
-  /// Name of the mesh to be animated. An empty string is not allowed,
-  /// animated meshes need to be named (not necessarily uniquely,
-  /// the name can basically serve as wild-card to select a group
-  /// of meshes with similar animation setup)
   external aiString mName;
 
-  /// Size of the #mKeys array. Must be 1, at least.
   @ffi.UnsignedInt()
   external int mNumKeys;
 
-  /// Key frames of the animation. May not be nullptr.
   external ffi.Pointer<aiMeshKey> mKeys;
 }
 
-/// Describes a morphing animation of a given mesh.
 class aiMeshMorphAnim extends ffi.Struct {
-  /// Name of the mesh to be animated. An empty string is not allowed,
-  /// animated meshes need to be named (not necessarily uniquely,
-  /// the name can basically serve as wildcard to select a group
-  /// of meshes with similar animation setup)
   external aiString mName;
 
-  /// Size of the #mKeys array. Must be 1, at least.
   @ffi.UnsignedInt()
   external int mNumKeys;
 
-  /// Key frames of the animation. May not be nullptr.
   external ffi.Pointer<aiMeshMorphKey> mKeys;
 }
 
-/// An animation consists of key-frame data for a number of nodes. For
-/// each node affected by the animation a separate series of data is given.
 class aiAnimation extends ffi.Struct {
-  /// The name of the animation. If the modeling package this data was
-  /// exported from does support only a single animation channel, this
-  /// name is usually empty (length is zero).
   external aiString mName;
 
-  /// Duration of the animation in ticks.
   @ffi.Double()
   external double mDuration;
 
-  /// Ticks per second. 0 if not specified in the imported file
   @ffi.Double()
   external double mTicksPerSecond;
 
-  /// The number of bone animation channels. Each channel affects
-  /// a single node.
   @ffi.UnsignedInt()
   external int mNumChannels;
 
-  /// The node animation channels. Each channel affects a single node.
-  /// The array is mNumChannels in size.
   external ffi.Pointer<ffi.Pointer<aiNodeAnim>> mChannels;
 
-  /// The number of mesh animation channels. Each channel affects
-  /// a single mesh and defines vertex-based animation.
   @ffi.UnsignedInt()
   external int mNumMeshChannels;
 
-  /// The mesh animation channels. Each channel affects a single mesh.
-  /// The array is mNumMeshChannels in size.
   external ffi.Pointer<ffi.Pointer<aiMeshAnim>> mMeshChannels;
 
-  /// The number of mesh animation channels. Each channel affects
-  /// a single mesh and defines morphing animation.
   @ffi.UnsignedInt()
   external int mNumMorphMeshChannels;
 
-  /// The morph mesh animation channels. Each channel affects a single mesh.
-  /// The array is mNumMorphMeshChannels in size.
   external ffi.Pointer<ffi.Pointer<aiMeshMorphAnim>> mMorphMeshChannels;
 }
 
@@ -10093,93 +6911,38 @@ class aiExportDataBlob extends ffi.Struct {
   external ffi.Pointer<aiExportDataBlob> next;
 }
 
-/// Mixed set of flags for #aiImporterDesc, indicating some features
-/// common to many importers
 abstract class aiImporterFlags {
-  /// Indicates that there is a textual encoding of the
-  /// file format; and that it is supported.
   static const int aiImporterFlags_SupportTextFlavour = 1;
-
-  /// Indicates that there is a binary encoding of the
-  /// file format; and that it is supported.
   static const int aiImporterFlags_SupportBinaryFlavour = 2;
-
-  /// Indicates that there is a compressed encoding of the
-  /// file format; and that it is supported.
   static const int aiImporterFlags_SupportCompressedFlavour = 4;
-
-  /// Indicates that the importer reads only a very particular
-  /// subset of the file format. This happens commonly for
-  /// declarative or procedural formats which cannot easily
-  /// be mapped to #aiScene
   static const int aiImporterFlags_LimitedSupport = 8;
-
-  /// Indicates that the importer is highly experimental and
-  /// should be used with care. This only happens for trunk
-  /// (i.e. SVN) versions, experimental code is not included
-  /// in releases.
   static const int aiImporterFlags_Experimental = 16;
 }
 
-/// Meta information about a particular importer. Importers need to fill
-/// this structure, but they can freely decide how talkative they are.
-/// A common use case for loader meta info is a user interface
-/// in which the user can choose between various import/export file
-/// formats. Building such an UI by hand means a lot of maintenance
-/// as importers/exporters are added to Assimp, so it might be useful
-/// to have a common mechanism to query some rough importer
-/// characteristics.
 class aiImporterDesc extends ffi.Struct {
-  /// Full name of the importer (i.e. Blender3D importer)
   external ffi.Pointer<ffi.Char> mName;
 
-  /// Original author (left blank if unknown or whole assimp team)
   external ffi.Pointer<ffi.Char> mAuthor;
 
-  /// Current maintainer, left blank if the author maintains
   external ffi.Pointer<ffi.Char> mMaintainer;
 
-  /// Implementation comments, i.e. unimplemented features
   external ffi.Pointer<ffi.Char> mComments;
 
-  /// These flags indicate some characteristics common to many
-  /// importers.
   @ffi.UnsignedInt()
   external int mFlags;
 
-  /// Minimum format version that can be loaded im major.minor format,
-  /// both are set to 0 if there is either no version scheme
-  /// or if the loader doesn't care.
   @ffi.UnsignedInt()
   external int mMinMajor;
 
   @ffi.UnsignedInt()
   external int mMinMinor;
 
-  /// Maximum format version that can be loaded im major.minor format,
-  /// both are set to 0 if there is either no version scheme
-  /// or if the loader doesn't care. Loaders that expect to be
-  /// forward-compatible to potential future format versions should
-  /// indicate  zero, otherwise they should specify the current
-  /// maximum version.
   @ffi.UnsignedInt()
   external int mMaxMajor;
 
   @ffi.UnsignedInt()
   external int mMaxMinor;
 
-  /// List of file extensions this importer can handle.
-  /// List entries are separated by space characters.
-  /// All entries are lower case without a leading dot (i.e.
-  /// "xml dae" would be a valid value. Note that multiple
-  /// importers may respond to the same file extension -
-  /// assimp calls all importers in the order in which they
-  /// are registered and each importer gets the opportunity
-  /// to load the file until one importer "claims" the file. Apart
-  /// from file extension checks, importers typically use
-  /// other methods to quickly reject files (i.e. magic
-  /// words) so this does not mean that common or generic
-  /// file extensions such as XML would be tediously slow.
   external ffi.Pointer<ffi.Char> mFileExtensions;
 }
 
@@ -10216,147 +6979,776 @@ class aiPropertyStore extends ffi.Struct {
 /// Our own C boolean type
 typedef aiBool = ffi.Int;
 
-const int _VCRT_COMPILER_PREPROCESSOR = 1;
+/// @enum  aiPostProcessSteps
+/// @brief Defines the flags for all possible post processing steps.
+///
+/// @note Some steps are influenced by properties set on the Assimp::Importer itself
+///
+/// @see Assimp::Importer::ReadFile()
+/// @see Assimp::Importer::SetPropertyInteger()
+/// @see aiImportFile
+/// @see aiImportFileEx
+abstract class aiPostProcessSteps {
+  /// <hr>Calculates the tangents and bitangents for the imported meshes.
+  ///
+  /// Does nothing if a mesh does not have normals. You might want this post
+  /// processing step to be executed if you plan to use tangent space calculations
+  /// such as normal mapping  applied to the meshes. There's an importer property,
+  /// <tt>#AI_CONFIG_PP_CT_MAX_SMOOTHING_ANGLE</tt>, which allows you to specify
+  /// a maximum smoothing angle for the algorithm. However, usually you'll
+  /// want to leave it at the default value.
+  static const int aiProcess_CalcTangentSpace = 1;
 
-const int _SAL_VERSION = 20;
+  /// <hr>Identifies and joins identical vertex data sets within all
+  /// imported meshes.
+  ///
+  /// After this step is run, each mesh contains unique vertices,
+  /// so a vertex may be used by multiple faces. You usually want
+  /// to use this post processing step. If your application deals with
+  /// indexed geometry, this step is compulsory or you'll just waste rendering
+  /// time. <b>If this flag is not specified</b>, no vertices are referenced by
+  /// more than one face and <b>no index buffer is required</b> for rendering.
+  static const int aiProcess_JoinIdenticalVertices = 2;
 
-const int __SAL_H_VERSION = 180000000;
+  /// <hr>Converts all the imported data to a left-handed coordinate space.
+  ///
+  /// By default the data is returned in a right-handed coordinate space (which
+  /// OpenGL prefers). In this space, +X points to the right,
+  /// +Z points towards the viewer, and +Y points upwards. In the DirectX
+  /// coordinate space +X points to the right, +Y points upwards, and +Z points
+  /// away from the viewer.
+  ///
+  /// You'll probably want to consider this flag if you use Direct3D for
+  /// rendering. The #aiProcess_ConvertToLeftHanded flag supersedes this
+  /// setting and bundles all conversions typically required for D3D-based
+  /// applications.
+  static const int aiProcess_MakeLeftHanded = 4;
 
-const int _USE_DECLSPECS_FOR_SAL = 0;
+  /// <hr>Triangulates all faces of all meshes.
+  ///
+  /// By default the imported mesh data might contain faces with more than 3
+  /// indices. For rendering you'll usually want all faces to be triangles.
+  /// This post processing step splits up faces with more than 3 indices into
+  /// triangles. Line and point primitives are *not* modified! If you want
+  /// 'triangles only' with no other kinds of primitives, try the following
+  /// solution:
+  /// <ul>
+  /// <li>Specify both #aiProcess_Triangulate and #aiProcess_SortByPType </li>
+  /// <li>Ignore all point and line meshes when you process assimp's output</li>
+  /// </ul>
+  static const int aiProcess_Triangulate = 8;
 
-const int _USE_ATTRIBUTES_FOR_SAL = 0;
+  /// <hr>Removes some parts of the data structure (animations, materials,
+  /// light sources, cameras, textures, vertex components).
+  ///
+  /// The  components to be removed are specified in a separate
+  /// importer property, <tt>#AI_CONFIG_PP_RVC_FLAGS</tt>. This is quite useful
+  /// if you don't need all parts of the output structure. Vertex colors
+  /// are rarely used today for example... Calling this step to remove unneeded
+  /// data from the pipeline as early as possible results in increased
+  /// performance and a more optimized output data structure.
+  /// This step is also useful if you want to force Assimp to recompute
+  /// normals or tangents. The corresponding steps don't recompute them if
+  /// they're already there (loaded from the source asset). By using this
+  /// step you can make sure they are NOT there.
+  ///
+  /// This flag is a poor one, mainly because its purpose is usually
+  /// misunderstood. Consider the following case: a 3D model has been exported
+  /// from a CAD app, and it has per-face vertex colors. Vertex positions can't be
+  /// shared, thus the #aiProcess_JoinIdenticalVertices step fails to
+  /// optimize the data because of these nasty little vertex colors.
+  /// Most apps don't even process them, so it's all for nothing. By using
+  /// this step, unneeded components are excluded as early as possible
+  /// thus opening more room for internal optimizations.
+  static const int aiProcess_RemoveComponent = 16;
 
-const int _CRT_PACKING = 8;
+  /// <hr>Generates normals for all faces of all meshes.
+  ///
+  /// This is ignored if normals are already there at the time this flag
+  /// is evaluated. Model importers try to load them from the source file, so
+  /// they're usually already there. Face normals are shared between all points
+  /// of a single face, so a single point can have multiple normals, which
+  /// forces the library to duplicate vertices in some cases.
+  /// #aiProcess_JoinIdenticalVertices is *senseless* then.
+  ///
+  /// This flag may not be specified together with #aiProcess_GenSmoothNormals.
+  static const int aiProcess_GenNormals = 32;
 
-const int _VCRUNTIME_DISABLED_WARNINGS = 4514;
+  /// <hr>Generates smooth normals for all vertices in the mesh.
+  ///
+  /// This is ignored if normals are already there at the time this flag
+  /// is evaluated. Model importers try to load them from the source file, so
+  /// they're usually already there.
+  ///
+  /// This flag may not be specified together with
+  /// #aiProcess_GenNormals. There's a importer property,
+  /// <tt>#AI_CONFIG_PP_GSN_MAX_SMOOTHING_ANGLE</tt> which allows you to specify
+  /// an angle maximum for the normal smoothing algorithm. Normals exceeding
+  /// this limit are not smoothed, resulting in a 'hard' seam between two faces.
+  /// Using a decent angle here (e.g. 80 degrees) results in very good visual
+  /// appearance.
+  static const int aiProcess_GenSmoothNormals = 64;
 
-const int _HAS_EXCEPTIONS = 1;
+  /// <hr>Splits large meshes into smaller sub-meshes.
+  ///
+  /// This is quite useful for real-time rendering, where the number of triangles
+  /// which can be maximally processed in a single draw-call is limited
+  /// by the video driver/hardware. The maximum vertex buffer is usually limited
+  /// too. Both requirements can be met with this step: you may specify both a
+  /// triangle and vertex limit for a single mesh.
+  ///
+  /// The split limits can (and should!) be set through the
+  /// <tt>#AI_CONFIG_PP_SLM_VERTEX_LIMIT</tt> and <tt>#AI_CONFIG_PP_SLM_TRIANGLE_LIMIT</tt>
+  /// importer properties. The default values are <tt>#AI_SLM_DEFAULT_MAX_VERTICES</tt> and
+  /// <tt>#AI_SLM_DEFAULT_MAX_TRIANGLES</tt>.
+  ///
+  /// Note that splitting is generally a time-consuming task, but only if there's
+  /// something to split. The use of this step is recommended for most users.
+  static const int aiProcess_SplitLargeMeshes = 128;
 
-const int _WCHAR_T_DEFINED = 1;
+  /// <hr>Removes the node graph and pre-transforms all vertices with
+  /// the local transformation matrices of their nodes.
+  ///
+  /// If the resulting scene can be reduced to a single mesh, with a single
+  /// material, no lights, and no cameras, then the output scene will contain
+  /// only a root node (with no children) that references the single mesh.
+  /// Otherwise, the output scene will be reduced to a root node with a single
+  /// level of child nodes, each one referencing one mesh, and each mesh
+  /// referencing one material.
+  ///
+  /// In either case, for rendering, you can
+  /// simply render all meshes in order - you don't need to pay
+  /// attention to local transformations and the node hierarchy.
+  /// Animations are removed during this step.
+  /// This step is intended for applications without a scenegraph.
+  /// The step CAN cause some problems: if e.g. a mesh of the asset
+  /// contains normals and another, using the same material index, does not,
+  /// they will be brought together, but the first meshes's part of
+  /// the normal list is zeroed. However, these artifacts are rare.
+  /// @note The <tt>#AI_CONFIG_PP_PTV_NORMALIZE</tt> configuration property
+  /// can be set to normalize the scene's spatial dimension to the -1...1
+  /// range.
+  static const int aiProcess_PreTransformVertices = 256;
 
-const int NULL = 0;
+  /// <hr>Limits the number of bones simultaneously affecting a single vertex
+  /// to a maximum value.
+  ///
+  /// If any vertex is affected by more than the maximum number of bones, the least
+  /// important vertex weights are removed and the remaining vertex weights are
+  /// renormalized so that the weights still sum up to 1.
+  /// The default bone weight limit is 4 (defined as <tt>#AI_LMW_MAX_WEIGHTS</tt> in
+  /// config.h), but you can use the <tt>#AI_CONFIG_PP_LBW_MAX_WEIGHTS</tt> importer
+  /// property to supply your own limit to the post processing step.
+  ///
+  /// If you intend to perform the skinning in hardware, this post processing
+  /// step might be of interest to you.
+  static const int aiProcess_LimitBoneWeights = 512;
 
-const int _HAS_CXX17 = 0;
+  /// <hr>Validates the imported scene data structure.
+  /// This makes sure that all indices are valid, all animations and
+  /// bones are linked correctly, all material references are correct .. etc.
+  ///
+  /// It is recommended that you capture Assimp's log output if you use this flag,
+  /// so you can easily find out what's wrong if a file fails the
+  /// validation. The validator is quite strict and will find *all*
+  /// inconsistencies in the data structure... It is recommended that plugin
+  /// developers use it to debug their loaders. There are two types of
+  /// validation failures:
+  /// <ul>
+  /// <li>Error: There's something wrong with the imported data. Further
+  /// postprocessing is not possible and the data is not usable at all.
+  /// The import fails. #Importer::GetErrorString() or #aiGetErrorString()
+  /// carry the error message around.</li>
+  /// <li>Warning: There are some minor issues (e.g. 1000000 animation
+  /// keyframes with the same time), but further postprocessing and use
+  /// of the data structure is still safe. Warning details are written
+  /// to the log file, <tt>#AI_SCENE_FLAGS_VALIDATION_WARNING</tt> is set
+  /// in #aiScene::mFlags</li>
+  /// </ul>
+  ///
+  /// This post-processing step is not time-consuming. Its use is not
+  /// compulsory, but recommended.
+  static const int aiProcess_ValidateDataStructure = 1024;
 
-const int _HAS_CXX20 = 0;
+  /// <hr>Reorders triangles for better vertex cache locality.
+  ///
+  /// The step tries to improve the ACMR (average post-transform vertex cache
+  /// miss ratio) for all meshes. The implementation runs in O(n) and is
+  /// roughly based on the 'tipsify' algorithm (see <a href="
+  /// http://www.cs.princeton.edu/gfx/pubs/Sander_2007_%3ETR/tipsy.pdf">this
+  /// paper</a>).
+  ///
+  /// If you intend to render huge models in hardware, this step might
+  /// be of interest to you. The <tt>#AI_CONFIG_PP_ICL_PTCACHE_SIZE</tt>
+  /// importer property can be used to fine-tune the cache optimization.
+  static const int aiProcess_ImproveCacheLocality = 2048;
 
-const int _HAS_CXX23 = 0;
+  /// <hr>Searches for redundant/unreferenced materials and removes them.
+  ///
+  /// This is especially useful in combination with the
+  /// #aiProcess_PreTransformVertices and #aiProcess_OptimizeMeshes flags.
+  /// Both join small meshes with equal characteristics, but they can't do
+  /// their work if two meshes have different materials. Because several
+  /// material settings are lost during Assimp's import filters,
+  /// (and because many exporters don't check for redundant materials), huge
+  /// models often have materials which are are defined several times with
+  /// exactly the same settings.
+  ///
+  /// Several material settings not contributing to the final appearance of
+  /// a surface are ignored in all comparisons (e.g. the material name).
+  /// So, if you're passing additional information through the
+  /// content pipeline (probably using *magic* material names), don't
+  /// specify this flag. Alternatively take a look at the
+  /// <tt>#AI_CONFIG_PP_RRM_EXCLUDE_LIST</tt> importer property.
+  static const int aiProcess_RemoveRedundantMaterials = 4096;
 
-const int _HAS_NODISCARD = 1;
+  /// <hr>This step tries to determine which meshes have normal vectors
+  /// that are facing inwards and inverts them.
+  ///
+  /// The algorithm is simple but effective:
+  /// the bounding box of all vertices + their normals is compared against
+  /// the volume of the bounding box of all vertices without their normals.
+  /// This works well for most objects, problems might occur with planar
+  /// surfaces. However, the step tries to filter such cases.
+  /// The step inverts all in-facing normals. Generally it is recommended
+  /// to enable this step, although the result is not always correct.
+  static const int aiProcess_FixInfacingNormals = 8192;
+
+  /// This step generically populates aiBone->mArmature and aiBone->mNode generically
+  /// The point of these is it saves you later having to calculate these elements
+  /// This is useful when handling rest information or skin information
+  /// If you have multiple armatures on your models we strongly recommend enabling this
+  /// Instead of writing your own multi-root, multi-armature lookups we have done the
+  /// hard work for you :)
+  static const int aiProcess_PopulateArmatureData = 16384;
+
+  /// <hr>This step splits meshes with more than one primitive type in
+  /// homogeneous sub-meshes.
+  ///
+  /// The step is executed after the triangulation step. After the step
+  /// returns, just one bit is set in aiMesh::mPrimitiveTypes. This is
+  /// especially useful for real-time rendering where point and line
+  /// primitives are often ignored or rendered separately.
+  /// You can use the <tt>#AI_CONFIG_PP_SBP_REMOVE</tt> importer property to
+  /// specify which primitive types you need. This can be used to easily
+  /// exclude lines and points, which are rarely used, from the import.
+  static const int aiProcess_SortByPType = 32768;
+
+  /// <hr>This step searches all meshes for degenerate primitives and
+  /// converts them to proper lines or points.
+  ///
+  /// A face is 'degenerate' if one or more of its points are identical.
+  /// To have the degenerate stuff not only detected and collapsed but
+  /// removed, try one of the following procedures:
+  /// <br><b>1.</b> (if you support lines and points for rendering but don't
+  /// want the degenerates)<br>
+  /// <ul>
+  /// <li>Specify the #aiProcess_FindDegenerates flag.
+  /// </li>
+  /// <li>Set the <tt>#AI_CONFIG_PP_FD_REMOVE</tt> importer property to
+  /// 1. This will cause the step to remove degenerate triangles from the
+  /// import as soon as they're detected. They won't pass any further
+  /// pipeline steps.
+  /// </li>
+  /// </ul>
+  /// <br><b>2.</b>(if you don't support lines and points at all)<br>
+  /// <ul>
+  /// <li>Specify the #aiProcess_FindDegenerates flag.
+  /// </li>
+  /// <li>Specify the #aiProcess_SortByPType flag. This moves line and
+  /// point primitives to separate meshes.
+  /// </li>
+  /// <li>Set the <tt>#AI_CONFIG_PP_SBP_REMOVE</tt> importer property to
+  /// @code aiPrimitiveType_POINTS | aiPrimitiveType_LINES
+  /// @endcode to cause SortByPType to reject point
+  /// and line meshes from the scene.
+  /// </li>
+  /// </ul>
+  ///
+  /// This step also removes very small triangles with a surface area smaller
+  /// than 10^-6. If you rely on having these small triangles, or notice holes
+  /// in your model, set the property <tt>#AI_CONFIG_PP_FD_CHECKAREA</tt> to
+  /// false.
+  /// @note Degenerate polygons are not necessarily evil and that's why
+  /// they're not removed by default. There are several file formats which
+  /// don't support lines or points, and some exporters bypass the
+  /// format specification and write them as degenerate triangles instead.
+  static const int aiProcess_FindDegenerates = 65536;
+
+  /// <hr>This step searches all meshes for invalid data, such as zeroed
+  /// normal vectors or invalid UV coords and removes/fixes them. This is
+  /// intended to get rid of some common exporter errors.
+  ///
+  /// This is especially useful for normals. If they are invalid, and
+  /// the step recognizes this, they will be removed and can later
+  /// be recomputed, i.e. by the #aiProcess_GenSmoothNormals flag.<br>
+  /// The step will also remove meshes that are infinitely small and reduce
+  /// animation tracks consisting of hundreds if redundant keys to a single
+  /// key. The <tt>AI_CONFIG_PP_FID_ANIM_ACCURACY</tt> config property decides
+  /// the accuracy of the check for duplicate animation tracks.
+  static const int aiProcess_FindInvalidData = 131072;
+
+  /// <hr>This step converts non-UV mappings (such as spherical or
+  /// cylindrical mapping) to proper texture coordinate channels.
+  ///
+  /// Most applications will support UV mapping only, so you will
+  /// probably want to specify this step in every case. Note that Assimp is not
+  /// always able to match the original mapping implementation of the
+  /// 3D app which produced a model perfectly. It's always better to let the
+  /// modelling app compute the UV channels - 3ds max, Maya, Blender,
+  /// LightWave, and Modo do this for example.
+  ///
+  /// @note If this step is not requested, you'll need to process the
+  /// <tt>#AI_MATKEY_MAPPING</tt> material property in order to display all assets
+  /// properly.
+  static const int aiProcess_GenUVCoords = 262144;
+
+  /// <hr>This step applies per-texture UV transformations and bakes
+  /// them into stand-alone vtexture coordinate channels.
+  ///
+  /// UV transformations are specified per-texture - see the
+  /// <tt>#AI_MATKEY_UVTRANSFORM</tt> material key for more information.
+  /// This step processes all textures with
+  /// transformed input UV coordinates and generates a new (pre-transformed) UV channel
+  /// which replaces the old channel. Most applications won't support UV
+  /// transformations, so you will probably want to specify this step.
+  ///
+  /// @note UV transformations are usually implemented in real-time apps by
+  /// transforming texture coordinates at vertex shader stage with a 3x3
+  /// (homogeneous) transformation matrix.
+  static const int aiProcess_TransformUVCoords = 524288;
+
+  /// <hr>This step searches for duplicate meshes and replaces them
+  /// with references to the first mesh.
+  ///
+  /// This step takes a while, so don't use it if speed is a concern.
+  /// Its main purpose is to workaround the fact that many export
+  /// file formats don't support instanced meshes, so exporters need to
+  /// duplicate meshes. This step removes the duplicates again. Please
+  /// note that Assimp does not currently support per-node material
+  /// assignment to meshes, which means that identical meshes with
+  /// different materials are currently *not* joined, although this is
+  /// planned for future versions.
+  static const int aiProcess_FindInstances = 1048576;
+
+  /// <hr>A post-processing step to reduce the number of meshes.
+  ///
+  /// This will, in fact, reduce the number of draw calls.
+  ///
+  /// This is a very effective optimization and is recommended to be used
+  /// together with #aiProcess_OptimizeGraph, if possible. The flag is fully
+  /// compatible with both #aiProcess_SplitLargeMeshes and #aiProcess_SortByPType.
+  static const int aiProcess_OptimizeMeshes = 2097152;
+
+  /// <hr>A post-processing step to optimize the scene hierarchy.
+  ///
+  /// Nodes without animations, bones, lights or cameras assigned are
+  /// collapsed and joined.
+  ///
+  /// Node names can be lost during this step. If you use special 'tag nodes'
+  /// to pass additional information through your content pipeline, use the
+  /// <tt>#AI_CONFIG_PP_OG_EXCLUDE_LIST</tt> importer property to specify a
+  /// list of node names you want to be kept. Nodes matching one of the names
+  /// in this list won't be touched or modified.
+  ///
+  /// Use this flag with caution. Most simple files will be collapsed to a
+  /// single node, so complex hierarchies are usually completely lost. This is not
+  /// useful for editor environments, but probably a very effective
+  /// optimization if you just want to get the model data, convert it to your
+  /// own format, and render it as fast as possible.
+  ///
+  /// This flag is designed to be used with #aiProcess_OptimizeMeshes for best
+  /// results.
+  ///
+  /// @note 'Crappy' scenes with thousands of extremely small meshes packed
+  /// in deeply nested nodes exist for almost all file formats.
+  /// #aiProcess_OptimizeMeshes in combination with #aiProcess_OptimizeGraph
+  /// usually fixes them all and makes them renderable.
+  static const int aiProcess_OptimizeGraph = 4194304;
+
+  /// <hr>This step flips all UV coordinates along the y-axis and adjusts
+  /// material settings and bitangents accordingly.
+  ///
+  /// <b>Output UV coordinate system:</b>
+  /// @code
+  /// 0y|0y ---------- 1x|0y
+  /// |                 |
+  /// |                 |
+  /// |                 |
+  /// 0x|1y ---------- 1x|1y
+  /// @endcode
+  ///
+  /// You'll probably want to consider this flag if you use Direct3D for
+  /// rendering. The #aiProcess_ConvertToLeftHanded flag supersedes this
+  /// setting and bundles all conversions typically required for D3D-based
+  /// applications.
+  static const int aiProcess_FlipUVs = 8388608;
+
+  /// <hr>This step adjusts the output face winding order to be CW.
+  ///
+  /// The default face winding order is counter clockwise (CCW).
+  ///
+  /// <b>Output face order:</b>
+  /// @code
+  /// x2
+  ///
+  /// x0
+  /// x1
+  /// @endcode
+  static const int aiProcess_FlipWindingOrder = 16777216;
+
+  /// <hr>This step splits meshes with many bones into sub-meshes so that each
+  /// sub-mesh has fewer or as many bones as a given limit.
+  static const int aiProcess_SplitByBoneCount = 33554432;
+
+  /// <hr>This step removes bones losslessly or according to some threshold.
+  ///
+  /// In some cases (i.e. formats that require it) exporters are forced to
+  /// assign dummy bone weights to otherwise static meshes assigned to
+  /// animated meshes. Full, weight-based skinning is expensive while
+  /// animating nodes is extremely cheap, so this step is offered to clean up
+  /// the data in that regard.
+  ///
+  /// Use <tt>#AI_CONFIG_PP_DB_THRESHOLD</tt> to control this.
+  /// Use <tt>#AI_CONFIG_PP_DB_ALL_OR_NONE</tt> if you want bones removed if and
+  /// only if all bones within the scene qualify for removal.
+  static const int aiProcess_Debone = 67108864;
+
+  /// <hr>This step will perform a global scale of the model.
+  ///
+  /// Some importers are providing a mechanism to define a scaling unit for the
+  /// model. This post processing step can be used to do so. You need to get the
+  /// global scaling from your importer settings like in FBX. Use the flag
+  /// AI_CONFIG_GLOBAL_SCALE_FACTOR_KEY from the global property table to configure this.
+  ///
+  /// Use <tt>#AI_CONFIG_GLOBAL_SCALE_FACTOR_KEY</tt> to setup the global scaling factor.
+  static const int aiProcess_GlobalScale = 134217728;
+
+  /// <hr>A postprocessing step to embed of textures.
+  ///
+  /// This will remove external data dependencies for textures.
+  /// If a texture's file does not exist at the specified path
+  /// (due, for instance, to an absolute path generated on another system),
+  /// it will check if a file with the same name exists at the root folder
+  /// of the imported model. And if so, it uses that.
+  static const int aiProcess_EmbedTextures = 268435456;
+  static const int aiProcess_ForceGenNormals = 536870912;
+
+  /// <hr>Drops normals for all faces of all meshes.
+  ///
+  /// This is ignored if no normals are present.
+  /// Face normals are shared between all points of a single face,
+  /// so a single point can have multiple normals, which
+  /// forces the library to duplicate vertices in some cases.
+  /// #aiProcess_JoinIdenticalVertices is *senseless* then.
+  /// This process gives sense back to aiProcess_JoinIdenticalVertices
+  static const int aiProcess_DropNormals = 1073741824;
+
+  ///
+  static const int aiProcess_GenBoundingBoxes = -2147483648;
+}
+
+const int __DARWIN_ONLY_64_BIT_INO_T = 1;
+
+const int __DARWIN_ONLY_UNIX_CONFORMANCE = 1;
+
+const int __DARWIN_ONLY_VERS_1050 = 1;
+
+const int __DARWIN_UNIX03 = 1;
+
+const int __DARWIN_64_BIT_INO_T = 1;
+
+const int __DARWIN_VERS_1050 = 1;
+
+const int __DARWIN_NON_CANCELABLE = 0;
+
+const String __DARWIN_SUF_EXTSN = '\$DARWIN_EXTSN';
+
+const int __DARWIN_C_ANSI = 4096;
+
+const int __DARWIN_C_FULL = 900000;
+
+const int __DARWIN_C_LEVEL = 900000;
+
+const int __STDC_WANT_LIB_EXT1__ = 1;
+
+const int __DARWIN_NO_LONG_LONG = 0;
+
+const int _DARWIN_FEATURE_64_BIT_INODE = 1;
+
+const int _DARWIN_FEATURE_ONLY_64_BIT_INODE = 1;
+
+const int _DARWIN_FEATURE_ONLY_VERS_1050 = 1;
+
+const int _DARWIN_FEATURE_ONLY_UNIX_CONFORMANCE = 1;
+
+const int _DARWIN_FEATURE_UNIX_CONFORMANCE = 3;
+
+const int __has_ptrcheck = 0;
+
+const int __DARWIN_CLK_TCK = 100;
 
 const int CHAR_BIT = 8;
 
-const int SCHAR_MIN = -128;
+const int MB_LEN_MAX = 6;
+
+const int CLK_TCK = 100;
 
 const int SCHAR_MAX = 127;
 
-const int UCHAR_MAX = 255;
+const int SCHAR_MIN = -128;
 
-const int CHAR_MIN = -128;
+const int UCHAR_MAX = 255;
 
 const int CHAR_MAX = 127;
 
-const int MB_LEN_MAX = 5;
-
-const int SHRT_MIN = -32768;
-
-const int SHRT_MAX = 32767;
+const int CHAR_MIN = -128;
 
 const int USHRT_MAX = 65535;
 
-const int INT_MIN = -2147483648;
+const int SHRT_MAX = 32767;
 
-const int INT_MAX = 2147483647;
+const int SHRT_MIN = -32768;
 
 const int UINT_MAX = 4294967295;
 
-const int LONG_MIN = -2147483648;
+const int INT_MAX = 2147483647;
 
-const int LONG_MAX = 2147483647;
+const int INT_MIN = -2147483648;
 
-const int ULONG_MAX = 4294967295;
+const int ULONG_MAX = -1;
+
+const int LONG_MAX = 9223372036854775807;
+
+const int LONG_MIN = -9223372036854775808;
+
+const int ULLONG_MAX = -1;
 
 const int LLONG_MAX = 9223372036854775807;
 
 const int LLONG_MIN = -9223372036854775808;
 
-const int ULLONG_MAX = -1;
+const int LONG_BIT = 64;
 
-const int _I8_MIN = -128;
+const int SSIZE_MAX = 9223372036854775807;
 
-const int _I8_MAX = 127;
+const int WORD_BIT = 32;
 
-const int _UI8_MAX = 255;
+const int SIZE_T_MAX = -1;
 
-const int _I16_MIN = -32768;
+const int UQUAD_MAX = -1;
 
-const int _I16_MAX = 32767;
+const int QUAD_MAX = 9223372036854775807;
 
-const int _UI16_MAX = 65535;
+const int QUAD_MIN = -9223372036854775808;
 
-const int _I32_MIN = -2147483648;
+const int ARG_MAX = 1048576;
 
-const int _I32_MAX = 2147483647;
+const int CHILD_MAX = 266;
 
-const int _UI32_MAX = 4294967295;
+const int GID_MAX = 2147483647;
 
-const int _I64_MIN = -9223372036854775808;
+const int LINK_MAX = 32767;
 
-const int _I64_MAX = 9223372036854775807;
+const int MAX_CANON = 1024;
 
-const int _UI64_MAX = -1;
+const int MAX_INPUT = 1024;
 
-const int SIZE_MAX = -1;
+const int NAME_MAX = 255;
 
-const int _ARM_WINAPI_PARTITION_DESKTOP_SDK_AVAILABLE = 1;
+const int NGROUPS_MAX = 16;
 
-const int _CRT_BUILD_DESKTOP_APP = 1;
+const int UID_MAX = 2147483647;
 
-const int _UCRT_DISABLED_WARNINGS = 4324;
+const int OPEN_MAX = 10240;
 
-const int _ARGMAX = 100;
+const int PATH_MAX = 1024;
 
-const int _TRUNCATE = -1;
+const int PIPE_BUF = 512;
 
-const int _CRT_INT_MAX = 2147483647;
+const int BC_BASE_MAX = 99;
 
-const int _CRT_SIZE_MAX = -1;
+const int BC_DIM_MAX = 2048;
 
-const String __FILEW__ = 't';
+const int BC_SCALE_MAX = 99;
 
-const int _CRT_FUNCTIONS_REQUIRED = 1;
+const int BC_STRING_MAX = 1000;
 
-const int _CRT_HAS_CXX17 = 0;
+const int CHARCLASS_NAME_MAX = 14;
 
-const int _CRT_HAS_C11 = 0;
+const int COLL_WEIGHTS_MAX = 2;
 
-const int _CRT_INTERNAL_NONSTDC_NAMES = 1;
+const int EQUIV_CLASS_MAX = 2;
 
-const int __STDC_SECURE_LIB__ = 200411;
+const int EXPR_NEST_MAX = 32;
 
-const int __GOT_SECURE_LIB__ = 200411;
+const int LINE_MAX = 2048;
 
-const int __STDC_WANT_SECURE_LIB__ = 1;
+const int RE_DUP_MAX = 255;
 
-const int _SECURECRT_FILL_BUFFER_PATTERN = 254;
+const int NZERO = 20;
 
-const int _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES = 0;
+const int _POSIX_ARG_MAX = 4096;
 
-const int _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES_COUNT = 0;
+const int _POSIX_CHILD_MAX = 25;
 
-const int _CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES = 1;
+const int _POSIX_LINK_MAX = 8;
 
-const int _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES_MEMORY = 0;
+const int _POSIX_MAX_CANON = 255;
 
-const int _CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES_MEMORY = 0;
+const int _POSIX_MAX_INPUT = 255;
 
-const int INT8_MIN = -128;
+const int _POSIX_NAME_MAX = 14;
 
-const int INT16_MIN = -32768;
+const int _POSIX_NGROUPS_MAX = 8;
 
-const int INT32_MIN = -2147483648;
+const int _POSIX_OPEN_MAX = 20;
 
-const int INT64_MIN = -9223372036854775808;
+const int _POSIX_PATH_MAX = 256;
+
+const int _POSIX_PIPE_BUF = 512;
+
+const int _POSIX_SSIZE_MAX = 32767;
+
+const int _POSIX_STREAM_MAX = 8;
+
+const int _POSIX_TZNAME_MAX = 6;
+
+const int _POSIX2_BC_BASE_MAX = 99;
+
+const int _POSIX2_BC_DIM_MAX = 2048;
+
+const int _POSIX2_BC_SCALE_MAX = 99;
+
+const int _POSIX2_BC_STRING_MAX = 1000;
+
+const int _POSIX2_EQUIV_CLASS_MAX = 2;
+
+const int _POSIX2_EXPR_NEST_MAX = 32;
+
+const int _POSIX2_LINE_MAX = 2048;
+
+const int _POSIX2_RE_DUP_MAX = 255;
+
+const int _POSIX_AIO_LISTIO_MAX = 2;
+
+const int _POSIX_AIO_MAX = 1;
+
+const int _POSIX_DELAYTIMER_MAX = 32;
+
+const int _POSIX_MQ_OPEN_MAX = 8;
+
+const int _POSIX_MQ_PRIO_MAX = 32;
+
+const int _POSIX_RTSIG_MAX = 8;
+
+const int _POSIX_SEM_NSEMS_MAX = 256;
+
+const int _POSIX_SEM_VALUE_MAX = 32767;
+
+const int _POSIX_SIGQUEUE_MAX = 32;
+
+const int _POSIX_TIMER_MAX = 32;
+
+const int _POSIX_CLOCKRES_MIN = 20000000;
+
+const int _POSIX_THREAD_DESTRUCTOR_ITERATIONS = 4;
+
+const int _POSIX_THREAD_KEYS_MAX = 128;
+
+const int _POSIX_THREAD_THREADS_MAX = 64;
+
+const int PTHREAD_DESTRUCTOR_ITERATIONS = 4;
+
+const int PTHREAD_KEYS_MAX = 512;
+
+const int PTHREAD_STACK_MIN = 16384;
+
+const int _POSIX_HOST_NAME_MAX = 255;
+
+const int _POSIX_LOGIN_NAME_MAX = 9;
+
+const int _POSIX_SS_REPL_MAX = 4;
+
+const int _POSIX_SYMLINK_MAX = 255;
+
+const int _POSIX_SYMLOOP_MAX = 8;
+
+const int _POSIX_TRACE_EVENT_NAME_MAX = 30;
+
+const int _POSIX_TRACE_NAME_MAX = 8;
+
+const int _POSIX_TRACE_SYS_MAX = 8;
+
+const int _POSIX_TRACE_USER_EVENT_MAX = 32;
+
+const int _POSIX_TTY_NAME_MAX = 9;
+
+const int _POSIX2_CHARCLASS_NAME_MAX = 14;
+
+const int _POSIX2_COLL_WEIGHTS_MAX = 2;
+
+const int _POSIX_RE_DUP_MAX = 255;
+
+const int OFF_MIN = -9223372036854775808;
+
+const int OFF_MAX = 9223372036854775807;
+
+const int PASS_MAX = 128;
+
+const int NL_ARGMAX = 9;
+
+const int NL_LANGMAX = 14;
+
+const int NL_MSGMAX = 32767;
+
+const int NL_NMAX = 1;
+
+const int NL_SETMAX = 255;
+
+const int NL_TEXTMAX = 2048;
+
+const int _XOPEN_IOV_MAX = 16;
+
+const int IOV_MAX = 1024;
+
+const int _XOPEN_NAME_MAX = 255;
+
+const int _XOPEN_PATH_MAX = 1024;
+
+const int __DARWIN_NULL = 0;
+
+const int __PTHREAD_SIZE__ = 8176;
+
+const int __PTHREAD_ATTR_SIZE__ = 56;
+
+const int __PTHREAD_MUTEXATTR_SIZE__ = 8;
+
+const int __PTHREAD_MUTEX_SIZE__ = 56;
+
+const int __PTHREAD_CONDATTR_SIZE__ = 8;
+
+const int __PTHREAD_COND_SIZE__ = 40;
+
+const int __PTHREAD_ONCE_SIZE__ = 8;
+
+const int __PTHREAD_RWLOCK_SIZE__ = 192;
+
+const int __PTHREAD_RWLOCKATTR_SIZE__ = 16;
+
+const int __DARWIN_WCHAR_MAX = 2147483647;
+
+const int __DARWIN_WCHAR_MIN = -2147483648;
+
+const int __DARWIN_WEOF = -1;
+
+const int _FORTIFY_SOURCE = 2;
+
+const int NULL = 0;
+
+const int USER_ADDR_NULL = 0;
+
+const int __WORDSIZE = 64;
 
 const int INT8_MAX = 127;
 
@@ -10365,6 +7757,14 @@ const int INT16_MAX = 32767;
 const int INT32_MAX = 2147483647;
 
 const int INT64_MAX = 9223372036854775807;
+
+const int INT8_MIN = -128;
+
+const int INT16_MIN = -32768;
+
+const int INT32_MIN = -2147483648;
+
+const int INT64_MIN = -9223372036854775808;
 
 const int UINT8_MAX = 255;
 
@@ -10400,7 +7800,7 @@ const int UINT_LEAST64_MAX = -1;
 
 const int INT_FAST8_MIN = -128;
 
-const int INT_FAST16_MIN = -2147483648;
+const int INT_FAST16_MIN = -32768;
 
 const int INT_FAST32_MIN = -2147483648;
 
@@ -10408,7 +7808,7 @@ const int INT_FAST64_MIN = -9223372036854775808;
 
 const int INT_FAST8_MAX = 127;
 
-const int INT_FAST16_MAX = 2147483647;
+const int INT_FAST16_MAX = 32767;
 
 const int INT_FAST32_MAX = 2147483647;
 
@@ -10416,203 +7816,491 @@ const int INT_FAST64_MAX = 9223372036854775807;
 
 const int UINT_FAST8_MAX = 255;
 
-const int UINT_FAST16_MAX = 4294967295;
+const int UINT_FAST16_MAX = 65535;
 
 const int UINT_FAST32_MAX = 4294967295;
 
 const int UINT_FAST64_MAX = -1;
 
-const int INTPTR_MIN = -9223372036854775808;
-
 const int INTPTR_MAX = 9223372036854775807;
 
-const int UINTPTR_MAX = -1;
+const int INTPTR_MIN = -9223372036854775808;
 
-const int INTMAX_MIN = -9223372036854775808;
+const int UINTPTR_MAX = -1;
 
 const int INTMAX_MAX = 9223372036854775807;
 
 const int UINTMAX_MAX = -1;
 
+const int INTMAX_MIN = -9223372036854775808;
+
 const int PTRDIFF_MIN = -9223372036854775808;
 
 const int PTRDIFF_MAX = 9223372036854775807;
+
+const int SIZE_MAX = -1;
+
+const int RSIZE_MAX = 9223372036854775807;
+
+const int WCHAR_MAX = 2147483647;
+
+const int WCHAR_MIN = -2147483648;
+
+const int WINT_MIN = -2147483648;
+
+const int WINT_MAX = 2147483647;
 
 const int SIG_ATOMIC_MIN = -2147483648;
 
 const int SIG_ATOMIC_MAX = 2147483647;
 
-const int WCHAR_MIN = 0;
+const int __API_TO_BE_DEPRECATED = 100000;
 
-const int WCHAR_MAX = 65535;
+const int __MAC_10_0 = 1000;
 
-const int WINT_MIN = 0;
+const int __MAC_10_1 = 1010;
 
-const int WINT_MAX = 65535;
+const int __MAC_10_2 = 1020;
 
-const int EPERM = 1;
+const int __MAC_10_3 = 1030;
 
-const int ENOENT = 2;
+const int __MAC_10_4 = 1040;
 
-const int ESRCH = 3;
+const int __MAC_10_5 = 1050;
 
-const int EINTR = 4;
+const int __MAC_10_6 = 1060;
 
-const int EIO = 5;
+const int __MAC_10_7 = 1070;
 
-const int ENXIO = 6;
+const int __MAC_10_8 = 1080;
 
-const int E2BIG = 7;
+const int __MAC_10_9 = 1090;
 
-const int ENOEXEC = 8;
+const int __MAC_10_10 = 101000;
 
-const int EBADF = 9;
+const int __MAC_10_10_2 = 101002;
 
-const int ECHILD = 10;
+const int __MAC_10_10_3 = 101003;
 
-const int EAGAIN = 11;
+const int __MAC_10_11 = 101100;
 
-const int ENOMEM = 12;
+const int __MAC_10_11_2 = 101102;
 
-const int EACCES = 13;
+const int __MAC_10_11_3 = 101103;
 
-const int EFAULT = 14;
+const int __MAC_10_11_4 = 101104;
 
-const int EBUSY = 16;
+const int __MAC_10_12 = 101200;
 
-const int EEXIST = 17;
+const int __MAC_10_12_1 = 101201;
 
-const int EXDEV = 18;
+const int __MAC_10_12_2 = 101202;
 
-const int ENODEV = 19;
+const int __MAC_10_12_4 = 101204;
 
-const int ENOTDIR = 20;
+const int __MAC_10_13 = 101300;
 
-const int EISDIR = 21;
+const int __MAC_10_13_1 = 101301;
 
-const int ENFILE = 23;
+const int __MAC_10_13_2 = 101302;
 
-const int EMFILE = 24;
+const int __MAC_10_13_4 = 101304;
 
-const int ENOTTY = 25;
+const int __MAC_10_14 = 101400;
 
-const int EFBIG = 27;
+const int __MAC_10_14_1 = 101401;
 
-const int ENOSPC = 28;
+const int __MAC_10_14_4 = 101404;
 
-const int ESPIPE = 29;
+const int __MAC_10_14_6 = 101406;
 
-const int EROFS = 30;
+const int __MAC_10_15 = 101500;
 
-const int EMLINK = 31;
+const int __MAC_10_15_1 = 101501;
 
-const int EPIPE = 32;
+const int __MAC_10_15_4 = 101504;
 
-const int EDOM = 33;
+const int __MAC_10_16 = 101600;
 
-const int EDEADLK = 36;
+const int __MAC_11_0 = 110000;
 
-const int ENAMETOOLONG = 38;
+const int __MAC_11_1 = 110100;
 
-const int ENOLCK = 39;
+const int __MAC_11_3 = 110300;
 
-const int ENOSYS = 40;
+const int __MAC_11_4 = 110400;
 
-const int ENOTEMPTY = 41;
+const int __MAC_11_5 = 110500;
 
-const int EINVAL = 22;
+const int __MAC_11_6 = 110600;
 
-const int ERANGE = 34;
+const int __MAC_12_0 = 120000;
 
-const int EILSEQ = 42;
+const int __MAC_12_1 = 120100;
 
-const int STRUNCATE = 80;
+const int __MAC_12_2 = 120200;
 
-const int EDEADLOCK = 36;
+const int __MAC_12_3 = 120300;
 
-const int EADDRINUSE = 100;
+const int __IPHONE_2_0 = 20000;
 
-const int EADDRNOTAVAIL = 101;
+const int __IPHONE_2_1 = 20100;
 
-const int EAFNOSUPPORT = 102;
+const int __IPHONE_2_2 = 20200;
 
-const int EALREADY = 103;
+const int __IPHONE_3_0 = 30000;
 
-const int EBADMSG = 104;
+const int __IPHONE_3_1 = 30100;
 
-const int ECANCELED = 105;
+const int __IPHONE_3_2 = 30200;
 
-const int ECONNABORTED = 106;
+const int __IPHONE_4_0 = 40000;
 
-const int ECONNREFUSED = 107;
+const int __IPHONE_4_1 = 40100;
 
-const int ECONNRESET = 108;
+const int __IPHONE_4_2 = 40200;
 
-const int EDESTADDRREQ = 109;
+const int __IPHONE_4_3 = 40300;
 
-const int EHOSTUNREACH = 110;
+const int __IPHONE_5_0 = 50000;
 
-const int EIDRM = 111;
+const int __IPHONE_5_1 = 50100;
 
-const int EINPROGRESS = 112;
+const int __IPHONE_6_0 = 60000;
 
-const int EISCONN = 113;
+const int __IPHONE_6_1 = 60100;
 
-const int ELOOP = 114;
+const int __IPHONE_7_0 = 70000;
 
-const int EMSGSIZE = 115;
+const int __IPHONE_7_1 = 70100;
 
-const int ENETDOWN = 116;
+const int __IPHONE_8_0 = 80000;
 
-const int ENETRESET = 117;
+const int __IPHONE_8_1 = 80100;
 
-const int ENETUNREACH = 118;
+const int __IPHONE_8_2 = 80200;
 
-const int ENOBUFS = 119;
+const int __IPHONE_8_3 = 80300;
 
-const int ENODATA = 120;
+const int __IPHONE_8_4 = 80400;
 
-const int ENOLINK = 121;
+const int __IPHONE_9_0 = 90000;
 
-const int ENOMSG = 122;
+const int __IPHONE_9_1 = 90100;
 
-const int ENOPROTOOPT = 123;
+const int __IPHONE_9_2 = 90200;
 
-const int ENOSR = 124;
+const int __IPHONE_9_3 = 90300;
 
-const int ENOSTR = 125;
+const int __IPHONE_10_0 = 100000;
 
-const int ENOTCONN = 126;
+const int __IPHONE_10_1 = 100100;
 
-const int ENOTRECOVERABLE = 127;
+const int __IPHONE_10_2 = 100200;
 
-const int ENOTSOCK = 128;
+const int __IPHONE_10_3 = 100300;
 
-const int ENOTSUP = 129;
+const int __IPHONE_11_0 = 110000;
 
-const int EOPNOTSUPP = 130;
+const int __IPHONE_11_1 = 110100;
 
-const int EOTHER = 131;
+const int __IPHONE_11_2 = 110200;
 
-const int EOVERFLOW = 132;
+const int __IPHONE_11_3 = 110300;
 
-const int EOWNERDEAD = 133;
+const int __IPHONE_11_4 = 110400;
 
-const int EPROTO = 134;
+const int __IPHONE_12_0 = 120000;
 
-const int EPROTONOSUPPORT = 135;
+const int __IPHONE_12_1 = 120100;
 
-const int EPROTOTYPE = 136;
+const int __IPHONE_12_2 = 120200;
 
-const int ETIME = 137;
+const int __IPHONE_12_3 = 120300;
 
-const int ETIMEDOUT = 138;
+const int __IPHONE_12_4 = 120400;
 
-const int ETXTBSY = 139;
+const int __IPHONE_13_0 = 130000;
 
-const int EWOULDBLOCK = 140;
+const int __IPHONE_13_1 = 130100;
 
-const int _NLSCMPERROR = 2147483647;
+const int __IPHONE_13_2 = 130200;
+
+const int __IPHONE_13_3 = 130300;
+
+const int __IPHONE_13_4 = 130400;
+
+const int __IPHONE_13_5 = 130500;
+
+const int __IPHONE_13_6 = 130600;
+
+const int __IPHONE_13_7 = 130700;
+
+const int __IPHONE_14_0 = 140000;
+
+const int __IPHONE_14_1 = 140100;
+
+const int __IPHONE_14_2 = 140200;
+
+const int __IPHONE_14_3 = 140300;
+
+const int __IPHONE_14_5 = 140500;
+
+const int __IPHONE_14_6 = 140600;
+
+const int __IPHONE_14_7 = 140700;
+
+const int __IPHONE_14_8 = 140800;
+
+const int __IPHONE_15_0 = 150000;
+
+const int __IPHONE_15_1 = 150100;
+
+const int __IPHONE_15_2 = 150200;
+
+const int __IPHONE_15_3 = 150300;
+
+const int __IPHONE_15_4 = 150400;
+
+const int __TVOS_9_0 = 90000;
+
+const int __TVOS_9_1 = 90100;
+
+const int __TVOS_9_2 = 90200;
+
+const int __TVOS_10_0 = 100000;
+
+const int __TVOS_10_0_1 = 100001;
+
+const int __TVOS_10_1 = 100100;
+
+const int __TVOS_10_2 = 100200;
+
+const int __TVOS_11_0 = 110000;
+
+const int __TVOS_11_1 = 110100;
+
+const int __TVOS_11_2 = 110200;
+
+const int __TVOS_11_3 = 110300;
+
+const int __TVOS_11_4 = 110400;
+
+const int __TVOS_12_0 = 120000;
+
+const int __TVOS_12_1 = 120100;
+
+const int __TVOS_12_2 = 120200;
+
+const int __TVOS_12_3 = 120300;
+
+const int __TVOS_12_4 = 120400;
+
+const int __TVOS_13_0 = 130000;
+
+const int __TVOS_13_2 = 130200;
+
+const int __TVOS_13_3 = 130300;
+
+const int __TVOS_13_4 = 130400;
+
+const int __TVOS_14_0 = 140000;
+
+const int __TVOS_14_1 = 140100;
+
+const int __TVOS_14_2 = 140200;
+
+const int __TVOS_14_3 = 140300;
+
+const int __TVOS_14_5 = 140500;
+
+const int __TVOS_14_6 = 140600;
+
+const int __TVOS_14_7 = 140700;
+
+const int __TVOS_15_0 = 150000;
+
+const int __TVOS_15_1 = 150100;
+
+const int __TVOS_15_2 = 150200;
+
+const int __TVOS_15_3 = 150300;
+
+const int __TVOS_15_4 = 150400;
+
+const int __WATCHOS_1_0 = 10000;
+
+const int __WATCHOS_2_0 = 20000;
+
+const int __WATCHOS_2_1 = 20100;
+
+const int __WATCHOS_2_2 = 20200;
+
+const int __WATCHOS_3_0 = 30000;
+
+const int __WATCHOS_3_1 = 30100;
+
+const int __WATCHOS_3_1_1 = 30101;
+
+const int __WATCHOS_3_2 = 30200;
+
+const int __WATCHOS_4_0 = 40000;
+
+const int __WATCHOS_4_1 = 40100;
+
+const int __WATCHOS_4_2 = 40200;
+
+const int __WATCHOS_4_3 = 40300;
+
+const int __WATCHOS_5_0 = 50000;
+
+const int __WATCHOS_5_1 = 50100;
+
+const int __WATCHOS_5_2 = 50200;
+
+const int __WATCHOS_5_3 = 50300;
+
+const int __WATCHOS_6_0 = 60000;
+
+const int __WATCHOS_6_1 = 60100;
+
+const int __WATCHOS_6_2 = 60200;
+
+const int __WATCHOS_7_0 = 70000;
+
+const int __WATCHOS_7_1 = 70100;
+
+const int __WATCHOS_7_2 = 70200;
+
+const int __WATCHOS_7_3 = 70300;
+
+const int __WATCHOS_7_4 = 70400;
+
+const int __WATCHOS_7_5 = 70500;
+
+const int __WATCHOS_7_6 = 70600;
+
+const int __WATCHOS_8_0 = 80000;
+
+const int __WATCHOS_8_1 = 80100;
+
+const int __WATCHOS_8_3 = 80300;
+
+const int __WATCHOS_8_4 = 80400;
+
+const int __WATCHOS_8_5 = 80500;
+
+const int MAC_OS_X_VERSION_10_0 = 1000;
+
+const int MAC_OS_X_VERSION_10_1 = 1010;
+
+const int MAC_OS_X_VERSION_10_2 = 1020;
+
+const int MAC_OS_X_VERSION_10_3 = 1030;
+
+const int MAC_OS_X_VERSION_10_4 = 1040;
+
+const int MAC_OS_X_VERSION_10_5 = 1050;
+
+const int MAC_OS_X_VERSION_10_6 = 1060;
+
+const int MAC_OS_X_VERSION_10_7 = 1070;
+
+const int MAC_OS_X_VERSION_10_8 = 1080;
+
+const int MAC_OS_X_VERSION_10_9 = 1090;
+
+const int MAC_OS_X_VERSION_10_10 = 101000;
+
+const int MAC_OS_X_VERSION_10_10_2 = 101002;
+
+const int MAC_OS_X_VERSION_10_10_3 = 101003;
+
+const int MAC_OS_X_VERSION_10_11 = 101100;
+
+const int MAC_OS_X_VERSION_10_11_2 = 101102;
+
+const int MAC_OS_X_VERSION_10_11_3 = 101103;
+
+const int MAC_OS_X_VERSION_10_11_4 = 101104;
+
+const int MAC_OS_X_VERSION_10_12 = 101200;
+
+const int MAC_OS_X_VERSION_10_12_1 = 101201;
+
+const int MAC_OS_X_VERSION_10_12_2 = 101202;
+
+const int MAC_OS_X_VERSION_10_12_4 = 101204;
+
+const int MAC_OS_X_VERSION_10_13 = 101300;
+
+const int MAC_OS_X_VERSION_10_13_1 = 101301;
+
+const int MAC_OS_X_VERSION_10_13_2 = 101302;
+
+const int MAC_OS_X_VERSION_10_13_4 = 101304;
+
+const int MAC_OS_X_VERSION_10_14 = 101400;
+
+const int MAC_OS_X_VERSION_10_14_1 = 101401;
+
+const int MAC_OS_X_VERSION_10_14_4 = 101404;
+
+const int MAC_OS_X_VERSION_10_14_6 = 101406;
+
+const int MAC_OS_X_VERSION_10_15 = 101500;
+
+const int MAC_OS_X_VERSION_10_15_1 = 101501;
+
+const int MAC_OS_X_VERSION_10_16 = 101600;
+
+const int MAC_OS_VERSION_11_0 = 110000;
+
+const int MAC_OS_VERSION_12_0 = 120000;
+
+const int __DRIVERKIT_19_0 = 190000;
+
+const int __DRIVERKIT_20_0 = 200000;
+
+const int __DRIVERKIT_21_0 = 210000;
+
+const int __MAC_OS_X_VERSION_MIN_REQUIRED = 120000;
+
+const int __MAC_OS_X_VERSION_MAX_ALLOWED = 120300;
+
+const int __ENABLE_LEGACY_MAC_AVAILABILITY = 1;
+
+const int _QUAD_HIGHWORD = 1;
+
+const int _QUAD_LOWWORD = 0;
+
+const int __DARWIN_LITTLE_ENDIAN = 1234;
+
+const int __DARWIN_BIG_ENDIAN = 4321;
+
+const int __DARWIN_PDP_ENDIAN = 3412;
+
+const int __DARWIN_BYTE_ORDER = 1234;
+
+const int LITTLE_ENDIAN = 1234;
+
+const int BIG_ENDIAN = 4321;
+
+const int PDP_ENDIAN = 3412;
+
+const int BYTE_ORDER = 1234;
+
+const int __DARWIN_FD_SETSIZE = 1024;
+
+const int __DARWIN_NBBY = 8;
+
+const int __DARWIN_NFDBITS = 32;
+
+const int NBBY = 8;
+
+const int NFDBITS = 32;
+
+const int FD_SETSIZE = 1024;
 
 const String AI_CONFIG_GLOB_MEASURE_TIME = 'GLOB_MEASURE_TIME';
 
@@ -10860,22 +8548,6 @@ const double AI_MATH_TWO_PI_F = 6.2831854820251465;
 
 const double AI_MATH_HALF_PI_F = 1.5707963705062866;
 
-const int _DOMAIN = 1;
-
-const int _SING = 2;
-
-const int _OVERFLOW = 3;
-
-const int _UNDERFLOW = 4;
-
-const int _TLOSS = 5;
-
-const int _PLOSS = 6;
-
-const double _HUGE_ENUF = 1e+300;
-
-const double INFINITY = double.infinity;
-
 const double HUGE_VAL = double.infinity;
 
 const double HUGE_VALF = double.infinity;
@@ -10884,115 +8556,69 @@ const double HUGE_VALL = double.infinity;
 
 const double NAN = double.nan;
 
-const int _DENORM = -2;
+const double INFINITY = double.infinity;
 
-const int _FINITE = -1;
+const int FP_NAN = 1;
 
-const int _INFCODE = 1;
+const int FP_INFINITE = 2;
 
-const int _NANCODE = 2;
+const int FP_ZERO = 3;
 
-const int FP_INFINITE = 1;
+const int FP_NORMAL = 4;
 
-const int FP_NAN = 2;
+const int FP_SUBNORMAL = 5;
 
-const int FP_NORMAL = -1;
+const int FP_SUPERNORMAL = 6;
 
-const int FP_SUBNORMAL = -2;
+const int FP_FAST_FMA = 1;
 
-const int FP_ZERO = 0;
+const int FP_FAST_FMAF = 1;
 
-const int _C2 = 1;
+const int FP_FAST_FMAL = 1;
 
 const int FP_ILOGB0 = -2147483648;
 
-const int FP_ILOGBNAN = 2147483647;
+const int FP_ILOGBNAN = -2147483648;
 
 const int MATH_ERRNO = 1;
 
 const int MATH_ERREXCEPT = 2;
 
-const int math_errhandling = 3;
+const double M_E = 2.718281828459045;
 
-const int _FE_DIVBYZERO = 4;
+const double M_LOG2E = 1.4426950408889634;
 
-const int _FE_INEXACT = 32;
+const double M_LOG10E = 0.4342944819032518;
 
-const int _FE_INVALID = 1;
+const double M_LN2 = 0.6931471805599453;
 
-const int _FE_OVERFLOW = 8;
+const double M_LN10 = 2.302585092994046;
 
-const int _FE_UNDERFLOW = 16;
+const double M_PI = 3.141592653589793;
 
-const int _D0_C = 3;
+const double M_PI_2 = 1.5707963267948966;
 
-const int _D1_C = 2;
+const double M_PI_4 = 0.7853981633974483;
 
-const int _D2_C = 1;
+const double M_1_PI = 0.3183098861837907;
 
-const int _D3_C = 0;
+const double M_2_PI = 0.6366197723675814;
 
-const int _DBIAS = 1022;
+const double M_2_SQRTPI = 1.1283791670955126;
 
-const int _DOFF = 4;
+const double M_SQRT2 = 1.4142135623730951;
 
-const int _F0_C = 1;
+const double M_SQRT1_2 = 0.7071067811865476;
 
-const int _F1_C = 0;
+const double MAXFLOAT = 3.4028234663852886e+38;
 
-const int _FBIAS = 126;
+const int FP_SNAN = 1;
 
-const int _FOFF = 7;
+const int FP_QNAN = 1;
 
-const int _FRND = 1;
+const double HUGE = 3.4028234663852886e+38;
 
-const int _L0_C = 3;
-
-const int _L1_C = 2;
-
-const int _L2_C = 1;
-
-const int _L3_C = 0;
-
-const int _LBIAS = 1022;
-
-const int _LOFF = 4;
-
-const int _DFRAC = 15;
-
-const int _DMASK = 32752;
-
-const int _DMAX = 2047;
-
-const int _DSIGN = 32768;
-
-const int _FFRAC = 127;
-
-const int _FMASK = 32640;
-
-const int _FMAX = 255;
-
-const int _FSIGN = 32768;
-
-const int _LFRAC = 65535;
-
-const int _LMASK = 32767;
-
-const int _LMAX = 32767;
-
-const int _LSIGN = 32768;
-
-const int _DHUGE_EXP = 1842;
-
-const int _FHUGE_EXP = 229;
-
-const int _LHUGE_EXP = 29490;
-
-const int _FP_LT = 1;
-
-const int _FP_EQ = 2;
-
-const int _FP_GT = 4;
+const double X_TLOSS = 14148475504056880.0;
 
 const int DOMAIN = 1;
 
@@ -11204,3 +8830,11 @@ const int ASSIMP_CFLAGS_NOBOOST = 8;
 const int ASSIMP_CFLAGS_SINGLETHREADED = 16;
 
 const int ASSIMP_CFLAGS_DOUBLE_SUPPORT = 32;
+
+const int aiProcess_ConvertToLeftHanded = 25165828;
+
+const int aiProcessPreset_TargetRealtime_Fast = 294955;
+
+const int aiProcessPreset_TargetRealtime_Quality = 498379;
+
+const int aiProcessPreset_TargetRealtime_MaxQuality = 3645131;

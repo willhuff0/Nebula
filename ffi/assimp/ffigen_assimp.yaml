@@ -2,8 +2,11 @@ output: 'lib/bindings/assimp/assimp.dart'
 name: 'Assimp'
 headers:
   entry-points:
-    - 'ffi/assimp/include/scene.h'
-    - 'ffi/assimp/include/cfileio.h'
-    - 'ffi/assimp/include/cexport.h'
-    - 'ffi/assimp/include/cimport.h'
-    - 'ffi/assimp/include/version.h'
+    - 'ffi/assimp/include/assimp/scene.h'
+    - 'ffi/assimp/include/assimp/cfileio.h'
+    - 'ffi/assimp/include/assimp/cexport.h'
+    - 'ffi/assimp/include/assimp/cimport.h'
+    - 'ffi/assimp/include/assimp/version.h'
+    - 'ffi/assimp/include/assimp/postprocess.h'
+compiler-opts:
+    - '-Iffi/assimp/include'

@@ -3,6 +3,7 @@ import 'dart:typed_data';
 
 import 'package:ffi/ffi.dart';
 import 'package:nebula/nebula.dart';
+import 'package:vector_math/vector_math.dart';
 
 class Mesh {
   final Float32List vertices;
@@ -47,6 +48,8 @@ class Mesh {
       gl.glBindVertexArray(0);
     }, malloc);
   }
+
+  static Float32List makeVerticesArrayFromComponents(int count, List<Vector3> positions, List<Vector3> normals, List<Vector2> uvs) => Float32List.fromList(List<dynamic>.generate(count, (index) => index).expand((index) => [...positions[index].storage, ...normals[index].storage, ...uvs[index].storage]).toList());
 
   void draw() {
     gl.glBindVertexArray(_vao);

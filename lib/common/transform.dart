@@ -20,4 +20,6 @@ class Transform {
   set scale(Vector3 value) => _scale = value;
 
   Vector3 get eulerAngles => _rotation.rotate(Vector3(0, 0, 0));
+
+  Matrix4 getMatrix() => Matrix4.identity()..setFromTranslationRotationScale(position, rotation, scale);
 }
