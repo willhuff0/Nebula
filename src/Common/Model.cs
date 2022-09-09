@@ -71,13 +71,13 @@ public class Model {
             Vector3[] positions = assimpMesh.Vertices.Select((e) => new Vector3(e.X, e.Y, e.Z)).ToArray();
             Vector3[] normals = assimpMesh.Normals.Select((e) => new Vector3(e.X, e.Y, e.Z)).ToArray();
             Vector2[] uvs = assimpMesh.TextureCoordinateChannels[0].Select((e) => new Vector2(e.X, e.Y)).ToArray();
-            uint[] indicies = assimpMesh.GetUnsignedIndices();
+            uint[] indices = assimpMesh.GetUnsignedIndices();
 
             Debug.WriteLine($"Loaded {positions.Length} vertex positions");
             Debug.WriteLine($"Loaded {normals.Length} vertex normals");
             Debug.WriteLine($"Loaded {uvs.Length} vertex uvs");
             
-            meshes[i] = new Mesh(Vertex.CreateVertexArrayFromComponents(positions.Length, positions, normals, uvs), indicies, assimpMesh.MaterialIndex);
+            meshes[i] = new Mesh(Vertex.CreateVertexArrayFromComponents(positions.Length, positions, normals, uvs), indices, assimpMesh.MaterialIndex);
         }
 
         string directory = Path.GetDirectoryName(path);

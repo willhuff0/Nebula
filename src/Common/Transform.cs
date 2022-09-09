@@ -1,8 +1,9 @@
+using Newtonsoft.Json.Linq;
 using OpenTK.Mathematics;
 
 namespace Nebula;
 
-public class Transform {
+public class Transform : ISerializable {
     private Vector3 position;
     private Quaternion rotation;
     private Vector3 scale;
@@ -64,5 +65,16 @@ public class Transform {
         matrix *= Matrix4.CreateTranslation(Position);
         matrix *= Matrix4.CreateFromQuaternion(Rotation);
         return matrix;
+    }
+
+    public JObject Serialize() => new JObject(
+        new JProperty("position", position.X, position.Y, position.Z),
+        new JProperty("rotation", rotation.X, rotation.Y, rotation.Z, rotation.W ),
+        new JProperty("scale", scale.X, scale.Y, scale.Z));
+
+    public void Deserialize(JObject from) {
+        position = new Vector3(from.Value<float[]>("position")[0], from.Value<float[]>("position")[1], from.Value<float[]>("position")[2]);
+        rotation = new Quaternion(from.Value<float[]>("rotation")[0], from.Value<float[]>("rotation")[1], from.Value<float[]>("rotation")[2], from.Value<float[]>("rotation")[3]);
+        scale = new Vector3(from.Value<float[]>("scale")[0], from.Value<float[]>("scale")[1], from.Value<float[]>("scale")[2]);
     }
 }
