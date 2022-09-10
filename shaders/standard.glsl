@@ -1,5 +1,5 @@
 ##VERTEX
-#version 410 core
+#version 310 es
 
 layout (location = 0) in vec3 a_pos;
 layout (location = 1) in vec3 a_normal;
@@ -9,29 +9,30 @@ out vec2 v_texCoord;
 out vec3 v_worldPos;
 out vec3 v_normal;
 
-uniform int shadowCasterCount;
+uniform int nebula_shadowCasterCount;
 out vec4 v_shadowCasterCoords[10];
-uniform mat4 shadowMatrices[10];
+uniform mat4 nebula_shadowMatrices[10];
 
-uniform mat4 matrix_transform;
-uniform mat4 matrix_viewProjection;
+uniform mat4 nebula_matrix_transform;
+uniform mat4 nebula_matrix_viewProjection;
 
 void main() {
     v_texCoord = a_texCoord;
-    v_worldPos = vec3(matrix_transform * vec4(a_pos, 1.0));
-    v_normal = mat3(matrix_transform) * a_normal;
+    v_worldPos = vec3(nebula_matrix_transform * vec4(a_pos, 1.0));
+    v_normal = mat3(nebula_matrix_transform) * a_normal;
     
-    for(int i = 0; i < shadowCasterCount; ++i) {
-        v_shadowCasterCoords[i] = vec4(a_pos, 1.0) * matrix_transform * shadowMatrices[i];
+    for(int i = 0; i < nebula_shadowCasterCount; ++i) {
+        v_shadowCasterCoords[i] = vec4(a_pos, 1.0) * nebula_matrix_transform * nebula_shadowMatrices[i];
     }
 
     //gl_Position = vec4(v_worldPos, 1.0) * matrix_view * matrix_projection;
-    gl_Position = vec4(a_pos, 1.0) * matrix_transform * matrix_viewProjection;
+    gl_Position = vec4(a_pos, 1.0) * nebula_matrix_transform * nebula_matrix_viewProjection;
 }
 
 
 ##FRAGMENT
-#version 410 core
+precision highp float;
+#version 310 es
 
 struct Material {
     sampler2D texture_albedo;
@@ -58,23 +59,23 @@ in vec2 v_texCoord;
 in vec3 v_worldPos;
 in vec3 v_normal;
 
-uniform int shadowCasterCount;
-uniform sampler2D shadowMaps[10];
+uniform int nebula_shadowCasterCount;
+uniform sampler2D nebula_shadowMaps[10];
 in vec4 v_shadowCasterCoords[10];
 
-uniform Material material;
+uniform Material nebula_material;
 
-uniform int directionalLightCount;
-uniform DirectionalLight directionalLights[2];
-uniform int pointLightCount;
-uniform PointLight pointLights[8];
+uniform int nebula_directionalLightCount;
+uniform DirectionalLight nebula_directionalLights[2];
+uniform int nebula_pointLightCount;
+uniform PointLight nebula_pointLights[8];
 
-uniform vec3 viewPos;
+uniform vec3 nebula_viewPos;
 
 const float PI = 3.14159265359;
 
 vec3 getNormalFromMap() {
-    vec3 tangentNormal = texture(material.texture_normal, v_texCoord).xyz * 2.0 - 1.0;
+    vec3 tangentNormal = texture(nebula_material.texture_normal, v_texCoord).xyz * 2.0 - 1.0;
 
     vec3 Q1 = dFdx(v_worldPos);
     vec3 Q2 = dFdy(v_worldPos);
@@ -147,13 +148,13 @@ vec3 processLight(vec3 albedo, float metallic, float roughness, vec3 F0, vec3 _L
 }
 
 void main() {
-    vec3 albedo = pow(texture(material.texture_albedo, v_texCoord).rgb, vec3(2.2));
-    float metallic = texture(material.texture_metallic, v_texCoord).r;
-    float roughness = texture(material.texture_roughness, v_texCoord).r;
-    float ao = texture(material.texture_ao, v_texCoord).r;
+    vec3 albedo = pow(texture(nebula_material.texture_albedo, v_texCoord).rgb, vec3(2.2));
+    float metallic = texture(nebula_material.texture_metallic, v_texCoord).r;
+    float roughness = texture(nebula_material.texture_roughness, v_texCoord).r;
+    float ao = texture(nebula_material.texture_ao, v_texCoord).r;
 
     vec3 N = getNormalFromMap();
-    vec3 V = normalize(viewPos - v_worldPos);
+    vec3 V = normalize(nebula_viewPos - v_worldPos);
 
     vec3 F0 = vec3(0.04);
     F0 = mix(F0, albedo, metallic);
@@ -161,8 +162,8 @@ void main() {
     vec3 Lo = vec3(0.0);
 
     // Directional Lights
-    for (int i = 0; i < directionalLightCount; ++i) {
-        DirectionalLight light = directionalLights[i];
+    for (int i = 0; i < nebula_directionalLightCount; ++i) {
+        DirectionalLight light = nebula_directionalLights[i];
 
         vec3 _L = light.direction;
 
@@ -170,8 +171,8 @@ void main() {
     }
 
     // Point Lights
-    for (int i = 0; i < pointLightCount; ++i) {
-        PointLight light = pointLights[i];
+    for (int i = 0; i < nebula_pointLightCount; ++i) {
+        PointLight light = nebula_pointLights[i];
 
         vec3 _L = light.position - v_worldPos;
 
@@ -184,23 +185,23 @@ void main() {
     float totalShadow = 0.0;
 
     // Shadow Casters
-    for (int i = 0; i < shadowCasterCount; ++i) {
+    for (int i = 0; i < nebula_shadowCasterCount; ++i) {
         vec4 shadowCoord = v_shadowCasterCoords[i];
         vec3 projCoords = shadowCoord.xyz / shadowCoord.w;
         projCoords = projCoords * 0.5 + 0.5;
 
         if (projCoords.z > 1.0) continue;
 
-        float closestDepth = texture(shadowMaps[i], projCoords.xy).r;
+        float closestDepth = texture(nebula_shadowMaps[i], projCoords.xy).r;
         float currentDepth = projCoords.z;
 
         float shadow = 0.0;
-        vec2 texelSize = 1.0 / textureSize(shadowMaps[i], 0);
+        vec2 texelSize = 1.0 / textureSize(nebula_shadowMaps[i], 0);
         for(int x = -1; x <= 1; ++x)
         {
             for(int y = -1; y <= 1; ++y)
             {
-                float pcfDepth = texture(shadowMaps[i], projCoords.xy + vec2(x, y) * texelSize).r; 
+                float pcfDepth = texture(nebula_shadowMaps[i], projCoords.xy + vec2(x, y) * texelSize).r; 
                 shadow += currentDepth > pcfDepth ? 0.4 : 0.0;
             }    
         }

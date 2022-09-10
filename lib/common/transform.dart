@@ -1,6 +1,8 @@
+import 'package:nebula/serialization/serializable.dart';
+
 import 'common.dart';
 
-class Transform {
+class Transform with Serializable {
   Vector3 _position;
   Quaternion _rotation;
   Vector3 _scale;
@@ -22,4 +24,18 @@ class Transform {
   Vector3 get eulerAngles => _rotation.rotate(Vector3(0, 0, 0));
 
   Matrix4 getMatrix() => Matrix4.identity()..setFromTranslationRotationScale(position, rotation, scale);
+
+  @override
+  Map<String, dynamic> serialize() => {
+        'position': position.storage,
+        'rotation': rotation.storage,
+        'scale': scale.storage,
+      };
+
+  @override
+  void deserialize(Map<String, dynamic> from) {
+    position = Vector3.fromFloat32List(from['position']);
+    rotation = Quaternion.fromFloat32List(from['rotation']);
+    scale = Vector3.fromFloat32List(from['scale']);
+  }
 }

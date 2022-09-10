@@ -13,7 +13,7 @@ class Texture {
 
   Texture(this.handle, this.type);
 
-  static Future<Texture> loadFromFile(String path, String type) async {
+  static Texture loadFromFile(String path, String type) {
     if (textureCache.containsKey(path)) return Texture(textureCache[path]!.handle, type);
 
     int handle = 0;
@@ -26,7 +26,7 @@ class Texture {
     gl.glActiveTexture(GL_TEXTURE0);
     gl.glBindTexture(GL_TEXTURE_2D, handle);
 
-    final image = decodeImage(await File(path).readAsBytes())!;
+    final image = decodeImage(File(path).readAsBytesSync())!;
     using((arena) => gl.glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.width, image.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, (arena<Uint8>(image.length)..asTypedList(image.length).setAll(0, image.getBytes())).cast()));
 
     gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
@@ -42,11 +42,11 @@ class Texture {
     return texture;
   }
 
-  static Future<Texture> getDefaultAlbedo() => Texture.loadFromFile('Resources/default/default_albedo.png', 'albedo');
-  static Future<Texture> getDefaultNormal() => Texture.loadFromFile('Resources/default/default_normal.png', 'normal');
-  static Future<Texture> getDefaultMetallic() => Texture.loadFromFile('Resources/default/default_metallic_roughness.png', 'metallic');
-  static Future<Texture> getDefaultRoughness() => Texture.loadFromFile('Resources/default/default_metallic_roughness.png', 'roughness');
-  static Future<Texture> getDefaultAO() => Texture.loadFromFile('Resources/default/default_ao.png', 'ao');
+  static Texture getDefaultAlbedo() => Texture.loadFromFile('Resources/default/default_albedo.png', 'albedo');
+  static Texture getDefaultNormal() => Texture.loadFromFile('Resources/default/default_normal.png', 'normal');
+  static Texture getDefaultMetallic() => Texture.loadFromFile('Resources/default/default_metallic_roughness.png', 'metallic');
+  static Texture getDefaultRoughness() => Texture.loadFromFile('Resources/default/default_metallic_roughness.png', 'roughness');
+  static Texture getDefaultAO() => Texture.loadFromFile('Resources/default/default_ao.png', 'ao');
 
   void bind(int unit) {
     gl.glActiveTexture(unit);
@@ -63,9 +63,9 @@ class DefaultTextures {
 
   DefaultTextures({this.albedo, this.normal, this.metallic, this.roughness, this.ao});
 
-  Future<Texture> getAlbedoOrDefault() async => albedo ?? await Texture.getDefaultAlbedo();
-  Future<Texture> getNormalOrDefault() async => normal ?? await Texture.getDefaultNormal();
-  Future<Texture> getMetallicOrDefault() async => metallic ?? await Texture.getDefaultMetallic();
-  Future<Texture> getRoughnessOrDefault() async => roughness ?? await Texture.getDefaultRoughness();
-  Future<Texture> getAOOrDefault() async => ao ?? await Texture.getDefaultAO();
+  Texture getAlbedoOrDefault() => albedo ?? Texture.getDefaultAlbedo();
+  Texture getNormalOrDefault() => normal ?? Texture.getDefaultNormal();
+  Texture getMetallicOrDefault() => metallic ?? Texture.getDefaultMetallic();
+  Texture getRoughnessOrDefault() => roughness ?? Texture.getDefaultRoughness();
+  Texture getAOOrDefault() => ao ?? Texture.getDefaultAO();
 }
