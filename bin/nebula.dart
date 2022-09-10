@@ -9,7 +9,11 @@ import 'package:nebula/common/common.dart';
 void main() {
   //glfw.glfwInitHint(EGL_ANGLE_platform_angle, EGL_ANGLE_platform_angle_vulkan);
 
+  print('test');
+
   glfw.glfwSetErrorCallback(Pointer.fromFunction(glfwErrorCallback));
+
+  print('test');
 
   if (glfw.glfwInit() == GLFW_FALSE) {
     print('Could not init GLFW');
@@ -17,6 +21,7 @@ void main() {
   }
 
   egl.eglBindAPI(EGL_OPENGL_ES_API);
+  print('test');
 
   glfw.glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
   glfw.glfwWindowHint(GLFW_CONTEXT_CREATION_API, GLFW_EGL_CONTEXT_API);
@@ -25,14 +30,17 @@ void main() {
   glfw.glfwWindowHint(GLFW_SAMPLES, 4);
   glfw.glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
+  print('test');
+
   late Pointer<GLFWwindow> window;
   window = glfw.glfwCreateWindow(1280, 960, 'Tests'.toNativeUtf8().cast(), nullptr, nullptr);
-  //using((arena) => window = glfw.glfwCreateWindow(1280, 960, 'Tests'.toNativeUtf8(allocator: arena).cast(), nullptr, nullptr), malloc);
   if (window == nullptr) {
     print('Could not create window');
     glfw.glfwTerminate();
     return;
   }
+
+  print('test2');
 
   glfw.glfwMakeContextCurrent(window);
 
@@ -69,8 +77,11 @@ void main() {
 
   print(glfw.glfwWindowShouldClose(window));
 
-  //final stopwatch = Stopwatch()..start();
+  final stopwatch = Stopwatch()..start();
   while (glfw.glfwWindowShouldClose(window) == GLFW_FALSE) {
+    print(stopwatch.elapsedMilliseconds);
+    stopwatch.reset();
+
     /*
       UPDATE
     */

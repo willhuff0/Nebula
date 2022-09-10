@@ -12,7 +12,7 @@ export 'angle/gl.dart';
 final glfw = GLFW(DynamicLibrary.open(Platform.isWindows
     ? 'ffi/glfw/win-x64/glfw3.dll'
     : Platform.isMacOS
-        ? 'ffi/glfw/mac-arm/libglfw3.dylib'
+        ? 'ffi/glfw/osx-arm/libglfw3.dylib'
         : throw Exception('Platform \'${Platform.operatingSystem}\' is not supported by glfw3.')));
 final egl = AngleEGL(DynamicLibrary.open(Platform.isWindows
     ? 'ffi/angle/win-x64/libEGL.dll'
