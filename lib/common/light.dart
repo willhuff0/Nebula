@@ -11,7 +11,7 @@ abstract class Light {
   static late Shader shadowMapShader;
 
   void addToShader(Shader shader, int index);
-  int drawShadowMap();
+  int drawShadowMap(Function drawForShadowMaps);
 }
 
 class PointLight extends Light {
@@ -29,7 +29,7 @@ class PointLight extends Light {
   }
 
   @override
-  int drawShadowMap() {
+  int drawShadowMap(Function drawForShadowMaps) {
     return -1;
   }
 }
@@ -65,11 +65,11 @@ class DirectionalLight extends Light {
     gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
     gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_S, GL_CLAMP_TO_BORDER);
     gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_WRAP_T, GL_CLAMP_TO_BORDER);
-    using((arena) => gl.glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, malloc<Float>()..asTypedList(4).setAll(0, [1.0, 1.0, 1.0, 1.0])), malloc);
+    using((arena) => gl.glTexParameterfv(GL_TEXTURE_2D, GL_TEXTURE_BORDER_COLOR, arena<Float>(4)..asTypedList(4).setAll(0, [1.0, 1.0, 1.0, 1.0])), malloc);
 
     gl.glBindFramebuffer(GL_FRAMEBUFFER, _depthMapFBO);
     gl.glFramebufferTexture2D(GL_FRAMEBUFFER, GL_DEPTH_ATTACHMENT, GL_TEXTURE_2D, _depthMap, 0);
-    using((arena) => gl.glDrawBuffers(1, malloc<UnsignedInt>()..elementAt(0).value = GL_NONE), malloc);
+    using((arena) => gl.glDrawBuffers(1, arena<UnsignedInt>(1)..elementAt(0).value = GL_NONE), malloc);
     gl.glReadBuffer(GL_NONE);
     gl.glBindFramebuffer(GL_FRAMEBUFFER, 0);
   }
@@ -88,7 +88,7 @@ class DirectionalLight extends Light {
   }
 
   @override
-  int drawShadowMap() {
+  int drawShadowMap(Function drawForShadowMaps) {
     Matrix4 projection = makeOrthographicMatrix(-15.0, 15.0, -15.0, 15.0, 0.2, 30.0);
     Matrix4 view = makeViewMatrix(-direction * 15.0, Vector3.zero(), Vector3(0, 1, 0));
     shadowMatrix = view * projection;
@@ -99,7 +99,7 @@ class DirectionalLight extends Light {
     gl.glBindFramebuffer(GL_FRAMEBUFFER, _depthMapFBO);
     gl.glClear(GL_DEPTH_BUFFER_BIT);
 
-    //Render();
+    drawForShadowMaps();
 
     gl.glBindFramebuffer(GL_FRAMEBUFFER, 0);
     return _depthMap;

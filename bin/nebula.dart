@@ -7,13 +7,9 @@ import 'package:nebula/bindings/glfw/glfw.dart';
 import 'package:nebula/common/common.dart';
 
 void main() {
-  //glfw.glfwInitHint(EGL_ANGLE_platform_angle, EGL_ANGLE_platform_angle_vulkan);
-
-  print('test');
-
   glfw.glfwSetErrorCallback(Pointer.fromFunction(glfwErrorCallback));
 
-  print('test');
+  glfw.glfwInitHint(GLFW_ANGLE_PLATFORM_TYPE, GLFW_ANGLE_PLATFORM_TYPE_OPENGL);
 
   if (glfw.glfwInit() == GLFW_FALSE) {
     print('Could not init GLFW');
@@ -21,7 +17,6 @@ void main() {
   }
 
   egl.eglBindAPI(EGL_OPENGL_ES_API);
-  print('test');
 
   glfw.glfwWindowHint(GLFW_CLIENT_API, GLFW_OPENGL_ES_API);
   glfw.glfwWindowHint(GLFW_CONTEXT_CREATION_API, GLFW_EGL_CONTEXT_API);
@@ -30,17 +25,13 @@ void main() {
   glfw.glfwWindowHint(GLFW_SAMPLES, 4);
   glfw.glfwWindowHint(GLFW_RESIZABLE, GLFW_FALSE);
 
-  print('test');
-
   late Pointer<GLFWwindow> window;
-  window = glfw.glfwCreateWindow(1280, 960, 'Tests'.toNativeUtf8().cast(), nullptr, nullptr);
+  using((arena) => window = glfw.glfwCreateWindow(1280, 960, 'Tests'.toNativeUtf8(allocator: arena).cast(), nullptr, nullptr), malloc);
   if (window == nullptr) {
     print('Could not create window');
     glfw.glfwTerminate();
     return;
   }
-
-  print('test2');
 
   glfw.glfwMakeContextCurrent(window);
 
@@ -58,29 +49,31 @@ void main() {
   glfw.glfwPollEvents();
   glfw.glfwSwapBuffers(window);
 
-  print('te');
+  Light.shadowMapShader = Shader.load('shaders/shadowmap.glsl');
 
   final lights = [
     DirectionalLight(Vector3(0.4, -1.0, 0.4), Vector3(1.0, 0.96, 0.9), 1.0),
   ];
 
-  print('te2');
-
   final model = Model.load('resources/untitled.glb', Shader.load('shaders/standard.glsl'))!;
 
   print('${Texture.textureCache.length} textures were cached.');
 
-  final camera = Camera(Vector3(0, 0, 3), 1280 / 960);
+  final camera = Camera(Vector3(0, 1, 3), 1280 / 960);
 
-  glfw.glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
-  glfw.glfwSetKeyCallback(window, Pointer.fromFunction(glfwKeyCallback));
+  //glfw.glfwSetInputMode(window, GLFW_CURSOR, GLFW_CURSOR_DISABLED);
+  //glfw.glfwSetKeyCallback(window, Pointer.fromFunction(glfwKeyCallback));
 
-  print(glfw.glfwWindowShouldClose(window));
+  //print(glfw.glfwWindowShouldClose(window));
+
+  drawForShadowMaps() {
+    model.drawForShadowMaps();
+  }
 
   final stopwatch = Stopwatch()..start();
   while (glfw.glfwWindowShouldClose(window) == GLFW_FALSE) {
-    print(stopwatch.elapsedMilliseconds);
-    stopwatch.reset();
+    //print(1.0 / stopwatch.elapsedMilliseconds * 1000.0);
+    //stopwatch.reset();
 
     /*
       UPDATE
@@ -90,14 +83,14 @@ void main() {
       RENDER
     */
 
-    final vpm = camera.getViewMatrix() * camera.getProjectionMatrix();
+    final vpm = camera.getProjectionMatrix() * camera.getViewMatrix();
     final viewPos = camera.position;
     final uniforms = MeshStandardUniforms(vpm: vpm, viewPos: viewPos);
 
     gl.glCullFace(GL_FRONT);
     final shadowMaps = <int>[];
     for (final light in lights) {
-      final map = light.drawShadowMap();
+      final map = light.drawShadowMap(drawForShadowMaps);
       if (map != -1) shadowMaps.add(map);
     }
     gl.glCullFace(GL_BACK);

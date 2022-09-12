@@ -2,4 +2,6 @@ output: 'lib/bindings/glfw/glfw.dart'
 name: 'GLFW'
 headers:
   entry-points:
-    - 'ffi/glfw/include/glfw3.h'
+    - 'ffi/glfw/include/glfw/glfw3.h'
+compiler-opts:
+  - '-Iffi/glfw/include'

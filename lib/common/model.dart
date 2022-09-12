@@ -56,7 +56,6 @@ class Model {
 
   static Model? load(String path, Shader shader, [double scale = 1.0, DefaultTextures? defaultTextures]) {
     defaultTextures ??= DefaultTextures();
-    print('t100');
     final scenePointer = using((arena) => assimp.aiImportFile(path.toNativeUtf8(allocator: arena).cast(), aiPostProcessSteps.aiProcess_Triangulate | aiPostProcessSteps.aiProcess_GenNormals | aiPostProcessSteps.aiProcess_GenUVCoords | aiPostProcessSteps.aiProcess_TransformUVCoords | aiPostProcessSteps.aiProcess_PreTransformVertices), malloc);
     if (scenePointer == nullptr) return null;
     final scene = scenePointer.ref;
@@ -67,7 +66,7 @@ class Model {
 
     final meshes = <Mesh>[];
     for (int i = 0; i < scene.mNumMeshes; i++) {
-      final assimpMesh = scene.mMeshes.elementAt(i).value.ref;
+      final assimpMesh = scene.mMeshes[i].ref;
 
       final positions = List.generate(assimpMesh.mNumVertices, (index) => assimpMesh.mVertices[index].toDartVector3());
       final normals = List.generate(assimpMesh.mNumVertices, (index) => assimpMesh.mNormals[index].toDartVector3());
@@ -87,22 +86,26 @@ class Model {
     for (int i = 0; i < scene.mNumMaterials; i++) {
       final assimpMaterial = scene.mMaterials[i];
       using((arena) {
-        final texturePointers = List.generate(5, (index) => arena<aiString>());
-        assimp.aiGetMaterialTextureCount(assimpMaterial, aiTextureType.aiTextureType_DIFFUSE) > 0 ? assimp.aiGetMaterialTexture(assimpMaterial, aiTextureType.aiTextureType_DIFFUSE, 0, texturePointers[0], nullptr, nullptr, nullptr, nullptr, nullptr, nullptr) : Texture.getDefaultAlbedo();
-        assimp.aiGetMaterialTextureCount(assimpMaterial, aiTextureType.aiTextureType_NORMALS) > 0 ? assimp.aiGetMaterialTexture(assimpMaterial, aiTextureType.aiTextureType_NORMALS, 0, texturePointers[0], nullptr, nullptr, nullptr, nullptr, nullptr, nullptr) : Texture.getDefaultNormal();
-        assimp.aiGetMaterialTextureCount(assimpMaterial, aiTextureType.aiTextureType_METALNESS) > 0 ? assimp.aiGetMaterialTexture(assimpMaterial, aiTextureType.aiTextureType_METALNESS, 0, texturePointers[0], nullptr, nullptr, nullptr, nullptr, nullptr, nullptr) : Texture.getDefaultMetallic();
-        assimp.aiGetMaterialTextureCount(assimpMaterial, aiTextureType.aiTextureType_DIFFUSE_ROUGHNESS) > 0 ? assimp.aiGetMaterialTexture(assimpMaterial, aiTextureType.aiTextureType_DIFFUSE_ROUGHNESS, 0, texturePointers[0], nullptr, nullptr, nullptr, nullptr, nullptr, nullptr) : Texture.getDefaultRoughness();
-        assimp.aiGetMaterialTextureCount(assimpMaterial, aiTextureType.aiTextureType_AMBIENT_OCCLUSION) > 0 ? assimp.aiGetMaterialTexture(assimpMaterial, aiTextureType.aiTextureType_AMBIENT_OCCLUSION, 0, texturePointers[0], nullptr, nullptr, nullptr, nullptr, nullptr, nullptr) : Texture.getDefaultAO();
+        Pointer<aiString>? albedoPathPointer;
+        Pointer<aiString>? normalPathPointer;
+        Pointer<aiString>? metallicPathPointer;
+        Pointer<aiString>? roughnessPathPointer;
+        Pointer<aiString>? aoPathPointer;
+        if (assimp.aiGetMaterialTextureCount(assimpMaterial, aiTextureType.aiTextureType_DIFFUSE) > 0) assimp.aiGetMaterialTexture(assimpMaterial, aiTextureType.aiTextureType_DIFFUSE, 0, albedoPathPointer = arena<aiString>(), nullptr, nullptr, nullptr, nullptr, nullptr, nullptr);
+        if (assimp.aiGetMaterialTextureCount(assimpMaterial, aiTextureType.aiTextureType_NORMALS) > 0) assimp.aiGetMaterialTexture(assimpMaterial, aiTextureType.aiTextureType_NORMALS, 0, normalPathPointer = arena<aiString>(), nullptr, nullptr, nullptr, nullptr, nullptr, nullptr);
+        if (assimp.aiGetMaterialTextureCount(assimpMaterial, aiTextureType.aiTextureType_METALNESS) > 0) assimp.aiGetMaterialTexture(assimpMaterial, aiTextureType.aiTextureType_METALNESS, 0, metallicPathPointer = arena<aiString>(), nullptr, nullptr, nullptr, nullptr, nullptr, nullptr);
+        if (assimp.aiGetMaterialTextureCount(assimpMaterial, aiTextureType.aiTextureType_DIFFUSE_ROUGHNESS) > 0) assimp.aiGetMaterialTexture(assimpMaterial, aiTextureType.aiTextureType_DIFFUSE_ROUGHNESS, 0, roughnessPathPointer = arena<aiString>(), nullptr, nullptr, nullptr, nullptr, nullptr, nullptr);
+        if (assimp.aiGetMaterialTextureCount(assimpMaterial, aiTextureType.aiTextureType_AMBIENT_OCCLUSION) > 0) assimp.aiGetMaterialTexture(assimpMaterial, aiTextureType.aiTextureType_AMBIENT_OCCLUSION, 0, aoPathPointer = arena<aiString>(), nullptr, nullptr, nullptr, nullptr, nullptr, nullptr);
         final textures = [
-          Texture.loadFromFile(p.join(directory, texturePointers[0].ref.toDartString()), 'albedo'),
-          Texture.loadFromFile(p.join(directory, texturePointers[1].ref.toDartString()), 'normal'),
-          Texture.loadFromFile(p.join(directory, texturePointers[2].ref.toDartString()), 'metallic'),
-          Texture.loadFromFile(p.join(directory, texturePointers[3].ref.toDartString()), 'roughness'),
-          Texture.loadFromFile(p.join(directory, texturePointers[4].ref.toDartString()), 'ao'),
+          albedoPathPointer != null ? Texture.loadFromFile(p.join(directory, albedoPathPointer.ref.toDartString()), 'albedo') : Texture.getDefaultAlbedo(),
+          normalPathPointer != null ? Texture.loadFromFile(p.join(directory, normalPathPointer.ref.toDartString()), 'normal') : Texture.getDefaultNormal(),
+          metallicPathPointer != null ? Texture.loadFromFile(p.join(directory, metallicPathPointer.ref.toDartString()), 'metallic') : Texture.getDefaultMetallic(),
+          roughnessPathPointer != null ? Texture.loadFromFile(p.join(directory, roughnessPathPointer.ref.toDartString()), 'roughness') : Texture.getDefaultRoughness(),
+          aoPathPointer != null ? Texture.loadFromFile(p.join(directory, aoPathPointer.ref.toDartString()), 'ao') : Texture.getDefaultAO(),
         ];
         final materialMeshes = meshes.where((e) => e.materialIndex == i).toList();
         materials.add(Material(materialMeshes, textures));
-      });
+      }, malloc);
     }
 
     return Model(materials: materials, shader: shader, transform: Transform(scale: Vector3(scale, scale, scale)));

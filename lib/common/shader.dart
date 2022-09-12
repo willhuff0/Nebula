@@ -12,22 +12,13 @@ class Shader {
   late final Map<String, int> _uniformLocations;
 
   Shader(String vert, String frag) {
-    Pointer<Int> status;
-    int _status;
-
-    print('t1');
-
+    final vertexShader = gl.glCreateShader(GL_VERTEX_SHADER);
     using((arena) {
-      print('t20');
-      final vertexShader = gl.glCreateShader(GL_VERTEX_SHADER);
-      print('t21');
-      gl.glShaderSource(vertexShader, 1, malloc<Pointer<Char>>()..value = vert.toNativeUtf8(allocator: arena).cast<Char>(), nullptr);
-      print('t22');
+      gl.glShaderSource(vertexShader, 1, arena<Pointer<Char>>()..value = vert.toNativeUtf8(allocator: arena).cast<Char>(), nullptr);
       gl.glCompileShader(vertexShader);
-      gl.glGetShaderiv(vertexShader, GL_COMPILE_STATUS, status = malloc<Int>());
-      _status = status.value;
-      malloc.free(status);
-      if (_status != GL_TRUE) {
+      final status = arena<Int>();
+      gl.glGetShaderiv(vertexShader, GL_COMPILE_STATUS, status);
+      if (status.value != GL_TRUE) {
         throw Exception('An error occurred while compiling vertex shader ($vertexShader):\n\n${() {
           return using((arena) {
             final length = arena<Int>();
@@ -37,16 +28,15 @@ class Shader {
           });
         }()}');
       }
+    }, malloc);
 
-      print('t2');
-
-      final fragmentShader = gl.glCreateShader(GL_FRAGMENT_SHADER);
-      gl.glShaderSource(fragmentShader, 1, malloc<Pointer<Char>>()..value = frag.toNativeUtf8(allocator: arena).cast<Char>(), nullptr);
+    final fragmentShader = gl.glCreateShader(GL_FRAGMENT_SHADER);
+    using((arena) {
+      gl.glShaderSource(fragmentShader, 1, arena<Pointer<Char>>()..value = frag.toNativeUtf8(allocator: arena).cast<Char>(), nullptr);
       gl.glCompileShader(fragmentShader);
-      gl.glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, status = malloc<Int>());
-      _status = status.value;
-      malloc.free(status);
-      if (_status != GL_TRUE) {
+      final status = arena<Int>();
+      gl.glGetShaderiv(fragmentShader, GL_COMPILE_STATUS, status);
+      if (status.value != GL_TRUE) {
         throw Exception('An error occurred while compiling fragment shader ($fragmentShader):\n\n${() {
           return using((arena) {
             final length = arena<Int>();
@@ -56,15 +46,16 @@ class Shader {
           });
         }()}');
       }
+    }, malloc);
 
+    using((arena) {
       handle = gl.glCreateProgram();
       gl.glAttachShader(handle, vertexShader);
       gl.glAttachShader(handle, fragmentShader);
       gl.glLinkProgram(handle);
-      gl.glGetProgramiv(handle, GL_LINK_STATUS, status = malloc<Int>());
-      _status = status.value;
-      malloc.free(status);
-      if (_status != GL_TRUE) {
+      final status = arena<Int>();
+      gl.glGetProgramiv(handle, GL_LINK_STATUS, status);
+      if (status.value != GL_TRUE) {
         throw Exception('An error occurred while linking program ($handle):\n\n${() {
           return using((arena) {
             final length = arena<Int>();
@@ -76,28 +67,28 @@ class Shader {
       }
     }, malloc);
 
-    print('t3');
-
     _uniformLocations = <String, int>{};
-    Pointer<Int> uniformCount;
-    gl.glGetProgramiv(handle, GL_ACTIVE_UNIFORMS, uniformCount = malloc<Int>());
-    for (int i = 0; i < uniformCount.value; i++) {
-      final name = malloc<Char>(1024);
-      gl.glGetActiveUniform(handle, i, 1024, nullptr, nullptr, nullptr, name);
-      final location = gl.glGetUniformLocation(handle, name);
-      _uniformLocations[name.cast<Utf8>().toDartString()] = location;
-      malloc.free(name);
+    final uniformCountPointer = malloc<Int>();
+    gl.glGetProgramiv(handle, GL_ACTIVE_UNIFORMS, uniformCountPointer);
+    final uniformCount = uniformCountPointer.value;
+    malloc.free(uniformCountPointer);
+    for (int i = 0; i < uniformCount; i++) {
+      using((arena) {
+        final length = arena<Int>();
+        final size = arena<Int>();
+        final type = arena<UnsignedInt>();
+        final name = arena<Char>(1024);
+        gl.glGetActiveUniform(handle, i, 1024, length, size, type, name);
+        final location = gl.glGetUniformLocation(handle, name);
+        _uniformLocations[name.cast<Utf8>().toDartString()] = location;
+      }, malloc);
     }
   }
 
   static Shader load(String path) {
-    print('t45');
     final sourceLines = File(path).readAsLinesSync();
-    print('t456');
     final vertexSource = (sourceLines.skipWhile((value) => !value.startsWith('##VERTEX')).skip(1).takeWhile((value) => !value.startsWith('##FRAGMENT')).toList()..removeLast()).join('\n');
-    print('t457');
-    final fragmentSource = sourceLines.skipWhile((value) => !value.startsWith('##FRAGMENT')).takeWhile((value) => !value.startsWith('##FRAGMENT')).skip(1).join('\n');
-    print('t459');
+    final fragmentSource = sourceLines.skipWhile((value) => !value.startsWith('##FRAGMENT')).skip(1).join('\n');
     return Shader(vertexSource, fragmentSource);
   }
 

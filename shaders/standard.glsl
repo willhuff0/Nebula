@@ -1,5 +1,7 @@
 ##VERTEX
 #version 310 es
+precision highp float;
+precision highp int;
 
 layout (location = 0) in vec3 a_pos;
 layout (location = 1) in vec3 a_normal;
@@ -13,8 +15,8 @@ uniform int nebula_shadowCasterCount;
 out vec4 v_shadowCasterCoords[10];
 uniform mat4 nebula_shadowMatrices[10];
 
-uniform mat4 nebula_matrix_transform;
 uniform mat4 nebula_matrix_viewProjection;
+uniform mat4 nebula_matrix_transform;
 
 void main() {
     v_texCoord = a_texCoord;
@@ -26,13 +28,15 @@ void main() {
     }
 
     //gl_Position = vec4(v_worldPos, 1.0) * matrix_view * matrix_projection;
-    gl_Position = vec4(a_pos, 1.0) * nebula_matrix_transform * nebula_matrix_viewProjection;
+    gl_Position = nebula_matrix_viewProjection * nebula_matrix_transform * vec4(a_pos, 1.0);
 }
 
 
 ##FRAGMENT
-precision highp float;
 #version 310 es
+#extension GL_EXT_gpu_shader5 : require
+precision highp float;
+precision highp int;
 
 struct Material {
     sampler2D texture_albedo;
@@ -176,7 +180,7 @@ void main() {
 
         vec3 _L = light.position - v_worldPos;
 
-        float distance = length(_L) / 4;
+        float distance = length(_L) / 4.0;
         float attenuation = 1.0 / (distance * distance);
 
         Lo += processLight(albedo, metallic, roughness, F0, _L, attenuation, V, N, light.color, light.intensity);
@@ -196,7 +200,7 @@ void main() {
         float currentDepth = projCoords.z;
 
         float shadow = 0.0;
-        vec2 texelSize = 1.0 / textureSize(nebula_shadowMaps[i], 0);
+        vec2 texelSize = 1.0 / vec2(textureSize(nebula_shadowMaps[i], 0));
         for(int x = -1; x <= 1; ++x)
         {
             for(int y = -1; y <= 1; ++y)
@@ -211,7 +215,7 @@ void main() {
     }
 
     vec3 ambient = vec3(0); //vec3(0.03) * albedo;
-    vec3 color = (ambient + Lo * (1 - totalShadow)) * ao;
+    vec3 color = (ambient + Lo * (1.0 - totalShadow)) * ao;
 
     color = color / (color + vec3(1.0));
     color = pow(color, vec3(1.0/2.2));

@@ -27,7 +27,8 @@ class Texture {
     gl.glBindTexture(GL_TEXTURE_2D, handle);
 
     final image = decodeImage(File(path).readAsBytesSync())!;
-    using((arena) => gl.glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.width, image.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, (arena<Uint8>(image.length)..asTypedList(image.length).setAll(0, image.getBytes())).cast()));
+    final bytes = image.getBytes();
+    using((arena) => gl.glTexImage2D(GL_TEXTURE_2D, 0, GL_RGBA, image.width, image.height, 0, GL_RGBA, GL_UNSIGNED_BYTE, (arena<Uint8>(bytes.length)..asTypedList(bytes.length).setAll(0, bytes)).cast()), malloc);
 
     gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MIN_FILTER, GL_LINEAR);
     gl.glTexParameteri(GL_TEXTURE_2D, GL_TEXTURE_MAG_FILTER, GL_LINEAR);
@@ -42,11 +43,11 @@ class Texture {
     return texture;
   }
 
-  static Texture getDefaultAlbedo() => Texture.loadFromFile('Resources/default/default_albedo.png', 'albedo');
-  static Texture getDefaultNormal() => Texture.loadFromFile('Resources/default/default_normal.png', 'normal');
-  static Texture getDefaultMetallic() => Texture.loadFromFile('Resources/default/default_metallic_roughness.png', 'metallic');
-  static Texture getDefaultRoughness() => Texture.loadFromFile('Resources/default/default_metallic_roughness.png', 'roughness');
-  static Texture getDefaultAO() => Texture.loadFromFile('Resources/default/default_ao.png', 'ao');
+  static Texture getDefaultAlbedo() => Texture.loadFromFile('resources/default/default_albedo_ao.png', 'albedo');
+  static Texture getDefaultNormal() => Texture.loadFromFile('resources/default/default_normal.png', 'normal');
+  static Texture getDefaultMetallic() => Texture.loadFromFile('resources/default/default_metallic_roughness.png', 'metallic');
+  static Texture getDefaultRoughness() => Texture.loadFromFile('resources/default/default_metallic_roughness.png', 'roughness');
+  static Texture getDefaultAO() => Texture.loadFromFile('resources/default/default_albedo_ao.png', 'ao');
 
   void bind(int unit) {
     gl.glActiveTexture(unit);

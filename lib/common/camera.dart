@@ -43,7 +43,7 @@ class Camera {
 
   Matrix4 getViewMatrix() => makeViewMatrix(position, position + _forward, _up);
   Matrix4 getProjectionMatrix() => makePerspectiveMatrix(_fov, aspectRatio, NEAR_CLIP, FAR_CLIP);
-  Matrix4 getViewProjectionMatrix() => getProjectionMatrix() * getViewMatrix();
+  Matrix4 getViewProjectionMatrix() => getViewMatrix() * getProjectionMatrix();
 
   void _updateVectors() {
     _forward.x = cos(_pitch) * cos(_yaw);

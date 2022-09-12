@@ -19,12 +19,12 @@ class Mesh {
     using((arena) {
       final arrays = arena<UnsignedInt>();
       gl.glGenVertexArrays(1, arrays);
-      _vao = arrays.elementAt(0).value;
+      _vao = arrays[0];
 
       final buffers = arena<UnsignedInt>(2);
       gl.glGenBuffers(2, buffers);
-      _vbo = buffers.elementAt(0).value;
-      _ebo = buffers.elementAt(1).value;
+      _vbo = buffers[0];
+      _ebo = buffers[2];
 
       gl.glBindVertexArray(_vao);
 
@@ -56,7 +56,7 @@ class Mesh {
     if (indices == null) {
       gl.glDrawArrays(primitiveType.glMode, 0, vertices.length);
     } else {
-      gl.glDrawElements(primitiveType.glMode, indices!.length, GL_UNSIGNED_INT, nullptr);
+      gl.glDrawElements(GL_TRIANGLES, indices!.length, GL_UNSIGNED_INT, nullptr);
     }
     gl.glBindVertexArray(0);
   }
