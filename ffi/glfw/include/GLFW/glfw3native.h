@@ -31,6 +31,8 @@
 #define GLFW_EXPOSE_NATIVE_COCOA
 #define GLFW_EXPOSE_NATIVE_NSGL
 
+#define GLFW_EXPOSE_NATIVE_WIN32
+
 #ifndef _glfw3_native_h_
 #define _glfw3_native_h_
 

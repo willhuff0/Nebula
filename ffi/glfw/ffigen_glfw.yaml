@@ -4,5 +4,5 @@ headers:
   entry-points:
     - 'ffi/glfw/include/glfw/glfw3.h'
     - 'ffi/glfw/include/glfw/glfw3native.h'
-compiler-opts: 
-  - '-I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include'
+# compiler-opts: 
+#   - '-I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX.sdk/usr/include'

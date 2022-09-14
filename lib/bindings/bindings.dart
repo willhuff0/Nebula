@@ -16,7 +16,7 @@ final glfw = GLFW(DynamicLibrary.open(Platform.isWindows
         ? 'ffi/glfw/osx-arm/libglfw.3.4.dylib'
         : throw Exception('Platform \'${Platform.operatingSystem}\' is not supported by GLFW.')));
 final wgpu = WGPU(DynamicLibrary.open(Platform.isWindows
-    ? 'ffi/wgpu/win-x64/wgpu.dll'
+    ? 'ffi/wgpu/win-x64/libwgpu.dll'
     : Platform.isMacOS
         ? 'ffi/wgpu/osx-arm/libwgpu.dylib'
         : throw Exception('Platform \'${Platform.operatingSystem}\' is not supported by Dawn.')));

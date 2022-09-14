@@ -1,11 +1,21 @@
 import 'dart:ffi';
+import 'dart:io';
 
 import 'package:ffi/ffi.dart';
 import 'package:nebula/bindings/glfw/glfw.dart';
 import 'package:nebula/bindings/wgpu/wgpu.dart';
 import 'package:nebula/nebula.dart';
 
+import 'package:win32/win32.dart' as win32;
+
+void logCallback(int level, Pointer<Char> message) {
+  print(message.cast<Utf8>().toDartString());
+}
+
 void main() {
+  wgpu.wgpuSetLogCallback(Pointer.fromFunction(logCallback));
+  wgpu.wgpuSetLogLevel(WGPULogLevel.WGPULogLevel_Warn);
+
   glfw.glfwSetErrorCallback(Pointer.fromFunction(glfwErrorCallback));
   if (glfw.glfwInit() == GLFW_FALSE) return;
 
@@ -16,65 +26,88 @@ void main() {
   if (window == nullptr) return;
 
   late final WGPUSurface surface;
-  using((arena) {
-    final nsWindow = glfw.glfwGetCocoaWindow(window);
+  if (Platform.isWindows) {
+    using((arena) {
+      final hwnd = glfw.glfwGetWin32Window(window);
+      final hinstance = win32.GetModuleHandle(nullptr);
 
-    final surfaceDescriptorPointer = arena<WGPUSurfaceDescriptor>();
-    final surfaceDescriptor = surfaceDescriptorPointer.ref;
-    surfaceDescriptor.label = nullptr;
+      final surfaceDescriptorPointer = arena<WGPUSurfaceDescriptor>();
+      final surfaceDescriptor = surfaceDescriptorPointer.ref;
+      surfaceDescriptor.label = nullptr;
 
-    final nextInChainPointer = arena<WGPUSurfaceDescriptorFromMetalLayer>();
-    final nextInChain = nextInChainPointer.ref;
+      final nextInChainPointer = arena<WGPUSurfaceDescriptorFromWindowsHWND>();
+      final nextInChain = nextInChainPointer.ref;
 
-    final chainPointer = arena<WGPUChainedStruct>();
-    final chain = chainPointer.ref;
-    chain.next = nullptr;
-    chain.sType = WGPUSType.WGPUSType_SurfaceDescriptorFromMetalLayer;
+      final chainPointer = arena<WGPUChainedStruct>();
+      final chain = chainPointer.ref;
+      chain.next = nullptr;
+      chain.sType = WGPUSType.WGPUSType_SurfaceDescriptorFromWindowsHWND;
 
-    nextInChain.chain = chain;
-    nextInChain.layer = nsWindow.cast();
+      nextInChain.chain = chain;
+      nextInChain.hinstance = (arena<IntPtr>()..value = hinstance).cast();
+      nextInChain.hwnd = hwnd.cast();
 
-    surface = wgpu.wgpuInstanceCreateSurface(nullptr, arena<WGPUSurfaceDescriptor>());
-  });
+      surfaceDescriptor.nextInChain = nextInChainPointer.cast();
 
-  final WGPUAdapter adapter = calloc();
+      surface = wgpu.wgpuInstanceCreateSurface(nullptr, surfaceDescriptorPointer);
+    });
+  } else {
+    using((arena) {
+      final nsWindow = glfw.glfwGetCocoaWindow(window);
+
+      final surfaceDescriptorPointer = arena<WGPUSurfaceDescriptor>();
+      final surfaceDescriptor = surfaceDescriptorPointer.ref;
+      surfaceDescriptor.label = nullptr;
+
+      final nextInChainPointer = arena<WGPUSurfaceDescriptorFromMetalLayer>();
+      final nextInChain = nextInChainPointer.ref;
+
+      final chainPointer = arena<WGPUChainedStruct>();
+      final chain = chainPointer.ref;
+      chain.next = nullptr;
+      chain.sType = WGPUSType.WGPUSType_SurfaceDescriptorFromMetalLayer;
+
+      nextInChain.chain = chain;
+      nextInChain.layer = (arena<Int>()..value = nsWindow).cast();
+
+      surface = wgpu.wgpuInstanceCreateSurface(nullptr, surfaceDescriptorPointer);
+    });
+  }
+
+  final adapterPointer = malloc.allocate(0);
   using((arena) {
     final requestAdapterOptionsPointer = arena<WGPURequestAdapterOptions>();
     final requestAdapterOptions = requestAdapterOptionsPointer.ref;
     requestAdapterOptions.nextInChain = nullptr;
     requestAdapterOptions.compatibleSurface = surface;
 
-    wgpu.wgpuInstanceRequestAdapter(nullptr, requestAdapterOptionsPointer, Pointer.fromFunction(requestAdapterCallback), adapter.cast());
+    wgpu.wgpuInstanceRequestAdapter(nullptr, requestAdapterOptionsPointer, Pointer.fromFunction(requestAdapterCallback), adapterPointer.cast());
   });
+  final adapter = adapterPointer.cast<WGPUAdapterImpl>();
 
-  final WGPUDevice device = calloc();
+  final devicePointer = malloc.allocate(0);
   using((arena) {
     final deviceDescriptorPointer = arena<WGPUDeviceDescriptor>();
     final deviceDescriptor = deviceDescriptorPointer.ref;
     deviceDescriptor.nextInChain = nullptr;
     deviceDescriptor.label = 'Device'.toNativeUtf8(allocator: arena).cast();
+    deviceDescriptor.requiredFeaturesCount = 0;
+    deviceDescriptor.requiredFeatures = nullptr;
 
     final requiredLimitsPointer = arena<WGPURequiredLimits>();
-    final requiredLimits = requiredLimitsPointer.ref;
-    requiredLimits.nextInChain = nullptr;
-
-    final limitsPointer = arena<WGPULimits>();
-    final limits = limitsPointer.ref;
-    limits.maxBindGroups = 1;
-
-    requiredLimits.limits = limits;
+    requiredLimitsPointer.ref
+      ..nextInChain = nullptr
+      ..limits = (arena<WGPULimits>().ref..maxBindGroups = 1);
 
     deviceDescriptor.requiredLimits = requiredLimitsPointer;
 
-    final queueDescriptorPointer = arena<WGPUQueueDescriptor>();
-    final queueDescriptor = queueDescriptorPointer.ref;
-    queueDescriptor.nextInChain = nullptr;
-    queueDescriptor.label = nullptr;
+    deviceDescriptor.defaultQueue = arena<WGPUQueueDescriptor>().ref
+      ..nextInChain = nullptr
+      ..label = nullptr;
 
-    deviceDescriptor.defaultQueue = queueDescriptor;
-
-    wgpu.wgpuAdapterRequestDevice(adapter, deviceDescriptorPointer, Pointer.fromFunction(requestDeviceCallback), device.cast());
+    wgpu.wgpuAdapterRequestDevice(adapter, deviceDescriptorPointer, Pointer.fromFunction(requestDeviceCallback), devicePointer.cast());
   });
+  final device = devicePointer.cast<WGPUDeviceImpl>();
 
   wgpu.wgpuDeviceSetUncapturedErrorCallback(device, Pointer.fromFunction(handleUncapturedError), nullptr);
   wgpu.wgpuDeviceSetDeviceLostCallback(device, Pointer.fromFunction(handleDeviceLost), nullptr);
@@ -138,7 +171,7 @@ void main() {
       ..writeMask = WGPUColorWriteMask.WGPUColorWriteMask_All;
 
     final blendPointer = arena<WGPUBlendState>();
-    final blend = blendPointer.ref
+    blendPointer.ref
       ..color = (arena<WGPUBlendComponent>().ref
         ..srcFactor = WGPUBlendFactor.WGPUBlendFactor_One
         ..dstFactor = WGPUBlendFactor.WGPUBlendFactor_Zero
@@ -172,7 +205,7 @@ void main() {
   });
 
   while (glfw.glfwWindowShouldClose(window) == GLFW_FALSE) {
-    WGPUTextureView? nextTexture;
+    late WGPUTextureView nextTexture;
 
     for (int attempt = 0; attempt < 2; attempt++) {
       // Only if size changes
@@ -200,7 +233,7 @@ void main() {
       break;
     }
 
-    if (nextTexture == null || nextTexture == nullptr) {
+    if (nextTexture == nullptr) {
       print('Cannot aquire next swap chain texture.');
       return;
     }
@@ -217,7 +250,40 @@ void main() {
     late final WGPURenderPassEncoder renderPass;
     using((arena) {
       final renderPassDescriptorPointer = arena<WGPURenderPassDescriptor>();
+      final renderPassDescriptor = renderPassDescriptorPointer.ref;
+
+      final colorAttachmentsPointer = arena<WGPURenderPassColorAttachment>(0);
+      colorAttachmentsPointer[0]
+        ..view = nextTexture
+        ..resolveTarget = nullptr
+        ..loadOp = WGPULoadOp.WGPULoadOp_Clear
+        ..storeOp = WGPUStoreOp.WGPUStoreOp_Store
+        ..clearValue = (arena<WGPUColor>().ref
+          ..r = 0.0
+          ..g = 1.0
+          ..b = 0.0
+          ..a = 1.0);
+      renderPassDescriptor.colorAttachments = colorAttachmentsPointer;
+
+      renderPassDescriptor.colorAttachmentCount = 1;
+      renderPassDescriptor.depthStencilAttachment = nullptr;
+
+      renderPass = wgpu.wgpuCommandEncoderBeginRenderPass(commandEncoder, renderPassDescriptorPointer);
     });
+
+    wgpu.wgpuRenderPassEncoderSetPipeline(renderPass, pipeline);
+    wgpu.wgpuRenderPassEncoderDraw(renderPass, 3, 1, 0, 0);
+    wgpu.wgpuRenderPassEncoderEnd(renderPass);
+    wgpu.wgpuTextureViewDrop(nextTexture);
+
+    using((arena) {
+      final queue = wgpu.wgpuDeviceGetQueue(device);
+      final cmdBuffer = wgpu.wgpuCommandEncoderFinish(commandEncoder, arena<WGPUCommandBufferDescriptor>()..ref.label = nullptr);
+      wgpu.wgpuQueueSubmit(queue, 1, arena<Pointer<WGPUCommandBufferImpl>>()..value = cmdBuffer);
+      wgpu.wgpuSwapChainPresent(swapChain);
+    });
+
+    glfw.glfwPollEvents();
   }
 }
 
