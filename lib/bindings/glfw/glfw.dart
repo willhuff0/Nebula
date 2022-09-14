@@ -17,163 +17,6 @@ class GLFW {
           lookup)
       : _lookup = lookup;
 
-  void __va_start(
-    ffi.Pointer<va_list> arg0,
-  ) {
-    return ___va_start(
-      arg0,
-    );
-  }
-
-  late final ___va_startPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<va_list>)>>(
-          '__va_start');
-  late final ___va_start =
-      ___va_startPtr.asFunction<void Function(ffi.Pointer<va_list>)>();
-
-  void __security_init_cookie() {
-    return ___security_init_cookie();
-  }
-
-  late final ___security_init_cookiePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function()>>(
-          '__security_init_cookie');
-  late final ___security_init_cookie =
-      ___security_init_cookiePtr.asFunction<void Function()>();
-
-  void __security_check_cookie(
-    int _StackCookie,
-  ) {
-    return ___security_check_cookie(
-      _StackCookie,
-    );
-  }
-
-  late final ___security_check_cookiePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(uintptr_t)>>(
-          '__security_check_cookie');
-  late final ___security_check_cookie =
-      ___security_check_cookiePtr.asFunction<void Function(int)>();
-
-  void __report_gsfailure(
-    int _StackCookie,
-  ) {
-    return ___report_gsfailure(
-      _StackCookie,
-    );
-  }
-
-  late final ___report_gsfailurePtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function(uintptr_t)>>(
-          '__report_gsfailure');
-  late final ___report_gsfailure =
-      ___report_gsfailurePtr.asFunction<void Function(int)>();
-
-  late final ffi.Pointer<uintptr_t> ___security_cookie =
-      _lookup<uintptr_t>('__security_cookie');
-
-  int get __security_cookie => ___security_cookie.value;
-
-  set __security_cookie(int value) => ___security_cookie.value = value;
-
-  void _invalid_parameter_noinfo() {
-    return __invalid_parameter_noinfo();
-  }
-
-  late final __invalid_parameter_noinfoPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function()>>(
-          '_invalid_parameter_noinfo');
-  late final __invalid_parameter_noinfo =
-      __invalid_parameter_noinfoPtr.asFunction<void Function()>();
-
-  void _invalid_parameter_noinfo_noreturn() {
-    return __invalid_parameter_noinfo_noreturn();
-  }
-
-  late final __invalid_parameter_noinfo_noreturnPtr =
-      _lookup<ffi.NativeFunction<ffi.Void Function()>>(
-          '_invalid_parameter_noinfo_noreturn');
-  late final __invalid_parameter_noinfo_noreturn =
-      __invalid_parameter_noinfo_noreturnPtr.asFunction<void Function()>();
-
-  void _invoke_watson(
-    ffi.Pointer<ffi.WChar> _Expression,
-    ffi.Pointer<ffi.WChar> _FunctionName,
-    ffi.Pointer<ffi.WChar> _FileName,
-    int _LineNo,
-    int _Reserved,
-  ) {
-    return __invoke_watson(
-      _Expression,
-      _FunctionName,
-      _FileName,
-      _LineNo,
-      _Reserved,
-    );
-  }
-
-  late final __invoke_watsonPtr = _lookup<
-      ffi.NativeFunction<
-          ffi.Void Function(
-              ffi.Pointer<ffi.WChar>,
-              ffi.Pointer<ffi.WChar>,
-              ffi.Pointer<ffi.WChar>,
-              ffi.UnsignedInt,
-              uintptr_t)>>('_invoke_watson');
-  late final __invoke_watson = __invoke_watsonPtr.asFunction<
-      void Function(ffi.Pointer<ffi.WChar>, ffi.Pointer<ffi.WChar>,
-          ffi.Pointer<ffi.WChar>, int, int)>();
-
-  ffi.Pointer<ffi.Int> _errno() {
-    return __errno();
-  }
-
-  late final __errnoPtr =
-      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Int> Function()>>('_errno');
-  late final __errno = __errnoPtr.asFunction<ffi.Pointer<ffi.Int> Function()>();
-
-  int _set_errno(
-    int _Value,
-  ) {
-    return __set_errno(
-      _Value,
-    );
-  }
-
-  late final __set_errnoPtr =
-      _lookup<ffi.NativeFunction<errno_t Function(ffi.Int)>>('_set_errno');
-  late final __set_errno = __set_errnoPtr.asFunction<int Function(int)>();
-
-  int _get_errno(
-    ffi.Pointer<ffi.Int> _Value,
-  ) {
-    return __get_errno(
-      _Value,
-    );
-  }
-
-  late final __get_errnoPtr =
-      _lookup<ffi.NativeFunction<errno_t Function(ffi.Pointer<ffi.Int>)>>(
-          '_get_errno');
-  late final __get_errno =
-      __get_errnoPtr.asFunction<int Function(ffi.Pointer<ffi.Int>)>();
-
-  int __threadid() {
-    return ___threadid();
-  }
-
-  late final ___threadidPtr =
-      _lookup<ffi.NativeFunction<ffi.UnsignedLong Function()>>('__threadid');
-  late final ___threadid = ___threadidPtr.asFunction<int Function()>();
-
-  int __threadhandle() {
-    return ___threadhandle();
-  }
-
-  late final ___threadhandlePtr =
-      _lookup<ffi.NativeFunction<uintptr_t Function()>>('__threadhandle');
-  late final ___threadhandle = ___threadhandlePtr.asFunction<int Function()>();
-
   /// ! @brief Initializes the GLFW library.
   ///
   /// This function initializes the GLFW library.  Before most GLFW functions can
@@ -5818,43 +5661,377 @@ class GLFW {
       _glfwGetRequiredInstanceExtensionsPtr.asFunction<
           ffi.Pointer<ffi.Pointer<ffi.Char>> Function(
               ffi.Pointer<ffi.Uint32>)>();
+
+  int __darwin_check_fd_set_overflow(
+    int arg0,
+    ffi.Pointer<ffi.Void> arg1,
+    int arg2,
+  ) {
+    return ___darwin_check_fd_set_overflow(
+      arg0,
+      arg1,
+      arg2,
+    );
+  }
+
+  late final ___darwin_check_fd_set_overflowPtr = _lookup<
+      ffi.NativeFunction<
+          ffi.Int Function(ffi.Int, ffi.Pointer<ffi.Void>,
+              ffi.Int)>>('__darwin_check_fd_set_overflow');
+  late final ___darwin_check_fd_set_overflow =
+      ___darwin_check_fd_set_overflowPtr
+          .asFunction<int Function(int, ffi.Pointer<ffi.Void>, int)>();
+
+  /// Returns the name of the method specified by a given selector.
+  ///
+  /// @param sel A pointer of type \c SEL. Pass the selector whose name you wish to determine.
+  ///
+  /// @return A C string indicating the name of the selector.
+  ffi.Pointer<ffi.Char> sel_getName(
+    SEL sel,
+  ) {
+    return _sel_getName(
+      sel,
+    );
+  }
+
+  late final _sel_getNamePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function(SEL)>>(
+          'sel_getName');
+  late final _sel_getName =
+      _sel_getNamePtr.asFunction<ffi.Pointer<ffi.Char> Function(SEL)>();
+
+  /// Registers a method with the Objective-C runtime system, maps the method
+  /// name to a selector, and returns the selector value.
+  ///
+  /// @param str A pointer to a C string. Pass the name of the method you wish to register.
+  ///
+  /// @return A pointer of type SEL specifying the selector for the named method.
+  ///
+  /// @note You must register a method name with the Objective-C runtime system to obtain the
+  /// method’s selector before you can add the method to a class definition. If the method name
+  /// has already been registered, this function simply returns the selector.
+  SEL sel_registerName(
+    ffi.Pointer<ffi.Char> str,
+  ) {
+    return _sel_registerName(
+      str,
+    );
+  }
+
+  late final _sel_registerNamePtr =
+      _lookup<ffi.NativeFunction<SEL Function(ffi.Pointer<ffi.Char>)>>(
+          'sel_registerName');
+  late final _sel_registerName =
+      _sel_registerNamePtr.asFunction<SEL Function(ffi.Pointer<ffi.Char>)>();
+
+  /// Returns the class name of a given object.
+  ///
+  /// @param obj An Objective-C object.
+  ///
+  /// @return The name of the class of which \e obj is an instance.
+  ffi.Pointer<ffi.Char> object_getClassName(
+    id obj,
+  ) {
+    return _object_getClassName(
+      obj,
+    );
+  }
+
+  late final _object_getClassNamePtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Char> Function(id)>>(
+          'object_getClassName');
+  late final _object_getClassName =
+      _object_getClassNamePtr.asFunction<ffi.Pointer<ffi.Char> Function(id)>();
+
+  /// Returns a pointer to any extra bytes allocated with an instance given object.
+  ///
+  /// @param obj An Objective-C object.
+  ///
+  /// @return A pointer to any extra bytes allocated with \e obj. If \e obj was
+  /// not allocated with any extra bytes, then dereferencing the returned pointer is undefined.
+  ///
+  /// @note This function returns a pointer to any extra bytes allocated with the instance
+  /// (as specified by \c class_createInstance with extraBytes>0). This memory follows the
+  /// object's ordinary ivars, but may not be adjacent to the last ivar.
+  /// @note The returned pointer is guaranteed to be pointer-size aligned, even if the area following
+  /// the object's last ivar is less aligned than that. Alignment greater than pointer-size is never
+  /// guaranteed, even if the area following the object's last ivar is more aligned than that.
+  /// @note In a garbage-collected environment, the memory is scanned conservatively.
+  ffi.Pointer<ffi.Void> object_getIndexedIvars(
+    id obj,
+  ) {
+    return _object_getIndexedIvars(
+      obj,
+    );
+  }
+
+  late final _object_getIndexedIvarsPtr =
+      _lookup<ffi.NativeFunction<ffi.Pointer<ffi.Void> Function(id)>>(
+          'object_getIndexedIvars');
+  late final _object_getIndexedIvars = _object_getIndexedIvarsPtr
+      .asFunction<ffi.Pointer<ffi.Void> Function(id)>();
+
+  /// Identifies a selector as being valid or invalid.
+  ///
+  /// @param sel The selector you want to identify.
+  ///
+  /// @return YES if selector is valid and has a function implementation, NO otherwise.
+  ///
+  /// @warning On some platforms, an invalid reference (to invalid memory addresses) can cause
+  /// a crash.
+  bool sel_isMapped(
+    SEL sel,
+  ) {
+    return _sel_isMapped(
+      sel,
+    );
+  }
+
+  late final _sel_isMappedPtr =
+      _lookup<ffi.NativeFunction<ffi.Bool Function(SEL)>>('sel_isMapped');
+  late final _sel_isMapped = _sel_isMappedPtr.asFunction<bool Function(SEL)>();
+
+  /// Registers a method name with the Objective-C runtime system.
+  ///
+  /// @param str A pointer to a C string. Pass the name of the method you wish to register.
+  ///
+  /// @return A pointer of type SEL specifying the selector for the named method.
+  ///
+  /// @note The implementation of this method is identical to the implementation of \c sel_registerName.
+  /// @note Prior to OS X version 10.0, this method tried to find the selector mapped to the given name
+  /// and returned \c NULL if the selector was not found. This was changed for safety, because it was
+  /// observed that many of the callers of this function did not check the return value for \c NULL.
+  SEL sel_getUid(
+    ffi.Pointer<ffi.Char> str,
+  ) {
+    return _sel_getUid(
+      str,
+    );
+  }
+
+  late final _sel_getUidPtr =
+      _lookup<ffi.NativeFunction<SEL Function(ffi.Pointer<ffi.Char>)>>(
+          'sel_getUid');
+  late final _sel_getUid =
+      _sel_getUidPtr.asFunction<SEL Function(ffi.Pointer<ffi.Char>)>();
+
+  id objc_retainedObject(
+    objc_objectptr_t obj,
+  ) {
+    return _objc_retainedObject(
+      obj,
+    );
+  }
+
+  late final _objc_retainedObjectPtr =
+      _lookup<ffi.NativeFunction<id Function(objc_objectptr_t)>>(
+          'objc_retainedObject');
+  late final _objc_retainedObject =
+      _objc_retainedObjectPtr.asFunction<id Function(objc_objectptr_t)>();
+
+  id objc_unretainedObject(
+    objc_objectptr_t obj,
+  ) {
+    return _objc_unretainedObject(
+      obj,
+    );
+  }
+
+  late final _objc_unretainedObjectPtr =
+      _lookup<ffi.NativeFunction<id Function(objc_objectptr_t)>>(
+          'objc_unretainedObject');
+  late final _objc_unretainedObject =
+      _objc_unretainedObjectPtr.asFunction<id Function(objc_objectptr_t)>();
+
+  objc_objectptr_t objc_unretainedPointer(
+    id obj,
+  ) {
+    return _objc_unretainedPointer(
+      obj,
+    );
+  }
+
+  late final _objc_unretainedPointerPtr =
+      _lookup<ffi.NativeFunction<objc_objectptr_t Function(id)>>(
+          'objc_unretainedPointer');
+  late final _objc_unretainedPointer =
+      _objc_unretainedPointerPtr.asFunction<objc_objectptr_t Function(id)>();
+
+  /// ! @brief Returns the `CGDirectDisplayID` of the specified monitor.
+  ///
+  /// @return The `CGDirectDisplayID` of the specified monitor, or
+  /// `kCGNullDirectDisplay` if an [error](@ref error_handling) occurred.
+  ///
+  /// @errors Possible errors include @ref GLFW_NOT_INITIALIZED.
+  ///
+  /// @thread_safety This function may be called from any thread.  Access is not
+  /// synchronized.
+  ///
+  /// @since Added in version 3.1.
+  ///
+  /// @ingroup native
+  int glfwGetCocoaMonitor(
+    ffi.Pointer<GLFWmonitor> monitor,
+  ) {
+    return _glfwGetCocoaMonitor(
+      monitor,
+    );
+  }
+
+  late final _glfwGetCocoaMonitorPtr =
+      _lookup<ffi.NativeFunction<ffi.Int Function(ffi.Pointer<GLFWmonitor>)>>(
+          'glfwGetCocoaMonitor');
+  late final _glfwGetCocoaMonitor = _glfwGetCocoaMonitorPtr
+      .asFunction<int Function(ffi.Pointer<GLFWmonitor>)>();
+
+  /// ! @brief Returns the `NSWindow` of the specified window.
+  ///
+  /// @return The `NSWindow` of the specified window, or `nil` if an
+  /// [error](@ref error_handling) occurred.
+  ///
+  /// @errors Possible errors include @ref GLFW_NOT_INITIALIZED.
+  ///
+  /// @thread_safety This function may be called from any thread.  Access is not
+  /// synchronized.
+  ///
+  /// @since Added in version 3.0.
+  ///
+  /// @ingroup native
+  id glfwGetCocoaWindow(
+    ffi.Pointer<GLFWwindow> window,
+  ) {
+    return _glfwGetCocoaWindow(
+      window,
+    );
+  }
+
+  late final _glfwGetCocoaWindowPtr =
+      _lookup<ffi.NativeFunction<id Function(ffi.Pointer<GLFWwindow>)>>(
+          'glfwGetCocoaWindow');
+  late final _glfwGetCocoaWindow =
+      _glfwGetCocoaWindowPtr.asFunction<id Function(ffi.Pointer<GLFWwindow>)>();
+
+  /// ! @brief Returns the `NSOpenGLContext` of the specified window.
+  ///
+  /// @return The `NSOpenGLContext` of the specified window, or `nil` if an
+  /// [error](@ref error_handling) occurred.
+  ///
+  /// @errors Possible errors include @ref GLFW_NO_WINDOW_CONTEXT and @ref
+  /// GLFW_NOT_INITIALIZED.
+  ///
+  /// @thread_safety This function may be called from any thread.  Access is not
+  /// synchronized.
+  ///
+  /// @since Added in version 3.0.
+  ///
+  /// @ingroup native
+  id glfwGetNSGLContext(
+    ffi.Pointer<GLFWwindow> window,
+  ) {
+    return _glfwGetNSGLContext(
+      window,
+    );
+  }
+
+  late final _glfwGetNSGLContextPtr =
+      _lookup<ffi.NativeFunction<id Function(ffi.Pointer<GLFWwindow>)>>(
+          'glfwGetNSGLContext');
+  late final _glfwGetNSGLContext =
+      _glfwGetNSGLContextPtr.asFunction<id Function(ffi.Pointer<GLFWwindow>)>();
 }
 
-typedef va_list = ffi.Pointer<ffi.Char>;
-typedef uintptr_t = ffi.UnsignedLongLong;
+class __mbstate_t extends ffi.Union {
+  @ffi.Array.multi([128])
+  external ffi.Array<ffi.Char> __mbstate8;
 
-class __crt_locale_data_public extends ffi.Struct {
-  external ffi.Pointer<ffi.UnsignedShort> _locale_pctype;
-
-  @ffi.Int()
-  external int _locale_mb_cur_max;
-
-  @ffi.UnsignedInt()
-  external int _locale_lc_codepage;
+  @ffi.LongLong()
+  external int _mbstateL;
 }
 
-class __crt_locale_pointers extends ffi.Struct {
-  external ffi.Pointer<__crt_locale_data> locinfo;
+class __darwin_pthread_handler_rec extends ffi.Struct {
+  external ffi
+          .Pointer<ffi.NativeFunction<ffi.Void Function(ffi.Pointer<ffi.Void>)>>
+      __routine;
 
-  external ffi.Pointer<__crt_multibyte_data> mbcinfo;
+  external ffi.Pointer<ffi.Void> __arg;
+
+  external ffi.Pointer<__darwin_pthread_handler_rec> __next;
 }
 
-class __crt_locale_data extends ffi.Opaque {}
+class _opaque_pthread_attr_t extends ffi.Struct {
+  @ffi.Long()
+  external int __sig;
 
-class __crt_multibyte_data extends ffi.Opaque {}
-
-class _Mbstatet extends ffi.Struct {
-  @ffi.UnsignedLong()
-  external int _Wchar;
-
-  @ffi.UnsignedShort()
-  external int _Byte;
-
-  @ffi.UnsignedShort()
-  external int _State;
+  @ffi.Array.multi([56])
+  external ffi.Array<ffi.Char> __opaque;
 }
 
-typedef errno_t = ffi.Int;
+class _opaque_pthread_cond_t extends ffi.Struct {
+  @ffi.Long()
+  external int __sig;
+
+  @ffi.Array.multi([40])
+  external ffi.Array<ffi.Char> __opaque;
+}
+
+class _opaque_pthread_condattr_t extends ffi.Struct {
+  @ffi.Long()
+  external int __sig;
+
+  @ffi.Array.multi([8])
+  external ffi.Array<ffi.Char> __opaque;
+}
+
+class _opaque_pthread_mutex_t extends ffi.Struct {
+  @ffi.Long()
+  external int __sig;
+
+  @ffi.Array.multi([56])
+  external ffi.Array<ffi.Char> __opaque;
+}
+
+class _opaque_pthread_mutexattr_t extends ffi.Struct {
+  @ffi.Long()
+  external int __sig;
+
+  @ffi.Array.multi([8])
+  external ffi.Array<ffi.Char> __opaque;
+}
+
+class _opaque_pthread_once_t extends ffi.Struct {
+  @ffi.Long()
+  external int __sig;
+
+  @ffi.Array.multi([8])
+  external ffi.Array<ffi.Char> __opaque;
+}
+
+class _opaque_pthread_rwlock_t extends ffi.Struct {
+  @ffi.Long()
+  external int __sig;
+
+  @ffi.Array.multi([192])
+  external ffi.Array<ffi.Char> __opaque;
+}
+
+class _opaque_pthread_rwlockattr_t extends ffi.Struct {
+  @ffi.Long()
+  external int __sig;
+
+  @ffi.Array.multi([16])
+  external ffi.Array<ffi.Char> __opaque;
+}
+
+class _opaque_pthread_t extends ffi.Struct {
+  @ffi.Long()
+  external int __sig;
+
+  external ffi.Pointer<__darwin_pthread_handler_rec> __cleanup_stack;
+
+  @ffi.Array.multi([8176])
+  external ffi.Array<ffi.Char> __opaque;
+}
 
 class GLFWmonitor extends ffi.Opaque {}
 
@@ -6587,83 +6764,121 @@ typedef GLFWjoystickfun
 /// @ingroup context
 typedef GLFWglproc = ffi.Pointer<ffi.NativeFunction<ffi.Void Function()>>;
 
-const int _VCRT_COMPILER_PREPROCESSOR = 1;
+@ffi.Packed(1)
+class _OSUnalignedU16 extends ffi.Struct {
+  @ffi.Uint16()
+  external int __val;
+}
 
-const int _SAL_VERSION = 20;
+@ffi.Packed(1)
+class _OSUnalignedU32 extends ffi.Struct {
+  @ffi.Uint32()
+  external int __val;
+}
 
-const int __SAL_H_VERSION = 180000000;
+@ffi.Packed(1)
+class _OSUnalignedU64 extends ffi.Struct {
+  @ffi.Uint64()
+  external int __val;
+}
 
-const int _USE_DECLSPECS_FOR_SAL = 0;
+class fd_set extends ffi.Struct {
+  @ffi.Array.multi([32])
+  external ffi.Array<__int32_t> fds_bits;
+}
 
-const int _USE_ATTRIBUTES_FOR_SAL = 0;
+typedef __int32_t = ffi.Int;
 
-const int _CRT_PACKING = 8;
+class objc_class extends ffi.Opaque {}
 
-const int _VCRUNTIME_DISABLED_WARNINGS = 4514;
+/// Represents an instance of a class.
+class objc_object extends ffi.Struct {
+  external Class isa;
+}
 
-const int _HAS_EXCEPTIONS = 1;
+/// An opaque type that represents an Objective-C class.
+typedef Class = ffi.Pointer<objc_class>;
 
-const int _WCHAR_T_DEFINED = 1;
+class objc_selector extends ffi.Opaque {}
+
+/// An opaque type that represents a method selector.
+typedef SEL = ffi.Pointer<objc_selector>;
+
+/// A pointer to an instance of a class.
+typedef id = ffi.Pointer<objc_object>;
+typedef objc_objectptr_t = ffi.Pointer<ffi.Void>;
+
+const int __DARWIN_ONLY_64_BIT_INO_T = 1;
+
+const int __DARWIN_ONLY_UNIX_CONFORMANCE = 1;
+
+const int __DARWIN_ONLY_VERS_1050 = 1;
+
+const int __DARWIN_UNIX03 = 1;
+
+const int __DARWIN_64_BIT_INO_T = 1;
+
+const int __DARWIN_VERS_1050 = 1;
+
+const int __DARWIN_NON_CANCELABLE = 0;
+
+const String __DARWIN_SUF_EXTSN = '\$DARWIN_EXTSN';
+
+const int __DARWIN_C_ANSI = 4096;
+
+const int __DARWIN_C_FULL = 900000;
+
+const int __DARWIN_C_LEVEL = 900000;
+
+const int __STDC_WANT_LIB_EXT1__ = 1;
+
+const int __DARWIN_NO_LONG_LONG = 0;
+
+const int _DARWIN_FEATURE_64_BIT_INODE = 1;
+
+const int _DARWIN_FEATURE_ONLY_64_BIT_INODE = 1;
+
+const int _DARWIN_FEATURE_ONLY_VERS_1050 = 1;
+
+const int _DARWIN_FEATURE_ONLY_UNIX_CONFORMANCE = 1;
+
+const int _DARWIN_FEATURE_UNIX_CONFORMANCE = 3;
+
+const int __has_ptrcheck = 0;
+
+const int __DARWIN_NULL = 0;
+
+const int __PTHREAD_SIZE__ = 8176;
+
+const int __PTHREAD_ATTR_SIZE__ = 56;
+
+const int __PTHREAD_MUTEXATTR_SIZE__ = 8;
+
+const int __PTHREAD_MUTEX_SIZE__ = 56;
+
+const int __PTHREAD_CONDATTR_SIZE__ = 8;
+
+const int __PTHREAD_COND_SIZE__ = 40;
+
+const int __PTHREAD_ONCE_SIZE__ = 8;
+
+const int __PTHREAD_RWLOCK_SIZE__ = 192;
+
+const int __PTHREAD_RWLOCKATTR_SIZE__ = 16;
+
+const int __DARWIN_WCHAR_MAX = 2147483647;
+
+const int __DARWIN_WCHAR_MIN = -2147483648;
+
+const int __DARWIN_WEOF = -1;
+
+const int _FORTIFY_SOURCE = 2;
 
 const int NULL = 0;
 
-const int _HAS_CXX17 = 0;
+const int USER_ADDR_NULL = 0;
 
-const int _HAS_CXX20 = 0;
-
-const int _HAS_CXX23 = 0;
-
-const int _HAS_NODISCARD = 1;
-
-const int _ARM_WINAPI_PARTITION_DESKTOP_SDK_AVAILABLE = 1;
-
-const int _CRT_BUILD_DESKTOP_APP = 1;
-
-const int _UCRT_DISABLED_WARNINGS = 4324;
-
-const int _ARGMAX = 100;
-
-const int _TRUNCATE = -1;
-
-const int _CRT_INT_MAX = 2147483647;
-
-const int _CRT_SIZE_MAX = -1;
-
-const String __FILEW__ = 't';
-
-const int _CRT_FUNCTIONS_REQUIRED = 1;
-
-const int _CRT_HAS_CXX17 = 0;
-
-const int _CRT_HAS_C11 = 0;
-
-const int _CRT_INTERNAL_NONSTDC_NAMES = 1;
-
-const int __STDC_SECURE_LIB__ = 200411;
-
-const int __GOT_SECURE_LIB__ = 200411;
-
-const int __STDC_WANT_SECURE_LIB__ = 1;
-
-const int _SECURECRT_FILL_BUFFER_PATTERN = 254;
-
-const int _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES = 0;
-
-const int _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES_COUNT = 0;
-
-const int _CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES = 1;
-
-const int _CRT_SECURE_CPP_OVERLOAD_STANDARD_NAMES_MEMORY = 0;
-
-const int _CRT_SECURE_CPP_OVERLOAD_SECURE_NAMES_MEMORY = 0;
-
-const int INT8_MIN = -128;
-
-const int INT16_MIN = -32768;
-
-const int INT32_MIN = -2147483648;
-
-const int INT64_MIN = -9223372036854775808;
+const int __WORDSIZE = 64;
 
 const int INT8_MAX = 127;
 
@@ -6672,6 +6887,14 @@ const int INT16_MAX = 32767;
 const int INT32_MAX = 2147483647;
 
 const int INT64_MAX = 9223372036854775807;
+
+const int INT8_MIN = -128;
+
+const int INT16_MIN = -32768;
+
+const int INT32_MIN = -2147483648;
+
+const int INT64_MIN = -9223372036854775808;
 
 const int UINT8_MAX = 255;
 
@@ -6707,7 +6930,7 @@ const int UINT_LEAST64_MAX = -1;
 
 const int INT_FAST8_MIN = -128;
 
-const int INT_FAST16_MIN = -2147483648;
+const int INT_FAST16_MIN = -32768;
 
 const int INT_FAST32_MIN = -2147483648;
 
@@ -6715,7 +6938,7 @@ const int INT_FAST64_MIN = -9223372036854775808;
 
 const int INT_FAST8_MAX = 127;
 
-const int INT_FAST16_MAX = 2147483647;
+const int INT_FAST16_MAX = 32767;
 
 const int INT_FAST32_MAX = 2147483647;
 
@@ -6723,23 +6946,23 @@ const int INT_FAST64_MAX = 9223372036854775807;
 
 const int UINT_FAST8_MAX = 255;
 
-const int UINT_FAST16_MAX = 4294967295;
+const int UINT_FAST16_MAX = 65535;
 
 const int UINT_FAST32_MAX = 4294967295;
 
 const int UINT_FAST64_MAX = -1;
 
-const int INTPTR_MIN = -9223372036854775808;
-
 const int INTPTR_MAX = 9223372036854775807;
 
-const int UINTPTR_MAX = -1;
+const int INTPTR_MIN = -9223372036854775808;
 
-const int INTMAX_MIN = -9223372036854775808;
+const int UINTPTR_MAX = -1;
 
 const int INTMAX_MAX = 9223372036854775807;
 
 const int UINTMAX_MAX = -1;
+
+const int INTMAX_MIN = -9223372036854775808;
 
 const int PTRDIFF_MIN = -9223372036854775808;
 
@@ -6747,17 +6970,19 @@ const int PTRDIFF_MAX = 9223372036854775807;
 
 const int SIZE_MAX = -1;
 
+const int RSIZE_MAX = 9223372036854775807;
+
+const int WCHAR_MAX = 2147483647;
+
+const int WCHAR_MIN = -2147483648;
+
+const int WINT_MIN = -2147483648;
+
+const int WINT_MAX = 2147483647;
+
 const int SIG_ATOMIC_MIN = -2147483648;
 
 const int SIG_ATOMIC_MAX = 2147483647;
-
-const int WCHAR_MIN = 0;
-
-const int WCHAR_MAX = 65535;
-
-const int WINT_MIN = 0;
-
-const int WINT_MAX = 65535;
 
 const int GLFW_VERSION_MAJOR = 3;
 
@@ -7412,3 +7637,555 @@ const int GLFW_PLATFORM_X11 = 393220;
 const int GLFW_PLATFORM_NULL = 393221;
 
 const int GLFW_DONT_CARE = -1;
+
+const int _QUAD_HIGHWORD = 1;
+
+const int _QUAD_LOWWORD = 0;
+
+const int __DARWIN_LITTLE_ENDIAN = 1234;
+
+const int __DARWIN_BIG_ENDIAN = 4321;
+
+const int __DARWIN_PDP_ENDIAN = 3412;
+
+const int __DARWIN_BYTE_ORDER = 1234;
+
+const int LITTLE_ENDIAN = 1234;
+
+const int BIG_ENDIAN = 4321;
+
+const int PDP_ENDIAN = 3412;
+
+const int BYTE_ORDER = 1234;
+
+const int __API_TO_BE_DEPRECATED = 100000;
+
+const int __MAC_10_0 = 1000;
+
+const int __MAC_10_1 = 1010;
+
+const int __MAC_10_2 = 1020;
+
+const int __MAC_10_3 = 1030;
+
+const int __MAC_10_4 = 1040;
+
+const int __MAC_10_5 = 1050;
+
+const int __MAC_10_6 = 1060;
+
+const int __MAC_10_7 = 1070;
+
+const int __MAC_10_8 = 1080;
+
+const int __MAC_10_9 = 1090;
+
+const int __MAC_10_10 = 101000;
+
+const int __MAC_10_10_2 = 101002;
+
+const int __MAC_10_10_3 = 101003;
+
+const int __MAC_10_11 = 101100;
+
+const int __MAC_10_11_2 = 101102;
+
+const int __MAC_10_11_3 = 101103;
+
+const int __MAC_10_11_4 = 101104;
+
+const int __MAC_10_12 = 101200;
+
+const int __MAC_10_12_1 = 101201;
+
+const int __MAC_10_12_2 = 101202;
+
+const int __MAC_10_12_4 = 101204;
+
+const int __MAC_10_13 = 101300;
+
+const int __MAC_10_13_1 = 101301;
+
+const int __MAC_10_13_2 = 101302;
+
+const int __MAC_10_13_4 = 101304;
+
+const int __MAC_10_14 = 101400;
+
+const int __MAC_10_14_1 = 101401;
+
+const int __MAC_10_14_4 = 101404;
+
+const int __MAC_10_14_6 = 101406;
+
+const int __MAC_10_15 = 101500;
+
+const int __MAC_10_15_1 = 101501;
+
+const int __MAC_10_15_4 = 101504;
+
+const int __MAC_10_16 = 101600;
+
+const int __MAC_11_0 = 110000;
+
+const int __MAC_11_1 = 110100;
+
+const int __MAC_11_3 = 110300;
+
+const int __MAC_11_4 = 110400;
+
+const int __MAC_11_5 = 110500;
+
+const int __MAC_11_6 = 110600;
+
+const int __MAC_12_0 = 120000;
+
+const int __MAC_12_1 = 120100;
+
+const int __MAC_12_2 = 120200;
+
+const int __MAC_12_3 = 120300;
+
+const int __IPHONE_2_0 = 20000;
+
+const int __IPHONE_2_1 = 20100;
+
+const int __IPHONE_2_2 = 20200;
+
+const int __IPHONE_3_0 = 30000;
+
+const int __IPHONE_3_1 = 30100;
+
+const int __IPHONE_3_2 = 30200;
+
+const int __IPHONE_4_0 = 40000;
+
+const int __IPHONE_4_1 = 40100;
+
+const int __IPHONE_4_2 = 40200;
+
+const int __IPHONE_4_3 = 40300;
+
+const int __IPHONE_5_0 = 50000;
+
+const int __IPHONE_5_1 = 50100;
+
+const int __IPHONE_6_0 = 60000;
+
+const int __IPHONE_6_1 = 60100;
+
+const int __IPHONE_7_0 = 70000;
+
+const int __IPHONE_7_1 = 70100;
+
+const int __IPHONE_8_0 = 80000;
+
+const int __IPHONE_8_1 = 80100;
+
+const int __IPHONE_8_2 = 80200;
+
+const int __IPHONE_8_3 = 80300;
+
+const int __IPHONE_8_4 = 80400;
+
+const int __IPHONE_9_0 = 90000;
+
+const int __IPHONE_9_1 = 90100;
+
+const int __IPHONE_9_2 = 90200;
+
+const int __IPHONE_9_3 = 90300;
+
+const int __IPHONE_10_0 = 100000;
+
+const int __IPHONE_10_1 = 100100;
+
+const int __IPHONE_10_2 = 100200;
+
+const int __IPHONE_10_3 = 100300;
+
+const int __IPHONE_11_0 = 110000;
+
+const int __IPHONE_11_1 = 110100;
+
+const int __IPHONE_11_2 = 110200;
+
+const int __IPHONE_11_3 = 110300;
+
+const int __IPHONE_11_4 = 110400;
+
+const int __IPHONE_12_0 = 120000;
+
+const int __IPHONE_12_1 = 120100;
+
+const int __IPHONE_12_2 = 120200;
+
+const int __IPHONE_12_3 = 120300;
+
+const int __IPHONE_12_4 = 120400;
+
+const int __IPHONE_13_0 = 130000;
+
+const int __IPHONE_13_1 = 130100;
+
+const int __IPHONE_13_2 = 130200;
+
+const int __IPHONE_13_3 = 130300;
+
+const int __IPHONE_13_4 = 130400;
+
+const int __IPHONE_13_5 = 130500;
+
+const int __IPHONE_13_6 = 130600;
+
+const int __IPHONE_13_7 = 130700;
+
+const int __IPHONE_14_0 = 140000;
+
+const int __IPHONE_14_1 = 140100;
+
+const int __IPHONE_14_2 = 140200;
+
+const int __IPHONE_14_3 = 140300;
+
+const int __IPHONE_14_5 = 140500;
+
+const int __IPHONE_14_6 = 140600;
+
+const int __IPHONE_14_7 = 140700;
+
+const int __IPHONE_14_8 = 140800;
+
+const int __IPHONE_15_0 = 150000;
+
+const int __IPHONE_15_1 = 150100;
+
+const int __IPHONE_15_2 = 150200;
+
+const int __IPHONE_15_3 = 150300;
+
+const int __IPHONE_15_4 = 150400;
+
+const int __TVOS_9_0 = 90000;
+
+const int __TVOS_9_1 = 90100;
+
+const int __TVOS_9_2 = 90200;
+
+const int __TVOS_10_0 = 100000;
+
+const int __TVOS_10_0_1 = 100001;
+
+const int __TVOS_10_1 = 100100;
+
+const int __TVOS_10_2 = 100200;
+
+const int __TVOS_11_0 = 110000;
+
+const int __TVOS_11_1 = 110100;
+
+const int __TVOS_11_2 = 110200;
+
+const int __TVOS_11_3 = 110300;
+
+const int __TVOS_11_4 = 110400;
+
+const int __TVOS_12_0 = 120000;
+
+const int __TVOS_12_1 = 120100;
+
+const int __TVOS_12_2 = 120200;
+
+const int __TVOS_12_3 = 120300;
+
+const int __TVOS_12_4 = 120400;
+
+const int __TVOS_13_0 = 130000;
+
+const int __TVOS_13_2 = 130200;
+
+const int __TVOS_13_3 = 130300;
+
+const int __TVOS_13_4 = 130400;
+
+const int __TVOS_14_0 = 140000;
+
+const int __TVOS_14_1 = 140100;
+
+const int __TVOS_14_2 = 140200;
+
+const int __TVOS_14_3 = 140300;
+
+const int __TVOS_14_5 = 140500;
+
+const int __TVOS_14_6 = 140600;
+
+const int __TVOS_14_7 = 140700;
+
+const int __TVOS_15_0 = 150000;
+
+const int __TVOS_15_1 = 150100;
+
+const int __TVOS_15_2 = 150200;
+
+const int __TVOS_15_3 = 150300;
+
+const int __TVOS_15_4 = 150400;
+
+const int __WATCHOS_1_0 = 10000;
+
+const int __WATCHOS_2_0 = 20000;
+
+const int __WATCHOS_2_1 = 20100;
+
+const int __WATCHOS_2_2 = 20200;
+
+const int __WATCHOS_3_0 = 30000;
+
+const int __WATCHOS_3_1 = 30100;
+
+const int __WATCHOS_3_1_1 = 30101;
+
+const int __WATCHOS_3_2 = 30200;
+
+const int __WATCHOS_4_0 = 40000;
+
+const int __WATCHOS_4_1 = 40100;
+
+const int __WATCHOS_4_2 = 40200;
+
+const int __WATCHOS_4_3 = 40300;
+
+const int __WATCHOS_5_0 = 50000;
+
+const int __WATCHOS_5_1 = 50100;
+
+const int __WATCHOS_5_2 = 50200;
+
+const int __WATCHOS_5_3 = 50300;
+
+const int __WATCHOS_6_0 = 60000;
+
+const int __WATCHOS_6_1 = 60100;
+
+const int __WATCHOS_6_2 = 60200;
+
+const int __WATCHOS_7_0 = 70000;
+
+const int __WATCHOS_7_1 = 70100;
+
+const int __WATCHOS_7_2 = 70200;
+
+const int __WATCHOS_7_3 = 70300;
+
+const int __WATCHOS_7_4 = 70400;
+
+const int __WATCHOS_7_5 = 70500;
+
+const int __WATCHOS_7_6 = 70600;
+
+const int __WATCHOS_8_0 = 80000;
+
+const int __WATCHOS_8_1 = 80100;
+
+const int __WATCHOS_8_3 = 80300;
+
+const int __WATCHOS_8_4 = 80400;
+
+const int __WATCHOS_8_5 = 80500;
+
+const int MAC_OS_X_VERSION_10_0 = 1000;
+
+const int MAC_OS_X_VERSION_10_1 = 1010;
+
+const int MAC_OS_X_VERSION_10_2 = 1020;
+
+const int MAC_OS_X_VERSION_10_3 = 1030;
+
+const int MAC_OS_X_VERSION_10_4 = 1040;
+
+const int MAC_OS_X_VERSION_10_5 = 1050;
+
+const int MAC_OS_X_VERSION_10_6 = 1060;
+
+const int MAC_OS_X_VERSION_10_7 = 1070;
+
+const int MAC_OS_X_VERSION_10_8 = 1080;
+
+const int MAC_OS_X_VERSION_10_9 = 1090;
+
+const int MAC_OS_X_VERSION_10_10 = 101000;
+
+const int MAC_OS_X_VERSION_10_10_2 = 101002;
+
+const int MAC_OS_X_VERSION_10_10_3 = 101003;
+
+const int MAC_OS_X_VERSION_10_11 = 101100;
+
+const int MAC_OS_X_VERSION_10_11_2 = 101102;
+
+const int MAC_OS_X_VERSION_10_11_3 = 101103;
+
+const int MAC_OS_X_VERSION_10_11_4 = 101104;
+
+const int MAC_OS_X_VERSION_10_12 = 101200;
+
+const int MAC_OS_X_VERSION_10_12_1 = 101201;
+
+const int MAC_OS_X_VERSION_10_12_2 = 101202;
+
+const int MAC_OS_X_VERSION_10_12_4 = 101204;
+
+const int MAC_OS_X_VERSION_10_13 = 101300;
+
+const int MAC_OS_X_VERSION_10_13_1 = 101301;
+
+const int MAC_OS_X_VERSION_10_13_2 = 101302;
+
+const int MAC_OS_X_VERSION_10_13_4 = 101304;
+
+const int MAC_OS_X_VERSION_10_14 = 101400;
+
+const int MAC_OS_X_VERSION_10_14_1 = 101401;
+
+const int MAC_OS_X_VERSION_10_14_4 = 101404;
+
+const int MAC_OS_X_VERSION_10_14_6 = 101406;
+
+const int MAC_OS_X_VERSION_10_15 = 101500;
+
+const int MAC_OS_X_VERSION_10_15_1 = 101501;
+
+const int MAC_OS_X_VERSION_10_16 = 101600;
+
+const int MAC_OS_VERSION_11_0 = 110000;
+
+const int MAC_OS_VERSION_12_0 = 120000;
+
+const int __DRIVERKIT_19_0 = 190000;
+
+const int __DRIVERKIT_20_0 = 200000;
+
+const int __DRIVERKIT_21_0 = 210000;
+
+const int __MAC_OS_X_VERSION_MIN_REQUIRED = 120000;
+
+const int __MAC_OS_X_VERSION_MAX_ALLOWED = 120300;
+
+const int __ENABLE_LEGACY_MAC_AVAILABILITY = 1;
+
+const int __DARWIN_FD_SETSIZE = 1024;
+
+const int __DARWIN_NBBY = 8;
+
+const int __DARWIN_NFDBITS = 32;
+
+const int NBBY = 8;
+
+const int NFDBITS = 32;
+
+const int FD_SETSIZE = 1024;
+
+const int MAC_OS_VERSION_11_1 = 110100;
+
+const int MAC_OS_VERSION_11_3 = 110300;
+
+const int MAC_OS_X_VERSION_MIN_REQUIRED = 120000;
+
+const int MAC_OS_X_VERSION_MAX_ALLOWED = 120000;
+
+const int __AVAILABILITY_MACROS_USES_AVAILABILITY = 1;
+
+const int __IPHONE_COMPAT_VERSION = 40000;
+
+const int DYNAMIC_TARGETS_ENABLED = 0;
+
+const int TARGET_OS_MAC = 1;
+
+const int TARGET_OS_WIN32 = 0;
+
+const int TARGET_OS_WINDOWS = 0;
+
+const int TARGET_OS_UNIX = 0;
+
+const int TARGET_OS_LINUX = 0;
+
+const int TARGET_OS_OSX = 1;
+
+const int TARGET_OS_IPHONE = 0;
+
+const int TARGET_OS_IOS = 0;
+
+const int TARGET_OS_WATCH = 0;
+
+const int TARGET_OS_TV = 0;
+
+const int TARGET_OS_MACCATALYST = 0;
+
+const int TARGET_OS_UIKITFORMAC = 0;
+
+const int TARGET_OS_SIMULATOR = 0;
+
+const int TARGET_OS_EMBEDDED = 0;
+
+const int TARGET_OS_RTKIT = 0;
+
+const int TARGET_OS_DRIVERKIT = 0;
+
+const int TARGET_IPHONE_SIMULATOR = 0;
+
+const int TARGET_OS_NANO = 0;
+
+const int TARGET_ABI_USES_IOS_VALUES = 1;
+
+const int TARGET_CPU_PPC = 0;
+
+const int TARGET_CPU_PPC64 = 0;
+
+const int TARGET_CPU_68K = 0;
+
+const int TARGET_CPU_X86 = 0;
+
+const int TARGET_CPU_X86_64 = 0;
+
+const int TARGET_CPU_ARM = 0;
+
+const int TARGET_CPU_ARM64 = 1;
+
+const int TARGET_CPU_MIPS = 0;
+
+const int TARGET_CPU_SPARC = 0;
+
+const int TARGET_CPU_ALPHA = 0;
+
+const int TARGET_RT_MAC_CFM = 0;
+
+const int TARGET_RT_MAC_MACHO = 1;
+
+const int TARGET_RT_LITTLE_ENDIAN = 1;
+
+const int TARGET_RT_BIG_ENDIAN = 0;
+
+const int TARGET_RT_64_BIT = 1;
+
+const int OBJC_API_VERSION = 2;
+
+const int OBJC_NO_GC = 1;
+
+const int NS_ENFORCE_NSOBJECT_DESIGNATED_INITIALIZER = 1;
+
+const int OBJC_OLD_DISPATCH_PROTOTYPES = 0;
+
+const int true1 = 1;
+
+const int false1 = 0;
+
+const int __bool_true_false_are_defined = 1;
+
+const int OBJC_BOOL_IS_BOOL = 1;
+
+const int YES = 1;
+
+const int NO = 0;
+
+const int ARITH_SHIFT = 32;

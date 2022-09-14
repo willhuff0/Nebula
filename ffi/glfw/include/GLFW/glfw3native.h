@@ -26,13 +26,17 @@
  *
  *************************************************************************/
 
+#include "glfw3.h"
+
+#define GLFW_EXPOSE_NATIVE_COCOA
+#define GLFW_EXPOSE_NATIVE_NSGL
+
 #ifndef _glfw3_native_h_
 #define _glfw3_native_h_
 
 #ifdef __cplusplus
 extern "C" {
 #endif
-
 
 /*************************************************************************
  * Doxygen documentation

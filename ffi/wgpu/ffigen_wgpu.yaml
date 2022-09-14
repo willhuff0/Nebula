@@ -1,0 +1,7 @@
+output: 'lib/bindings/wgpu/wgpu.dart'
+name: 'WGPU'
+headers:
+  entry-points:
+    - 'ffi/wgpu/include/wgpu.h'
+compiler-opts:
+  - '-Iffi/wgpu/include'
