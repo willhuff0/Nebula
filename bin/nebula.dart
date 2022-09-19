@@ -40,20 +40,17 @@ void main() {
   print(gl.glGetString(GL_VERSION).cast<Utf8>().toDartString());
   print(gl.glGetString(GL_SHADING_LANGUAGE_VERSION).cast<Utf8>().toDartString());
 
-  gl.glViewport(0, 0, 1280, 960);
-  gl.glClearColor(.2, .3, .3, 1);
-  gl.glEnable(GL_DEPTH_TEST);
-  gl.glEnable(GL_CULL_FACE);
-  gl.glCullFace(GL_BACK);
-  gl.glClear(GL_COLOR_BUFFER_BIT);
-  glfw.glfwPollEvents();
-  glfw.glfwSwapBuffers(window);
-
   Light.shadowMapShader = Shader.load('shaders/shadowmap.glsl');
 
   final lights = [
     DirectionalLight(Vector3(0.4, -1.0, 0.4), Vector3(1.0, 0.96, 0.9), 1.0),
   ];
+
+  gl.glViewport(0, 0, 1280, 960);
+  gl.glClearColor(.2, .3, .3, 1);
+  gl.glEnable(GL_DEPTH_TEST);
+  gl.glEnable(GL_CULL_FACE);
+  gl.glCullFace(GL_BACK);
 
   final model = Model.load('resources/untitled.glb', Shader.load('shaders/standard.glsl'))!;
 
@@ -83,7 +80,7 @@ void main() {
       RENDER
     */
 
-    final vpm = camera.getProjectionMatrix() * camera.getViewMatrix();
+    final vpm = camera.getViewMatrix() * camera.getProjectionMatrix();
     final viewPos = camera.position;
     final uniforms = MeshStandardUniforms(vpm: vpm, viewPos: viewPos);
 
@@ -97,7 +94,7 @@ void main() {
 
     gl.glClear(GL_COLOR_BUFFER_BIT | GL_DEPTH_BUFFER_BIT);
 
-    model.draw(uniforms);
+    model.draw(uniforms, lights);
 
     glfw.glfwSwapBuffers(window);
     glfw.glfwPollEvents();

@@ -24,28 +24,38 @@ class Mesh {
       final buffers = arena<UnsignedInt>(2);
       gl.glGenBuffers(2, buffers);
       _vbo = buffers[0];
-      _ebo = buffers[2];
+      _ebo = buffers[1];
 
       gl.glBindVertexArray(_vao);
 
+      print(gl.glGetError());
+
       gl.glBindBuffer(GL_ARRAY_BUFFER, _vbo);
       gl.glBufferData(GL_ARRAY_BUFFER, vertices.length * 4, (arena<Float>(vertices.length)..asTypedList(vertices.length).setAll(0, vertices)).cast(), GL_STATIC_DRAW);
+
+      print(gl.glGetError());
 
       if (indices != null) {
         gl.glBindBuffer(GL_ELEMENT_ARRAY_BUFFER, _ebo);
         gl.glBufferData(GL_ELEMENT_ARRAY_BUFFER, indices!.length * 4, (arena<Uint32>(indices!.length)..asTypedList(indices!.length).setAll(0, indices!)).cast(), GL_STATIC_DRAW);
       }
 
+      print(gl.glGetError());
+
       gl.glEnableVertexAttribArray(0);
-      gl.glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, stide * 4, Pointer.fromAddress(0));
+      gl.glVertexAttribPointer(0, 3, GL_FLOAT, GL_FALSE, stide * 4, (arena<Int>()..value = 0).cast());
+      print(gl.glGetError());
 
       gl.glEnableVertexAttribArray(1);
-      gl.glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, stide * 4, Pointer.fromAddress(3 * 4));
+      gl.glVertexAttribPointer(1, 3, GL_FLOAT, GL_FALSE, stide * 4, (arena<Int>()..value = 3 * 4).cast());
+      print(gl.glGetError());
 
       gl.glEnableVertexAttribArray(2);
-      gl.glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, stide * 4, Pointer.fromAddress(6 * 4));
+      gl.glVertexAttribPointer(2, 3, GL_FLOAT, GL_FALSE, stide * 4, (arena<Int>()..value = 6 * 4).cast());
+      print(gl.glGetError());
 
       gl.glBindVertexArray(0);
+      print(gl.glGetError());
     }, malloc);
   }
 
@@ -58,6 +68,7 @@ class Mesh {
     } else {
       gl.glDrawElements(GL_TRIANGLES, indices!.length, GL_UNSIGNED_INT, nullptr);
     }
+    print(gl.glGetError());
     gl.glBindVertexArray(0);
   }
 }

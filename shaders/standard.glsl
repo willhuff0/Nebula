@@ -27,8 +27,8 @@ void main() {
         v_shadowCasterCoords[i] = vec4(a_pos, 1.0) * nebula_matrix_transform * nebula_shadowMatrices[i];
     }
 
-    //gl_Position = vec4(v_worldPos, 1.0) * matrix_view * matrix_projection;
-    gl_Position = nebula_matrix_viewProjection * nebula_matrix_transform * vec4(a_pos, 1.0);
+    //gl_Position = vec4(a_pos, 1.0) * nebula_matrix_viewProjection * nebula_matrix_transform;
+    gl_Position = vec4(a_pos, 1.0) * nebula_matrix_transform * nebula_matrix_viewProjection;
 }
 
 
@@ -69,12 +69,12 @@ in vec4 v_shadowCasterCoords[10];
 
 uniform Material nebula_material;
 
-uniform int nebula_directionalLightCount;
+uniform int nebula_int_directionalLightCount;
 uniform DirectionalLight nebula_directionalLights[2];
-uniform int nebula_pointLightCount;
+uniform int nebula_int_pointLightCount;
 uniform PointLight nebula_pointLights[8];
 
-uniform vec3 nebula_viewPos;
+uniform vec3 nebula_vec3_viewPos;
 
 const float PI = 3.14159265359;
 
@@ -158,7 +158,7 @@ void main() {
     float ao = texture(nebula_material.texture_ao, v_texCoord).r;
 
     vec3 N = getNormalFromMap();
-    vec3 V = normalize(nebula_viewPos - v_worldPos);
+    vec3 V = normalize(nebula_vec3_viewPos - v_worldPos);
 
     vec3 F0 = vec3(0.04);
     F0 = mix(F0, albedo, metallic);
@@ -166,7 +166,7 @@ void main() {
     vec3 Lo = vec3(0.0);
 
     // Directional Lights
-    for (int i = 0; i < nebula_directionalLightCount; ++i) {
+    for (int i = 0; i < nebula_int_directionalLightCount; ++i) {
         DirectionalLight light = nebula_directionalLights[i];
 
         vec3 _L = light.direction;
@@ -175,7 +175,7 @@ void main() {
     }
 
     // Point Lights
-    for (int i = 0; i < nebula_pointLightCount; ++i) {
+    for (int i = 0; i < nebula_int_pointLightCount; ++i) {
         PointLight light = nebula_pointLights[i];
 
         vec3 _L = light.position - v_worldPos;

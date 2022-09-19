@@ -4,6 +4,7 @@ import 'dart:ffi';
 import 'dart:io';
 
 import 'package:ffi/ffi.dart';
+import 'package:nebula/common/common.dart';
 import 'package:nebula/nebula.dart';
 import 'package:vector_math/vector_math.dart';
 
@@ -109,7 +110,7 @@ class Shader {
   void setStandardMeshUniforms(MeshStandardUniforms uniforms) {
     if (uniforms.transform != null) setUMatrix4("nebula_matrix_transform", uniforms.transform!);
     if (uniforms.vpm != null) setUMatrix4("nebula_matrix_viewProjection", uniforms.vpm!);
-    if (uniforms.viewPos != null) setUMatrix4("nebula_matrix_viewProjection", uniforms.vpm!);
+    if (uniforms.viewPos != null) setUVector3("nebula_vec3_viewPos", uniforms.viewPos!);
     if (uniforms.directionalLightCount != null) setUInt("nebula_int_directionalLightCount", uniforms.directionalLightCount!);
     if (uniforms.pointLightCount != null) setUInt("nebula_int_pointLightCount", uniforms.pointLightCount!);
   }
@@ -123,4 +124,15 @@ class MeshStandardUniforms {
   int? pointLightCount;
 
   MeshStandardUniforms({this.vpm, this.viewPos, this.transform, this.directionalLightCount, this.pointLightCount});
+  MeshStandardUniforms.clone(MeshStandardUniforms from)
+      : vpm = from.vpm?.clone(),
+        viewPos = from.viewPos?.clone(),
+        transform = from.transform?.clone(),
+        directionalLightCount = from.directionalLightCount,
+        pointLightCount = from.pointLightCount;
+
+  MeshStandardUniforms clone() => MeshStandardUniforms.clone(this);
+
+  @override
+  String toString() => '{vpm: $vpm, viewPos: $viewPos, transform: $transform, dirLightCount: $directionalLightCount, pointLightCount: $pointLightCount}';
 }
