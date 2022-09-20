@@ -1,0 +1,11 @@
+{
+  "version": 2,
+  "dgSpecHash": "+n+RKCOe0ji2KW2qP0qnpwJCiyaH8ttKp8yD7S309N+o/AJkzeETmF3X1nq+2YHk3rqO3M3PJw+Y2HkM7sVG4Q==",
+  "success": true,
+  "projectFilePath": "/Users/will/dev/projects/Nebula/Nebula/Nebula.csproj",
+  "expectedPackageFiles": [
+    "/Users/will/.nuget/packages/austinharris.jsonrpc/1.2.3/austinharris.jsonrpc.1.2.3.nupkg.sha512",
+    "/Users/will/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512"
+  ],
+  "logs": []
+}
