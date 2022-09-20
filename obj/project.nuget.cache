@@ -1,11 +1,24 @@
 {
   "version": 2,
-  "dgSpecHash": "+n+RKCOe0ji2KW2qP0qnpwJCiyaH8ttKp8yD7S309N+o/AJkzeETmF3X1nq+2YHk3rqO3M3PJw+Y2HkM7sVG4Q==",
+  "dgSpecHash": "UoFfdDWJMQh5mRPHnuqzS4hEf+N4ATiKEkoJfPdRkMAkFSBLSy0Jrr8i91QgPum9Fb8qcs1eUK/coUx5+xOM8Q==",
   "success": true,
-  "projectFilePath": "/Users/will/dev/projects/Nebula/Nebula/Nebula.csproj",
+  "projectFilePath": "C:\\Users\\wehuf\\home\\dev\\CustomEngine\\Nebula\\Nebula\\Nebula.csproj",
   "expectedPackageFiles": [
-    "/Users/will/.nuget/packages/austinharris.jsonrpc/1.2.3/austinharris.jsonrpc.1.2.3.nupkg.sha512",
-    "/Users/will/.nuget/packages/newtonsoft.json/12.0.3/newtonsoft.json.12.0.3.nupkg.sha512"
+    "C:\\Users\\wehuf\\.nuget\\packages\\austinharris.jsonrpc\\1.2.3\\austinharris.jsonrpc.1.2.3.nupkg.sha512",
+    "C:\\Users\\wehuf\\.nuget\\packages\\commandlineparser\\2.9.1\\commandlineparser.2.9.1.nupkg.sha512",
+    "C:\\Users\\wehuf\\.nuget\\packages\\microsoft.csharp\\4.7.0\\microsoft.csharp.4.7.0.nupkg.sha512",
+    "C:\\Users\\wehuf\\.nuget\\packages\\microsoft.dotnet.platformabstractions\\3.1.6\\microsoft.dotnet.platformabstractions.3.1.6.nupkg.sha512",
+    "C:\\Users\\wehuf\\.nuget\\packages\\microsoft.extensions.dependencymodel\\6.0.0\\microsoft.extensions.dependencymodel.6.0.0.nupkg.sha512",
+    "C:\\Users\\wehuf\\.nuget\\packages\\newtonsoft.json\\12.0.3\\newtonsoft.json.12.0.3.nupkg.sha512",
+    "C:\\Users\\wehuf\\.nuget\\packages\\silk.net.core\\2.16.0\\silk.net.core.2.16.0.nupkg.sha512",
+    "C:\\Users\\wehuf\\.nuget\\packages\\silk.net.glfw\\2.16.0\\silk.net.glfw.2.16.0.nupkg.sha512",
+    "C:\\Users\\wehuf\\.nuget\\packages\\system.buffers\\4.5.1\\system.buffers.4.5.1.nupkg.sha512",
+    "C:\\Users\\wehuf\\.nuget\\packages\\system.memory\\4.5.5\\system.memory.4.5.5.nupkg.sha512",
+    "C:\\Users\\wehuf\\.nuget\\packages\\system.numerics.vectors\\4.5.0\\system.numerics.vectors.4.5.0.nupkg.sha512",
+    "C:\\Users\\wehuf\\.nuget\\packages\\system.runtime.compilerservices.unsafe\\6.0.0\\system.runtime.compilerservices.unsafe.6.0.0.nupkg.sha512",
+    "C:\\Users\\wehuf\\.nuget\\packages\\system.text.encodings.web\\6.0.0\\system.text.encodings.web.6.0.0.nupkg.sha512",
+    "C:\\Users\\wehuf\\.nuget\\packages\\system.text.json\\6.0.0\\system.text.json.6.0.0.nupkg.sha512",
+    "C:\\Users\\wehuf\\.nuget\\packages\\ultz.native.glfw\\3.3.3.1\\ultz.native.glfw.3.3.3.1.nupkg.sha512"
   ],
   "logs": []
 }

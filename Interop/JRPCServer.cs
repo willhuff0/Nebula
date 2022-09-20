@@ -2,6 +2,7 @@ using System.Net;
 using System.Net.WebSockets;
 using System.Text;
 using AustinHarris.JsonRpc;
+using Nebula.Interop.Services;
 using Newtonsoft.Json;
 
 namespace Nebula.Interop;
@@ -12,7 +13,7 @@ public class JRPCServer : IDisposable {
 
     private static readonly string Url = $"http://127.0.0.1:24980";
 
-    public static HttpListenerWebSocketContext? Client;
+    public static HttpListenerWebSocketContext Client;
 
     public static void Start(string authToken) {
         listener = new HttpListener();
@@ -22,6 +23,12 @@ public class JRPCServer : IDisposable {
         cancellation = new CancellationTokenSource();
         Task.Run(() => AcceptWebSocketClientAsync(listener, cancellation.Token));
     }
+
+    static readonly object[] Services = {
+        new NebulaService(),
+        new GraphicsService(),
+        new WindowingService()
+    };
 
     private static async Task AcceptWebSocketClientAsync(HttpListener listener, CancellationToken token) {
         while (!token.IsCancellationRequested && Client == null) {
@@ -118,11 +125,11 @@ public class JRPCServer : IDisposable {
         try {
             if (cancellation != null) {
                 cancellation.Cancel();
-                cancellation = null!;
+                cancellation = null;
             }
             if (listener != null) {
                 listener.Stop();
-                listener = null!;
+                listener = null;
             }
         }
         catch {}

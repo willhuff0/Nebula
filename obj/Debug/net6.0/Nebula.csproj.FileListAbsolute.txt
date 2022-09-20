@@ -1,0 +1,5 @@
+C:\Users\wehuf\home\dev\CustomEngine\Nebula\Nebula\obj\Debug\net6.0\Nebula.csproj.AssemblyReference.cache
+C:\Users\wehuf\home\dev\CustomEngine\Nebula\Nebula\obj\Debug\net6.0\Nebula.GeneratedMSBuildEditorConfig.editorconfig
+C:\Users\wehuf\home\dev\CustomEngine\Nebula\Nebula\obj\Debug\net6.0\Nebula.AssemblyInfoInputs.cache
+C:\Users\wehuf\home\dev\CustomEngine\Nebula\Nebula\obj\Debug\net6.0\Nebula.AssemblyInfo.cs
+C:\Users\wehuf\home\dev\CustomEngine\Nebula\Nebula\obj\Debug\net6.0\Nebula.csproj.CoreCompileInputs.cache
