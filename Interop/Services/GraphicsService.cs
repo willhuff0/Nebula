@@ -1,4 +1,3 @@
-using System.Diagnostics;
 using System.Runtime.InteropServices;
 using AustinHarris.JsonRpc;
 using Silk.NET.GLFW;
@@ -11,8 +10,9 @@ public unsafe class GraphicsService : JsonRpcService {
     Surface surface;
     Adapter adapter;
     Device device;
+    Queue queue;
 
-    [JsonRpcMethod] private void CreateSurfaceAdapterDevice(int window) {
+    [JsonRpcMethod] private void initWgpu(int window) {
         if (RuntimeInformation.IsOSPlatform(OSPlatform.Windows)) {
             var nativeWindow = new GlfwNativeWindow(WindowingService.glfw, (WindowHandle*)new IntPtr(window).ToPointer()).Win32.Value;
             surface = instance.CreateSurfaceFromWindowsHWND(nativeWindow.HInstance, nativeWindow.Hwnd);
@@ -35,9 +35,23 @@ public unsafe class GraphicsService : JsonRpcService {
             deviceExtras: new DeviceExtras { Label = "Device" });
 
         device.SetUncapturedErrorCallback(ErrorCallback);
+        queue = device.GetQueue();
     }
 
-    public static void ErrorCallback(Wgpu.ErrorType type, string message) => JRPCServer.Notify("error", new string[] {Enum.GetName(type), message});
+    public void ErrorCallback(Wgpu.ErrorType type, string message) => JRPCServer.Notify("error", new string[] {Enum.GetName(type), message});
 
-    
+    [JsonRpcMethod] private void render() {
+        
+    }
+
+    [JsonRpcMethod] private void createWGSLShader(string wgsl) {
+        device.CreateWgslShaderModule(null, wgsl);
+        var pipelineLayout = device.CreatePipelineLayout(null, new BindGroupLayout[] {
+            device.CreateBindgroupLayout(null, new Wgpu.BindGroupLayoutEntry[] {
+                new Wgpu.BindGroupLayoutEntry() {
+                    binding = 0,
+                }
+            }),
+        });
+    }
 }
