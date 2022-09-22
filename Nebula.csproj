@@ -17,4 +17,10 @@
     <ProjectReference Include="..\WGPU.NET\WGPU.NET\WGPU.NET.csproj" />
   </ItemGroup>
 
+  <ItemGroup>
+    <None Update="libwgpu.dll">
+      <CopyToOutputDirectory>PreserveNewest</CopyToOutputDirectory>
+    </None>
+  </ItemGroup>
+
 </Project>

@@ -1,20 +1,24 @@
 {
   "format": 1,
   "restore": {
-    "/Users/will/dev/projects/Nebula/Nebula/Nebula.csproj": {}
+    "C:\\Users\\wehuf\\home\\dev\\CustomEngine\\Nebula\\Nebula\\Nebula.csproj": {}
   },
   "projects": {
-    "/Users/will/dev/projects/Nebula/Nebula/Nebula.csproj": {
+    "C:\\Users\\wehuf\\home\\dev\\CustomEngine\\Nebula\\Nebula\\Nebula.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/will/dev/projects/Nebula/Nebula/Nebula.csproj",
+        "projectUniqueName": "C:\\Users\\wehuf\\home\\dev\\CustomEngine\\Nebula\\Nebula\\Nebula.csproj",
         "projectName": "Nebula",
-        "projectPath": "/Users/will/dev/projects/Nebula/Nebula/Nebula.csproj",
-        "packagesPath": "/Users/will/.nuget/packages/",
-        "outputPath": "/Users/will/dev/projects/Nebula/Nebula/obj/",
+        "projectPath": "C:\\Users\\wehuf\\home\\dev\\CustomEngine\\Nebula\\Nebula\\Nebula.csproj",
+        "packagesPath": "C:\\Users\\wehuf\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\wehuf\\home\\dev\\CustomEngine\\Nebula\\Nebula\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Users\\wehuf\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/Users/will/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\wehuf\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wehuf\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config"
         ],
         "originalTargetFrameworks": [
           "net6.0"
@@ -26,8 +30,8 @@
           "net6.0": {
             "targetAlias": "net6.0",
             "projectReferences": {
-              "/Users/will/dev/projects/Nebula/WGPU.NET/WGPU.NET/WGPU.NET.csproj": {
-                "projectPath": "/Users/will/dev/projects/Nebula/WGPU.NET/WGPU.NET/WGPU.NET.csproj"
+              "C:\\Users\\wehuf\\home\\dev\\CustomEngine\\Nebula\\WGPU.NET\\WGPU.NET\\WGPU.NET.csproj": {
+                "projectPath": "C:\\Users\\wehuf\\home\\dev\\CustomEngine\\Nebula\\WGPU.NET\\WGPU.NET\\WGPU.NET.csproj"
               }
             }
           }
@@ -71,21 +75,25 @@
               "privateAssets": "all"
             }
           },
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     },
-    "/Users/will/dev/projects/Nebula/WGPU.NET/WGPU.NET/WGPU.NET.csproj": {
+    "C:\\Users\\wehuf\\home\\dev\\CustomEngine\\Nebula\\WGPU.NET\\WGPU.NET\\WGPU.NET.csproj": {
       "version": "1.0.0",
       "restore": {
-        "projectUniqueName": "/Users/will/dev/projects/Nebula/WGPU.NET/WGPU.NET/WGPU.NET.csproj",
+        "projectUniqueName": "C:\\Users\\wehuf\\home\\dev\\CustomEngine\\Nebula\\WGPU.NET\\WGPU.NET\\WGPU.NET.csproj",
         "projectName": "WGPU.NET",
-        "projectPath": "/Users/will/dev/projects/Nebula/WGPU.NET/WGPU.NET/WGPU.NET.csproj",
-        "packagesPath": "/Users/will/.nuget/packages/",
-        "outputPath": "/Users/will/dev/projects/Nebula/WGPU.NET/WGPU.NET/obj/",
+        "projectPath": "C:\\Users\\wehuf\\home\\dev\\CustomEngine\\Nebula\\WGPU.NET\\WGPU.NET\\WGPU.NET.csproj",
+        "packagesPath": "C:\\Users\\wehuf\\.nuget\\packages\\",
+        "outputPath": "C:\\Users\\wehuf\\home\\dev\\CustomEngine\\Nebula\\WGPU.NET\\WGPU.NET\\obj\\",
         "projectStyle": "PackageReference",
+        "fallbackFolders": [
+          "C:\\Users\\wehuf\\AppData\\Roaming\\Godot\\mono\\GodotNuGetFallbackFolder"
+        ],
         "configFilePaths": [
-          "/Users/will/.nuget/NuGet/NuGet.Config"
+          "C:\\Users\\wehuf\\AppData\\Roaming\\NuGet\\NuGet.Config",
+          "C:\\Users\\wehuf\\AppData\\Roaming\\NuGet\\config\\Godot.Offline.Config"
         ],
         "originalTargetFrameworks": [
           "netstandard2.0"
@@ -131,7 +139,7 @@
           ],
           "assetTargetFallback": true,
           "warn": true,
-          "runtimeIdentifierGraphPath": "/usr/local/share/dotnet/sdk/6.0.400/RuntimeIdentifierGraph.json"
+          "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\6.0.400\\RuntimeIdentifierGraph.json"
         }
       }
     }
